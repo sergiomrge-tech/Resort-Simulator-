@@ -1,0 +1,54 @@
+name: Resort R2 | Texturas PBR procedurais
+on:
+  push:
+    branches: [chatgpt/r2-fachadas-premium-prototipo]
+    paths:
+      - 'Tools/Textures/generate_r2_materials.py'
+      - 'Tools/tests/test_r2_textures.py'
+      - '.github/workflows/r2-textures.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r2-textures
+  cancel-in-progress: true
+jobs:
+  generate-textures:
+    name: Gerar e verificar materiais arquitetonicos
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Dependencias graficas Python
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq python3-numpy python3-pil
+      - name: Gerar mapas PBR originais
+        run: python3 Tools/Textures/generate_r2_materials.py
+      - name: Validar imagens reais e licenca autoral
+        run: python3 -m unittest discover -s Tools/tests -p 'test_r2_textures.py' -v
+      - name: Publicar artifact verificavel
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R2-Texturas-PBR-24PNGs
+          path: |
+            UnityProject/Assets/Textures/R2_PBR/
+            ArtSource/Previews/Resort_R2_Texturas_PBR_QA.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Versionar texturas originais
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Textures/R2_PBR/
+          git add -f ArtSource/Previews/Resort_R2_Texturas_PBR_QA.json
+          if git diff --cached --quiet; then
+            echo "No texture change"
+          else
+            git commit -m "art(R2): materiais procedurais PBR e metadados verificados"
+            git pull --rebase origin chatgpt/r2-fachadas-premium-prototipo
+            git push origin HEAD:chatgpt/r2-fachadas-premium-prototipo
+          fi
