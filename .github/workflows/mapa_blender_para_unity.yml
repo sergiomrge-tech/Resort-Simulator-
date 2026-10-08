@@ -45,8 +45,9 @@ jobs:
       - name: Instalar Blender headless para exportar FBX
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq blender libegl1 libgl1 libgl1-mesa-dri libxrender1 libxext6 libxi6
+          sudo apt-get install -y -qq blender libegl1 libgl1 libgl1-mesa-dri libxrender1 libxext6 libxi6 python3-numpy
           blender --version
+          blender --background --factory-startup --python-expr "import numpy; print('NUMPY FOR BLENDER FBX:',numpy.__version__)"
       - name: Exportar malha do BLEND para Unity sem refazer cidade
         run: |
           blender --background --factory-startup \
