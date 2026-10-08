@@ -51,6 +51,29 @@ class R1GeographyStaticTests(unittest.TestCase):
                          len(re.findall(r"guid: ([0-9a-f]{32})",
                                         "\n".join(p.read_text() for p in ASSETS.rglob("*.meta")))))
 
+    def test_qa_materials_are_persistent_and_support_urp_color(self):
+        source = (ASSETS / "Editor/ResortWorldBuilder.cs").read_text(encoding="utf-8")
+        self.assertIn('AssetDatabase.CreateAsset(mat, path)', source)
+        self.assertIn('AssetDatabase.LoadAssetAtPath<Material>(path)', source)
+        self.assertIn('mat.SetColor("_BaseColor", tint)', source)
+        self.assertIn('mat.SetColor("_Color", tint)', source)
+        self.assertNotIn('mat.color = tint', source)
+
+    def test_blender_fbx_roundtrip_is_mandatory_without_unity_license(self):
+        script = (ROOT / "Tools/Blender/validate_copacabana_roundtrip.py").read_text()
+        self.assertIn("bpy.ops.wm.open_mainfile", script)
+        self.assertIn("bpy.ops.import_scene.fbx", script)
+        self.assertIn("verify_bounds(original, roundtrip)", script)
+        self.assertIn('scope": "BLENDER_FBX_ROUNDTRIP_ONLY_NOT_UNITY"', script)
+        workflow = (ROOT / ".github/workflows/r1-unity-cloud.yml").read_text()
+        self.assertIn("blender-fbx-roundtrip:", workflow)
+        self.assertIn("Tools/Blender/validate_copacabana_roundtrip.py", workflow)
+        # Only a successful Unity license gate may invoke game-ci; Blender QA
+        # must remain independent and runnable without that secret.
+        blender_job = workflow.split("  blender-fbx-roundtrip:", 1)[1].split("  unity-windows:", 1)[0]
+        self.assertNotIn("needs: static-qa", blender_job)
+        self.assertNotIn("if: needs.static-qa.outputs.licensed", blender_job)
+
     def test_unity_metadata_and_license_gate(self):
         manifest = json.loads((ROOT / "UnityProject/Packages/manifest.json").read_text())
         self.assertIn("com.unity.render-pipelines.universal", manifest["dependencies"])
