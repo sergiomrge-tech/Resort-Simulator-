@@ -1,0 +1,210 @@
+{
+  "status": "PASS",
+  "scope": "ORIGINAL_PROJECT_OWNED_FBX_BLENDER_REVIEW_NOT_UNITY",
+  "studio": "Blender Cycles CPU original FBX meshes, layout-only scaling and placement",
+  "asset_names_ordered": [
+    "casa_terrea",
+    "sobrado",
+    "loja",
+    "misto",
+    "apartamento",
+    "hotel",
+    "townhouse",
+    "residencial_sacadas"
+  ],
+  "models": {
+    "casa_terrea": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/casa_terrea.fbx",
+      "sha256": "2db3458fe5f1847f5437b74adaa9671f60c7cbf20dfc4cf3eedfc32c2f6f12e4",
+      "bytes": 104988,
+      "meshes": 8,
+      "vertices": 2168,
+      "polygons": 2046,
+      "dimensions_from_imported_FBX_m": [
+        9.45,
+        14.1274,
+        4.82
+      ],
+      "materials": [
+        "Awning",
+        "Concrete",
+        "Glass",
+        "Metal",
+        "Roof",
+        "Trim",
+        "Wall",
+        "Wood"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.375158
+    },
+    "sobrado": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/sobrado.fbx",
+      "sha256": "0b6f58dffee0c96866fcede97c73a6e8d7b3d55830295e03b35e4739e77f2061",
+      "bytes": 146204,
+      "meshes": 6,
+      "vertices": 4016,
+      "polygons": 3768,
+      "dimensions_from_imported_FBX_m": [
+        9.22,
+        15.88,
+        6.88
+      ],
+      "materials": [
+        "Concrete.001",
+        "Glass.001",
+        "Metal.001",
+        "Trim.001",
+        "Wall.001",
+        "Wood.001"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.333753
+    },
+    "loja": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/loja.fbx",
+      "sha256": "2562c3395237c5912ac2155662afa44608c3c5c62427e342c89f0964fa4044da",
+      "bytes": 82332,
+      "meshes": 7,
+      "vertices": 1440,
+      "polygons": 1344,
+      "dimensions_from_imported_FBX_m": [
+        10.22,
+        13.4868,
+        5.305
+      ],
+      "materials": [
+        "Awning.001",
+        "Concrete.002",
+        "Glass.002",
+        "Metal.002",
+        "Trim.002",
+        "Wall.002",
+        "Wood.002"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.392976
+    },
+    "misto": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/misto.fbx",
+      "sha256": "3579d361c7221572b8d2329c531b0cdf38e193b89ea85d015757e41f124664ce",
+      "bytes": 142540,
+      "meshes": 7,
+      "vertices": 3680,
+      "polygons": 3444,
+      "dimensions_from_imported_FBX_m": [
+        10.22,
+        16.88,
+        7.105
+      ],
+      "materials": [
+        "Awning.002",
+        "Concrete.003",
+        "Glass.003",
+        "Metal.003",
+        "Trim.003",
+        "Wall.003",
+        "Wood.003"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.313981
+    },
+    "apartamento": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/apartamento.fbx",
+      "sha256": "058c82c01e0d96259e6b8dccd15eeee4c0ee207b0f2000b3052ceab7a7029653",
+      "bytes": 245804,
+      "meshes": 6,
+      "vertices": 7904,
+      "polygons": 7440,
+      "dimensions_from_imported_FBX_m": [
+        11.22,
+        17.88,
+        9.88
+      ],
+      "materials": [
+        "Concrete.004",
+        "Glass.004",
+        "Metal.004",
+        "Trim.004",
+        "Wall.004",
+        "Wood.004"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.296421
+    },
+    "hotel": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/hotel.fbx",
+      "sha256": "4cb6792ea27d6ee186a110dd2cd1e77cb91818cbedc68f7a0131d3dce8700ba6",
+      "bytes": 290780,
+      "meshes": 6,
+      "vertices": 9808,
+      "polygons": 9276,
+      "dimensions_from_imported_FBX_m": [
+        12.22,
+        18.68,
+        10.105
+      ],
+      "materials": [
+        "Concrete.005",
+        "Glass.005",
+        "Metal.005",
+        "Trim.005",
+        "Wall.005",
+        "Wood.005"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.283726
+    },
+    "townhouse": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/townhouse.fbx",
+      "sha256": "e12ed79a39ac45e614c3b07831acb094f9bd3843f99024fc3ab9bbd5727aab71",
+      "bytes": 121196,
+      "meshes": 6,
+      "vertices": 3008,
+      "polygons": 2796,
+      "dimensions_from_imported_FBX_m": [
+        6.62,
+        15.88,
+        6.98
+      ],
+      "materials": [
+        "Concrete.006",
+        "Glass.006",
+        "Metal.006",
+        "Trim.006",
+        "Wall.006",
+        "Wood.006"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.333753
+    },
+    "residencial_sacadas": {
+      "source": "ArtSource/LocalProjectOwned/CoastalUrbanKit/residencial_sacadas.fbx",
+      "sha256": "ce56f68939d99f48df746a028bd3b81da2431ae23cf3e6bd22ff61e26fc39e87",
+      "bytes": 171436,
+      "meshes": 6,
+      "vertices": 4992,
+      "polygons": 4692,
+      "dimensions_from_imported_FBX_m": [
+        12.22,
+        16.88,
+        8.08
+      ],
+      "materials": [
+        "Concrete.007",
+        "Glass.007",
+        "Metal.007",
+        "Trim.007",
+        "Wall.007",
+        "Wood.007"
+      ],
+      "approval": "CANDIDATE_PENDING_REAL_UNITY_VISUAL_GATE",
+      "studio_scale_preview_only": 0.313981
+    }
+  },
+  "preview": "ArtSource/Previews/Owned_CoastalUrbanKit_Blender_QA.png",
+  "preview_sha256": "a490ba61b217a86a0734112d105c41bc384d9c36b21ae36758ace3fead11d218",
+  "preview_bytes": 2103569,
+  "original_map_untouched": true,
+  "copyright": "User-owned originals; any separate reference textures require independent license review"
+}
