@@ -1,0 +1,40 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+[RequireComponent(typeof(NavMeshAgent))]
+public class CustomerNPC : MonoBehaviour
+{
+    private NavMeshAgent agent;
+    private int currentQueueIndex = -1;
+    private Vector3 targetSlotPosition;
+    private bool isInQueue = false;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+
+    public void OnAssignedToQueueSlot(int slotIndex, Vector3 slotWorldPosition)
+    {
+        currentQueueIndex = slotIndex;
+        targetSlotPosition = slotWorldPosition;
+        isInQueue = true;
+    }
+
+    private void Update()
+    {
+        if (!isInQueue) return;
+
+        // Quando o cliente chega a menos de 20cm do seu slot, ele para e se alinha
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            // O primeiro da fila se vira de frente para o balcão
+            if (currentQueueIndex == 0)
+            {
+                // Rotaciona suavemente para olhar na mesma direção do balcão
+                Quaternion targetRot = Quaternion.LookRotation(transform.forward);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 5f);
+            }
+        }
+    }
+}
