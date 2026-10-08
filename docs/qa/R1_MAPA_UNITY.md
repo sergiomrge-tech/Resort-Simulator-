@@ -32,6 +32,8 @@ A revisão com os dois testes estáticos adicionais (materiais persistentes e QA
 - `ResortWorldBuilder.cs`: referencia o **FBX real** da pasta ImportedBlender; instancia o prefab, mede os bounds, separa cores temporárias de ruas/prédios, constrói colisão estática, solo provisório e câmera de primeira pessoa.
 - Materiais temporários agora persistem como assets `Assets/Materials/QA/*.mat` quando o Editor executar o gerador; tratam `_BaseColor` em URP Lit e `_Color` em Standard.
 - `PlayerController.cs`: WASD, mouse, corrida, salto e gravidade; `DayNightCycle.cs`: relógio/sol.
+- **Controle de inspeção programado:** F alterna caminhada com `CharacterController` e sobrevoo livre; no sobrevoo usar WASD e Q/E para subir/descer, Shift acelera; F12 solicita screenshot **do Unity em execução** em `Application.persistentDataPath/Captures` (não foi testado, nenhuma captura Unity existe por isso).
+- O código do PlayerController e seus testes estáticos fazem parte da mesma PR; compilar e validar em runtime continuam pendentes.
 - A cena `Assets/Scenes/Copacabana_Pilot.unity` **ainda será gerada** pelo Editor/Build. Sua existência não pode ser inferida do script C#.
 - Os assets gerados (cena e materiais QA) foram incluídos no plano de artifacts do workflow de build quando habilitado.
 
