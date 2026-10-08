@@ -1,0 +1,1 @@
+Project-owned authored canopy by Codex for Project Resort, 2026-10-07. No external model content. 2.4m curved 8-panel canopy, packed portable mesh source. Generated with Tools/Blender/prepare_asset_gate_umbrella.py. Final rib mechanism/pole detail still requires visual finishing.
