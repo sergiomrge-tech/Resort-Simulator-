@@ -1,0 +1,51 @@
+name: Resort | Integridade da biblioteca visual (GitHub-only)
+on:
+  push:
+    branches:
+      - main
+      - chatgpt/visual-qa-nine-assets-20261008
+    paths:
+      - 'ArtSource/LocalProjectOwned/**'
+      - 'ArtSource/Previews/Owned_*'
+      - 'UnityProject/Assets/Architecture/**'
+      - 'docs/arte/R2_OWNED_COASTAL_UNITY_ASSETS.json'
+      - 'Tools/tests/test_owned*.py'
+      - '.github/workflows/visual-asset-integrity.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ArtSource/LocalProjectOwned/**'
+      - 'ArtSource/Previews/Owned_*'
+      - 'UnityProject/Assets/Architecture/**'
+      - 'Tools/tests/test_owned*.py'
+      - '.github/workflows/visual-asset-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: resort-visual-asset-qa-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  integrity:
+    name: Validate archived source, nine Unity FBX and real Blender renders
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image decoder for pixel validation only
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Validate original sources, eight buildings and premium kiosk
+        run: python -m unittest discover -s Tools/tests -p 'test_owned*.py' -v
+      - name: Assert 9 ready-to-import FBX binaries without claiming Unity compiled
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          base=Path("UnityProject/Assets/Architecture")
+          models=list((base/"OwnedCoastal").glob("*.fbx"))+list((base/"OwnedKiosk").glob("*.fbx"))
+          assert len(models)==9, f"Expected 9 archived author-owned FBX, got {len(models)}"
+          assert all(p.read_bytes().startswith(b"Kaydara FBX Binary") for p in models)
+          print(f"NINE_AUTHOR_OWNED_FBX_IN_REPO: {len(models)}, Unity Editor validation STILL PENDING")
+          PY

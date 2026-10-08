@@ -2,6 +2,20 @@
 
 **Atualizado em 08/10/2026**. Ponto de recuperação durável para novos chats. Não presumir que informações antigas da conversa são mais recentes que os commits; conferir GitHub antes de escrever.
 
+## Marco visual GitHub-first — nove FBX originais na main (08/10/2026)
+
+**Concluído e aprovado em QA de arquivos/Blender, mas ainda não validado no Editor Unity:**
+
+1. **PR #14 [mesclada](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/14)** — oito edificações costeiras autorais copiaram os mesmos bytes de `ArtSource/LocalProjectOwned/CoastalUrbanKit/*.fbx` para `UnityProject/Assets/Architecture/OwnedCoastal/*.fbx`, com GUIDs Unity determinísticos. [QA Python success 37861262361](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37861262361). Não implica que foram posicionadas no mapa ou importadas no Unity Editor.
+2. **PR #15 [mesclada](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/15)** — oito FBX originais reimportados **realmente no Blender**, medidos em metros e renderizados em [prancha real de QA 1600 × 1000](../../ArtSource/Previews/Owned_CoastalUrbanKit_Blender_QA.png). Contagens de faces entre 1.344 (loja) e 9.276 (hotel). [QA Blender success 37861282583](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37861282583).
+3. **PR #16 [mesclada](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/16)** — quiosque detalhado reproduzido do **script autoral original** via Blender headless no GitHub, sem acesso ao PC: 307 objetos, 34.468 faces e 68.008 triângulos. FBX binário em `UnityProject/Assets/Architecture/OwnedKiosk/KioskPremium_Detailed.fbx`, [render real de QA 1600 × 900](../../ArtSource/Previews/Owned_KioskPremium_Blender_QA.png), [QA Blender success 37861618298](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37861618298). Não é screenshot Unity nem prefab posicionado.
+4. **Total de nove FBX** do acervo local, prontos na estrutura de arquivos Unity do `Resort-Simulator-`. Agora existe `.github/workflows/visual-asset-integrity.yml` para revalidar automaticamente hashes, origens e previews em novas alterações visuais, sem PC.
+5. **PR #5 R1 draft** mantém o primeiro build Windows automatizado no GameCI, e a verificação exige agora EXE + `_Data` + `UnityPlayer.dll` + `SHA256SUMS.txt`, para impedir entrega incompleta. Esse gate continua **SKIPPED sem credenciais de licença Unity nos Secrets do GitHub**; nenhuma compilação da linha atual foi aprovada ainda.
+
+**Próxima fase, executar somente no GitHub:** avaliar se o visual dos modelos corresponde ao Realismo Estilizado Premium, planejar implantação dos modelos em apenas três footprints OSM verificados do piloto de 300 × 300 m, configurar URP/materiais, e obter validação de Editor Unity quando o runner GitHub licenciado estiver disponível. **Não** preencher Copacabana com clones sem referências; não antecipar os sistemas de economia/NPC já arquivados em `docs/backlog/fase2-quiosque/`.
+
+---
+
 ## Política definitiva — desenvolvimento sem dependência do PC
 
 **Decisão de 08/10/2026:** todas as fases deverão prosseguir **no GitHub**, ainda que o desktop remoto permaneça desligado por dias. O PC do proprietário só poderá servir como fonte ocasional de material autoral, validação opcional da Unity e destino de builds prontos. Leia [docs/GITHUB_FIRST_SEM_PC.md](../GITHUB_FIRST_SEM_PC.md) antes de preparar novas tarefas.
