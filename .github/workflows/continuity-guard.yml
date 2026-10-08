@@ -1,0 +1,67 @@
+name: Resort | Checkpoint e integridade (sem PC)
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  push:
+    branches:
+      - main
+      - chatgpt/continuity-guard-20261008
+    paths:
+      - 'Tools/automation/**'
+      - 'docs/checkpoints/**'
+      - 'docs/CONTINUIDADE_24H.md'
+      - '.github/workflows/continuity-guard.yml'
+  pull_request:
+    paths:
+      - 'Tools/automation/**'
+      - 'docs/checkpoints/**'
+      - 'docs/CONTINUIDADE_24H.md'
+      - '.github/workflows/continuity-guard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: read
+concurrency:
+  group: resort-continuity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  audit:
+    name: Integrity and crash-recovery snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run checkpoint contract tests
+        run: python3 -m unittest discover -s Tools/automation -p 'test_*.py' -v
+      - name: Check real geography and current PRs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 Tools/automation/continuity_guard.py --github --output continuity_report.json
+      - name: Publish audit snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resort-checkpoint-${{ github.run_id }}
+          path: continuity_report.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Job summary for remote troubleshooting
+        if: always()
+        shell: bash
+        run: |
+          echo '## Resort continuity guard' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Static assets/OSM audit only; Unity compilation is not validated here.' >> "$GITHUB_STEP_SUMMARY"
+          if test -s continuity_report.json; then
+            python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          data=json.load(open('continuity_report.json',encoding='utf8'))
+          print('Status:',data['status'])
+          print('Checks:',len(data['checks']))
+          for check in data['checks']:
+              if not check['pass']:
+                  print('FAILED:',check['check'],check['detail'])
+          for number,pr in data.get('open_pr_status',{}).items():
+              print('PR #'+number+':',pr)
+          PY
+          fi
