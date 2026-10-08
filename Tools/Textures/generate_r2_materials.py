@@ -68,19 +68,19 @@ def write_meta(asset: Path, normal: bool = False, linear: bool = False) -> None:
     guid = hashlib.sha256(("resort-r2-assets/" + rel).encode("utf-8")).hexdigest()[:32]
     if asset.is_dir():
         body = (
-            "fileFormatVersion: 2\\n"
-            f"guid: {guid}\\n"
-            "folderAsset: yes\\n"
-            "DefaultImporter:\\n  externalObjects: {}\\n"
+            "fileFormatVersion: 2\n"
+            f"guid: {guid}\n"
+            "folderAsset: yes\n"
+            "DefaultImporter:\n  externalObjects: {}\n"
         )
     else:
         body = (
-            "fileFormatVersion: 2\\n"
-            f"guid: {guid}\\n"
-            "TextureImporter:\\n"
-            "  externalObjects: {}\\n"
-            f"  textureType: {1 if normal else 0}\\n"
-            f"  sRGBTexture: {0 if normal or linear else 1}\\n"
+            "fileFormatVersion: 2\n"
+            f"guid: {guid}\n"
+            "TextureImporter:\n"
+            "  externalObjects: {}\n"
+            f"  textureType: {1 if normal else 0}\n"
+            f"  sRGBTexture: {0 if normal or linear else 1}\n"
         )
     (asset.parent / (asset.name + ".meta")).write_text(body, encoding="utf-8")
 
