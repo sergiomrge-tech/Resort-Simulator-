@@ -1,0 +1,68 @@
+name: Corrigir preview real do Blender (QA visual)
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/copacabana_qa_render.yml"
+      - "Tools/Blender/render_copacabana_qa.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  render-real-geography:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install headless Blender and image verifier
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq blender libegl1 libgl1 libgl1-mesa-dri libxrender1 libxext6 libxi6 python3-pil
+          blender --version
+      - name: Render actual Blender geometry centered by its measured bounds
+        run: |
+          blender --background --factory-startup \
+            -b ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend \
+            --python Tools/Blender/render_copacabana_qa.py
+      - name: Verify image contains actual non-uniform render
+        run: |
+          python3 - <<'PY'
+          import json
+          from PIL import Image, ImageStat
+          from pathlib import Path
+          root=Path('ArtSource/Previews')
+          src=root/'Copacabana_REAL_BLOCO_3D_QA.png'
+          report=json.loads((root/'Copacabana_QA_report.json').read_text())
+          assert report['faces']>500 and report['vertices']>1000
+          with Image.open(src) as im:
+              assert im.size==(1600,950),im.size
+              im=im.convert('RGB')
+              low=im.resize((200,120))
+              colors=low.getcolors(maxcolors=24000)
+              variation=ImageStat.Stat(low).stddev
+              assert max(variation)>12, variation
+              assert colors is not None and len(colors)>150, len(colors or [])
+              output=root/'Copacabana_REAL_BLOCO_3D_QA.jpg'
+              im.save(output,'JPEG',quality=93,optimize=True,subsampling=0)
+          print('VISIBLE REAL MAP:',report['vertices'],'vertices,',report['faces'],'faces,',len(colors),'colors, variation',variation)
+          PY
+      - name: Upload screenshot and QA report
+        uses: actions/upload-artifact@v4
+        with:
+          name: resort-real-copacabana-blender-qa-validated
+          path: |
+            ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA.jpg
+            ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA.png
+            ArtSource/Previews/Copacabana_QA_report.json
+          retention-days: 30
+      - name: Preserve accepted real preview in Resort repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ArtSource/Previews/
+          if ! git diff --cached --quiet; then
+            git commit -m "QA: visible real Copacabana Blender geometry render"
+            git push origin HEAD:main
+          fi
