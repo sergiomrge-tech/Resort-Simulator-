@@ -2,6 +2,16 @@
 
 **Atualizado em 08/10/2026**. Ponto de recuperação durável para novos chats. Não presumir que informações antigas da conversa são mais recentes que os commits; conferir GitHub antes de escrever.
 
+## Política definitiva — desenvolvimento sem dependência do PC
+
+**Decisão de 08/10/2026:** todas as fases deverão prosseguir **no GitHub**, ainda que o desktop remoto permaneça desligado por dias. O PC do proprietário só poderá servir como fonte ocasional de material autoral, validação opcional da Unity e destino de builds prontos. Leia [docs/GITHUB_FIRST_SEM_PC.md](../GITHUB_FIRST_SEM_PC.md) antes de preparar novas tarefas.
+
+**Importação concluída na main via [PR #12](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/12):** 38 arquivos autorais da antiga biblioteca local estão em `ArtSource/LocalProjectOwned/` com manifesto de hashes de origem/Git, oito tipologias costeiras, quiosque premium e LOD1, POS e objetos complementares. Testes independentes do PC em [GitHub Actions 37860807539](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37860807539) passaram. Esses arquivos ainda são fontes aguardando integração visual, não cidade final.
+
+**Executável antigo:** o PC já possui um build local da linha `Simulador-predial`, copiado para `D:\ProjectResort_Entregas_ChatGPT` após smoke test; **não corresponde à R1/R2 atual**. A disponibilidade desse PC não pode bloquear etapas futuras. Para um novo EXE de `Resort-Simulator-`, preferir artifacts e releases do GitHub. O pipeline GameCI da R1 ainda aguarda licença válida no Actions (secret, nunca no Git).
+
+---
+
 ## Atualização mais recente — R2 visual, fim de 08/10/2026
 
 **Prioridade do usuário:** continuar a arte e o mapa REALISTA ESTILIZADO PREMIUM; **não** antecipar a Fase 2 de economia, NPCs e estoque. Essa fase foi arquivada e mesclada na `main` via [PR #9](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/9) em `docs/backlog/fase2-quiosque/`, junto à história já salva da campanha em `docs/campanha/` ([PR #8](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/8)).
