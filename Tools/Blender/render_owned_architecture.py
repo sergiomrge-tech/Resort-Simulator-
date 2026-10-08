@@ -75,7 +75,7 @@ underlay = material("QA_Floor_Background", (0.21, 0.24, 0.27))
 report = {
     "status": "PASS",
     "scope": "ORIGINAL_PROJECT_OWNED_FBX_BLENDER_REVIEW_NOT_UNITY",
-    "studio": "Cycles CPU original FBX meshes, layout-only scaling and placement",
+    "studio": "Blender Cycles CPU original FBX meshes, layout-only scaling and placement",
     "asset_names_ordered": list(NAMES),
     "models": {},
 }
