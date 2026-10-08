@@ -1,0 +1,53 @@
+name: Resort R2 | Oito edificacoes originais no Blender
+on:
+  push:
+    branches: [chatgpt/r2-biblioteca-arquitetura-autoral]
+    paths:
+      - 'Tools/Blender/render_owned_architecture.py'
+      - 'Tools/tests/test_owned_architecture_blender.py'
+      - '.github/workflows/r2-owned-architecture-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-owned-architecture-preview
+  cancel-in-progress: true
+jobs:
+  render-original-fbx:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install Blender headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq blender python3-pil python3-numpy libegl1 libgl1 libgl1-mesa-dri
+          blender --version
+      - name: Import eight original FBX and render studio contact sheet
+        run: blender --background --factory-startup --python Tools/Blender/render_owned_architecture.py
+      - name: Validate actual imported geometry and preview pixels
+        run: python3 -m unittest discover -s Tools/tests -p test_owned_architecture_blender.py -v
+      - name: Preserve REAL Blender evidence as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-Oito-Arquiteturas-Autorais-Blender-QA
+          path: |
+            ArtSource/Previews/Owned_CoastalUrbanKit_Blender_QA.png
+            ArtSource/Previews/Owned_CoastalUrbanKit_QA.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit generated evidence to PR branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f ArtSource/Previews/Owned_CoastalUrbanKit_Blender_QA.png ArtSource/Previews/Owned_CoastalUrbanKit_QA.json
+          if git diff --cached --quiet; then
+            echo "No preview changes"
+          else
+            git commit -m "art(R2): oito fachadas do kit local renderizadas de verdade no Blender"
+            git pull --rebase origin chatgpt/r2-biblioteca-arquitetura-autoral
+            git push origin HEAD:chatgpt/r2-biblioteca-arquitetura-autoral
+          fi
