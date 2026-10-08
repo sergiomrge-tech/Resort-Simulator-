@@ -17,7 +17,7 @@ Projeto: **Resort Simulator — Costa Carioca**. Repositório único: `sergiomrg
 
 - **Diretor e programador (ChatGPT):** após decisão do usuário em 08/10/2026, assume código, planejamento, QA e revisões diretamente pelo GitHub; dispensa Codex. Preservar PR e evidências.
 - **Agentes externos:** nenhum Codex/Luna/Sol é necessário neste fluxo. O ChatGPT executa mudanças em branches e GitHub Actions automatiza tarefas técnicas sem invocar agentes.
-- **Regra vigente (08/10/2026): trabalho exclusivamente com ChatGPT + GitHub, sem agentes Codex. Etapas R1 → revisão → R2 → revisão → R3 → gameplay. Workflows Actions independentes são permitidos.
+- **Regra vigente (08/10/2026):** trabalho exclusivamente com ChatGPT + GitHub, sem agentes Codex. Etapas R1 → revisão → R2 → revisão → R3 → gameplay. Workflows Actions independentes são permitidos.
 - PC autorizado identificado como offline nesta verificação; este estado não implica falha do GitHub.
 - Não prometer execução contínua em segundo plano; usar commits, Issues, PRs, testes e relatórios concretos por sessão.
 
@@ -41,3 +41,11 @@ Projeto: **Resort Simulator — Costa Carioca**. Repositório único: `sergiomrg
 - Índice de **13** skills cloud-first em `docs/SKILLS_DE_PRODUCAO.md`, com catálogo de licenças e QA.
 - R1 implementada em código na branch `chatgpt/r1-unity-foundation`; **7/7 testes estáticos passaram**, GitHub Actions 37854021618. GameCI Unity pulou por falta de licença; **não** há build Unity validada.
 - Roteamento e regras em `AGENTS.md`; as skills são playbooks internos, não programas externos instalados.
+
+## Continuidade e anti-travamento — ativados em 08/10/2026
+
+- Fonte de recuperação: `docs/checkpoints/LATEST.md` e `docs/CONTINUIDADE_24H.md` na `main`.
+- Auditoria somente de leitura `continuity-guard.yml`: integrada via PR #6, agenda a cada 6 horas; **4/4 testes e 13/13 verificações** aprovadas, execução inicial na main `37855108001` com sucesso.
+- Biblioteca de 13 skills integrada via PR #4; leia `AGENTS.md` e `docs/SKILLS_DE_PRODUCAO.md`.
+- Automação ChatGPT configurada para uma verificação horária, sujeita a limites de uso; **não equivale a executar código continuamente 24h/7**.
+- PR #5 continua draft; **Unity ainda não foi compilada** por falta da licença adequada de build em GitHub Actions.

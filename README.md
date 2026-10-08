@@ -15,11 +15,18 @@ O objetivo é um resort cinco estrelas realista cercado de orla densa, avenidas 
 
 ## Modelo de produção aprovado
 
-**ChatGPT = Diretor. Codex Luna Alto = Programador. GitHub = fonte da verdade.** Outros modelos de agente, inclusive Sol, não serão usados nas frentes de execução.
+**ChatGPT = Diretor e programador. GitHub = fonte da verdade.** O usuário optou por desenvolver sem Luna/Codex nem manter o PC ligado; verificações e renders podem ocorrer pelo GitHub Actions.
 
 As instruções Luna com detalhamento por arquivo estão nas Issues [#1 (R1 mapa/Unity)](https://github.com/sergiomrge-tech/Resort-Simulator-/issues/1), [#2 (R2 arquitetura)](https://github.com/sergiomrge-tech/Resort-Simulator-/issues/2) e [#3 (R3 resort)](https://github.com/sergiomrge-tech/Resort-Simulator-/issues/3).
 
-**Somente R1 está liberada inicialmente.** O agente deve trabalhar na branch `luna/r1-copacabana-unity-gate` e entregar PR revisável antes de integrar. Criar Issues e branches não inicia automaticamente o Codex.
+**Somente R1 está liberada inicialmente.** Código de exploração na branch `chatgpt/r1-unity-foundation` (PR #5 draft). Não confundir QA estática aprovada com compilação Unity: a licença adequada para o GameCI ainda precisa ser configurada.
+
+## Continuidade automática e anti-travamento
+
+- `docs/checkpoints/LATEST.md` — **comece aqui em uma conversa nova**; estado, branches, bloqueios e próximos passos.
+- `docs/CONTINUIDADE_24H.md` — recuperação após chat travado, rotina horária ChatGPT e auditoria GitHub programada.
+- `AGENTS.md` / `docs/SKILLS_DE_PRODUCAO.md` — 13 skills e regras de desenvolvimento já integradas.
+- `.github/workflows/continuity-guard.yml` — auditoria **somente de leitura**, de seis em seis horas, com relatório preservado em artifact.
 
 ## Documentação atual
 
