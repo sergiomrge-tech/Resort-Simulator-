@@ -1,0 +1,57 @@
+name: Resort R2 | Quiosque premium original no Blender Cloud
+on:
+  push:
+    branches: [chatgpt/r2-quiosque-premium-nuvem]
+    paths:
+      - 'Tools/Blender/rebuild_owned_kiosk_cloud.py'
+      - 'Tools/tests/test_owned_kiosk_cloud.py'
+      - '.github/workflows/r2-owned-kiosk-cloud.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r2-owned-kiosk-cloud
+  cancel-in-progress: true
+jobs:
+  rebuild-premium-kiosk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install Blender headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq blender python3-pil python3-numpy libegl1 libgl1 libgl1-mesa-dri
+          blender --version
+      - name: Rebuild from owner's archived authoring script and render authentic scene
+        run: blender --background --factory-startup --python Tools/Blender/rebuild_owned_kiosk_cloud.py
+      - name: Validate FBX, materials source, image and geometry
+        run: python3 -m unittest discover -s Tools/tests -p test_owned_kiosk_cloud.py -v
+      - name: Persist real Blender QA and Unity model artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R2-Quiosque-Premium-Original-Blender-FBX
+          path: |
+            UnityProject/Assets/Architecture/OwnedKiosk/
+            UnityProject/Assets/Architecture/OwnedKiosk.meta
+            ArtSource/Previews/Owned_KioskPremium_Blender_QA.png
+            ArtSource/Previews/Owned_KioskPremium_QA.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit original generated source-derived model without touching GIS
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Architecture/OwnedKiosk/
+          git add -f UnityProject/Assets/Architecture/OwnedKiosk.meta
+          git add -f ArtSource/Previews/Owned_KioskPremium_Blender_QA.png ArtSource/Previews/Owned_KioskPremium_QA.json
+          if git diff --cached --quiet; then
+            echo "Kiosk source is already versioned"
+          else
+            git commit -m "art(R2): quiosque premium reconstruido do script original em Blender cloud"
+            git pull --rebase origin chatgpt/r2-quiosque-premium-nuvem
+            git push origin HEAD:chatgpt/r2-quiosque-premium-nuvem
+          fi
