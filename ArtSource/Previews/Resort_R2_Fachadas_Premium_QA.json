@@ -12,8 +12,8 @@
         "R2_Reboco_Marfim",
         "R2_Vidro_Cinza_Dark"
       ],
-      "fbx_bytes": 161868,
-      "sha256": "f486c89c3260aa6ee7e2162db37b396f3b6f0f4975d7a5ea336707ad576cb798",
+      "fbx_bytes": 172588,
+      "sha256": "dc603ac6cf8c8e7a627febf1d961cf9abcc5fc1e5bc775fb06e1df1cf4f5cf32",
       "path": "UnityProject/Assets/Architecture/R2_Prototypes/R2_ArtDeco_Orla.fbx"
     },
     "R2_Residencial_Varandas": {
@@ -31,8 +31,8 @@
         "R2_Reboco_Marfim",
         "R2_Vidro_Azul_Fumê"
       ],
-      "fbx_bytes": 225292,
-      "sha256": "b8a92c1c408591c17e5f1578357f49309cffdcbc381ec8a5786c3a73a2cb8505",
+      "fbx_bytes": 248796,
+      "sha256": "a76ef9e2707b8518f201ebac4936dd3530d9ebc24847ca30ac51a7592d40ed14",
       "path": "UnityProject/Assets/Architecture/R2_Prototypes/R2_Residencial_Varandas.fbx"
     },
     "R2_Hotel_Contemporaneo": {
@@ -48,13 +48,21 @@
         "R2_Reboco_Marfim",
         "R2_Vidro_Cinza_Dark"
       ],
-      "fbx_bytes": 251852,
-      "sha256": "81bc7b9dc1bed5ae656a4b05db873324e3405573b7a4b35bf27860bed904dd29",
+      "fbx_bytes": 271244,
+      "sha256": "90cf3042889011815a10837fdc0b0f83f28127632d1b8f19f88b9f9b55da4d48",
       "path": "UnityProject/Assets/Architecture/R2_Prototypes/R2_Hotel_Contemporaneo.fbx"
     }
   },
+  "textured_materials": [
+    "R2_Calcario_Areia",
+    "R2_Ceramica_Terracota",
+    "R2_Concreto_Cinza_Calma",
+    "R2_Concreto_Quente",
+    "R2_Madeira_Tropical",
+    "R2_Reboco_Marfim"
+  ],
   "preview_png": "ArtSource/Previews/Resort_R2_Fachadas_Premium_Blender_QA.png",
-  "preview_sha256": "9e822954337d84d98c57c94f3ffc9b36234faac6b7985d95d86cbf2160b2131e",
+  "preview_sha256": "15935c5b10b065db4595c7174b34d0d5839d6f2778108b03f366503299fe28ae",
   "render_engine": "Blender Cycles CPU (real Blender render, not Unity)",
   "style": "realismo estilizado premium — prototypes, not approved final assets",
   "copyright": "Original architecture; does not incorporate third-party textures"
