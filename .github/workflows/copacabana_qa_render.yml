@@ -33,7 +33,7 @@ jobs:
           from PIL import Image, ImageStat
           from pathlib import Path
           root=Path('ArtSource/Previews')
-          src=root/'Copacabana_REAL_BLOCO_3D_QA.png'
+          src=root/'Copacabana_REAL_BLOCO_3D_QA_COLOR.png'
           report=json.loads((root/'Copacabana_QA_report.json').read_text())
           assert report['faces']>500 and report['vertices']>1000
           with Image.open(src) as im:
@@ -44,7 +44,7 @@ jobs:
               variation=ImageStat.Stat(low).stddev
               assert max(variation)>12, variation
               assert colors is not None and len(colors)>150, len(colors or [])
-              output=root/'Copacabana_REAL_BLOCO_3D_QA.jpg'
+              output=root/'Copacabana_REAL_BLOCO_3D_QA_COLOR.jpg'
               im.save(output,'JPEG',quality=93,optimize=True,subsampling=0)
           print('VISIBLE REAL MAP:',report['vertices'],'vertices,',report['faces'],'faces,',len(colors),'colors, variation',variation)
           PY
@@ -53,8 +53,8 @@ jobs:
         with:
           name: resort-real-copacabana-blender-qa-validated
           path: |
-            ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA.jpg
-            ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA.png
+            ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA_COLOR.jpg
+            ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA_COLOR.png
             ArtSource/Previews/Copacabana_QA_report.json
           retention-days: 30
       - name: Preserve accepted real preview in Resort repo
