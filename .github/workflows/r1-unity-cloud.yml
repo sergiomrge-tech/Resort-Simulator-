@@ -89,12 +89,14 @@ jobs:
           path: UnityProject/build/StandaloneWindows64/
           if-no-files-found: error
           retention-days: 14
-      - name: Upload generated Unity scene for QA
+      - name: Upload real Unity scene, URP settings and import report
         uses: actions/upload-artifact@v4
         with:
-          name: ResortSimulator-R1-UnityScene
+          name: ResortSimulator-R1-UnityScene-and-QA
           path: |
             UnityProject/Assets/Scenes/
             UnityProject/Assets/Materials/QA/
+            UnityProject/Assets/Settings/Rendering/
+            UnityProject/build/QA/
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 30
