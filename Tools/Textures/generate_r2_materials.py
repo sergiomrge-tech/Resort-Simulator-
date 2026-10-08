@@ -61,7 +61,33 @@ def png(path: Path, pixels: np.ndarray, mode: str) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def write_meta(asset: Path, normal: bool = False, linear: bool = False) -> None:
+    # Stable GUIDs across machines and branch checkouts; Unity may expand
+    # importer defaults on first real Editor import without changing GUID.
+    rel = asset.relative_to(ROOT).as_posix()
+    guid = hashlib.sha256(("resort-r2-assets/" + rel).encode("utf-8")).hexdigest()[:32]
+    if asset.is_dir():
+        body = (
+            "fileFormatVersion: 2\\n"
+            f"guid: {guid}\\n"
+            "folderAsset: yes\\n"
+            "DefaultImporter:\\n  externalObjects: {}\\n"
+        )
+    else:
+        body = (
+            "fileFormatVersion: 2\\n"
+            f"guid: {guid}\\n"
+            "TextureImporter:\\n"
+            "  externalObjects: {}\\n"
+            f"  textureType: {1 if normal else 0}\\n"
+            f"  sRGBTexture: {0 if normal or linear else 1}\\n"
+        )
+    (asset.parent / (asset.name + ".meta")).write_text(body, encoding="utf-8")
+
+
 def generate() -> None:
+    write_meta(ROOT / "UnityProject/Assets/Textures")
+    write_meta(OUTPUT)
     qa = {"status": "PASS", "scope": "PROCEDURAL_ORIGINAL_R2_TEXTURES_NOT_UNITY", "resolution": [SIZE, SIZE], "materials": {}}
     for index, (name, (base, rough, relief, kind)) in enumerate(MATERIALS.items()):
         field = periodic_surface(31001 + index * 97, kind)
@@ -97,6 +123,7 @@ def generate() -> None:
         for suffix, (pixels, mode) in files.items():
             path = OUTPUT / (name + "_" + suffix + ".png")
             sha = png(path, pixels, mode)
+            write_meta(path, normal=suffix == "Normal", linear=suffix in ("Normal", "Mask", "Roughness"))
             record["maps"][suffix] = {"file": str(path.relative_to(ROOT)), "sha256": sha, "bytes": path.stat().st_size}
 
         # Check edges correspond under periodic sampling. They need not be identical
