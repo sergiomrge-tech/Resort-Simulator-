@@ -1,0 +1,58 @@
+name: Resort R3 | Inspecao geografica exata dos 3 edificios
+on:
+  push:
+    branches: [chatgpt/r3-piloto-osm-implantacao-real]
+    paths:
+      - 'Tools/geo/build_r3_exact_footprints.py'
+      - 'Tools/Blender/probe_r3_real_building_faces.py'
+      - 'Tools/tests/test_r3_exact_sites.py'
+      - '.github/workflows/r3-real-pilot.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r3-gis-pilot
+  cancel-in-progress: true
+jobs:
+  real-parcel-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install geographic projection and Blender headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq python3-pyproj blender python3-numpy libegl1 libgl1-mesa-dri
+          blender --version
+      - name: Derive OSM rings in exact original projected metres
+        run: python3 Tools/geo/build_r3_exact_footprints.py
+      - name: Read original BlenderGIS mesh and inspect faces at OSM sites
+        run: >
+          blender --background ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend
+          --python Tools/Blender/probe_r3_real_building_faces.py
+      - name: Guard exact ring geometry, face source and non-mutation
+        run: python3 -m unittest discover -s Tools/tests -p test_r3_exact_sites.py -v
+      - name: Archive exact OSM polygons and Blender source inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R3-3-Footprints-OSM-And-Blender-Face-Probe
+          path: |
+            geo/pilot/R3_EXACT_OSM_PARCELS.json
+            ArtSource/Previews/R3_Pilot_OSM_Geometry_Probe.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit provenance-safe evidence to GitHub
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f geo/pilot/R3_EXACT_OSM_PARCELS.json ArtSource/Previews/R3_Pilot_OSM_Geometry_Probe.json
+          if git diff --cached --quiet; then
+            echo "R3 inputs and probe unchanged"
+          else
+            git commit -m "geo(R3): 3 poligonos OSM exatos e inspecao verdadeira de faces GIS"
+            git pull --rebase origin chatgpt/r3-piloto-osm-implantacao-real
+            git push origin HEAD:chatgpt/r3-piloto-osm-implantacao-real
+          fi
