@@ -2,6 +2,24 @@
 
 **Atualizado em 08/10/2026**. Ponto de recuperação durável para novos chats. Não presumir que informações antigas da conversa são mais recentes que os commits; conferir GitHub antes de escrever.
 
+## Atualização mais recente — R2 visual, fim de 08/10/2026
+
+**Prioridade do usuário:** continuar a arte e o mapa REALISTA ESTILIZADO PREMIUM; **não** antecipar a Fase 2 de economia, NPCs e estoque. Essa fase foi arquivada e mesclada na `main` via [PR #9](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/9) em `docs/backlog/fase2-quiosque/`, junto à história já salva da campanha em `docs/campanha/` ([PR #8](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/8)).
+
+**R1** permanece em [PR #5 draft](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/5). O modelo de Copacabana original Blender (`ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend`) e o FBX (`UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx`) estão intactos e tiveram roundtrip Blender aprovado. URP e gerador de cena foram preparados em C# e QA estática; **não há execução/compilação Unity, screenshot Unity nem EXE Windows validados**. Build GameCI foi pulado por falta de licença de Editor no runner.
+
+**R2** agora avançou tecnicamente no [PR #10 draft — fachadas premium](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/10), baseado na branch R1 e **não mesclado** à `main`. Artefatos verificados no PR #10:
+
+- Três módulos arquitetônicos autênticos do Blender: `R2_ArtDeco_Orla.fbx`, `R2_Residencial_Varandas.fbx`, `R2_Hotel_Contemporaneo.fbx` em `UnityProject/Assets/Architecture/R2_Prototypes/` (todos com GUID estável). Módulos **não** são prédios completos.
+- Prévia genuína Blender `ArtSource/Previews/Resort_R2_Fachadas_Premium_Blender_QA.png`, re-renderizada após integração de materiais: [Action 37859137005](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37859137005) **SUCCESS** (QA das fachadas), **não** screenshot Unity.
+- Seis materiais autorais, com 24 mapas PNG de Albedo, Normal, Roughness e Mask 512², e GUIDs determinísticos em `UnityProject/Assets/Textures/R2_PBR/`. [Action 37859035759](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37859035759) **SUCCESS**. O código de preview `UnityProject/Assets/Editor/ResortFacadePreviewBuilder.cs` prepara URP Lit para os mapas, **ainda não executado/compilado na Unity**.
+- A fonte cartográfica foi usada para selecionar **três candidatos reais** (não edifícios construídos): OSM `way/1048277518`, `way/1308635852`, `way/1048277521` no recorte de 300 × 300 m, excluindo `building=roof` e garagens. Evidência `geo/pilot/R2_PILOT_BUILDING_CANDIDATES.json`. [Action 37859390469](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37859390469) **SUCCESS**.
+- Testes Python reais verificaram FBX, imagens, texturas e OSM. **Não** equivalem a homologação visual, jogos prontos ou FPS.
+
+**Próximos passos seguros:** ler [PR #10](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/10), inspecionar o novo preview Blender; melhorar arte arquitetônica (texturas, detalhes, volumes) sem substituir os footprints; procurar forma legítima de executar Unity 6.3 em ambiente licenciado; validar cena de R1 e R2 com logs e screenshots reais; só depois posicionar módulos adaptados aos lotes OSM e produzir piloto completo de praia/quiosque/resort. Não mesclar R1/R2 como "jogável" até as evidências reais do Editor.
+
+---
+
 ## Identidade e objetivo
 
 - Repositório único: `sergiomrge-tech/Resort-Simulator-`. NÃO reutilizar nem alterar `Simulador-predial`.
