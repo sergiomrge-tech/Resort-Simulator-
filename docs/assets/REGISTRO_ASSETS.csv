@@ -1,0 +1,3 @@
+id,categoria,arquivo,fonte_url,autor,licenca,uso_previsto,status,sha256
+GEO-001,geografia,ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend,https://www.openstreetmap.org/copyright,OpenStreetMap contributors,ODbL 1.0,base_geografica_copacabana,integrado,
+GEO-002,modelo_3d,UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx,https://www.openstreetmap.org/copyright,OpenStreetMap contributors,ODbL 1.0,base_3d_unity,exportado_nao_validado_unity,
