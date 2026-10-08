@@ -1,0 +1,54 @@
+name: Gerar JPEG do mapa Copacabana
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/exportar_mapa_jpeg.yml'
+      - 'ArtSource/Blender/Copacabana_OSM_Base_preview.png'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-map-jpeg
+  cancel-in-progress: false
+jobs:
+  jpeg-original:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Instalar Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Converter captura real do Blender PNG em JPEG
+        run: |
+          python - <<'PY'
+          from PIL import Image, ImageOps
+          from pathlib import Path
+          orig=Path('ArtSource/Blender/Copacabana_OSM_Base_preview.png')
+          out=orig.with_suffix('.jpg')
+          assert orig.is_file() and orig.stat().st_size > 100000, 'Original Blender screenshot is missing'
+          with Image.open(orig) as image:
+              assert image.format == 'PNG'
+              image=ImageOps.exif_transpose(image).convert('RGB')
+              assert image.width >= 800 and image.height >= 500, (image.width,image.height)
+              image.save(out,format='JPEG',quality=95,subsampling=0,optimize=True)
+              w,h=image.size
+          with Image.open(out) as image:
+              image.verify()
+          with Image.open(out) as image:
+              assert image.format == 'JPEG' and image.size==(w,h)
+          print(f'JPG REAL MAP CREATED: {out} ({w} x {h}), {out.stat().st_size} bytes')
+          PY
+      - name: Preservar JPEG no repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ArtSource/Blender/Copacabana_OSM_Base_preview.jpg
+          if git diff --cached --quiet; then
+            echo 'JPEG already current'
+          else
+            git commit -m 'art: incluir JPEG da captura real do mapa Copacabana'
+            git push origin HEAD:main
+          fi
