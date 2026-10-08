@@ -1,0 +1,49 @@
+name: Resort R2 | Identificar lotes OSM da orla
+on:
+  push:
+    branches: [chatgpt/r2-fachadas-premium-prototipo]
+    paths:
+      - 'Tools/geo/select_r2_pilot_sites.py'
+      - 'Tools/tests/test_r2_pilot_sites.py'
+      - 'geo/pilot/COPACABANA_FRAME_SOURCE.json'
+      - '.github/workflows/r2-pilot-sites.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r2-pilot-sites
+  cancel-in-progress: true
+jobs:
+  select-real-sites:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install geographic projection support
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq python3-pyproj
+      - name: Recover 3 actual mapped OSM building sites from frozen snapshot
+        run: python3 Tools/geo/select_r2_pilot_sites.py
+      - name: Verify OSM provenance and 300x300-metre pilot
+        run: python3 -m unittest discover -s Tools/tests -p 'test_r2_pilot_sites.py' -v
+      - name: Publish site candidate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R2-Sitios-OSM-Piloto-300m
+          path: geo/pilot/R2_PILOT_BUILDING_CANDIDATES.json
+          if-no-files-found: error
+      - name: Version selection only (do not touch the original city)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f geo/pilot/R2_PILOT_BUILDING_CANDIDATES.json
+          if git diff --cached --quiet; then
+            echo "No change to candidate selection"
+          else
+            git commit -m "geo(R2): vincular tres candidatos a edificios OSM reais"
+            git pull --rebase origin chatgpt/r2-fachadas-premium-prototipo
+            git push origin HEAD:chatgpt/r2-fachadas-premium-prototipo
+          fi
