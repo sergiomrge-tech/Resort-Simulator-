@@ -86,6 +86,28 @@ class R1GeographyStaticTests(unittest.TestCase):
         self.assertNotIn("needs: static-qa", blender_job)
         self.assertNotIn("if: needs.static-qa.outputs.licensed", blender_job)
 
+    def test_urp_is_created_and_activated_for_pbr(self):
+        urp = (ASSETS / "Editor/ResortRenderingSetup.cs").read_text()
+        builder = (ASSETS / "Editor/ResortWorldBuilder.cs").read_text()
+        for needle in (
+            "UniversalRendererData", "UniversalRenderPipelineAsset.Create(renderer)",
+            "GraphicsSettings.defaultRenderPipeline = pipeline",
+            "QualitySettings.renderPipeline = null", "ColorSpace.Linear",
+            "AssetDatabase.CreateAsset(pipeline, PipelinePath)",
+        ):
+            self.assertIn(needle, urp)
+        self.assertIn("ResortRenderingSetup.EnsureConfigured()", builder)
+        self.assertTrue((ASSETS / "Editor/ResortRenderingSetup.cs.meta").exists())
+
+    def test_import_metrics_created_only_in_real_editor(self):
+        builder = (ASSETS / "Editor/ResortWorldBuilder.cs").read_text()
+        self.assertIn('ImportReportPath = "build/QA/Copacabana_Unity_Import.json"', builder)
+        self.assertIn("realUnityEditorExecution = true", builder)
+        self.assertIn("File.WriteAllText(reportPath, JsonUtility.ToJson(metrics, true))", builder)
+        self.assertIn("extent.size.z < 1200f", builder)
+        self.assertIn("extent.size.y > 300f", builder)
+        self.assertNotIn("new Vector3(2000f, 90f, 1000f)", builder)
+
     def test_unity_metadata_and_license_gate(self):
         manifest = json.loads((ROOT / "UnityProject/Packages/manifest.json").read_text())
         self.assertIn("com.unity.render-pipelines.universal", manifest["dependencies"])
