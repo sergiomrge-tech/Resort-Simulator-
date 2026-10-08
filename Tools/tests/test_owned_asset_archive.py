@@ -31,9 +31,18 @@ class ProjectOwnedAssetsArchiveTests(unittest.TestCase):
             referenced.add(rel)
             actual = ROOT / rel
             self.assertTrue(actual.is_file(), rel)
-            self.assertEqual(actual.stat().st_size, entry["bytes"], rel)
-            self.assertEqual(hashlib.sha256(actual.read_bytes()).hexdigest(),
-                             entry["sha256"], rel)
+            data = actual.read_bytes()
+            digest = hashlib.sha256(data).hexdigest()
+            matches_original = (len(data) == entry["bytes"] and
+                                digest == entry["sha256"])
+            # Git on Windows normalized CRLF to LF for some source texts.
+            # Reconstruct original Windows bytes strictly, then verify SHA256.
+            if not matches_original and actual.suffix in {".md", ".json", ".py"}:
+                restored_windows = data.replace(b"\n", b"\r\n")
+                matches_original = (len(restored_windows) == entry["bytes"] and
+                                    hashlib.sha256(restored_windows).hexdigest() == entry["sha256"])
+            self.assertTrue(matches_original,
+                            "Git archive differs from source beyond newline normalization: " + rel)
         available = {p.relative_to(ROOT).as_posix() for p in SOURCE.rglob("*") if p.is_file()}
         self.assertEqual(available - referenced, {
             "ArtSource/LocalProjectOwned/README.md",
@@ -46,11 +55,17 @@ class ProjectOwnedAssetsArchiveTests(unittest.TestCase):
             p = ROOT / item["path"]
             if p.suffix in types:
                 types[p.suffix] += 1
-                signature = {".blend": b"BLENDER",
-                             ".fbx": b"Kaydara FBX Binary",
-                             ".png": b"\x89PNG\r\n\x1a\n"}[p.suffix]
                 with p.open("rb") as f:
-                    self.assertEqual(f.read(len(signature)), signature, str(p))
+                    signature = f.read(20)
+                if p.suffix == ".blend":
+                    # Blender 5.x may store zstd-compressed .blend files.
+                    self.assertTrue(signature.startswith(b"BLENDER") or
+                                    signature.startswith(bytes.fromhex("28b52ffd")),
+                                    str(p))
+                elif p.suffix == ".fbx":
+                    self.assertTrue(signature.startswith(b"Kaydara FBX Binary"), str(p))
+                else:
+                    self.assertTrue(signature.startswith(bytes.fromhex("89504e470d0a1a0a")), str(p))
         self.assertEqual(types, {".blend": 13, ".fbx": 8, ".png": 8})
 
     def test_author_provenance_and_license_review_not_fake_approval(self):
