@@ -61,7 +61,7 @@ class ProjectOwnedAssetsArchiveTests(unittest.TestCase):
         self.assertIn("project-owned geometry", kit)
         self.assertIn("Project-owned original geometry", kiosk["license"])
         self.assertIn("Full visual approval remains pending", readme)
-        self.assertIn("no third-party", self.data["scope"].lower())
+        self.assertIn("no source from proprietary external asset libraries", self.data["scope"].lower())
 
     def test_original_geographic_map_is_not_replaced(self):
         self.assertTrue((ROOT / "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend").is_file())
