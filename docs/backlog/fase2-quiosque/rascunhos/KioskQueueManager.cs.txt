@@ -1,0 +1,138 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+/// <summary>
+/// Gerencia a fila de espera em frente ao quiosque.
+/// Garante que cada cliente ocupe um slot único e avance em ordem.
+/// </summary>
+public class KioskQueueManager : MonoBehaviour
+{
+    [Header("Configurações do Balcão")]
+    [Tooltip("Ponto exato onde o primeiro cliente da fila faz o pedido")]
+    [SerializeField] private Transform counterServicePoint;
+
+    [Header("Configurações da Fila")]
+    [Tooltip("Número máximo de clientes permitidos na fila simultaneamente")]
+    [SerializeField] private int maxQueueCapacity = 5;
+
+    [Tooltip("Distância em metros entre cada pessoa na fila")]
+    [SerializeField] private float slotSpacing = 1.2f;
+
+    [Tooltip("Direção para onde a fila se estende a partir do balcão (para trás por padrão)")]
+    [SerializeField] private Vector3 queueDirection = Vector3.back;
+
+    // Lista ordenada de clientes atualmente na fila (índice 0 = primeiro a ser atendido)
+    private readonly List<CustomerNPC> customersInQueue = new List<CustomerNPC>();
+
+    public int CurrentQueueCount => customersInQueue.Count;
+    public bool IsQueueFull => customersInQueue.Count >= maxQueueCapacity;
+    public CustomerNPC FirstCustomer => customersInQueue.Count > 0 ? customersInQueue[0] : null;
+
+    /// <summary>
+    /// Tenta alocar um cliente no final da fila.
+    /// Retorna true se conseguiu vaga, false se a fila estiver lotada.
+    /// </summary>
+    public bool TryJoinQueue(CustomerNPC customer)
+    {
+        if (IsQueueFull || customersInQueue.Contains(customer))
+        {
+            return false;
+        }
+
+        customersInQueue.Add(customer);
+        int slotIndex = customersInQueue.Count - 1;
+
+        // Configura o agente para o seu respectivo slot
+        UpdateCustomerSlot(customer, slotIndex);
+        return true;
+    }
+
+    /// <summary>
+    /// Remove um cliente da fila (seja por atendimento concluído ou por desistência)
+    /// e avança todos os clientes restantes para o próximo slot.
+    /// </summary>
+    public void LeaveQueue(CustomerNPC customer)
+    {
+        if (!customersInQueue.Contains(customer)) return;
+
+        customersInQueue.Remove(customer);
+
+        // Restaura prioridade padrão do agente para evitar conflitos fora da fila
+        if (customer.TryGetComponent(out NavMeshAgent agent))
+        {
+            agent.avoidancePriority = 50; 
+        }
+
+        // Realoca todos os agentes restantes para suas novas posições
+        ReorganizeQueue();
+    }
+
+    /// <summary>
+    /// Reorganiza os slots da fila quando alguém sai da frente ou do meio.
+    /// </summary>
+    private void ReorganizeQueue()
+    {
+        for (int i = 0; i < customersInQueue.Count; i++)
+        {
+            UpdateCustomerSlot(customersInQueue[i], i);
+        }
+    }
+
+    /// <summary>
+    /// Atualiza o destino no NavMesh e a prioridade de desvio do cliente.
+    /// </summary>
+    private void UpdateCustomerSlot(CustomerNPC customer, int slotIndex)
+    {
+        Vector3 targetPosition = GetSlotWorldPosition(slotIndex);
+
+        // Ajusta a prioridade no NavMesh: quanto mais à frente na fila (índice menor),
+        // menor o número da prioridade (0 a 99), o que significa maior precedência.
+        // Isso impede que clientes de trás esbarrem e empurrem quem já está no balcão.
+        if (customer.TryGetComponent(out NavMeshAgent agent))
+        {
+            agent.avoidancePriority = Mathf.Clamp(10 + (slotIndex * 5), 0, 99);
+            agent.stoppingDistance = 0.15f;
+            agent.SetDestination(targetPosition);
+        }
+
+        customer.OnAssignedToQueueSlot(slotIndex, targetPosition);
+    }
+
+    /// <summary>
+    /// Calcula a posição mundial de qualquer slot da fila.
+    /// </summary>
+    public Vector3 GetSlotWorldPosition(int index)
+    {
+        if (counterServicePoint == null) return transform.position;
+
+        // Calcula a posição no espaço local do ponto do balcão
+        Vector3 localOffset = queueDirection.normalized * (index * slotSpacing);
+        return counterServicePoint.TransformPoint(localOffset);
+    }
+
+    /// <summary>
+    /// Desenha a linha e os slots da fila na Scene da Unity para calibrar o posicionamento.
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        if (counterServicePoint == null) return;
+
+        for (int i = 0; i < maxQueueCapacity; i++)
+        {
+            Vector3 slotPos = GetSlotWorldPosition(i);
+
+            // Verde para o primeiro do balcão, ciano para os demais
+            Gizmos.color = (i == 0) ? Color.green : Color.cyan;
+            Gizmos.DrawWireSphere(slotPos, 0.35f);
+
+            // Linha conectando o slot anterior ao atual
+            if (i > 0)
+            {
+                Vector3 prevPos = GetSlotWorldPosition(i - 1);
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawLine(prevPos, slotPos);
+            }
+        }
+    }
+}
