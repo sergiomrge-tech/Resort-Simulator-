@@ -13,7 +13,7 @@
 - **R2 Arquitetura:** `UnityProject/Assets/Art/Architecture/` e `docs/arte/CATALOGO_FACHADAS.md`. R2 não muda cena-base nem pipeline CI do R1.
 - **R3 Resort, orla e luz:** `UnityProject/Assets/Art/Resort/`, cenas aditivas e `docs/arte/PLANO_ORLA_RESORT_300m.md`. R3 não muda malha geográfica e não pisa nos arquivos de R1/R2.
 
-Quando alterações cruzarem fronteiras, solicitar review do Diretor por Issue/PR; nenhum agente altera `main` diretamente. Orçamento de concorrência: **1 agente inicialmente**, até **3** apenas em tarefas independentes e com consumo controlado.
+Quando alterações cruzarem fronteiras, solicitar review do Diretor por Issue/PR; nenhum agente altera `main` diretamente. **Regra fixa aprovada em 08/10/2026: exatamente 1 agente Codex Luna Alto por vez.** Sem agentes paralelos, sem Sol, sem abrir segunda sessão. Executar R1 → revisar/aprovar → R2 → revisar/aprovar → R3. A nuvem/GitHub Actions pode rodar validações automatizadas sem contar como agente Codex.
 
 ## Regras visuais vinculantes
 
