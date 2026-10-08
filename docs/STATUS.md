@@ -23,7 +23,7 @@ Projeto: **Resort Simulator — Costa Carioca**. Repositório único: `sergiomrg
 
 ## Backlog GitHub
 
-1. **R1 — P0, em desenvolvimento pelo ChatGPT:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/1 — importar, validar e executar Copacabana na Unity, configurar CI com gate de licença. Branch: `luna/r1-copacabana-unity-gate`.
+1. **R1 — P0, em desenvolvimento pelo ChatGPT:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/1 — importar, validar e executar Copacabana na Unity, configurar CI com gate de licença. Branch: `chatgpt/r1-unity-foundation` (PR #5 em revisão).
 2. **R2 — P1, bloqueada por R1:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/2 — fachadas premium, texturas PBR, diversidade e LOD.
 3. **R3 — P1, bloqueada por R1/R2:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/3 — resort cinco estrelas e orla piloto 300 × 300m.
 
