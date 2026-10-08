@@ -7,7 +7,9 @@ DIRECTORY = ROOT / ".agents" / "skills"
 REQUIRED = {
     "geo-copacabana-fiel", "blender-sem-pc", "unity-github-sem-pc",
     "predios-premium-pbr", "orla-resort-vertical-slice",
-    "otimizar-cidade-unity", "catalogar-assets-licenca", "qa-capturas-sem-fraude"
+    "otimizar-cidade-unity", "catalogar-assets-licenca", "qa-capturas-sem-fraude",
+    "economia-tycoon-saves", "npcs-animacao-trafego",
+    "agua-praia-piscinas-iluminacao", "construcao-modular-lotes", "hud-ux-gestao"
 }
 
 

@@ -16,6 +16,12 @@ Atualizado em 08/10/2026. Objetivo: acelerar a criação do jogo diretamente pel
 | Transversal | `.agents/skills/catalogar-assets-licenca/SKILL.md` | Adicionar qualquer asset externo | Pronta |
 | Transversal | `.agents/skills/qa-capturas-sem-fraude/SKILL.md` | Validar screenshots/CI | Pronta |
 
+| R4 — Operação do Tycoon | `.agents/skills/economia-tycoon-saves/SKILL.md` | Economia, estoque, funcionários, save | Preparada; posterior à R3 |
+| R4 — Pessoas | `.agents/skills/npcs-animacao-trafego/SKILL.md` | Animação, pedestres, clientes e equipes | Preparada; posterior à R3 |
+| R3 — Águas/terreno | `.agents/skills/agua-praia-piscinas-iluminacao/SKILL.md` | Oceano, praia, piscina, iluminação | Preparada; gate visual |
+| R4 — Construção | `.agents/skills/construcao-modular-lotes/SKILL.md` | Lotes e construção modular | Preparada; posterior à R3 |
+| R4 — Interface | `.agents/skills/hud-ux-gestao/SKILL.md` | HUD, menus e gestão | Preparada; posterior à R3 |
+
 ## Fontes pesquisadas na web (não copiados scripts terceiros)
 
 1. **Unity Technologies/skills** — fonte oficial de skills para Unity: https://github.com/Unity-Technologies/skills
@@ -28,7 +34,10 @@ Atualizado em 08/10/2026. Objetivo: acelerar a criação do jogo diretamente pel
 8. **ambientCG** — materiais PBR CC0: https://ambientcg.com/
 9. **Unity Asset Store EULA** — verificar licença comercial e restrição de redistribuição: https://assetstore.unity.com/browse/eula-faq
 10. **Performance Unity GPU** — profiling, render e occlusion: https://unity.com/how-to/gpu-optimization
-11. **OSM copyright** — atribuição e licenças: https://www.openstreetmap.org/copyright
+11. **Unity AI Navigation** — NavMesh, rotas e agentes: https://docs.unity3d.com/Manual/com.unity.ai.navigation.html
+12. **Unity JsonUtility** — persistência e serialização: https://docs.unity3d.com/ScriptReference/JsonUtility.ToJson.html
+13. **Unity Shader Graph URP** — materiais água/efeitos: https://docs.unity3d.com/Manual/urp/prebuilt-shader-graphs-urp.html
+14. **OSM copyright** — atribuição e licenças: https://www.openstreetmap.org/copyright
 
 ## Regras de adoção
 
@@ -37,6 +46,7 @@ Atualizado em 08/10/2026. Objetivo: acelerar a criação do jogo diretamente pel
 - **Agora:** skills de GIS/QA ativos para proteger fonte OSM e assegurar screenshots reais.
 - **Depois do gate R1:** catálogo de três fachadas distintas com Poly Haven/ambientCG CC0, sem presumir que já foram baixados.
 - **Depois de R2:** orla e construção do resort 300 × 300 m, progressivamente.
+- **Depois do piloto visual R3:** NPCs, economia tycoon, construção modular, HUD e save, sempre com testes determinísticos.
 - **Sempre:** códigos e dados integrados apenas por PR; **não confundir testes Python com build Unity**, não divulgar senhas, não importar software de terceiro sem revisão da licença e código.
 
 ## Limites de execução reais
