@@ -5,11 +5,13 @@ on:
     paths:
       - 'UnityProject/**'
       - 'Tools/tests/**'
+      - 'Tools/Blender/**'
       - '.github/workflows/r1-unity-cloud.yml'
   pull_request:
     paths:
       - 'UnityProject/**'
       - 'Tools/tests/**'
+      - 'Tools/Blender/**'
       - '.github/workflows/r1-unity-cloud.yml'
   workflow_dispatch:
 permissions:
@@ -40,6 +42,28 @@ jobs:
             echo 'licensed=false' >> "$GITHUB_OUTPUT"
             echo 'NOT_BUILT: LICENSE_MISSING'
           fi
+  blender-fbx-roundtrip:
+    name: Blender real FBX roundtrip QA (no Unity license needed)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq blender python3-numpy libegl1 libgl1 libgl1-mesa-dri
+          blender --version
+      - name: Reimport real FBX and compare world coordinates to original BLEND
+        run: |
+          blender --background --factory-startup --python Tools/Blender/validate_copacabana_roundtrip.py
+      - name: Upload metric QA evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R1-Blender-FBX-Roundtrip-QA
+          path: ArtSource/Previews/Copacabana_FBX_roundtrip_QA.json
+          if-no-files-found: error
+          retention-days: 30
+
   unity-windows:
     name: Real Unity 6.3 Windows build (requires license)
     needs: static-qa
