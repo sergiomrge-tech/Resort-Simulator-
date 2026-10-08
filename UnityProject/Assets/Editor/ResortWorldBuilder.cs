@@ -56,8 +56,8 @@ namespace ResortSimulator.Editor
 
             // Original mesh already contains separate road/building material slots.
             // Recolor the imported *instance only* for visibility; preserve source FBX.
-            var roadMaterial = CreateMaterial("QA_Asfalto", new Color(0.24f, 0.30f, 0.37f));
-            var buildingMaterial = CreateMaterial("QA_Edificios_OSM", new Color(0.82f, 0.74f, 0.62f));
+            var roadMaterial = GetOrCreateQAMaterial("QA_Asfalto", new Color(0.24f, 0.30f, 0.37f));
+            var buildingMaterial = GetOrCreateQAMaterial("QA_Edificios_OSM", new Color(0.82f, 0.74f, 0.62f));
             foreach (var renderer in renderers)
             {
                 var existing = renderer.sharedMaterials;
@@ -94,7 +94,7 @@ namespace ResortSimulator.Editor
             ground.transform.position = new Vector3(extent.center.x, groundTop - 0.25f, extent.center.z);
             ground.transform.localScale = new Vector3(extent.size.x + 160f, 0.5f, extent.size.z + 160f);
             ground.GetComponent<Renderer>().sharedMaterial =
-                CreateMaterial("QA_Terreno_Provisorio", new Color(0.18f, 0.29f, 0.27f));
+                GetOrCreateQAMaterial("QA_Terreno_Provisorio", new Color(0.18f, 0.29f, 0.27f));
 
             var sunObject = new GameObject("Sun_DayNightCycle");
             var sun = sunObject.AddComponent<Light>();
@@ -157,21 +157,49 @@ namespace ResortSimulator.Editor
                       " | visual status=GEOGRAPHIC BLOCKOUT, NOT FINAL ART.");
         }
 
-        private static Material CreateMaterial(string name, Color tint)
+        // Persist scene materials as real Unity assets. Unsaved new Material instances
+        // may disappear when reopening a generated scene or loading a player build.
+        // Names and paths are deterministic across repeated Generate() calls.
+        private static Material GetOrCreateQAMaterial(string name, Color tint)
         {
-            // A URP package in manifest alone does not mean a URP asset is active.
-            bool pipelineActive = GraphicsSettings.currentRenderPipeline != null;
-            Shader shader = pipelineActive
+            const string folder = "Assets/Materials/QA";
+            if (!AssetDatabase.IsValidFolder("Assets/Materials"))
+                AssetDatabase.CreateFolder("Assets", "Materials");
+            if (!AssetDatabase.IsValidFolder(folder))
+                AssetDatabase.CreateFolder("Assets/Materials", "QA");
+
+            string path = folder + "/" + name + ".mat";
+            var mat = AssetDatabase.LoadAssetAtPath<Material>(path);
+
+            // Merely declaring the URP package in manifest.json does not enable URP.
+            bool isUrp = GraphicsSettings.currentRenderPipeline != null;
+            Shader shader = isUrp
                 ? Shader.Find("Universal Render Pipeline/Lit")
                 : Shader.Find("Standard");
             if (shader == null)
-                shader = Shader.Find("Standard");
-            if (shader == null)
-                throw new InvalidOperationException("Could not locate an appropriate shader for the active render pipeline.");
+                throw new InvalidOperationException(
+                    "Shader unavailable for active Unity pipeline. Configure URP explicitly before building.");
 
-            var mat = new Material(shader);
-            mat.name = name;
-            mat.color = tint;
+            if (mat == null)
+            {
+                mat = new Material(shader);
+                mat.name = name;
+                AssetDatabase.CreateAsset(mat, path);
+            }
+            else
+            {
+                mat.shader = shader;
+            }
+
+            // URP Lit uses _BaseColor; Standard uses _Color. Material.color is not
+            // dependable for an arbitrary shader and can create invisible QA tint.
+            if (mat.HasProperty("_BaseColor"))
+                mat.SetColor("_BaseColor", tint);
+            else if (mat.HasProperty("_Color"))
+                mat.SetColor("_Color", tint);
+            else
+                throw new InvalidOperationException("Shader does not expose a supported base color: " + shader.name);
+            EditorUtility.SetDirty(mat);
             return mat;
         }
 
