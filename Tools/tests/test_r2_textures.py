@@ -34,6 +34,28 @@ class R2TextureTests(unittest.TestCase):
                     self.assertEqual(image.size,(512,512))
                     self.assertEqual(image.mode,{"Albedo":"RGB","Normal":"RGB","Roughness":"L","Mask":"RGBA"}[suffix])
 
+    def test_texture_metadata_guids_and_color_spaces(self):
+        import re
+        guids = set()
+        for name, info in self.report["materials"].items():
+            for suffix, details in info["maps"].items():
+                meta = Path(str(ROOT / details["file"]) + ".meta")
+                self.assertTrue(meta.is_file(), str(meta))
+                content = meta.read_text(encoding="utf-8")
+                match = re.search(r"guid: ([0-9a-f]{32})", content)
+                self.assertIsNotNone(match)
+                self.assertNotIn(match.group(1), guids)
+                guids.add(match.group(1))
+                self.assertIn("TextureImporter:", content)
+                self.assertIn(
+                    f"sRGBTexture: {1 if suffix == 'Albedo' else 0}",
+                    content)
+                self.assertIn(
+                    f"textureType: {1 if suffix == 'Normal' else 0}",
+                    content)
+        self.assertTrue((ROOT / "UnityProject/Assets/Textures.meta").is_file())
+        self.assertTrue((ROOT / "UnityProject/Assets/Textures/R2_PBR.meta").is_file())
+
     def test_albedo_variance_and_tangent_space_normal(self):
         for name, info in self.report["materials"].items():
             with Image.open(ROOT/info["maps"]["Albedo"]["file"]) as im:
