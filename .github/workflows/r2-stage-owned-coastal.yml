@@ -1,0 +1,49 @@
+name: Resort R2 | Modelos costeiros na Unity (sem PC)
+on:
+  push:
+    branches: [chatgpt/r2-edificios-autorais-import-unity]
+    paths:
+      - 'Tools/automation/stage_owned_coastal_fbx.py'
+      - 'Tools/tests/test_owned_coastal_fbx.py'
+      - '.github/workflows/r2-stage-owned-coastal.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r2-staging-owned-coastal
+  cancel-in-progress: true
+jobs:
+  stage-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Staging original Blender FBX bytes with stable Unity GUIDs
+        run: python3 Tools/automation/stage_owned_coastal_fbx.py
+      - name: Static integrity tests (not Unity Editor validation)
+        run: python3 -m unittest discover -s Tools/tests -p test_owned_coastal_fbx.py -v
+      - name: Upload exact 8 Unity assets and integrity evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-Oito-FBX-Unity-Staging
+          path: |
+            UnityProject/Assets/Architecture/
+            UnityProject/Assets/Architecture.meta
+            docs/arte/R2_OWNED_COASTAL_UNITY_ASSETS.json
+          if-no-files-found: error
+      - name: Commit ready-to-import model files and verified manifest
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Architecture/ docs/arte/R2_OWNED_COASTAL_UNITY_ASSETS.json
+          git add -f UnityProject/Assets/Architecture.meta
+          if git diff --cached --quiet; then
+            echo "Already staged in GitHub"
+          else
+            git commit -m "art(R2): oito FBX originais costeiros para importacao Unity com hashes"
+            git pull --rebase origin chatgpt/r2-edificios-autorais-import-unity
+            git push origin HEAD:chatgpt/r2-edificios-autorais-import-unity
+          fi
