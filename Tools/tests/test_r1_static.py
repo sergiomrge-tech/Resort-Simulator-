@@ -37,6 +37,18 @@ class R1GeographyStaticTests(unittest.TestCase):
         self.assertIn("#if ENABLE_INPUT_SYSTEM", code)
         self.assertIn("#elif ENABLE_LEGACY_INPUT_MANAGER", code)
 
+    def test_inspection_mode_and_real_screenshot_hook(self):
+        source = (ASSETS / "Scripts/PlayerController.cs").read_text()
+        for needle in (
+            "freeFly = !freeFly", "character.enabled = !freeFly",
+            "inspectionFlySpeed", "KeyCode.F", "keys.fKey",
+            "KeyCode.F12", "keys.f12Key", "ScreenCapture.CaptureScreenshot(file)",
+            "Application.persistentDataPath", "Vector3.up * flyUp",
+        ):
+            self.assertIn(needle, source)
+        self.assertIn("Q/E: descer/subir", source)
+        self.assertNotIn("RenderTexture", source)
+
     def test_day_night_is_independent_and_active(self):
         code = (ASSETS / "Scripts/DayNightCycle.cs").read_text()
         for word in ("SetHour", "SetSun", "ApplyLighting", "Mathf.Sin", "sun.intensity"):
