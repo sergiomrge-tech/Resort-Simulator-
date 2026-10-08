@@ -1,34 +1,31 @@
 # Resort Simulator — Costa Carioca
 
-Jogo original de gestão e evolução de resort cinco estrelas na costa brasileira, desenvolvido **do zero em Unity 6.3 LTS** para Windows/Steam. Sem código, assets ou dependência do antigo Simulador Predial.
+Jogo original para PC/Steam em Unity, construído em um **repositório independente**. Referência geográfica: **Copacabana (Rio de Janeiro)**, recorte jogável **2.000 × 1.000 m (2 km²)**.
 
-**Checkpoint: 08/10/2026 — W1 fundação geográfica.** Fonte do mapa: OpenStreetMap real; área jogável 2.000 × 1.000 m (2 km²) junto à orla de Copacabana. A geração em Python da malha geográfica e a configuração de Unity/GameCI são fases técnicas; **não confundir volumetria OSM com arte final ou build jogável**.
+O objetivo é um resort cinco estrelas realista cercado de orla densa, avenidas conectadas, fachadas distintas, quiosques, jardins, piscinas, rio lento artificial e montanhas litorâneas. A orla de **300 × 300 m** será refinada antes da expansão visual por todo o mapa.
 
-## Diretórios
+## Estado real
 
-- `UnityProject/`: projeto Unity 6000.3.9f1 (Unity 6.3 LTS); cena gerada via editor.
-- `geo/`: geografia da Copacabana, exportação real OSM para OBJ e relatório/licença.
-- `docs/`: direção artística, roadmap e checkpoints.
-- `.github/workflows/`: validação Python e builds de Windows via GameCI.
+- **Blender**: `ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend` — modelo OSM já produzido.
+- **Unity**: `UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx` — FBX derivado do mesmo Blender; importação/compilação Unity ainda precisam ser executadas e comprovadas.
+- **Captura real do Blender**: `ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA_COLOR.jpg` — preview técnico, **não** screenshot da Unity e **não** arte final.
+- **Fonte e licença geográfica**: `geo/data/report.json`, `geo/data/copacabana.osm.gz`. © OpenStreetMap contributors, ODbL 1.0.
+- **Projeto Unity**: `UnityProject/` com fontes C#, configuração inicial Unity 6.3 LTS e script editor `Assets/Editor/ResortWorldBuilder.cs`; o gerador ainda não foi executado na Unity.
+- **GitHub Actions**: validações e conversões Blender executadas; **GameCI/Windows build não está validado** e depende de licença adequada.
 
-## Como trabalhar
+## Modelo de produção aprovado
 
-1. Fluxo padrão sem PC: GitHub Actions obtém dados OSM e compõe OBJ + metadados. A saída pode ser baixada como artifact; o workflow pode persistir malhas na branch `main` via commit automatizado.
-2. Somente após existir `UnityProject/Assets/ImportedOSM/copacabana_base.obj`, o pipeline Unity gera a cena `Assets/Scenes/Copacabana_Pilot.unity`.
-3. Com licença Unity adequada em GitHub Actions Secrets, o GameCI tenta importar, compilar e publicar um artefato Windows. Sem licença, o job informa bloqueio e não diz que compilou.
-4. No PC, abrir `UnityProject/` pela Unity 6.3 LTS e gerar/corrigir/aprovar uma captura **real** da execução.
+**ChatGPT = Diretor. Codex Luna Alto = Programador. GitHub = fonte da verdade.** Outros modelos de agente, inclusive Sol, não serão usados nas frentes de execução.
 
-## Controles do protótipo geográfico
+As instruções Luna com detalhamento por arquivo estão nas Issues [#1 (R1 mapa/Unity)](https://github.com/sergiomrge-tech/Resort-Simulator-/issues/1), [#2 (R2 arquitetura)](https://github.com/sergiomrge-tech/Resort-Simulator-/issues/2) e [#3 (R3 resort)](https://github.com/sergiomrge-tech/Resort-Simulator-/issues/3).
 
-WASD deslocamento, Q/E subida/descida, Shift velocidade e botão direito do mouse para olhar.
+**Somente R1 está liberada inicialmente.** O agente deve trabalhar na branch `luna/r1-copacabana-unity-gate` e entregar PR revisável antes de integrar. Criar Issues e branches não inicia automaticamente o Codex.
 
-## Documentação
+## Documentação atual
 
-`docs/DIRECAO_ARTISTICA.md` define a cidade e a evolução do Resort. `docs/STATUS.md` registra exatamente o que já foi testado.
+- `docs/STATUS.md` — checkpoint com resultados verdadeiros e bloqueios.
+- `docs/PROCESSO_DIRETOR_LUNA.md` — acordos de escopo, agentes, gates e aprovação.
+- `docs/DIRECAO_ARTISTICA.md` — referência visual não negociável.
+- `docs/FONTE_MAPA_BLENDER.md` — proveniência do .blend e exportação FBX.
 
-## Licenças
-
-Mapa: © OpenStreetMap contributors — ODbL 1.0, https://www.openstreetmap.org/copyright.
-Código original deste repositório não incorpora materiais proprietários de terceiros.
-
-**Atenção:** no primeiro estágio não existem fachadas PBR finais, modelos premium de hotel, piscina nem relevo DEM real. Arquivos 3D por extrusão são uma **referência métrica transitória**, não o acabamento aprovado.
+Este repositório **não reutiliza código ou assets do jogo de manutenção predial**. A malha geográfica OSM é uma fonte cartográfica reutilizada com atribuição, não o antigo jogo.
