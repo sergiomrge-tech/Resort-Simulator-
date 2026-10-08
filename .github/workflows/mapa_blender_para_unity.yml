@@ -1,0 +1,99 @@
+name: Importar mapa Blender original na Unity
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/mapa_blender_para_unity.yml"
+      - "Tools/Blender/export_copacabana_fbx.py"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-import-mapa-original
+  cancel-in-progress: false
+
+jobs:
+  preservar-exportar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout projeto independente Resort
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Checkout SOMENTE mapa Blender ja produzido
+        uses: actions/checkout@v4
+        with:
+          repository: sergiomrge-tech/Simulador-predial
+          ref: codex/copacabana-osm-real-20261008
+          path: _mapa_original
+          persist-credentials: false
+      - name: Copiar originais ao novo projeto sem codigo do predial
+        shell: bash
+        run: |
+          set -euo pipefail
+          FONTE="_mapa_original/Tools/Copacabana/data"
+          mkdir -p ArtSource/Blender geo/data UnityProject/Assets/ImportedBlender
+          cp "$FONTE/Copacabana_BlenderGIS_UTM23S.blend" ArtSource/Blender/
+          cp "$FONTE/Copacabana_OSM_Base_preview.png" ArtSource/Blender/
+          cp "$FONTE/report.json" geo/data/
+          cp "$FONTE/roi.geojson" geo/data/
+          cp "$FONTE/copacabana.osm.gz" geo/data/
+          test -s ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend
+          sha256sum ArtSource/Blender/*.blend
+      - name: Instalar Blender headless para exportar FBX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq blender libegl1 libgl1 libgl1-mesa-dri libxrender1 libxext6 libxi6
+          blender --version
+      - name: Exportar malha do BLEND para Unity sem refazer cidade
+        run: |
+          blender --background --factory-startup \
+            -b ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend \
+            --python Tools/Blender/export_copacabana_fbx.py
+      - name: Verificar exportacao FBX e dados OSM reais
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          source=Path("ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend")
+          fbx=Path("UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx")
+          info=json.loads(Path("geo/data/report.json").read_text())
+          assert source.stat().st_size > 2_000_000
+          assert fbx.stat().st_size > 100_000
+          assert fbx.read_bytes()[:18] == b"Kaydara FBX Binary"
+          assert info["game_area_m2"] == 2_000_000
+          assert info["real_osm_entities_within_roi"]["building"] == 1468
+          print("VALIDATED MAP:", fbx.stat().st_size, info["real_osm_entities_within_roi"])
+          PY
+      - name: Publicar artefatos para download
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-Copacabana-Blender-original-e-FBX-Unity
+          path: |
+            ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend
+            ArtSource/Blender/Copacabana_OSM_Base_preview.png
+            UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx
+            geo/data/report.json
+            geo/data/roi.geojson
+            geo/data/copacabana.osm.gz
+          retention-days: 30
+      - name: Salvar mapa e FBX permanentemente no Resort
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend
+          git add -f ArtSource/Blender/Copacabana_OSM_Base_preview.png
+          git add -f geo/data/report.json
+          git add -f geo/data/roi.geojson
+          git add -f geo/data/copacabana.osm.gz
+          git add -f UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx
+          if git diff --cached --quiet; then
+            echo "Sem alteracoes na geografia"
+          else
+            git commit -m "art: importar Copacabana real do Blender original para Unity"
+            git push origin HEAD:main
+          fi

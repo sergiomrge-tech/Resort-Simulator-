@@ -13,3 +13,7 @@ Novo repositório `Resort-Simulator-`, **inteiramente independente** de `Simulad
 | Fachadas PBR premium, resort e montanhas | Planejados; não implementados |
 
 Próximo gate: exportação GIS real pela Actions -> commit modelo OBJ -> ativação Unity/GameCI -> build Windows -> captura Unity -> aprovado vertical slice.
+
+## Mapa Blender existente (pedido do usuário)
+
+`Copacabana_BlenderGIS_UTM23S.blend` já existe e foi validado no GitHub do projeto anterior. O novo workflow copia a fonte real para este repo e gera FBX para Unity; execução e inspeção Unity pendentes. Nenhuma malha de Copacabana é gerada novamente.

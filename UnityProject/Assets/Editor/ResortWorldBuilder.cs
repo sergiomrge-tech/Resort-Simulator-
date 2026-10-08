@@ -11,21 +11,21 @@ namespace ResortSimulator.Editor
     // All scene editing runs in the Editor, never overwrites arbitrary user scenes.
     public static class ResortWorldBuilder
     {
-        public const string Model = "Assets/ImportedOSM/copacabana_base.obj";
+        public const string Model = "Assets/ImportedBlender/Copacabana_Real_Blender.fbx";
         public const string Scene = "Assets/Scenes/Copacabana_Pilot.unity";
 
         [MenuItem("Resort Simulator/01 - Gerar Copacabana real (blockout)")]
         public static void Generate()
         {
             var disk = Path.Combine(Application.dataPath,
-                "ImportedOSM/copacabana_base.obj");
+                "ImportedBlender/Copacabana_Real_Blender.fbx");
             if (!File.Exists(disk))
-                throw new FileNotFoundException("Real OSM asset not yet generated. Run geography CI.", disk);
+                throw new FileNotFoundException("Original Blender map FBX not yet exported. Run Blender import workflow.", disk);
 
             AssetDatabase.ImportAsset(Model, ImportAssetOptions.ForceSynchronousImport);
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Model);
             if (prefab == null)
-                throw new InvalidOperationException("Unity did not import the REAL OSM OBJ.");
+                throw new InvalidOperationException("Unity did not import the original Blender FBX.");
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,
                 NewSceneMode.Single);
@@ -39,10 +39,9 @@ namespace ResortSimulator.Editor
             markerMat.color = new Color(0.56f, 0.64f, 0.60f);
             ground.GetComponent<Renderer>().sharedMaterial = markerMat;
 
-            var root = new GameObject("GIS_METRIC_Xcoast_Yinland_Zup");
-            // OSM pipeline exports Z-up. Unity Y-up after rotation:
-            // original (x, y, z) -> (x, z, -y).
-            root.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+            var root = new GameObject("COPACABANA_REAL_BLENDER_METRIC");
+            // FBX exported from original Blender with -Z forward, Y up:
+            // Unity importer handles axis conversion. DO NOT rotate -90 degrees again.
             var mesh = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
             if (mesh == null)
                 throw new InvalidOperationException("Could not instantiate OSM mesh prefab.");
