@@ -26,7 +26,7 @@ class PilotOSMTests(unittest.TestCase):
             self.assertTrue(x["osm_id"].startswith("way/"))
             oid=x["osm_id"].split("/",1)[1]
             self.assertIn(oid,self.tags)
-            self.assertNotIn(self.tags[oid].get("building"),(None,"no"))
+            self.assertNotIn(self.tags[oid].get("building"),(None,"no","roof","carport","garage","garages","shed"))
             self.assertGreater(x["footprint_area_m2"],35)
             self.assertLessEqual(x["distance_to_avenida_atlantica_m"],150)
             self.assertEqual(len(x["centroid_lonlat"]),2)
