@@ -195,7 +195,8 @@ for x in (-10.6, 0.0, 10.6):
     current = None
     part(f"QA_BASE_{x}", x, -0.5, -0.19, 8.8, 4.0, 0.34, GROUND, 0.08)
 
-world = bpy.context.scene.world
+world = bpy.data.worlds.new("R2_Studio_Sky")
+bpy.context.scene.world = world
 world.use_nodes = True
 world.node_tree.nodes.get("Background").inputs["Color"].default_value = (0.64, 0.72, 0.82, 1)
 world.node_tree.nodes.get("Background").inputs["Strength"].default_value = 0.8
@@ -223,9 +224,13 @@ camera_data.ortho_scale = 36
 bpy.context.scene.camera = camera
 
 scene = bpy.context.scene
-scene.render.engine = "BLENDER_EEVEE"
-scene.render.resolution_x = 1440
-scene.render.resolution_y = 810
+# Cycles CPU works in a GitHub headless runner without a GPU/GUI.
+scene.render.engine = "CYCLES"
+scene.cycles.samples = 16
+scene.cycles.use_denoising = False
+bpy.context.view_layer.cycles.use_denoising = False
+scene.render.resolution_x = 1280
+scene.render.resolution_y = 720
 scene.render.resolution_percentage = 100
 scene.render.image_settings.file_format = "PNG"
 scene.render.filepath = str(PREV / "Resort_R2_Fachadas_Premium_Blender_QA.png")
@@ -238,7 +243,7 @@ if image.stat().st_size < 30000:
     raise RuntimeError("Rendered preview unexpectedly small")
 report["preview_png"] = str(image.relative_to(ROOT))
 report["preview_sha256"] = sha256(image)
-report["render_engine"] = "Blender EEVEE (real Blender render, not Unity)"
+report["render_engine"] = "Blender Cycles CPU (real Blender render, not Unity)"
 report["style"] = "realismo estilizado premium — prototypes, not approved final assets"
 report["copyright"] = "Original architecture; does not incorporate third-party textures"
 qa = PREV / "Resort_R2_Fachadas_Premium_QA.json"
