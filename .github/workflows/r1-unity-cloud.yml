@@ -1,12 +1,5 @@
 name: Resort R1 | Unity geography and Windows cloud build
 on:
-  push:
-    branches: [chatgpt/r1-unity-foundation]
-    paths:
-      - 'UnityProject/**'
-      - 'Tools/tests/**'
-      - 'Tools/Blender/**'
-      - '.github/workflows/r1-unity-cloud.yml'
   pull_request:
     paths:
       - 'UnityProject/**'
@@ -14,6 +7,10 @@ on:
       - 'Tools/Blender/**'
       - '.github/workflows/r1-unity-cloud.yml'
   workflow_dispatch:
+concurrency:
+  group: resort-r1-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 jobs:
