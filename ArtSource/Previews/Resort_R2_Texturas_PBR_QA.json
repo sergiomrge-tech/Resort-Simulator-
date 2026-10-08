@@ -1,0 +1,196 @@
+{
+  "status": "PASS",
+  "scope": "PROCEDURAL_ORIGINAL_R2_TEXTURES_NOT_UNITY",
+  "resolution": [
+    512,
+    512
+  ],
+  "materials": {
+    "R2_Calcario_Areia": {
+      "base_color_rgb": [
+        178,
+        160,
+        125
+      ],
+      "roughness": 0.68,
+      "maps": {
+        "Albedo": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Calcario_Areia_Albedo.png",
+          "sha256": "33d9677c2c9af34e16d606568331f9be2fe2014988386ffb1e4c9b8b58efdf0f",
+          "bytes": 105626
+        },
+        "Normal": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Calcario_Areia_Normal.png",
+          "sha256": "8666b548cb7b2c917197c5da6ebfe6bb228fdbc5413796de8df9d5308765d5d6",
+          "bytes": 159026
+        },
+        "Roughness": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Calcario_Areia_Roughness.png",
+          "sha256": "81fab0597c0a3cf62f27f078926b2112c98589343f25ad9e79b2441b95648566",
+          "bytes": 60730
+        },
+        "Mask": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Calcario_Areia_Mask.png",
+          "sha256": "da4d28207428253a8c69a16a11c408479bfe592522b317fabbceb315654580cf",
+          "bytes": 125235
+        }
+      },
+      "edge_error": 0.035245
+    },
+    "R2_Reboco_Marfim": {
+      "base_color_rgb": [
+        216,
+        211,
+        193
+      ],
+      "roughness": 0.79,
+      "maps": {
+        "Albedo": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Reboco_Marfim_Albedo.png",
+          "sha256": "add465e53c050f8b469c01df5a9bcda36995d778209e63ad31843f1e947f14b7",
+          "bytes": 123296
+        },
+        "Normal": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Reboco_Marfim_Normal.png",
+          "sha256": "1ed54cd006bb1183a8b86451a2499b29a9feb7e9f89b7003405f40ab4ef01607",
+          "bytes": 159697
+        },
+        "Roughness": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Reboco_Marfim_Roughness.png",
+          "sha256": "e7f60a4c81e6351c2ac5f8d946aced647144a6d4df2a1bac090eb8a94edbd94a",
+          "bytes": 68621
+        },
+        "Mask": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Reboco_Marfim_Mask.png",
+          "sha256": "90bcb1916ee6bec150864a3455a8d2f521bc33a7c90fd80e34792bd24684a6e4",
+          "bytes": 145520
+        }
+      },
+      "edge_error": 0.049616
+    },
+    "R2_Concreto_Quente": {
+      "base_color_rgb": [
+        179,
+        172,
+        154
+      ],
+      "roughness": 0.7,
+      "maps": {
+        "Albedo": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Quente_Albedo.png",
+          "sha256": "cd03e4b5f31b430edbb130bd56227e0fa9e305253cbe8ac542e4f9d5e234cfe0",
+          "bytes": 95013
+        },
+        "Normal": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Quente_Normal.png",
+          "sha256": "d338d69648494ab586c0a278acf56f846e3f0dab15bc25c4d4ce45df6f543870",
+          "bytes": 141487
+        },
+        "Roughness": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Quente_Roughness.png",
+          "sha256": "6cbcf14427dc7f80aebc6e6334430460ef8ba713bbd6bbbb6b710ec033fb3773",
+          "bytes": 53956
+        },
+        "Mask": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Quente_Mask.png",
+          "sha256": "460504a9e092df308c4af97af9ad1f9444590beaea6f0d41174885a43c74c05b",
+          "bytes": 111630
+        }
+      },
+      "edge_error": 0.024097
+    },
+    "R2_Concreto_Cinza_Calma": {
+      "base_color_rgb": [
+        105,
+        110,
+        109
+      ],
+      "roughness": 0.73,
+      "maps": {
+        "Albedo": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Cinza_Calma_Albedo.png",
+          "sha256": "9364e5cb230748a5a429c93fefc289a98858af1bbdcba03955c0d1b9ef3c4131",
+          "bytes": 87183
+        },
+        "Normal": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Cinza_Calma_Normal.png",
+          "sha256": "a2fe30dd21495d504646463f12edb33f1862018e6c432270b402e32546d66611",
+          "bytes": 93163
+        },
+        "Roughness": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Cinza_Calma_Roughness.png",
+          "sha256": "73b42b14786453ec8a6c7b8174c3f9d8f7fc2f93f42618597bb0330f91b6c224",
+          "bytes": 47828
+        },
+        "Mask": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Concreto_Cinza_Calma_Mask.png",
+          "sha256": "982dc8691c5e56a02b9fe9c8b4845a62f410e637354480bfef374f14c0b60e71",
+          "bytes": 99895
+        }
+      },
+      "edge_error": 0.020499
+    },
+    "R2_Madeira_Tropical": {
+      "base_color_rgb": [
+        115,
+        71,
+        40
+      ],
+      "roughness": 0.53,
+      "maps": {
+        "Albedo": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Madeira_Tropical_Albedo.png",
+          "sha256": "d67254b7639576d1fc896987ae651e1363da91386db7f16499b6e85d36514e70",
+          "bytes": 127889
+        },
+        "Normal": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Madeira_Tropical_Normal.png",
+          "sha256": "584f2055af3fa67af77717d502f4bd4b7d8b8158d9579303d81b5a6a0ec37c2a",
+          "bytes": 211262
+        },
+        "Roughness": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Madeira_Tropical_Roughness.png",
+          "sha256": "be60ac126b3dd7c2cce95d87e55e3159b47459d6677258b11e8e50e1ddf1d131",
+          "bytes": 59633
+        },
+        "Mask": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Madeira_Tropical_Mask.png",
+          "sha256": "0ac8370b3320ad897caf3306bf9d913f05299d0c00cffc7d93123f48713542d0",
+          "bytes": 128178
+        }
+      },
+      "edge_error": 0.103082
+    },
+    "R2_Ceramica_Terracota": {
+      "base_color_rgb": [
+        140,
+        73,
+        50
+      ],
+      "roughness": 0.55,
+      "maps": {
+        "Albedo": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Ceramica_Terracota_Albedo.png",
+          "sha256": "17fe23cb94efa41cadc97ff1b969acf9dda1bc859751617907554a3aaec207f0",
+          "bytes": 99497
+        },
+        "Normal": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Ceramica_Terracota_Normal.png",
+          "sha256": "ebac7106f9f96b90fa0acd37264b5318893c436aeacf3ad751b55943da82b0cc",
+          "bytes": 135328
+        },
+        "Roughness": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Ceramica_Terracota_Roughness.png",
+          "sha256": "40cd50047b8477fd057d8e1505f6189b336e54c30099947b5c46cfa7d3f9add1",
+          "bytes": 56294
+        },
+        "Mask": {
+          "file": "UnityProject/Assets/Textures/R2_PBR/R2_Ceramica_Terracota_Mask.png",
+          "sha256": "c75466b8b6189d411a235e89d6b2f28d1a36427ca65ad858c2937b0a3b2c23a5",
+          "bytes": 115957
+        }
+      },
+      "edge_error": 0.028511
+    }
+  }
+}
