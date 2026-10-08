@@ -29,6 +29,19 @@ Os protótipos têm cores e valores de **metallic/roughness** controlados no Ble
 
 **É proibido** preencher Copacabana com paredes modulares sem referência a lotes reais. A etapa de implantação requer os IDs dos lotes/footprints, correspondência entre altura/estilo e vias, afastamentos, entradas, navmesh, visibilidade e LOD.
 
+## Passe de materiais PBR — novo progresso
+
+Seis superfícies têm **24 mapas PNG procedurais originais em 512 × 512**: Albedo, Normal tangent-space, Roughness e Mask (metallic no canal R, ambient occlusion no G, smoothness no alpha). As texturas usam ruído periódico para reduzir emendas nas bordas e incluem GUIDs `.meta` determinísticos.
+
+- Fonte: `Tools/Textures/generate_r2_materials.py`, sem imagens proprietárias ou downloads de terceiros.
+- Arquivos: `UnityProject/Assets/Textures/R2_PBR/`.
+- QA detalhado: `ArtSource/Previews/Resort_R2_Texturas_PBR_QA.json`.
+- Execução com sucesso: https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37859035759.
+- Novo preview Blender **re-renderizado com seis conjuntos de texturas vinculados aos shaders originais**: https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37859137005.
+- A `ResortFacadePreviewBuilder.cs` liga estas mesmas texturas aos materiais URP Lit, mas **continua sem compilação nem captura real Unity**.
+
+Texturas dos vidros e metais ainda usam parâmetros físicos uniformes; materiais finais deverão ganhar reflexões, nuances de desgaste e decals sob medição de desempenho.
+
 ## Próximas etapas visuais (sem voltar ao gameplay)
 
 1. Avaliar a prévia Blender das três fachadas e corrigir aspectos que aparentem geometria simplificada.
