@@ -42,6 +42,24 @@ Seis superfícies têm **24 mapas PNG procedurais originais em 512 × 512**: Alb
 
 Texturas dos vidros e metais ainda usam parâmetros físicos uniformes; materiais finais deverão ganhar reflexões, nuances de desgaste e decals sob medição de desempenho.
 
+## Geografia real: primeiro estudo de implantação 300 × 300 metros
+
+O validador da própria fonte OSM identificou **48 footprints elegíveis** na faixa piloto próxima à Avenida Atlântica (excluindo `building=roof`, garagens e outras coberturas abertas). Os três candidatos prioritários selecionados, **ainda não aprovados como pontos finais de construção**, são:
+
+| ID OSM real | Centro métrico local no Blender (X,Y) | Área do footprint | Distância à Avenida Atlântica |
+|---|---|---:|---:|
+| `way/1048277518` | (-1,886; -231,898) m | 479,37 m² | 46,67 m |
+| `way/1308635852` | (115,067; -239,303) m | 102,10 m² | 37,16 m |
+| `way/1048277521` | (53,024; -230,740) m | 421,75 m² | 46,09 m |
+
+- Fonte: `geo/data/copacabana.osm.gz`, sem consulta externa substitutiva.
+- Transformação original: `geo/pilot/COPACABANA_FRAME_SOURCE.json`, EPSG:32723 e origem rotacionada real.
+- Arquivo de evidência: `geo/pilot/R2_PILOT_BUILDING_CANDIDATES.json`.
+- Teste realmente executado: https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37859390469 (**3 testes OSM aprovados**).
+- Estado: **candidatos**, não lotes imobiliários legalmente disponíveis nem prédios com alturas confiáveis. As fachadas não foram encaixadas nesses footprints e a Unity ainda não renderizou a cena.
+
+Este passo protege a fidelidade de Copacabana: a construção de um prédio inteiro só ocorrerá após inspeção do footprint, acesso viário, altura e escala reais/estimadas, sem sobrepor edifícios do mapa de base.
+
 ## Próximas etapas visuais (sem voltar ao gameplay)
 
 1. Avaliar a prévia Blender das três fachadas e corrigir aspectos que aparentem geometria simplificada.
