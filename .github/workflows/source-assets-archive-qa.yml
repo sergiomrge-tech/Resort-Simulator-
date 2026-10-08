@@ -1,0 +1,21 @@
+name: Resort | Verificacao dos assets locais arquivados
+on:
+  push:
+    branches: [chatgpt/importacao-assets-locais-20261008]
+    paths:
+      - 'ArtSource/LocalProjectOwned/**'
+      - 'Tools/tests/test_owned_asset_archive.py'
+      - '.github/workflows/source-assets-archive-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: resort-owned-asset-qa-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate-source-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Auditar todos os 38 assets no GitHub, sem PC
+        run: python3 -m unittest discover -s Tools/tests -p 'test_owned_asset_archive.py' -v
