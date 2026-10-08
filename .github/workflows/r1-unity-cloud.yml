@@ -1,0 +1,77 @@
+name: Resort R1 | Unity geography and Windows cloud build
+on:
+  push:
+    branches: [chatgpt/r1-unity-foundation]
+    paths:
+      - 'UnityProject/**'
+      - 'Tools/tests/**'
+      - '.github/workflows/r1-unity-cloud.yml'
+  pull_request:
+    paths:
+      - 'UnityProject/**'
+      - 'Tools/tests/**'
+      - '.github/workflows/r1-unity-cloud.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-qa:
+    name: Static QA real Blender/Unity assets
+    runs-on: ubuntu-latest
+    outputs:
+      licensed: ${{ steps.gate.outputs.licensed }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate source assets and Unity scene code
+        run: python3 -m unittest discover -s Tools/tests -p 'test_*.py' -v
+      - name: Check cloud license without printing any secret
+        id: gate
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        shell: bash
+        run: |
+          if [ -n "${UNITY_LICENSE}" ] || { [ -n "${UNITY_SERIAL}" ] && [ -n "${UNITY_EMAIL}" ] && [ -n "${UNITY_PASSWORD}" ]; }; then
+            echo 'licensed=true' >> "$GITHUB_OUTPUT"
+            echo 'UNITY BUILD ELIGIBLE: license secret provided; not yet validated.'
+          else
+            echo 'licensed=false' >> "$GITHUB_OUTPUT"
+            echo 'NOT_BUILT: LICENSE_MISSING'
+          fi
+  unity-windows:
+    name: Real Unity 6.3 Windows build (requires license)
+    needs: static-qa
+    if: needs.static-qa.outputs.licensed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import Copacabana FBX, generate scene, build Windows
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: UnityProject
+          unityVersion: 6000.3.9f1
+          targetPlatform: StandaloneWindows64
+          buildMethod: ResortSimulator.Editor.ResortWorldBuilder.BuildWindows
+          buildName: ResortSimulator
+      - name: Upload built Windows game
+        uses: actions/upload-artifact@v4
+        with:
+          name: ResortSimulator-R1-Windows
+          path: UnityProject/build/StandaloneWindows64/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload generated Unity scene for QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ResortSimulator-R1-UnityScene
+          path: UnityProject/Assets/Scenes/
+          if-no-files-found: warn
+          retention-days: 14

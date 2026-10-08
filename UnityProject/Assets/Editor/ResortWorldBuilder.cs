@@ -8,103 +8,193 @@ using UnityEngine.Rendering;
 
 namespace ResortSimulator.Editor
 {
-    // All scene editing runs in the Editor, never overwrites arbitrary user scenes.
+    /// <summary>
+    /// Deterministic editor scene factory based only on the original Blender OSM FBX.
+    /// Call from Resort Simulator menu or Unity batchmode / GameCI.
+    /// The scene is a geographic/blockout QA stage, NOT final visual art.
+    /// </summary>
     public static class ResortWorldBuilder
     {
-        public const string Model = "Assets/ImportedBlender/Copacabana_Real_Blender.fbx";
-        public const string Scene = "Assets/Scenes/Copacabana_Pilot.unity";
+        public const string ModelPath = "Assets/ImportedBlender/Copacabana_Real_Blender.fbx";
+        public const string ScenePath = "Assets/Scenes/Copacabana_Pilot.unity";
 
-        [MenuItem("Resort Simulator/01 - Gerar Copacabana real (blockout)")]
+        [MenuItem("Resort Simulator/01 - Gerar cena Copacabana (geografia OSM)")]
         public static void Generate()
         {
-            var disk = Path.Combine(Application.dataPath,
-                "ImportedBlender/Copacabana_Real_Blender.fbx");
-            if (!File.Exists(disk))
-                throw new FileNotFoundException("Original Blender map FBX not yet exported. Run Blender import workflow.", disk);
+            var source = Path.Combine(Application.dataPath, "ImportedBlender/Copacabana_Real_Blender.fbx");
+            if (!File.Exists(source))
+                throw new FileNotFoundException("Original Copacabana FBX is missing.", source);
 
-            AssetDatabase.ImportAsset(Model, ImportAssetOptions.ForceSynchronousImport);
-            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(Model);
-            if (prefab == null)
-                throw new InvalidOperationException("Unity did not import the original Blender FBX.");
+            AssetDatabase.ImportAsset(ModelPath, ImportAssetOptions.ForceSynchronousImport);
+            var model = AssetDatabase.LoadAssetAtPath<GameObject>(ModelPath);
+            if (model == null)
+                throw new InvalidOperationException("The original Blender FBX did not import as a model prefab.");
 
-            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,
-                NewSceneMode.Single);
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
-            // Temporary neutral ground for visual reference, not a fake Copacabana beach.
+            var root = new GameObject("GIS_COPACABANA_REAL_FBX_METERS");
+            // Blender FBX exporter used -Z forward and Y up. No second 90-degree rotation.
+            var instance = PrefabUtility.InstantiatePrefab(model) as GameObject;
+            if (instance == null)
+                throw new InvalidOperationException("Cannot instantiate the original Copacabana model.");
+            instance.name = "OSM_REAL_1468_BuildingFootprints_468_RoadSegments";
+            instance.transform.SetParent(root.transform, false);
+
+            var renderers = instance.GetComponentsInChildren<MeshRenderer>(true);
+            if (renderers.Length == 0)
+                throw new InvalidOperationException("Imported Blender FBX has no MeshRenderer.");
+            Bounds extent = renderers[0].bounds;
+            foreach (var renderer in renderers)
+            {
+                extent.Encapsulate(renderer.bounds);
+                renderer.shadowCastingMode = ShadowCastingMode.On;
+                renderer.receiveShadows = true;
+            }
+            if (extent.size.x < 200f || extent.size.z < 200f)
+                throw new InvalidOperationException("The imported FBX extent is too small for a metric city. " +
+                                                    "Check orientation and scale: " + extent.size);
+
+            // Original mesh already contains separate road/building material slots.
+            // Recolor the imported *instance only* for visibility; preserve source FBX.
+            var roadMaterial = CreateMaterial("QA_Asfalto", new Color(0.24f, 0.30f, 0.37f));
+            var buildingMaterial = CreateMaterial("QA_Edificios_OSM", new Color(0.82f, 0.74f, 0.62f));
+            foreach (var renderer in renderers)
+            {
+                var existing = renderer.sharedMaterials;
+                var replacement = new Material[existing.Length];
+                for (int i = 0; i < replacement.Length; i++)
+                {
+                    string slot = existing[i] != null ? existing[i].name.ToLowerInvariant() : "";
+                    replacement[i] = slot.Contains("road") || slot.Contains("street")
+                        ? roadMaterial : buildingMaterial;
+                }
+                renderer.sharedMaterials = replacement;
+            }
+
+            // One non-convex collider per actual imported mesh; static world only.
+            // Do not add per-building Rigidbody or thousands of MeshColliders.
+            var filters = instance.GetComponentsInChildren<MeshFilter>(true);
+            int collisionMeshes = 0;
+            foreach (var filter in filters)
+            {
+                if (filter.sharedMesh == null)
+                    continue;
+                var existingCollider = filter.GetComponent<MeshCollider>();
+                var collider = existingCollider != null ? existingCollider : filter.gameObject.AddComponent<MeshCollider>();
+                collider.sharedMesh = filter.sharedMesh;
+                collider.convex = false;
+                collisionMeshes++;
+            }
+
+            // Ground is explicitly a TEMPORARY reference; surface lies BELOW the
+            // minimum model height to avoid concealing any mapped streets.
+            float groundTop = extent.min.y - 0.12f;
             var ground = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            ground.name = "TEMP_Ground_Reference_NotDEM";
-            ground.transform.localScale = new Vector3(2000f, 1f, 1000f);
-            ground.transform.position = new Vector3(0f, -1f, 0f);
-            var markerMat = new Material(Shader.Find("Standard"));
-            markerMat.color = new Color(0.56f, 0.64f, 0.60f);
-            ground.GetComponent<Renderer>().sharedMaterial = markerMat;
+            ground.name = "TEMP_REFERENCE_GROUND__NOT_REAL_TERRAIN_OR_BEACH";
+            ground.transform.position = new Vector3(extent.center.x, groundTop - 0.25f, extent.center.z);
+            ground.transform.localScale = new Vector3(extent.size.x + 160f, 0.5f, extent.size.z + 160f);
+            ground.GetComponent<Renderer>().sharedMaterial =
+                CreateMaterial("QA_Terreno_Provisorio", new Color(0.18f, 0.29f, 0.27f));
 
-            var root = new GameObject("COPACABANA_REAL_BLENDER_METRIC");
-            // FBX exported from original Blender with -Z forward, Y up:
-            // Unity importer handles axis conversion. DO NOT rotate -90 degrees again.
-            var mesh = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
-            if (mesh == null)
-                throw new InvalidOperationException("Could not instantiate OSM mesh prefab.");
-            mesh.name = "OSM_REAL_Buildings_and_Roads";
-            mesh.transform.SetParent(root.transform, false);
-            if (mesh.GetComponentsInChildren<Renderer>(true).Length == 0)
-                throw new InvalidOperationException("OSM OBJ contains no renderable geometry.");
-
-            var sun = new GameObject("Sun").AddComponent<Light>();
+            var sunObject = new GameObject("Sun_DayNightCycle");
+            var sun = sunObject.AddComponent<Light>();
             sun.type = LightType.Directional;
-            sun.intensity = 1.35f;
             sun.shadows = LightShadows.Soft;
-            sun.transform.rotation = Quaternion.Euler(53f, -35f, 0f);
+            sun.shadowStrength = 0.70f;
+            sunObject.AddComponent<DayNightCycle>().SetSun(sun);
+            sunObject.transform.rotation = Quaternion.Euler(52f, -32f, 0);
+            RenderSettings.sun = sun;
+            RenderSettings.ambientMode = AmbientMode.Flat;
+            RenderSettings.ambientLight = new Color(0.54f, 0.62f, 0.71f);
 
-            var cameraObject = new GameObject("InspectionCamera");
+            // Spawn on the temporary inspection perimeter, clear of real buildings;
+            // the player can enter the map. No fictional buildings are introduced.
+            var player = new GameObject("Player_FirstPerson");
+            player.transform.position = new Vector3(extent.min.x - 22f, groundTop + 0.04f, extent.center.z);
+            player.transform.rotation = Quaternion.LookRotation(Vector3.right, Vector3.up);
+            var character = player.AddComponent<CharacterController>();
+            character.height = 1.85f;
+            character.radius = 0.36f;
+            character.center = new Vector3(0f, 0.925f, 0f);
+            character.stepOffset = 0.29f;
+            character.slopeLimit = 48f;
+
+            var head = new GameObject("ViewPivot").transform;
+            head.SetParent(player.transform, false);
+            head.localPosition = new Vector3(0f, 1.67f, 0f);
+            var cameraObject = new GameObject("MainCamera");
             cameraObject.tag = "MainCamera";
-            cameraObject.transform.position = new Vector3(-260, 120, 540);
-            cameraObject.transform.LookAt(new Vector3(0, 15, 0));
+            cameraObject.transform.SetParent(head, false);
+            cameraObject.transform.localPosition = Vector3.zero;
             var cam = cameraObject.AddComponent<Camera>();
-            cam.nearClipPlane = 0.3f;
-            cam.farClipPlane = 3800f;
+            cam.fieldOfView = 69f;
+            cam.nearClipPlane = 0.08f;
+            cam.farClipPlane = 4000f;
+            cam.clearFlags = CameraClearFlags.SolidColor;
+            cam.backgroundColor = new Color(0.54f, 0.76f, 0.89f);
             cameraObject.AddComponent<AudioListener>();
-            cameraObject.AddComponent<CameraFlyController>();
+            player.AddComponent<PlayerController>().SetCameraPivot(head);
 
-            new GameObject("OPENSTREETMAP_ODBL_LICENSE")
-                .AddComponent<GeodataAttribution>();
+            var attribution = new GameObject("OPENSTREETMAP_ATTRIBUTION_ODBL");
+            attribution.AddComponent<GeodataAttribution>();
+
+            // Future visual pass: limit dynamic shadow draw distance rather than
+            // shadowing all 2km of city at once.
+            QualitySettings.shadowDistance = Mathf.Min(QualitySettings.shadowDistance, 180f);
 
             Directory.CreateDirectory(Path.Combine(Application.dataPath, "Scenes"));
-            if (!EditorSceneManager.SaveScene(scene, Scene))
-                throw new IOException("Could not save the generated scene.");
+            var current = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            if (!EditorSceneManager.SaveScene(current, ScenePath))
+                throw new IOException("Could not save Copacabana scene: " + ScenePath);
 
-            EditorBuildSettings.scenes = new[]
-            {
-                new EditorBuildSettingsScene(Scene, true)
-            };
+            EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };
             AssetDatabase.SaveAssets();
-            Debug.Log("Scene generated using REAL OpenStreetMap footprints: " + Scene);
+
+            Debug.Log("R1 COPACABANA SCENE: " + ScenePath +
+                      " | FBX bounds(m): " + extent +
+                      " | mesh renderers=" + renderers.Length +
+                      " | static mesh colliders=" + collisionMeshes +
+                      " | visual status=GEOGRAPHIC BLOCKOUT, NOT FINAL ART.");
         }
 
-        // GameCI - static entrypoint for a licensed Unity build.
+        private static Material CreateMaterial(string name, Color tint)
+        {
+            // A URP package in manifest alone does not mean a URP asset is active.
+            bool pipelineActive = GraphicsSettings.currentRenderPipeline != null;
+            Shader shader = pipelineActive
+                ? Shader.Find("Universal Render Pipeline/Lit")
+                : Shader.Find("Standard");
+            if (shader == null)
+                shader = Shader.Find("Standard");
+            if (shader == null)
+                throw new InvalidOperationException("Could not locate an appropriate shader for the active render pipeline.");
+
+            var mat = new Material(shader);
+            mat.name = name;
+            mat.color = tint;
+            return mat;
+        }
+
+        /// <summary>Unity batchmode / GameCI entrypoint; demands real licensed Unity execution.</summary>
         public static void BuildWindows()
         {
             Generate();
-            string repo = Path.GetFullPath(Path.Combine(Application.dataPath, "../.."));
-            string target = Path.Combine(repo,
-                "build", "StandaloneWindows64", "ResortSimulator.exe");
-            Directory.CreateDirectory(Path.GetDirectoryName(target));
+            var projectRoot = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+            var destination = Path.Combine(projectRoot, "build", "StandaloneWindows64", "ResortSimulator.exe");
+            Directory.CreateDirectory(Path.GetDirectoryName(destination));
+
             PlayerSettings.productName = "Resort Simulator";
             PlayerSettings.companyName = "Resort Simulator";
-            PlayerSettings.SetScriptingBackend(
-                UnityEditor.Build.NamedBuildTarget.Standalone, ScriptingImplementation.Mono2x);
-            BuildReport report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+            var result = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
-                scenes = new[] { Scene },
-                locationPathName = target,
+                scenes = new[] { ScenePath },
+                locationPathName = destination,
                 target = BuildTarget.StandaloneWindows64,
                 options = BuildOptions.None
             });
-            if (report == null || report.summary.result != BuildResult.Succeeded)
-                throw new InvalidOperationException("Unity Windows compilation failed. See GameCI logs.");
-            if (!File.Exists(target))
-                throw new IOException("The EXE was not created: " + target);
-            Debug.Log("WINDOWS BUILD VERIFIED: " + target);
+            if (result == null || result.summary.result != BuildResult.Succeeded || !File.Exists(destination))
+                throw new InvalidOperationException("Windows build failed or executable missing. Check the Unity Editor log.");
+            Debug.Log("UNITY WINDOWS BUILD SUCCESS: " + destination);
         }
     }
 }
