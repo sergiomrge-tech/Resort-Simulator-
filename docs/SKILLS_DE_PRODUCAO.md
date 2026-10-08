@@ -15,7 +15,6 @@ Atualizado em 08/10/2026. Objetivo: acelerar a criação do jogo diretamente pel
 | Transversal | `.agents/skills/otimizar-cidade-unity/SKILL.md` | FPS/memória/LOD/culling | Preparada |
 | Transversal | `.agents/skills/catalogar-assets-licenca/SKILL.md` | Adicionar qualquer asset externo | Pronta |
 | Transversal | `.agents/skills/qa-capturas-sem-fraude/SKILL.md` | Validar screenshots/CI | Pronta |
-
 | R4 — Operação do Tycoon | `.agents/skills/economia-tycoon-saves/SKILL.md` | Economia, estoque, funcionários, save | Preparada; posterior à R3 |
 | R4 — Pessoas | `.agents/skills/npcs-animacao-trafego/SKILL.md` | Animação, pedestres, clientes e equipes | Preparada; posterior à R3 |
 | R3 — Águas/terreno | `.agents/skills/agua-praia-piscinas-iluminacao/SKILL.md` | Oceano, praia, piscina, iluminação | Preparada; gate visual |
