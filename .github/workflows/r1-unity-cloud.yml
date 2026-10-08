@@ -96,6 +96,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ResortSimulator-R1-UnityScene
-          path: UnityProject/Assets/Scenes/
-          if-no-files-found: warn
+          path: |
+            UnityProject/Assets/Scenes/
+            UnityProject/Assets/Materials/QA/
+          if-no-files-found: error
           retention-days: 14
