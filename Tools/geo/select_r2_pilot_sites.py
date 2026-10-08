@@ -95,7 +95,7 @@ def main():
         name=tags.get("name","")
         if tags.get("highway") and ("Atlântica" in name or "Atlantica" in name):
             roads.extend(((ax,ay,bx,by) for (ax,ay),(bx,by) in zip(pts,pts[1:])))
-        if tags.get("building") in (None,"no") or len(pts)<4 or pts[0]!=pts[-1]:
+        if tags.get("building") in (None,"no","roof","carport","garage","garages","shed") or len(pts)<4 or pts[0]!=pts[-1]:
             continue
         ca=centroid_area(pts)
         if ca is None: continue
