@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "scope": "REBUILT_FROM_PROJECT_OWNED_AUTHORING_CODE_BLENDER_NOT_UNITY",
+  "source_script": "ArtSource/LocalProjectOwned/KioskPremium_20261008/build_kiosk_premium.py",
+  "source_script_sha256": "4d8e1fcf1548ef251d506895d11b1ef107f094cd3d8edd1bf89ec6028b957d1a",
+  "archived_original_blend": "ArtSource/LocalProjectOwned/KioskPremium_20261008/KioskPremium.blend",
+  "source_components": 307,
+  "polygons": 34468,
+  "triangles": 68008,
+  "unity_fbx": "UnityProject/Assets/Architecture/OwnedKiosk/KioskPremium_Detailed.fbx",
+  "unity_fbx_sha256": "7ee9cf8c2980c7a96f32a65249f9b5af153e97d6524217bf4c651a4e131abede",
+  "unity_fbx_bytes": 1474012,
+  "unity_fbx_guid": "8014788a3e0b5ca2866a567a9e218710",
+  "preview": "ArtSource/Previews/Owned_KioskPremium_Blender_QA.png",
+  "preview_sha256": "dd0b024faa3809a6a9a8d8c065bb934113e52b573f7392b3f2be75f4c3c382c3",
+  "preview_bytes": 1809297,
+  "render_engine": "Blender Cycles CPU; source geometry, preview-specific materials",
+  "limits": "FBX staged, not Unity compiled/imported, not attached to Copacabana world, visual approval pending",
+  "license": "Original author-made kiosk; PBR runtime texture assets not transferred or approved in this render"
+}
