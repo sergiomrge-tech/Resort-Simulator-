@@ -1,0 +1,48 @@
+{
+  "source_blend": "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend",
+  "osm_based_geometry": true,
+  "is_real_blender_render": true,
+  "is_final_gameplay": false,
+  "is_final_art": false,
+  "blender_mesh_objects": 1,
+  "vertices": 62980,
+  "faces": 26764,
+  "bbox_min": [
+    -1054.3282470703125,
+    -1066.6689453125,
+    0.0
+  ],
+  "bbox_max": [
+    1054.3282470703125,
+    1066.6689453125,
+    90.0
+  ],
+  "camera_location": [
+    -1054.3282470703125,
+    -2026.6710205078125,
+    2498.338623046875
+  ],
+  "camera_target": [
+    0.0,
+    0.0,
+    45.0
+  ],
+  "materials_note": "Colors adapted for QA readability; original OSM geometry unchanged.",
+  "objects": [
+    {
+      "name": "copacabana_base",
+      "vertices": 62980,
+      "faces": 26764,
+      "materials": [
+        "Road",
+        "Building"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "license": "© OpenStreetMap contributors; ODbL 1.0"
+}
