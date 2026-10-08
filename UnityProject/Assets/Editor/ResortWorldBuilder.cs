@@ -17,10 +17,29 @@ namespace ResortSimulator.Editor
     {
         public const string ModelPath = "Assets/ImportedBlender/Copacabana_Real_Blender.fbx";
         public const string ScenePath = "Assets/Scenes/Copacabana_Pilot.unity";
+        public const string ImportReportPath = "build/QA/Copacabana_Unity_Import.json";
+
+        [Serializable]
+        private sealed class ImportMetrics
+        {
+            public string sourceFbx;
+            public string scene;
+            public string generatedUtc;
+            public Vector3 boundsCenterMeters;
+            public Vector3 boundsSizeMeters;
+            public int renderers;
+            public int colliderMeshes;
+            public int importedVertices;
+            public bool realUnityEditorExecution;
+            public string visualState;
+        }
 
         [MenuItem("Resort Simulator/01 - Gerar cena Copacabana (geografia OSM)")]
         public static void Generate()
         {
+            // A real Scriptable Render Pipeline is required for the final PBR art;
+            // URP package presence alone is insufficient.
+            ResortRenderingSetup.EnsureConfigured();
             var source = Path.Combine(Application.dataPath, "ImportedBlender/Copacabana_Real_Blender.fbx");
             if (!File.Exists(source))
                 throw new FileNotFoundException("Original Copacabana FBX is missing.", source);
@@ -50,9 +69,13 @@ namespace ResortSimulator.Editor
                 renderer.shadowCastingMode = ShadowCastingMode.On;
                 renderer.receiveShadows = true;
             }
-            if (extent.size.x < 200f || extent.size.z < 200f)
-                throw new InvalidOperationException("The imported FBX extent is too small for a metric city. " +
-                                                    "Check orientation and scale: " + extent.size);
+            // In Unity world coordinates, geography must be horizontal on X/Z
+            // with a comparatively modest elevation on Y, not lying on its side.
+            if (extent.size.x < 1200f || extent.size.x > 3200f ||
+                extent.size.z < 1200f || extent.size.z > 3200f ||
+                extent.size.y < 10f || extent.size.y > 300f)
+                throw new InvalidOperationException(
+                    "Map FBX is not in plausible Unity X/Z metres or its Y-up conversion failed: " + extent.size);
 
             // Original mesh already contains separate road/building material slots.
             // Recolor the imported *instance only* for visibility; preserve source FBX.
@@ -75,10 +98,12 @@ namespace ResortSimulator.Editor
             // Do not add per-building Rigidbody or thousands of MeshColliders.
             var filters = instance.GetComponentsInChildren<MeshFilter>(true);
             int collisionMeshes = 0;
+            int importedVertices = 0;
             foreach (var filter in filters)
             {
                 if (filter.sharedMesh == null)
                     continue;
+                importedVertices += filter.sharedMesh.vertexCount;
                 var existingCollider = filter.GetComponent<MeshCollider>();
                 var collider = existingCollider != null ? existingCollider : filter.gameObject.AddComponent<MeshCollider>();
                 collider.sharedMesh = filter.sharedMesh;
@@ -146,6 +171,26 @@ namespace ResortSimulator.Editor
             var current = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
             if (!EditorSceneManager.SaveScene(current, ScenePath))
                 throw new IOException("Could not save Copacabana scene: " + ScenePath);
+
+            // This report can only be emitted by a REAL Unity Editor invocation.
+            // It is evidence of import-time geometry, not screenshot/FPS validation.
+            var projectRoot = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+            var reportPath = Path.Combine(projectRoot, ImportReportPath);
+            Directory.CreateDirectory(Path.GetDirectoryName(reportPath));
+            var metrics = new ImportMetrics
+            {
+                sourceFbx = ModelPath,
+                scene = ScenePath,
+                generatedUtc = DateTime.UtcNow.ToString("O"),
+                boundsCenterMeters = extent.center,
+                boundsSizeMeters = extent.size,
+                renderers = renderers.Length,
+                colliderMeshes = collisionMeshes,
+                importedVertices = importedVertices,
+                realUnityEditorExecution = true,
+                visualState = "GEOGRAPHIC_BLOCKOUT_NOT_FINAL_ART"
+            };
+            File.WriteAllText(reportPath, JsonUtility.ToJson(metrics, true));
 
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };
             AssetDatabase.SaveAssets();
