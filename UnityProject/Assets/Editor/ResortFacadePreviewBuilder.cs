@@ -158,11 +158,66 @@ namespace ResortSimulator.Editor
             {
                 material.shader = shader;
             }
-            material.SetColor("_BaseColor", tint);
+            // Retain Blender procedural texture fidelity in Unity URP, not just
+            // the solid color fallback. The original authored PNGs live in the repo.
+            string texturesFolder = "Assets/Textures/R2_PBR/" + name;
+            var albedo = LoadTexture(texturesFolder + "_Albedo.png", false, false);
+            if (albedo != null)
+            {
+                var normal = LoadTexture(texturesFolder + "_Normal.png", true, true);
+                var mask = LoadTexture(texturesFolder + "_Mask.png", false, true);
+                if (normal == null || mask == null)
+                    throw new InvalidOperationException("R2 PBR texture set incomplete: " + name);
+
+                // The albedo PNG already contains the calibrated base color.
+                material.SetColor("_BaseColor", Color.white);
+                material.SetTexture("_BaseMap", albedo);
+                material.SetTexture("_BumpMap", normal);
+                material.SetFloat("_BumpScale", 0.35f);
+                material.EnableKeyword("_NORMALMAP");
+                material.SetTexture("_MetallicGlossMap", mask);
+                material.SetTexture("_OcclusionMap", mask);
+                material.EnableKeyword("_METALLICSPECGLOSSMAP");
+                material.EnableKeyword("_OCCLUSIONMAP");
+            }
+            else
+            {
+                material.SetColor("_BaseColor", tint);
+                material.SetTexture("_BaseMap", null);
+                material.SetTexture("_BumpMap", null);
+                material.SetTexture("_MetallicGlossMap", null);
+                material.SetTexture("_OcclusionMap", null);
+                material.DisableKeyword("_NORMALMAP");
+                material.DisableKeyword("_METALLICSPECGLOSSMAP");
+                material.DisableKeyword("_OCCLUSIONMAP");
+            }
             material.SetFloat("_Metallic", metallic);
             material.SetFloat("_Smoothness", 1f - roughness);
             EditorUtility.SetDirty(material);
             return material;
+        }
+
+        private static Texture2D LoadTexture(string path, bool normalMap, bool linear)
+        {
+            var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (importer == null)
+                return null; // Metallic and glass materials intentionally have no texture set.
+            bool changed = false;
+            var targetType = normalMap ? TextureImporterType.NormalMap : TextureImporterType.Default;
+            if (importer.textureType != targetType)
+            {
+                importer.textureType = targetType;
+                changed = true;
+            }
+            bool srgb = !normalMap && !linear;
+            if (importer.sRGBTexture != srgb)
+            {
+                importer.sRGBTexture = srgb;
+                changed = true;
+            }
+            if (changed)
+                importer.SaveAndReimport();
+            return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
         }
 
         private static void EnsureFolder(string parent, string child)
