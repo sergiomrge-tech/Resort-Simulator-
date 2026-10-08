@@ -32,7 +32,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         shell: bash
         run: |
-          if [ -n "${UNITY_LICENSE}" ] || { [ -n "${UNITY_SERIAL}" ] && [ -n "${UNITY_EMAIL}" ] && [ -n "${UNITY_PASSWORD}" ]; }; then
+          if [ -n "${UNITY_EMAIL}" ] && [ -n "${UNITY_PASSWORD}" ] && { [ -n "${UNITY_LICENSE}" ] || [ -n "${UNITY_SERIAL}" ]; }; then
             echo 'licensed=true' >> "$GITHUB_OUTPUT"
             echo 'UNITY BUILD ELIGIBLE: license secret provided; not yet validated.'
           else
@@ -82,6 +82,17 @@ jobs:
           targetPlatform: StandaloneWindows64
           buildMethod: ResortSimulator.Editor.ResortWorldBuilder.BuildWindows
           buildName: ResortSimulator
+      - name: Validate a COMPLETE standalone game and write reproducible hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          folder="UnityProject/build/StandaloneWindows64"
+          test -s "$folder/ResortSimulator.exe"
+          test -d "$folder/ResortSimulator_Data"
+          test -s "$folder/UnityPlayer.dll"
+          test -s "$folder/ResortSimulator_Data/globalgamemanagers"
+          (cd "$folder" && find . -type f -not -name 'SHA256SUMS.txt' -print0 | sort -z | xargs -0 sha256sum) > "$folder/SHA256SUMS.txt"
+          echo "VALIDATED_WINDOWS_OUTPUT: binary + data + engine + SHA256; runtime smoke on Windows is still pending."
       - name: Upload built Windows game
         uses: actions/upload-artifact@v4
         with:
