@@ -1,0 +1,59 @@
+name: Resort R2 | Fachadas premium Blender QA
+on:
+  push:
+    branches: [chatgpt/r2-fachadas-premium-prototipo]
+    paths:
+      - 'Tools/Blender/build_r2_facades.py'
+      - 'Tools/tests/test_r2_facades.py'
+      - '.github/workflows/r2-facades-blender.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r2-facades
+  cancel-in-progress: true
+jobs:
+  blender-r2:
+    name: Gerar tres fachadas e render genuino do Blender
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Blender headless + pillow
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq blender python3-numpy python3-pil libegl1 libgl1 libgl1-mesa-dri
+          blender --version
+      - name: Renderizar prototipos com malhas e materiais reais
+        run: |
+          blender --background --factory-startup --python Tools/Blender/build_r2_facades.py
+      - name: Verificar imagens e exportacoes FBX
+        run: |
+          python3 -m unittest discover -s Tools/tests -p 'test_r2_facades.py' -v
+      - name: Armazenar evidencia para revisao
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R2-Fachadas-Blender-FBX-Preview
+          path: |
+            UnityProject/Assets/Architecture/R2_Prototypes/
+            ArtSource/Previews/Resort_R2_Fachadas_Premium_Blender_QA.png
+            ArtSource/Previews/Resort_R2_Fachadas_Premium_QA.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Versionar FBX e preview reais na branch R2
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Architecture/R2_Prototypes/*.fbx
+          git add -f ArtSource/Previews/Resort_R2_Fachadas_Premium_Blender_QA.png
+          git add -f ArtSource/Previews/Resort_R2_Fachadas_Premium_QA.json
+          if git diff --cached --quiet; then
+            echo "Assets R2 already versioned; no changes"
+          else
+            git commit -m "art(R2): tres fachadas Blender verificadas e preview genuino"
+            git pull --rebase origin chatgpt/r2-fachadas-premium-prototipo
+            git push origin HEAD:chatgpt/r2-fachadas-premium-prototipo
+          fi
