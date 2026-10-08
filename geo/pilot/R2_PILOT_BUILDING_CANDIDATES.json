@@ -1,0 +1,80 @@
+{
+  "status": "CANDIDATES_NOT_APPROVED",
+  "source_osm": "geo/data/copacabana.osm.gz",
+  "frame": "geo/pilot/COPACABANA_FRAME_SOURCE.json",
+  "measurement": "projected EPSG:32723 to original local X/Y metres (Blender Z-up)",
+  "pilot_300x300m_local_bounds": {
+    "min_x": -150.0,
+    "max_x": 150.0,
+    "min_y": -310.0,
+    "max_y": -10.0
+  },
+  "candidate_count_within_bounds": 49,
+  "candidates": [
+    {
+      "osm_id": "way/1048279132",
+      "centroid_local_m": [
+        -69.666,
+        -260.203
+      ],
+      "centroid_lonlat": [
+        -43.18587169,
+        -22.97272716
+      ],
+      "footprint_area_m2": 138.51,
+      "bbox_size_m": [
+        17.77,
+        8.16
+      ],
+      "building_tag": "roof",
+      "height_tag": null,
+      "levels_tag": null,
+      "note": "OSM mapped footprint; no surveyed height implied",
+      "distance_to_avenida_atlantica_m": 20.54
+    },
+    {
+      "osm_id": "way/1048277518",
+      "centroid_local_m": [
+        -1.886,
+        -231.898
+      ],
+      "centroid_lonlat": [
+        -43.18561936,
+        -22.97210643
+      ],
+      "footprint_area_m2": 479.37,
+      "bbox_size_m": [
+        19.92,
+        28.28
+      ],
+      "building_tag": "yes",
+      "height_tag": null,
+      "levels_tag": null,
+      "note": "OSM mapped footprint; no surveyed height implied",
+      "distance_to_avenida_atlantica_m": 46.67
+    },
+    {
+      "osm_id": "way/1308635852",
+      "centroid_local_m": [
+        115.067,
+        -239.303
+      ],
+      "centroid_lonlat": [
+        -43.18478475,
+        -22.97138361
+      ],
+      "footprint_area_m2": 102.1,
+      "bbox_size_m": [
+        17.31,
+        8.66
+      ],
+      "building_tag": "yes",
+      "height_tag": null,
+      "levels_tag": null,
+      "note": "OSM mapped footprint; no surveyed height implied",
+      "distance_to_avenida_atlantica_m": 37.16
+    }
+  ],
+  "limits": "No building meshes replaced, no terrain created, no Unity compile or render, no claimed exact heights.",
+  "license": "© OpenStreetMap contributors — ODbL 1.0"
+}
