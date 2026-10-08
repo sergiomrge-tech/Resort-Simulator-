@@ -1,0 +1,10 @@
+{
+  "license": "Project-owned original geometry",
+  "source": "KioskPremium.blend + build_kiosk_premium.py",
+  "components": 307,
+  "polygons": 34468,
+  "triangles": 68008,
+  "scale": "1 unit = 1 metre",
+  "visual_status": "CANDIDATE_REVIEW until actual Unity capture inspection",
+  "preserved": "GUID; seats; station coordinates; stage ranges; source FBX in session backup"
+}

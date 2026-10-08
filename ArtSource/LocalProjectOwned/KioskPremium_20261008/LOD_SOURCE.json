@@ -1,0 +1,8 @@
+{
+  "license": "Project-owned original geometry",
+  "source": "KioskPremium.blend",
+  "trianglesLOD0": 68008,
+  "trianglesLOD1": 23802,
+  "ratio": 0.35,
+  "use": "Distant visual only; original detailed collider retained"
+}
