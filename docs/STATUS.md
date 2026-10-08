@@ -17,7 +17,7 @@ Projeto: **Resort Simulator — Costa Carioca**. Repositório único: `sergiomrg
 
 - **Diretor (ChatGPT):** coordena, define especificações, faz review visual, escolhe prioridades e aprova gates. Trabalha em documentação e acompanhamento, não disputa arquivos de código do Luna.
 - **Programador:** Codex **Luna Alto exclusivamente**, nunca Sol. Não atribuir a outra variante por conveniência. Execução depende de iniciar uma sessão de Codex; abrir Issue no GitHub **não inicia o agente**.
-- Até três frentes, somente quando não colidirem em arquivos. Começar com R1 como **única frente liberada**. R2 e R3 estão descritas, mas bloqueadas por dependências visuais/técnicas.
+- **Regra definitiva (08/10/2026): apenas um agente Codex Luna Alto ativo de cada vez**, inclusive no trabalho em nuvem sem PC. Nunca abrir frentes paralelas de Codex. Ordem sequencial: R1 (única frente liberada) → gate do Diretor → R2 → gate → R3. Workflows de validação do GitHub Actions podem ser executados independentemente do agente.
 - PC autorizado identificado como offline nesta verificação; este estado não implica falha do GitHub.
 - Não prometer execução contínua em segundo plano; usar commits, Issues, PRs, testes e relatórios concretos por sessão.
 
