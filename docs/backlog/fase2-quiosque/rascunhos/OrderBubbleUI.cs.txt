@@ -1,0 +1,148 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// Controla o balão de pedido World Space sobre a cabeça do cliente.
+/// Inclui efeito Billboard, temporizador radial dinâmico e animação suave de escala.
+/// </summary>
+public class OrderBubbleUI : MonoBehaviour
+{
+    [Header("Componentes de UI")]
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private Image itemIconImage;
+    [SerializeField] private Image timerFillImage;
+
+    [Header("Cores e Gradiente do Temporizador")]
+    [Tooltip("Transição de cor da barra conforme o tempo esgota")]
+    [SerializeField] private Gradient timerGradient;
+
+    [Header("Configurações do Billboard")]
+    [Tooltip("Se marcado, trava a rotação no eixo Y para o balão não inclinar na vertical")]
+    [SerializeField] private bool lockVerticalAxis = false;
+
+    private Transform mainCameraTransform;
+    private Coroutine scaleCoroutine;
+    private Vector3 originalScale;
+
+    private void Awake()
+    {
+        if (Camera.main != null)
+        {
+            mainCameraTransform = Camera.main.transform;
+        }
+
+        originalScale = transform.localScale;
+        
+        // Garante que o balão comece invisível (escala zero)
+        transform.localScale = Vector3.zero;
+
+        // Configuração padrão do gradiente caso não seja definido no Inspector
+        if (timerGradient == null || timerGradient.colorKeys.Length == 0)
+        {
+            SetupDefaultGradient();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        // Billboard: Mantém o balão sempre virado para a câmera do jogador
+        if (mainCameraTransform == null)
+        {
+            if (Camera.main != null) mainCameraTransform = Camera.main.transform;
+            return;
+        }
+
+        if (lockVerticalAxis)
+        {
+            Vector3 lookDirection = transform.position - mainCameraTransform.position;
+            lookDirection.y = 0; // Ignora inclinação para cima/baixo
+            if (lookDirection != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(lookDirection);
+            }
+        }
+        else
+        {
+            // Rotação idêntica à câmera evita distorções de perspectiva nas bordas da tela
+            transform.rotation = mainCameraTransform.rotation;
+        }
+    }
+
+    /// <summary>
+    /// Exibe o balão com o ícone do item solicitado e reseta o temporizador.
+    /// </summary>
+    public void ShowOrder(Sprite itemSprite)
+    {
+        if (itemIconImage != null)
+        {
+            itemIconImage.sprite = itemSprite;
+            itemIconImage.enabled = itemSprite != null;
+        }
+
+        UpdateTimer(1f); // Inicia 100% cheio
+        AnimateScale(originalScale);
+    }
+
+    /// <summary>
+    /// Atualiza o preenchimento e a cor do temporizador radial.
+    /// </summary>
+    /// <param name="normalizedProgress">Valor entre 1.0 (cheio) e 0.0 (esgotado)</param>
+    public void UpdateTimer(float normalizedProgress)
+    {
+        float clampedProgress = Mathf.Clamp01(normalizedProgress);
+
+        if (timerFillImage != null)
+        {
+            timerFillImage.fillAmount = clampedProgress;
+            timerFillImage.color = timerGradient.Evaluate(clampedProgress);
+        }
+    }
+
+    /// <summary>
+    /// Esconde o balão com efeito de encolhimento.
+    /// </summary>
+    public void HideOrder()
+    {
+        AnimateScale(Vector3.zero);
+    }
+
+    private void AnimateScale(Vector3 targetScale)
+    {
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+        scaleCoroutine = StartCoroutine(ScaleRoutine(targetScale, 0.25f));
+    }
+
+    private IEnumerator ScaleRoutine(Vector3 target, float duration)
+    {
+        Vector3 start = transform.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            // Curva suave de aproximação (Ease Out Back / SmoothStep)
+            t = Mathf.SmoothStep(0f, 1f, t);
+            transform.localScale = Vector3.LerpUnclamped(start, target, t);
+            yield return null;
+        }
+
+        transform.localScale = target;
+    }
+
+    private void SetupDefaultGradient()
+    {
+        timerGradient = new Gradient();
+        GradientColorKey[] colorKeys = new GradientColorKey[3];
+        colorKeys[0] = new GradientColorKey(new Color(0.9f, 0.2f, 0.2f), 0.0f); // Vermelho no final
+        colorKeys[1] = new GradientColorKey(new Color(1.0f, 0.8f, 0.1f), 0.4f); // Amarelo no meio
+        colorKeys[2] = new GradientColorKey(new Color(0.2f, 0.8f, 0.3f), 1.0f); // Verde no início
+
+        GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
+        alphaKeys[0] = new GradientAlphaKey(1.0f, 0.0f);
+        alphaKeys[1] = new GradientAlphaKey(1.0f, 1.0f);
+
+        timerGradient.SetKeys(colorKeys, alphaKeys);
+    }
+}
