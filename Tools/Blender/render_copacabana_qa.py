@@ -60,11 +60,11 @@ for obj in meshes:
             continue
         name = material.name.lower()
         if "road" in name:
-            tint = (0.21, 0.27, 0.33, 1)
+            tint = (0.37, 0.45, 0.55, 1)
         elif "land" in name or "beach" in name:
-            tint = (0.54, 0.67, 0.46, 1)
+            tint = (0.31, 0.48, 0.37, 1)
         else:
-            tint = (0.86, 0.85, 0.80, 1)
+            tint = (0.84, 0.67, 0.48, 1)
         material.diffuse_color = tint
         material.use_nodes = True
         node = material.node_tree.nodes.get("Principled BSDF")
@@ -82,11 +82,11 @@ ground.name = "TEMP_QA_GROUND_NOT_DEM"
 ground.dimensions = (dims.x + 160, dims.y + 160, 1.0)
 bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
 ground_material = bpy.data.materials.new("QA_background_ground_not_real")
-ground_material.diffuse_color = (0.60, 0.68, 0.61, 1)
+ground_material.diffuse_color = (0.16, 0.25, 0.27, 1)
 ground_material.use_nodes = True
 p = ground_material.node_tree.nodes.get("Principled BSDF")
 if p:
-    p.inputs["Base Color"].default_value = (0.60, 0.68, 0.61, 1)
+    p.inputs["Base Color"].default_value = (0.16, 0.25, 0.27, 1)
 ground.data.materials.append(ground_material)
 
 # Fresh QA camera; no dependence on stale Blender saved camera.
@@ -107,14 +107,14 @@ light_data = bpy.data.lights.new("QA_Daylight",type="SUN")
 light_object = bpy.data.objects.new("QA_Daylight",light_data)
 scene.collection.objects.link(light_object)
 light_object.rotation_euler = (math.radians(38), math.radians(-25), math.radians(-18))
-light_data.energy = 3
+light_data.energy = 1.15
 
 world = bpy.data.worlds.new("QA_DaySky")
 scene.world = world
 world.use_nodes = True
 bg = world.node_tree.nodes.get("Background")
-bg.inputs["Color"].default_value = (.65,.79,.92,1)
-bg.inputs["Strength"].default_value = .8
+bg.inputs["Color"].default_value = (.62,.74,.84,1)
+bg.inputs["Strength"].default_value = .35
 scene.render.engine = "CYCLES"
 scene.cycles.samples = 12
 scene.cycles.use_denoising = False
@@ -124,7 +124,7 @@ scene.render.resolution_y = 950
 scene.render.resolution_percentage = 100
 scene.render.image_settings.file_format = "PNG"
 scene.render.film_transparent = False
-scene.render.filepath = str(OUTDIR / "Copacabana_REAL_BLOCO_3D_QA.png")
+scene.render.filepath = str(OUTDIR / "Copacabana_REAL_BLOCO_3D_QA_COLOR.png")
 scene.view_settings.view_transform = "Standard"
 scene.view_settings.look = "Medium High Contrast"
 scene.view_settings.exposure = 0
