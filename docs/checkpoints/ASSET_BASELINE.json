@@ -1,0 +1,32 @@
+{
+  "baseline_date": "2026-10-08",
+  "source": "GitHub verified binary blob IDs; preserve these originals until explicit approval",
+  "map_area_m2": 2000000,
+  "entities": {
+    "building": 1468,
+    "road": 468,
+    "tree": 563
+  },
+  "assets": [
+    {
+      "id": "original_blendergis",
+      "path": "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend",
+      "git_blob_sha1": "124ec152b295967058304d68e19518f9a58f1e71",
+      "min_bytes": 2000000
+    },
+    {
+      "id": "unity_export_fbx",
+      "path": "UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx",
+      "git_blob_sha1": "0f1c5a4c08bd1a398d221bfab90410813b666c9c",
+      "min_bytes": 400000
+    },
+    {
+      "id": "real_blender_qa_preview",
+      "path": "ArtSource/Previews/Copacabana_REAL_BLOCO_3D_QA_COLOR.jpg",
+      "git_blob_sha1": null,
+      "min_bytes": 100000
+    }
+  ],
+  "report": "geo/data/report.json",
+  "license": "© OpenStreetMap contributors, ODbL 1.0"
+}
