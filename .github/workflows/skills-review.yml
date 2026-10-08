@@ -1,0 +1,28 @@
+name: Resort Skills | Validar biblioteca e fontes
+on:
+  push:
+    branches: ['chatgpt/skills-producao-resort-v1']
+    paths:
+      - '.agents/skills/**'
+      - 'docs/SKILLS_DE_PRODUCAO.md'
+      - 'docs/assets/**'
+      - 'Tools/tests/test_skills_contract.py'
+      - '.github/workflows/skills-review.yml'
+      - 'AGENTS.md'
+  pull_request:
+    paths:
+      - '.agents/skills/**'
+      - 'docs/SKILLS_DE_PRODUCAO.md'
+      - 'docs/assets/**'
+      - 'Tools/tests/test_skills_contract.py'
+      - '.github/workflows/skills-review.yml'
+      - 'AGENTS.md'
+permissions:
+  contents: read
+jobs:
+  check-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validar skills e integridade de fontes
+        run: python3 -m unittest discover -s Tools/tests -p 'test_skill*.py' -v

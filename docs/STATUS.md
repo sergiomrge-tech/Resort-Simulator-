@@ -15,15 +15,15 @@ Projeto: **Resort Simulator — Costa Carioca**. Repositório único: `sergiomrg
 
 ## Gestão de produção aprovada
 
-- **Diretor (ChatGPT):** coordena, define especificações, faz review visual, escolhe prioridades e aprova gates. Trabalha em documentação e acompanhamento, não disputa arquivos de código do Luna.
-- **Programador:** Codex **Luna Alto exclusivamente**, nunca Sol. Não atribuir a outra variante por conveniência. Execução depende de iniciar uma sessão de Codex; abrir Issue no GitHub **não inicia o agente**.
-- **Regra definitiva (08/10/2026): apenas um agente Codex Luna Alto ativo de cada vez**, inclusive no trabalho em nuvem sem PC. Nunca abrir frentes paralelas de Codex. Ordem sequencial: R1 (única frente liberada) → gate do Diretor → R2 → gate → R3. Workflows de validação do GitHub Actions podem ser executados independentemente do agente.
+- **Diretor e programador (ChatGPT):** após decisão do usuário em 08/10/2026, assume código, planejamento, QA e revisões diretamente pelo GitHub; dispensa Codex. Preservar PR e evidências.
+- **Agentes externos:** nenhum Codex/Luna/Sol é necessário neste fluxo. O ChatGPT executa mudanças em branches e GitHub Actions automatiza tarefas técnicas sem invocar agentes.
+- **Regra vigente (08/10/2026): trabalho exclusivamente com ChatGPT + GitHub, sem agentes Codex. Etapas R1 → revisão → R2 → revisão → R3 → gameplay. Workflows Actions independentes são permitidos.
 - PC autorizado identificado como offline nesta verificação; este estado não implica falha do GitHub.
 - Não prometer execução contínua em segundo plano; usar commits, Issues, PRs, testes e relatórios concretos por sessão.
 
 ## Backlog GitHub
 
-1. **R1 — P0, liberada para Luna:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/1 — importar, validar e executar Copacabana na Unity, configurar CI com gate de licença. Branch: `luna/r1-copacabana-unity-gate`.
+1. **R1 — P0, em desenvolvimento pelo ChatGPT:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/1 — importar, validar e executar Copacabana na Unity, configurar CI com gate de licença. Branch: `chatgpt/r1-unity-foundation` (PR #5 em revisão).
 2. **R2 — P1, bloqueada por R1:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/2 — fachadas premium, texturas PBR, diversidade e LOD.
 3. **R3 — P1, bloqueada por R1/R2:** https://github.com/sergiomrge-tech/Resort-Simulator-/issues/3 — resort cinco estrelas e orla piloto 300 × 300m.
 
@@ -35,3 +35,9 @@ Projeto: **Resort Simulator — Costa Carioca**. Repositório único: `sergiomrg
 - **Mapa final:** preservar área 2 km², conter grandes vazios com vegetação/praças/edificações coerentes, não derrubar FPS e não depender de máquinas sempre ligadas.
 
 © OpenStreetMap contributors, ODbL: https://www.openstreetmap.org/copyright.
+
+## Biblioteca de skills e desenvolvimento sem agentes
+
+- Índice de **13** skills cloud-first em `docs/SKILLS_DE_PRODUCAO.md`, com catálogo de licenças e QA.
+- R1 implementada em código na branch `chatgpt/r1-unity-foundation`; **7/7 testes estáticos passaram**, GitHub Actions 37854021618. GameCI Unity pulou por falta de licença; **não** há build Unity validada.
+- Roteamento e regras em `AGENTS.md`; as skills são playbooks internos, não programas externos instalados.
