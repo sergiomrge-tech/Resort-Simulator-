@@ -108,6 +108,16 @@ class R1GeographyStaticTests(unittest.TestCase):
         self.assertIn("extent.size.y > 300f", builder)
         self.assertNotIn("new Vector3(2000f, 90f, 1000f)", builder)
 
+    def test_windows_artifact_must_be_complete_and_portable(self):
+        flow = (ROOT / ".github/workflows/r1-unity-cloud.yml").read_text()
+        for must in ("ResortSimulator.exe", "ResortSimulator_Data",
+                     "UnityPlayer.dll", "SHA256SUMS.txt",
+                     "upload-artifact@v4"):
+            self.assertIn(must, flow)
+        self.assertIn('if [ -n "${UNITY_EMAIL}" ] && [ -n "${UNITY_PASSWORD}" ]', flow)
+        self.assertIn("VALIDATED_WINDOWS_OUTPUT:", flow)
+        self.assertIn("runtime smoke on Windows is still pending", flow)
+
     def test_unity_metadata_and_license_gate(self):
         manifest = json.loads((ROOT / "UnityProject/Packages/manifest.json").read_text())
         self.assertIn("com.unity.render-pipelines.universal", manifest["dependencies"])
