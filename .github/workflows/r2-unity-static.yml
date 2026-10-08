@@ -1,0 +1,25 @@
+name: Resort R2 | Unity source gate (sem licenca)
+on:
+  push:
+    branches: [chatgpt/r2-fachadas-premium-prototipo]
+    paths:
+      - 'UnityProject/Assets/Architecture/**'
+      - 'UnityProject/Assets/Editor/ResortFacadePreviewBuilder*'
+      - 'Tools/tests/test_r2_unity_static.py'
+      - '.github/workflows/r2-unity-static.yml'
+  pull_request:
+    branches: [chatgpt/r1-unity-foundation]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: resort-r2-unity-source-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: QA de referencias e metadados Unity R2
+        run: |
+          python3 -m unittest discover -s Tools/tests -p 'test_r2_unity_static.py' -v
