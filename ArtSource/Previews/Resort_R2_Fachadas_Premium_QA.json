@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "scope": "BLENDER_R2_PROTOTYPE_NOT_UNITY",
+  "modules": {
+    "R2_ArtDeco_Orla": {
+      "objects": 33,
+      "vertices": 264,
+      "faces": 198,
+      "materials": [
+        "R2_Calcario_Areia",
+        "R2_Metal_Bronze",
+        "R2_Reboco_Marfim",
+        "R2_Vidro_Cinza_Dark"
+      ],
+      "fbx_bytes": 161868,
+      "sha256": "f486c89c3260aa6ee7e2162db37b396f3b6f0f4975d7a5ea336707ad576cb798",
+      "path": "UnityProject/Assets/Architecture/R2_Prototypes/R2_ArtDeco_Orla.fbx"
+    },
+    "R2_Residencial_Varandas": {
+      "objects": 43,
+      "vertices": 896,
+      "faces": 894,
+      "materials": [
+        "R2_Aluminio_Escuro",
+        "R2_Calcario_Areia",
+        "R2_Ceramica_Terracota",
+        "R2_Concreto_Quente",
+        "R2_Folhagem_Premium",
+        "R2_Madeira_Tropical",
+        "R2_Metal_Bronze",
+        "R2_Reboco_Marfim",
+        "R2_Vidro_Azul_Fumê"
+      ],
+      "fbx_bytes": 225292,
+      "sha256": "b8a92c1c408591c17e5f1578357f49309cffdcbc381ec8a5786c3a73a2cb8505",
+      "path": "UnityProject/Assets/Architecture/R2_Prototypes/R2_Residencial_Varandas.fbx"
+    },
+    "R2_Hotel_Contemporaneo": {
+      "objects": 53,
+      "vertices": 424,
+      "faces": 318,
+      "materials": [
+        "R2_Aluminio_Escuro",
+        "R2_Ceramica_Terracota",
+        "R2_Concreto_Cinza_Calma",
+        "R2_Madeira_Tropical",
+        "R2_Metal_Bronze",
+        "R2_Reboco_Marfim",
+        "R2_Vidro_Cinza_Dark"
+      ],
+      "fbx_bytes": 251852,
+      "sha256": "81bc7b9dc1bed5ae656a4b05db873324e3405573b7a4b35bf27860bed904dd29",
+      "path": "UnityProject/Assets/Architecture/R2_Prototypes/R2_Hotel_Contemporaneo.fbx"
+    }
+  },
+  "preview_png": "ArtSource/Previews/Resort_R2_Fachadas_Premium_Blender_QA.png",
+  "preview_sha256": "9e822954337d84d98c57c94f3ffc9b36234faac6b7985d95d86cbf2160b2131e",
+  "render_engine": "Blender Cycles CPU (real Blender render, not Unity)",
+  "style": "realismo estilizado premium — prototypes, not approved final assets",
+  "copyright": "Original architecture; does not incorporate third-party textures"
+}
