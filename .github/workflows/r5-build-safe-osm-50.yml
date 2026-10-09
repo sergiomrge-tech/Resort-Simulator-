@@ -1,0 +1,69 @@
+name: Resort R5 | 50 Fachadas Integradas no Mapa OSM Real
+on:
+  push:
+    branches: [chatgpt/r5-implantacao-automatica-fachadas]
+    paths:
+      - 'Tools/geo/r5_original_osm_pipeline.py'
+      - 'Tools/geo/r5_mask_city_50.py'
+      - 'Tools/Blender/assemble_r5_city_50.py'
+      - 'Tools/tests/test_r5_real_city_50.py'
+      - '.github/workflows/r5-build-safe-osm-50.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r5-real-osm-safe-facade-50
+  cancel-in-progress: true
+jobs:
+  source-safe-50-facades:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original OSM projection and Blender Cycles headless dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+          python -m pip install --disable-pip-version-check pyproj shapely 'bpy>=4.3,<5' pillow
+      - name: Prove all original road/building triangle geometry survives except 50 source OSM buildings
+        run: python Tools/geo/r5_mask_city_50.py
+      - name: Build one derived georeferenced Blender city with 50 distinct modeled facades
+        run: >
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/assemble_r5_city_50.py',run_name='__main__')"
+      - name: Validate 50 real native FBX imports, street geometry, hashes and genuine Blender photo
+        run: python -m unittest discover -s Tools/tests -p test_r5_real_city_50.py -v
+      - name: Upload validated R5 derived city 3D and Blender QA, preserving original GIS
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R5-Copacabana-50-Fachadas-OSM-Real-Derivado
+          path: |
+            UnityProject/Assets/Architecture/R5_Pilot50/
+            UnityProject/Assets/Architecture/R5_Pilot50.meta
+            ArtSource/Previews/R5_Copacabana_50_Predios_Blender_Real_QA.png
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit validated assets without overwriting reference Blender / source FBX
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Architecture/R5_Pilot50/
+          git add -f UnityProject/Assets/Architecture/R5_Pilot50.meta
+          git add -f ArtSource/Previews/R5_Copacabana_50_Predios_Blender_Real_QA.png
+          if ! git diff --cached --quiet; then
+            git commit -m "art(R5): cidade OSM derivada com 50 fachadas reais sem remover ruas"
+            for try_number in 1 2 3; do
+              git fetch origin chatgpt/r5-implantacao-automatica-fachadas
+              if git rebase FETCH_HEAD && git push origin HEAD:chatgpt/r5-implantacao-automatica-fachadas; then
+                exit 0
+              fi
+              git rebase --abort || true
+              sleep 2
+            done
+            exit 1
+          fi
