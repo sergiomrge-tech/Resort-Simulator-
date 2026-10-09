@@ -89,6 +89,16 @@ class R7PipelineSourceTests(unittest.TestCase):
         self.assertIn("group: resort-r7-uv-pilot-${{ github.ref }}", source)
         self.assertNotIn("git push origin HEAD:codex/r7-acabamento-urbano-uv-pbr", source)
 
+    def test_capture_refuses_obstructed_and_off_road_pedestrian_views(self):
+        source = (ROOT / "UnityProject/Assets/Editor/ResortR7VisualCapture.cs").read_text(encoding="utf-8")
+        self.assertIn("streetLevel && !OnOriginalRoad(candidate)", source)
+        self.assertIn("!SeesBuilding(candidate,b,id)", source)
+        self.assertIn("CAMERA_OBSTRUCTED_OR_OFF_ROAD", source)
+        self.assertIn("AddComponent<MeshCollider>()", source)
+        self.assertIn("Physics.SyncTransforms()", source)
+        self.assertIn("DestroyImmediate(collider)", source)
+        self.assertIn("original_road_position_verified = streetLevel", source)
+
     def test_assignment_source_has_1468_unique_osm_ways_and_50_styles(self):
         assignment = json.loads((ROOT / "geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json").read_text(encoding="utf-8"))
         ids = [row["building_id"] for row in assignment["buildings"]]

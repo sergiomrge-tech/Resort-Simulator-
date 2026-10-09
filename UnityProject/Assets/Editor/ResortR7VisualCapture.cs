@@ -31,6 +31,10 @@ public static class ResortR7VisualCapture
         public string style;
         public string viewpoint;
         public long bytes;
+        public Vector3 camera_position;
+        public Vector3 look_target;
+        public bool sight_lines_verified;
+        public bool original_road_position_verified;
     }
     [Serializable]
     private sealed class Report
@@ -83,6 +87,37 @@ public static class ResortR7VisualCapture
         }
         return null;
     }
+    private static bool OnOriginalRoad(Vector3 position)
+    {
+        if (!Physics.Raycast(position + Vector3.up * 4f, Vector3.down, out var hit, 40f)) return false;
+        var renderer = hit.collider.GetComponent<Renderer>();
+        var filter = hit.collider.GetComponent<MeshFilter>();
+        if (renderer == null || filter == null || filter.sharedMesh == null) return false;
+        int triangle = hit.triangleIndex;
+        for (int slot = 0; slot < filter.sharedMesh.subMeshCount; slot++)
+        {
+            int count = (int)filter.sharedMesh.GetIndexCount(slot) / 3;
+            if (triangle < count)
+                return slot < renderer.sharedMaterials.Length && renderer.sharedMaterials[slot] != null &&
+                    renderer.sharedMaterials[slot].name.StartsWith("R7_OSM_Roads_", StringComparison.Ordinal);
+            triangle -= count;
+        }
+        return false;
+    }
+    private static bool SeesBuilding(Vector3 position, Bounds bounds, string id)
+    {
+        int visible = 0;
+        foreach (float fraction in new[] { .25f, .50f, .75f })
+        {
+            var target = new Vector3(bounds.center.x, bounds.min.y + bounds.size.y * fraction, bounds.center.z);
+            var delta = target - position;
+            if (!Physics.Raycast(position, delta.normalized, out var hit, delta.magnitude + .1f)) continue;
+            var renderer = hit.collider.GetComponent<Renderer>();
+            var match = renderer == null ? null : Find(renderer);
+            if (match != null && match.Groups["osm"].Value == id) visible++;
+        }
+        return visible >= 2;
+    }
     private static Shot Capture(Camera cam, Bounds b, string id, string style,
                                 string viewpoint, string output, bool streetLevel)
     {
@@ -105,6 +140,23 @@ public static class ResortR7VisualCapture
                 b.center.z - distance);
             cam.fieldOfView = 49f;
         }
+        bool found = false;
+        Vector3 preferred = cam.transform.position - new Vector3(b.center.x,cam.transform.position.y,b.center.z);
+        foreach (float radiusScale in new[] { 1f, .8f, 1.3f, 1.7f })
+        {
+            for (int direction = 0; direction < 24; direction++)
+            {
+                var offset = Quaternion.Euler(0f,direction * 15f,0f) * preferred * radiusScale;
+                var candidate = new Vector3(b.center.x+offset.x,cam.transform.position.y,b.center.z+offset.z);
+                if (streetLevel && !OnOriginalRoad(candidate)) continue;
+                if (!SeesBuilding(candidate,b,id)) continue;
+                cam.transform.position=candidate;
+                found=true;
+                break;
+            }
+            if (found) break;
+        }
+        Require(found, "CAMERA_OBSTRUCTED_OR_OFF_ROAD: " + id + " " + viewpoint);
         cam.transform.LookAt(target);
         cam.orthographic = false;
         cam.nearClipPlane = .2f;
@@ -146,7 +198,11 @@ public static class ResortR7VisualCapture
                 bytes = new FileInfo(output).Length,
                 osm_way = id,
                 style = style,
-                viewpoint = viewpoint
+                viewpoint = viewpoint,
+                camera_position = cam.transform.position,
+                look_target = target,
+                sight_lines_verified = true,
+                original_road_position_verified = streetLevel
             };
         }
         finally
@@ -233,20 +289,41 @@ public static class ResortR7VisualCapture
             "URP_PIPELINE_GATE_FAILED: active URP asset required");
         Directory.CreateDirectory(folder);
         var shots=new List<Shot>();
+        // FBX objects have no colliders by default. Use temporary real triangle
+        // colliders solely for QA sight lines, never save them into the scene.
+        var temporaryColliders=new List<MeshCollider>();
+        foreach(var root in scene.GetRootGameObjects())
+            foreach(var filter in root.GetComponentsInChildren<MeshFilter>(true))
+                if(filter.sharedMesh!=null && filter.GetComponent<Collider>()==null)
+                {
+                    Require(filter.sharedMesh.isReadable, "R7_QA_MESH_NOT_READABLE: rebuild with ResortR7FacadeFinish.Build");
+                    var collider=filter.gameObject.AddComponent<MeshCollider>();
+                    collider.hideFlags=HideFlags.DontSave;
+                    collider.sharedMesh=filter.sharedMesh;
+                    temporaryColliders.Add(collider);
+                }
+        Physics.SyncTransforms();
         string[] families={"art_deco_carioca","residencial_orla","hotel_contemporaneo"};
-        for (int i=0;i<families.Length;i++)
+        try
         {
-            var family=families[i];
-            var target=grouped.Values.Where(x=>x.style.Contains(family))
-                .OrderBy(x=>x.bounds.center.sqrMagnitude).FirstOrDefault();
-            Require(target!=null,"No matching OSM style "+family);
-            string filename="R7_0"+(i+1)+"_"+family+"_RealUnity.png";
-            shots.Add(Capture(cam,target.bounds,target.id,target.style,
-                "OBLIQUE_45_REAL_UNITY",Path.Combine(folder,filename),false));
-            if(i==0)
+            for (int i=0;i<families.Length;i++)
+            {
+                var family=families[i];
+                var target=grouped.Values.Where(x=>x.style.Contains(family))
+                    .OrderBy(x=>x.bounds.center.sqrMagnitude).FirstOrDefault();
+                Require(target!=null,"No matching OSM style "+family);
+                string filename="R7_0"+(i+1)+"_"+family+"_RealUnity.png";
                 shots.Add(Capture(cam,target.bounds,target.id,target.style,
-                    "PEDESTRIAN_CAMERA_REAL_UNITY",
-                    Path.Combine(folder,"R7_04_Pedestrian_RealUnity.png"),true));
+                    "OBLIQUE_45_REAL_UNITY",Path.Combine(folder,filename),false));
+                if(i==0)
+                    shots.Add(Capture(cam,target.bounds,target.id,target.style,
+                        "PEDESTRIAN_CAMERA_REAL_UNITY",
+                        Path.Combine(folder,"R7_04_Pedestrian_RealUnity.png"),true));
+            }
+        }
+        finally
+        {
+            foreach(var collider in temporaryColliders) UnityEngine.Object.DestroyImmediate(collider);
         }
         var report=new Report
         {

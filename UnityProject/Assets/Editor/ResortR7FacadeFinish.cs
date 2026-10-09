@@ -439,6 +439,15 @@ public static class ResortR7FacadeFinish
         string sourceBlend = Path.Combine(repo, "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend");
         string sourceFbx = Path.Combine(Application.dataPath,
             "ImportedBlender/Copacabana_Real_Blender.fbx");
+        var derivedImporter = AssetImporter.GetAtPath(DerivedFbx) as ModelImporter;
+        Require(derivedImporter != null, "R7_DERIVED_FBX_MISSING: run Blender R7 pipeline first");
+        // Triangle colliders and detailed UV inspection are QA-only. Preserve
+        // the original map importer; enable CPU mesh access only on this derivative.
+        if (!derivedImporter.isReadable)
+        {
+            derivedImporter.isReadable = true;
+            derivedImporter.SaveAndReimport();
+        }
         var derivedAsset = AssetDatabase.LoadAssetAtPath<GameObject>(DerivedFbx);
         Require(derivedAsset != null, "R7_DERIVED_FBX_MISSING: run Blender R7 pipeline first");
         Require(File.Exists(sourceBlend) && File.Exists(sourceFbx), "GIS originals missing");
@@ -569,6 +578,13 @@ public static class ResortR7FacadeFinish
                 Require(filter != null && filter.sharedMesh != null &&
                     filter.sharedMesh.HasVertexAttribute(UnityEngine.Rendering.VertexAttribute.TexCoord0),
                     "UV0_MISSING: " + renderer.name);
+                var uv = filter.sharedMesh.uv;
+                Require(uv.Length == filter.sharedMesh.vertexCount && uv.Length > 0 &&
+                    uv.All(p => !float.IsNaN(p.x) && !float.IsInfinity(p.x) &&
+                                !float.IsNaN(p.y) && !float.IsInfinity(p.y)) &&
+                    uv.Max(p => p.x) - uv.Min(p => p.x) > .001f &&
+                    uv.Max(p => p.y) - uv.Min(p => p.y) > .001f,
+                    "UV0_INVALID_OR_COLLAPSED: " + renderer.name);
                 ids.Add(building.Groups["way"].Value);
                 styles.Add(style);
                 finished++;

@@ -131,7 +131,7 @@ def main() -> None:
     assert not bad, "R7_FBXREREAD_FAILED: " + "; ".join(bad[:16])
     assert len(ids) == 50, f"Expected 50 unique OSM buildings, got {len(ids)}"
     assert len(styles) == 50, f"Expected 50 unique architectural styles, got {len(styles)}"
-    assert len(parts) >= 5 and parts["wall"] and parts["glass"], "Facade semantic variety lost"
+    assert set(parts)==SEMANTICS, "One of the nine pilot material categories was lost"
     report = {
         "status": "R7_NATIVE_BLENDER_FBX_REIMPORT_UV0_AND_SEMANTIC_PASS",
         "tool": "bpy.ops.import_scene.fbx",
