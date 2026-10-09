@@ -1,5 +1,19 @@
 # R5 — Implantação automática e segura de 50 fachadas reais em Copacabana
 
+## Checkpoint validado — Blender + Unity Editor DX11 (08/10/2026)
+
+**Implementação técnica concluída no piloto de 50 prédios.** A [execução GitHub Actions R5](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37868085440) gerou um FBX consolidado real do mapa com apenas os 50 volumes antigos removidos: 763 faces de edifícios retiradas, 0 faces de rua retiradas, 3.731 faces originais de vias preservadas, 577.770 polígonos das novas fachadas. Foram comparadas também as coordenadas do BlenderGIS real (matriz original rotacionada 46°), e os hashes dos originais foram preservados.
+
+**Validação local nativa, em uma cópia separada na unidade D:** a Unity 6.6.2f1 importou o FBX na API nativa do Editor e confirmou 50 IDs distintos, 370 renderizadores detalhados, 1.181.354 triângulos no FBX derivado. A cena QA foi salva em `UnityProject/Assets/Scenes/R5_Copacabana_50_Predios_EditorQA.unity`. Duas capturas **reais Unity Camera.Render com Direct3D11** foram feitas e versionadas:
+- [Câmera ampla — QA técnico](../../ArtSource/Previews/R5_Unity_DX11_City_Overview_Real_QA.png)
+- [Câmera aproximada — QA técnico](../../ArtSource/Previews/R5_Unity_DX11_Facade_Closeup_Real_QA.png)
+- [Relatório nativo Unity com SHA256 e limites](../../ArtSource/Previews/R5_Unity_DX11_Native_QA.json)
+
+**Gate visual: PENDENTE.** As capturas reais mostram que as fachadas novas têm janelas/sacadas estruturais, mas os 1.418 prédios restantes ainda são massas brancas e o acabamento das fachadas novas não atende ao objetivo de *Realismo Estilizado Premium*. A renderização DX11 não substitui uma avaliação de texturas, materiais URP, calçadas, areia, paisagismo, iluminação ou FPS. Não dizer que 1.468 prédios já têm fachadas premium; não afirmar executável/Steam build pronto.
+
+**Próximas melhorias:** materiais PBR por estilo e região, adição real de superfícies/calçadas sem comprometer geografia, LOD agressivo fora da vista de pedestre, streaming por quarteirão e benchmarks Unity. Substituição massiva dos 1.418 prédios **não deve acontecer** antes de provar memória e desempenho. A fase 2 de quiosque/economia/NPCs segue arquivada para após o gate visual.
+
+
 **Objetivo:** construir uma **cópia geográfica derivada do mapa atual**, substituindo as volumetrias antigas dos **50 OSM ways** cujos modelos reais FBX estão na biblioteca R4. Nenhum arquivo do mapa original é modificado.
 
 ## Processo
