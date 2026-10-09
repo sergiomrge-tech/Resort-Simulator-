@@ -57,7 +57,11 @@ for obj in model_objects:
         matname=matnames[poly.material_index] if poly.material_index<len(matnames) else "unknown"
         report["materials"][matname]=report["materials"].get(matname,0)+1
         world=obj.matrix_world@poly.center
-        xy=world.x,world.y
+        # OSM rings are expressed in SOURCE MESH LOCAL coordinates.
+        # The .blend object has a 46-degree matrix_world rotation, so
+        # comparing OSM rings to world.x/y would select wrong buildings.
+        local=poly.center
+        xy=local.x,local.y
         for site in parcels:
             bounds=site["bounds_xy_m"]
             if not (bounds["min_x"]-1<=xy[0]<=bounds["max_x"]+1 and
