@@ -75,7 +75,7 @@ class R6FacadeSourceTests(unittest.TestCase):
         self.assertTrue(Path(str(SCRIPT) + ".meta").is_file())
 
     def test_r6_does_not_erase_unreplaced_city_mass(self):
-        self.assertIn("if (!building.Success) continue;", self.code)
+        self.assertIn("if (building == null) continue;", self.code)
         self.assertIn("Roads and other 1,418 volumes preserved.", self.code)
         self.assertIn("selected_buildings = ids.Count", self.code)
         self.assertIn("distinct_styles = styles.Count", self.code)
