@@ -96,6 +96,32 @@ for oid,proposal in compatible:
         f for f in bm.faces if f.material_index in buildslots
         and all(eligible_vertex(v) for v in f.verts)
     }
+    # Debug conservatively before any mutation: centroid vs full-vertex
+    # agreement and roof area must be understood for the actual BlenderGIS mesh.
+    def diagnostic(subset):
+        roof=0.0
+        for face in subset:
+            norm=(city.matrix_world.to_3x3()@face.normal).normalized()
+            if norm.z>.85:
+                vs=[city.matrix_world@v.co for v in face.verts]
+                roof+=abs(sum(a.x*b.y-b.x*a.y for a,b in zip(vs,vs[1:]+vs[:1])))*.5
+        allverts=[city.matrix_world@v.co for face in subset for v in face.verts]
+        bbox=([round(min(v.x for v in allverts),3),round(min(v.y for v in allverts),3),
+               round(max(v.x for v in allverts),3),round(max(v.y for v in allverts),3)]
+              if allverts else [])
+        return {"count":len(subset),"roof_area":round(roof,3),"bbox":bbox}
+    checks={"vertices_0_18":diagnostic(found)}
+    for tolerance in (.45,.8,1.3,2.0):
+        selected={f for f in bm.faces if f.material_index in buildslots
+           and all(touch((w.x,w.y),ring,dist=tolerance)
+                   for w in (city.matrix_world@v.co for v in f.verts))}
+        checks["all_verts_tol_"+str(tolerance)]=diagnostic(selected)
+    for tolerance in (0,.20,.45,.8):
+        selected={f for f in bm.faces if f.material_index in buildslots
+           and touch((c.x,c.y),ring,dist=tolerance)
+           for c in [city.matrix_world@f.calc_center_median()]}
+        checks["centroids_tol_"+str(tolerance)]=diagnostic(selected)
+    print("R3_SOURCE_FACE_ALIGNMENT_DIAGNOSTIC",oid,json.dumps(checks),flush=True)
     if not (5<=len(found)<=90):
         raise RuntimeError(f"Strict OSM face isolation found {len(found)} faces for {oid}; abort")
     if any(f.material_index not in buildslots for f in found):
