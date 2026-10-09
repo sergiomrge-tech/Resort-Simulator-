@@ -36,9 +36,9 @@ def main():
             meters = (12, 12.5)
         else:
             if kind in ('sand','wet_sand'):
-                value = (.52 if kind=='sand' else .36) + grain*.010 + .012*np.sin(x*2*np.pi)*np.cos(y*4*np.pi)
+                value = (.52 if kind=='sand' else .36) + grain*.008
                 rgb = np.stack((value*1.08, value*.98, value*.81), -1)
-                height = grain*.000045 + .00012*np.sin(x*2*np.pi)*np.cos(y*4*np.pi)
+                height = grain*.000025
                 smooth = np.full_like(x, .04 if kind=='sand' else .16)
             elif kind in ('asphalt','pavement'):
                 joint=(np.mod(x*4,1)<.012)|(np.mod(y*4,1)<.012)

@@ -44,7 +44,7 @@
     },
     {
       "path": "UnityProject/Assets/Textures/R13_Pass2/r13_sand_base.png",
-      "sha256": "3395ba5f51a807ed5de7c1cce886cd9f030745f2dcacd00818aa63254ece3c58",
+      "sha256": "fe1e9abfafdb64a8a46c6d376ec05152372b40f7b66cacec25edef192a51a8f1",
       "size": [
         1024,
         1024
@@ -57,7 +57,7 @@
     },
     {
       "path": "UnityProject/Assets/Textures/R13_Pass2/r13_sand_normal.png",
-      "sha256": "b5c0e931d8cd7676ee64fac77a9883708d2ddd5c539cbc10f51f922e0c508e05",
+      "sha256": "e171118df78ead8bb075abb4e0e3bf9a774379978be5e046760f3959b3dea2dd",
       "size": [
         1024,
         1024
@@ -83,7 +83,7 @@
     },
     {
       "path": "UnityProject/Assets/Textures/R13_Pass2/r13_wet_sand_base.png",
-      "sha256": "0b11cdcb7cdc41be72d37cfc33399e384d0cc69a7cb8c27050ee572a9bb35d98",
+      "sha256": "71b5623881eaa701342c50cae704913c7c587f3533e3f4742f5edfbf8b1f3b8a",
       "size": [
         1024,
         1024
@@ -96,7 +96,7 @@
     },
     {
       "path": "UnityProject/Assets/Textures/R13_Pass2/r13_wet_sand_normal.png",
-      "sha256": "dc12e2078801160b3f3ab73d6dfde30ebaab279f95ec64e62c9ba4a9c0c02003",
+      "sha256": "eae9134c651ae3b7c2707ed2e78097e698f34448ae2959c820ac9677fd1b0b6d",
       "size": [
         1024,
         1024

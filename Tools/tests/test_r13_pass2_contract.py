@@ -1,4 +1,4 @@
-﻿"""Static regression contracts for native Pass2 outputs; not artistic approval."""
+"""Static regression contracts for native Pass2 outputs; not artistic approval."""
 from pathlib import Path
 import hashlib,json,re,unittest
 from PIL import Image
@@ -39,7 +39,17 @@ class Pass2(unittest.TestCase):
   for phase in ['before','after']:
    p=ROOT/f'ArtSource/Previews/R13_Pass2_VisualNativeQA_{phase}.json'
    if not p.exists():continue
-   q=json.loads(p.read_text());self.assertEqual(q['unity_version'],'6000.6.2f1');self.assertEqual(q['renderer'],'Direct3D11');self.assertEqual(len(q['captures']),18)
+   q=json.loads(p.read_text());self.assertEqual(q['unity_version'],'6000.6.2f1');self.assertEqual(q['renderer'],'Direct3D11');self.assertEqual(len(q['captures']),30)
    for f in q['captures']:
     p=ROOT/'ArtSource/Previews'/f['filename'];self.assertEqual(hashlib.sha256(p.read_bytes()).hexdigest(),f['sha256']);self.assertEqual(Image.open(p).size,(1600,900));self.assertEqual(f['warmup_frames'],5)
+ def test_native_unity_and_pairing_if_present(self):
+  p=ROOT/'ArtSource/Previews/R13_Pass2_VisualNativeQA.json'
+  if not p.exists():return
+  q=json.loads(p.read_text());self.assertEqual(len(q['captures']),60);self.assertEqual(q['urp_version'],'17.6.0')
+  before=j('ArtSource/Previews/R13_Pass2_VisualNativeQA_before.json')['captures'];after=j('ArtSource/Previews/R13_Pass2_VisualNativeQA_after.json')['captures']
+  for a,b in zip(before,after):
+   for key in ['lighting','position','target','sun_euler','sun_intensity','sun_shadow_strength','field_of_view','width','height']:self.assertEqual(a[key],b[key],key)
+  t=j('ArtSource/Previews/R13_Pass2_UnityTechnicalQA.json')
+  for key in ['missing_uv0','tree_missing_uv0','shader_errors','missing_material_slots']:self.assertEqual(t[key],0,key)
+  self.assertEqual(t['texture2d_count'],21);self.assertEqual(t['urp_version'],'17.6.0');self.assertEqual(t['road_triangles'],3731);self.assertEqual(t['trees'],48)
 if __name__=='__main__':unittest.main()

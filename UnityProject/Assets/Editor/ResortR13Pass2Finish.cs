@@ -112,7 +112,11 @@ public static class ResortR13Pass2Finish {
   foreach(var r in all.Where(r=>r.name.StartsWith("R9_TREE_")||r.name.StartsWith("R9_URBAN_PAVEMENT_")||r==road)){
    var f=r.GetComponent<MeshFilter>();Need(f!=null&&f.sharedMesh!=null,"DERIVED_MESH_MISSING");
    var mesh=UnityEngine.Object.Instantiate(f.sharedMesh);mesh.name=r.name+"_Pass2UV";
-   mesh.SetUVs(0,mesh.vertices.Select(v=>new Vector2(v.x/2,v.z/2)).ToList());
+   // FBX node transforms may retain axis conversion; UVs must use world metres.
+   var coords=new List<Vector2>();
+   foreach(var v in mesh.vertices){var w=f.transform.TransformPoint(v);coords.Add(new Vector2(Vector3.Dot(w,new Vector3(.694658f,0,-.719340f))/2,Vector3.Dot(w,new Vector3(-.719340f,0,-.694658f))/2));}
+   mesh.SetUVs(0,coords);
+   if(r==road||r.name.StartsWith("R9_URBAN_PAVEMENT_"))Need(coords.Max(v=>v.x)-coords.Min(v=>v.x)>100&&coords.Max(v=>v.y)-coords.Min(v=>v.y)>100,"WORLD_METRIC_PAVEMENT_UV_COLLAPSED");
    string asset="Assets/Architecture/R13_Pass2/Derived/"+mesh.name+".asset";
    if(AssetDatabase.LoadAssetAtPath<Mesh>(asset)!=null)AssetDatabase.DeleteAsset(asset);
    AssetDatabase.CreateAsset(mesh,asset);f.sharedMesh=mesh;

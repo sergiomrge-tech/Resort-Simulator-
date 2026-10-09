@@ -9,10 +9,12 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
  q=json.loads((ROOT/'UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json').read_text())
  art=json.loads((ROOT/'UnityProject/Assets/Textures/R13_Pass2/R13_Pass2_SURFACE_ART.json').read_text())
+ technical=PRE/'R13_Pass2_UnityTechnicalQA.json'
+ checkpoint_matches=technical.exists() and json.loads(technical.read_text())['fbx_sha256']==q['fbx_sha256']
  frames=[]
  for phase in ('before','after'):
   path=PRE/f'R13_Pass2_VisualNativeQA_{phase}.json'
-  if path.exists():
+  if path.exists() and checkpoint_matches:
    report=json.loads(path.read_text());assert report['unity_version']=='6000.6.2f1' and report['renderer']=='Direct3D11'
    for f in report['captures']:
     assert sha(PRE/f['filename'])==f['sha256'];frames.append(f)
@@ -31,11 +33,10 @@ def main():
    'sea_sand_mosaic':{'generated':True,'native_gate':s['native_gate'],'continuous_boundaries_total':q.get('native_contiguous_boundaries',0)},
    'adjacent_buildings':{'decorative_facade_count':len(ids),'osm_ids':ids,'accessible_interiors':False},
    'QA_evidence':{'native':'UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json','unity_captures':shots,'visual_gate':'CAPTURED_REVIEW_PENDING' if shots else 'PENDING','art_approved':False}})
- technical=PRE/'R13_Pass2_UnityTechnicalQA.json'
- if technical.exists():
+ if checkpoint_matches:
   t=json.loads(technical.read_text());assert t['fbx_sha256']==q['fbx_sha256'] and t['missing_uv0']==0 and t['tree_missing_uv0']==0 and t['texture2d_count']==21
   for r in rows:r['vegetation']['tree_uv0_gate']='PASS_UNITY_DERIVED'
- result={'frame_m':[2000,1000],'fbx_sha256':q['fbx_sha256'],'surface_sectors':q['surface_sectors'],'detailed_sectors':q['refined_sectors'],'pbr_texture_count':len(art['textures']),'artistic_gate_approved':False,'sectors':rows}
+ result={'frame_m':[2000,1000],'fbx_sha256':q['fbx_sha256'],'surface_sectors':q['surface_sectors'],'detailed_sectors':q['refined_sectors'],'pbr_texture_count':len(art['textures']),'unity_checkpoint_matches_generated_fbx':checkpoint_matches,'artistic_gate_approved':False,'sectors':rows}
  (PRE/'R13_Pass2_Coverage.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
  print('R13_PASS2_FACTUAL_COVERAGE',len(rows),'sectors',len(frames),'verified GPU frames')
 if __name__=='__main__':main()

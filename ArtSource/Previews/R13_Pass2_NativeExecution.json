@@ -1,0 +1,37 @@
+{
+  "receipt_created_utc": "2026-10-09T15:27:05.841094+00:00",
+  "artifact_sha256": {
+    "Tools/Blender/generate_r13_pass2.py": "83f0a5190cc8ffe92e5f1be0c852df76bec6cea5e80837e8850edc0a19e0035d",
+    "Tools/geo/generate_r13_pass2_surface_art.py": "64a1bd3b8fa72ebd6a44b05d313205393ff316d1cf8d096431d606ed662f9dda",
+    "UnityProject/Assets/Editor/ResortR13Pass2Finish.cs": "81411b60b141ce6e1ff7d764ee3dc9474b3b14f68e6a0d85d5e38ccc5064f4e8",
+    "UnityProject/Assets/Editor/ResortR13Pass2Capture.cs": "c8c7292bb13aaa2880cc2500050f6b7b3d835a00439cf0736d43ea891983cfd7",
+    "UnityProject/Assets/Shaders/R13_Pass2Sand.shader": "2cf0a46387d31539e2aec8a2b49f22a5d70967e61504934f7ec039817b9e4020",
+    "UnityProject/Assets/Textures/R13_Pass2/R13_Pass2_SURFACE_ART.json": "32704f14e10e82887e91b952f0c9c4926e98c96066ae23f872bf4cafbdcb1cd5",
+    "UnityProject/Assets/Architecture/R13_Pass2/R13_VisualPass2_Coastal_Sectors.fbx": "46c10aea437056b646dd7787476a4519d1787eeb4bc800d188fcdbfda2830129"
+  },
+  "native_gate_output": {
+    "build/R13_Pass2_generate.log": [],
+    "build/R13_Pass2_reimport.log": [],
+    "build/R13_Pass2_UnityBuild_Final.log": [
+      "R13_WORLD_METRE_SCALE_GATE_PASS center=(-368.17, -0.03, 216.53) extents=(75.47, 0.00, 77.73)",
+      "R13_UNITY_NATIVE_PASS meshes=105 roads=3731 trees=48 missingUV=0 shaderErrors=0"
+    ],
+    "build/R13_Pass2_UnityBefore.log": [
+      "R13_REAL_GPU_CAPTURE_BEFORE_PASS count=30"
+    ],
+    "build/R13_Pass2_UnityAfter.log": [
+      "R13_REAL_GPU_CAPTURE_AFTER_PASS count=30"
+    ],
+    "build/R13_Pass2_UnityAssemble.log": [
+      "R13_REAL_GPU_CAPTURE_PASS count=60 paired_views=30"
+    ]
+  },
+  "qa_scene_sha256": {
+    "Assets/Scenes/R13_VisualPass2.unity": "0ab37c87f9d783e33637f46dd0747a89ee3735b225029f9529b714fafe1d0535",
+    "Assets/Scenes/R13_Copacabana_200m_Premium.unity": "2ba81b2985f2ac85d92605d96bfae9f856694266f2b81dd7503d9e61875918cb"
+  },
+  "fps_measured": false,
+  "gameplay_integrated": false,
+  "baseline_qa_source_read_only": "D:/ProjectResort_R8_UnityQA/UnityProject",
+  "qa_workspace": "D:/ProjectResort_R13_Sol61_Pass2/build/UnityQA"
+}

@@ -22,6 +22,7 @@
     6
   ],
   "pbr_texture_count": 21,
+  "unity_checkpoint_matches_generated_fbx": true,
   "artistic_gate_approved": false,
   "sectors": [
     {
@@ -227,8 +228,19 @@
       },
       "QA_evidence": {
         "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
-        "unity_captures": [],
-        "visual_gate": "PENDING",
+        "unity_captures": [
+          "R13_Pass2_S04_after_day_walk_RealUnity.png",
+          "R13_Pass2_S04_after_day_coast_RealUnity.png",
+          "R13_Pass2_S04_after_day_shore_RealUnity.png",
+          "R13_Pass2_S04_after_day_pedestrian_RealUnity.png",
+          "R13_Pass2_S04_after_day_city_RealUnity.png",
+          "R13_Pass2_S04_after_late_walk_RealUnity.png",
+          "R13_Pass2_S04_after_late_coast_RealUnity.png",
+          "R13_Pass2_S04_after_late_shore_RealUnity.png",
+          "R13_Pass2_S04_after_late_pedestrian_RealUnity.png",
+          "R13_Pass2_S04_after_late_city_RealUnity.png"
+        ],
+        "visual_gate": "CAPTURED_REVIEW_PENDING",
         "art_approved": false
       }
     },
@@ -291,8 +303,19 @@
       },
       "QA_evidence": {
         "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
-        "unity_captures": [],
-        "visual_gate": "PENDING",
+        "unity_captures": [
+          "R13_Pass2_S05_after_day_walk_RealUnity.png",
+          "R13_Pass2_S05_after_day_coast_RealUnity.png",
+          "R13_Pass2_S05_after_day_shore_RealUnity.png",
+          "R13_Pass2_S05_after_day_pedestrian_RealUnity.png",
+          "R13_Pass2_S05_after_day_city_RealUnity.png",
+          "R13_Pass2_S05_after_late_walk_RealUnity.png",
+          "R13_Pass2_S05_after_late_coast_RealUnity.png",
+          "R13_Pass2_S05_after_late_shore_RealUnity.png",
+          "R13_Pass2_S05_after_late_pedestrian_RealUnity.png",
+          "R13_Pass2_S05_after_late_city_RealUnity.png"
+        ],
+        "visual_gate": "CAPTURED_REVIEW_PENDING",
         "art_approved": false
       }
     },
@@ -345,8 +368,19 @@
       },
       "QA_evidence": {
         "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
-        "unity_captures": [],
-        "visual_gate": "PENDING",
+        "unity_captures": [
+          "R13_Pass2_S06_after_day_walk_RealUnity.png",
+          "R13_Pass2_S06_after_day_coast_RealUnity.png",
+          "R13_Pass2_S06_after_day_shore_RealUnity.png",
+          "R13_Pass2_S06_after_day_pedestrian_RealUnity.png",
+          "R13_Pass2_S06_after_day_city_RealUnity.png",
+          "R13_Pass2_S06_after_late_walk_RealUnity.png",
+          "R13_Pass2_S06_after_late_coast_RealUnity.png",
+          "R13_Pass2_S06_after_late_shore_RealUnity.png",
+          "R13_Pass2_S06_after_late_pedestrian_RealUnity.png",
+          "R13_Pass2_S06_after_late_city_RealUnity.png"
+        ],
+        "visual_gate": "CAPTURED_REVIEW_PENDING",
         "art_approved": false
       }
     },

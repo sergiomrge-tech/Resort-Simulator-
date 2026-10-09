@@ -1,4 +1,4 @@
-﻿Shader "Resort/R13/Pass2Sand" {
+Shader "Resort/R13/Pass2Sand" {
  Properties {
   _BaseMap("Dry sand",2D)="white" {} _WetMap("Wet sand",2D)="white" {}
   _BumpMap("Fine normal",2D)="bump" {}
@@ -28,7 +28,7 @@
     // UV0 is global longitudinal / shoreline metres divided by four.
     float d=v.uv.y*4;float dry=smoothstep(2.5,10.0,d);
     half3 albedo=lerp(SAMPLE_TEXTURE2D(_WetMap,sampler_WetMap,v.uv).rgb,SAMPLE_TEXTURE2D(_BaseMap,sampler_BaseMap,v.uv).rgb,dry);
-    float wear=1-.045*exp(-pow((d-23)/1.8,2));albedo*=wear;
+    float wear=1-.045*exp(-pow((d-23)/1.8,2));albedo*=wear*(1+.018*sin(v.uv.x*4*.037+sin(d*.19))+.012*cos(v.uv.x*4*.019-d*.11));
     half3 map=UnpackNormal(SAMPLE_TEXTURE2D(_BumpMap,sampler_BumpMap,v.uv));
     half3 n=normalize(half3(0,1,0)+half3(.694658,0,-.719340)*map.x*.30+half3(-.719340,0,-.694658)*map.y*.30);
     Light sun=GetMainLight(TransformWorldToShadowCoord(v.world));

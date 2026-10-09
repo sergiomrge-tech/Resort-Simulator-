@@ -1,0 +1,1752 @@
+{
+    "status": "R13_REAL_UNITY_CAPTURED_ART_PENDING",
+    "unity_version": "6000.6.2f1",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "renderer": "Direct3D11",
+    "urp_version": "17.6.0",
+    "captures": [
+        {
+            "filename": "R13_Pass2_S04_before_day_walk_RealUnity.png",
+            "sha256": "b77c0dad74d8afdad45c333df77a84c2666b575e07c17c891b553f7d02c0bd10",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -263.5364990234375,
+                "y": 1.6180976629257202,
+                "z": 395.5482482910156
+            },
+            "target": {
+                "x": -214.9104461669922,
+                "y": 1.2680976390838623,
+                "z": 345.1944580078125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_day_coast_RealUnity.png",
+            "sha256": "e84a5a41922074b89c547db70c670724d158c831ba325513885b06a82e5d11d9",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -199.8325653076172,
+                "y": 35.96809768676758,
+                "z": 398.6795654296875
+            },
+            "target": {
+                "x": -234.3608856201172,
+                "y": 0.9680976867675781,
+                "z": 365.3359680175781
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_day_shore_RealUnity.png",
+            "sha256": "3236f51536289a6793b36630ba9e5440199d1a4e7367403b4846c36456ff914b",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -217.0967254638672,
+                "y": 1.6180976629257202,
+                "z": 382.00775146484375
+            },
+            "target": {
+                "x": -169.6202850341797,
+                "y": 0.06809772551059723,
+                "z": 427.8551940917969
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_day_pedestrian_RealUnity.png",
+            "sha256": "ab31565c263610cb22edd7f515d97be3930a2b33dbfb2fd5af50fef452f7d13b",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -204.70204162597656,
+                "y": 1.6180962324142456,
+                "z": 395.07403564453125
+            },
+            "target": {
+                "x": -254.13343811035156,
+                "y": 1.2680985927581787,
+                "z": 345.5105895996094
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_day_city_RealUnity.png",
+            "sha256": "2ca7223dafba6f62fb49bab1492b7707b44b8cb6d445cc42b03f45e48e415db9",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -216.65965270996094,
+                "y": 1.6180976629257202,
+                "z": 347.681884765625
+            },
+            "target": {
+                "x": -188.33766174316406,
+                "y": 1.9680976867675781,
+                "z": 319.43536376953125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_late_walk_RealUnity.png",
+            "sha256": "6b1ed2522f76b1ce00bb8b436f83bbdc699ee505cdedf6ffc28ed3955ff4a947",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -263.5364990234375,
+                "y": 1.6180976629257202,
+                "z": 395.5482482910156
+            },
+            "target": {
+                "x": -214.9104461669922,
+                "y": 1.2680976390838623,
+                "z": 345.1944580078125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_late_coast_RealUnity.png",
+            "sha256": "2613d45241b5cde18e3b661fa08d3b47f959d08fd51c3a3af37c7ca695ee4c65",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -199.8325653076172,
+                "y": 35.96809768676758,
+                "z": 398.6795654296875
+            },
+            "target": {
+                "x": -234.3608856201172,
+                "y": 0.9680976867675781,
+                "z": 365.3359680175781
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_late_shore_RealUnity.png",
+            "sha256": "f637e32bdd25b0db521150b903130f29d0680f487d28ce7b56cdee1754ea73f9",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -217.0967254638672,
+                "y": 1.6180976629257202,
+                "z": 382.00775146484375
+            },
+            "target": {
+                "x": -169.6202850341797,
+                "y": 0.06809772551059723,
+                "z": 427.8551940917969
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_late_pedestrian_RealUnity.png",
+            "sha256": "ff9e07cbeb93f7c288f808c27b559b1efba0faca4eb82c1c2a388cc5a30fafb8",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -204.70204162597656,
+                "y": 1.6180962324142456,
+                "z": 395.07403564453125
+            },
+            "target": {
+                "x": -254.13343811035156,
+                "y": 1.2680985927581787,
+                "z": 345.5105895996094
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_before_late_city_RealUnity.png",
+            "sha256": "eb67dd723b07cd5a71c31734997435554ce5f9b13f06fe3d722cb88a5147a7d4",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -216.65965270996094,
+                "y": 1.6180976629257202,
+                "z": 347.681884765625
+            },
+            "target": {
+                "x": -188.33766174316406,
+                "y": 1.9680976867675781,
+                "z": 319.43536376953125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_day_walk_RealUnity.png",
+            "sha256": "4dd08725200b7460e2e5a6e1bdea725aaabfb4b6c0bdcfde51a5a61732ec07eb",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_day_coast_RealUnity.png",
+            "sha256": "9c13e5f7c6949cfb63a3a8d1f34dd8a0262a0bb2812229fa340cd19918db097c",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_day_shore_RealUnity.png",
+            "sha256": "e2b3c1a1ff08effd5bcd6a9dca5e5b2354a3573cf82c027ec2fcaa8655093388",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_day_pedestrian_RealUnity.png",
+            "sha256": "376b4564cec0fbefeee85122aec9e0ff026314d83cb89390e499d7cb970d8962",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -338.5159606933594,
+                "y": 1.6181005239486694,
+                "z": 246.26393127441406
+            },
+            "target": {
+                "x": -387.9473571777344,
+                "y": 1.2681028842926025,
+                "z": 196.70046997070313
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_day_city_RealUnity.png",
+            "sha256": "7d00dd82d26b18e1b7a1e3b25b67b99e3165813252d009c5852e934aa623c790",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -350.47357177734375,
+                "y": 1.618101954460144,
+                "z": 198.8717803955078
+            },
+            "target": {
+                "x": -322.1515808105469,
+                "y": 1.968101978302002,
+                "z": 170.62525939941406
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_late_walk_RealUnity.png",
+            "sha256": "652b91c244bd8ab8736bf69210daca8f42e1c35332cdabc35d567ffa24e5524e",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_late_coast_RealUnity.png",
+            "sha256": "ee4a4e03c551b8e2fc3e37baa68e54513991005bea984a13decde2f26b33bc94",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_late_shore_RealUnity.png",
+            "sha256": "0b04a77363bc2bd994df26a95b9c7d6f121acd24757aaaae6d17c5ec6e104c7b",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_late_pedestrian_RealUnity.png",
+            "sha256": "1d7be1927f1d1d34e9567605ef3dc4d0dddfb7126f9040e340f3e6c00ada90cf",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -338.5159606933594,
+                "y": 1.6181005239486694,
+                "z": 246.26393127441406
+            },
+            "target": {
+                "x": -387.9473571777344,
+                "y": 1.2681028842926025,
+                "z": 196.70046997070313
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_before_late_city_RealUnity.png",
+            "sha256": "552b11cbae0cd307d311239b82b1eab47a36da1e19110c1d3a60cdeeab749ac0",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -350.47357177734375,
+                "y": 1.618101954460144,
+                "z": 198.8717803955078
+            },
+            "target": {
+                "x": -322.1515808105469,
+                "y": 1.968101978302002,
+                "z": 170.62525939941406
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_day_walk_RealUnity.png",
+            "sha256": "91d82617c2b0c9e8b3dec1c5192647a64600f3de58766455519a7f0ffade1bb3",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -546.038330078125,
+                "y": 1.6181111335754395,
+                "z": 112.29168701171875
+            },
+            "target": {
+                "x": -497.41229248046875,
+                "y": 1.2681111097335815,
+                "z": 61.93788146972656
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_day_coast_RealUnity.png",
+            "sha256": "45d0145954982fe8bf9eb0f044e131bb0ef1a697113736f7ec0161706ca6db8f",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -482.33441162109375,
+                "y": 35.968109130859375,
+                "z": 115.42298889160156
+            },
+            "target": {
+                "x": -516.8627319335938,
+                "y": 0.9681111574172974,
+                "z": 82.07940673828125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_day_shore_RealUnity.png",
+            "sha256": "076753b250297c2b64737a4f048bc6ccad07ccba58e2710eb3d6c8d0935581bc",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -499.59857177734375,
+                "y": 1.6181111335754395,
+                "z": 98.75119018554688
+            },
+            "target": {
+                "x": -452.12213134765625,
+                "y": 0.06811118125915527,
+                "z": 144.5986328125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_day_pedestrian_RealUnity.png",
+            "sha256": "ab2e35c3ca883fb77c729f3a6b7bd80dca721fc07574fa34b89b13d4a3dc2fd6",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -487.2038879394531,
+                "y": 1.6181097030639648,
+                "z": 111.81748962402344
+            },
+            "target": {
+                "x": -536.63525390625,
+                "y": 1.268112063407898,
+                "z": 62.2540283203125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_day_city_RealUnity.png",
+            "sha256": "136e72d4213d1c75d11c4af3f6efbdef9e826f3a49862215ba386eba4bfecb56",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -499.1614990234375,
+                "y": 1.6181111335754395,
+                "z": 64.42533874511719
+            },
+            "target": {
+                "x": -470.8395080566406,
+                "y": 1.9681111574172974,
+                "z": 36.17881774902344
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_late_walk_RealUnity.png",
+            "sha256": "7e679274ce8cb630f9fc95a0ac13c246ca7a01533900eb05298f0a645aa71189",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -546.038330078125,
+                "y": 1.6181111335754395,
+                "z": 112.29168701171875
+            },
+            "target": {
+                "x": -497.41229248046875,
+                "y": 1.2681111097335815,
+                "z": 61.93788146972656
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_late_coast_RealUnity.png",
+            "sha256": "f5e1bc7bfcfa3ebabf592972421091a47ec41b7e68b0de55b82c102a7049dbaf",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -482.33441162109375,
+                "y": 35.968109130859375,
+                "z": 115.42298889160156
+            },
+            "target": {
+                "x": -516.8627319335938,
+                "y": 0.9681111574172974,
+                "z": 82.07940673828125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_late_shore_RealUnity.png",
+            "sha256": "ee9bc971ebc1ba198c720e5dbd94adb28f130fe6aa486a44acfac55fcdbdfe86",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -499.59857177734375,
+                "y": 1.6181111335754395,
+                "z": 98.75119018554688
+            },
+            "target": {
+                "x": -452.12213134765625,
+                "y": 0.06811118125915527,
+                "z": 144.5986328125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_late_pedestrian_RealUnity.png",
+            "sha256": "5ae9010a71c90c9160b987d539c3f336ce9ee4daf18827c48ba869102786096a",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -487.2038879394531,
+                "y": 1.6181097030639648,
+                "z": 111.81748962402344
+            },
+            "target": {
+                "x": -536.63525390625,
+                "y": 1.268112063407898,
+                "z": 62.2540283203125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_before_late_city_RealUnity.png",
+            "sha256": "91d1734a032954c00156e88c9b5baa08e915db754bee06f5c7233dbab71860ce",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -499.1614990234375,
+                "y": 1.6181111335754395,
+                "z": 64.42533874511719
+            },
+            "target": {
+                "x": -470.8395080566406,
+                "y": 1.9681111574172974,
+                "z": 36.17881774902344
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_day_walk_RealUnity.png",
+            "sha256": "b81fb8b5c120c151142f21d9b397c9fef7ebb77367c2742cc87b47ffc6d20973",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -263.5364990234375,
+                "y": 1.6180976629257202,
+                "z": 395.5482482910156
+            },
+            "target": {
+                "x": -214.9104461669922,
+                "y": 1.2680976390838623,
+                "z": 345.1944580078125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_day_coast_RealUnity.png",
+            "sha256": "3ee66b03cf58c15415f048ce28b0e4c2628be067ae41b38c5b5e6c434efc9e4b",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -199.8325653076172,
+                "y": 35.96809768676758,
+                "z": 398.6795654296875
+            },
+            "target": {
+                "x": -234.3608856201172,
+                "y": 0.9680976867675781,
+                "z": 365.3359680175781
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_day_shore_RealUnity.png",
+            "sha256": "8014ffdd8223e2d172307d6a8485a0e49dd7d125df8ddda9eb3f4e7e3d405a31",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -217.0967254638672,
+                "y": 1.6180976629257202,
+                "z": 382.00775146484375
+            },
+            "target": {
+                "x": -169.6202850341797,
+                "y": 0.06809772551059723,
+                "z": 427.8551940917969
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_day_pedestrian_RealUnity.png",
+            "sha256": "f9620e40f79e0c77b260b86158a43a4175b2e9f988b14ede9ddfd89cbe68d8b8",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -204.70204162597656,
+                "y": 1.6180962324142456,
+                "z": 395.07403564453125
+            },
+            "target": {
+                "x": -254.13343811035156,
+                "y": 1.2680985927581787,
+                "z": 345.5105895996094
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_day_city_RealUnity.png",
+            "sha256": "39b36a954a712383e423a83c097d36fb2693903786a6277cfb67c0b2353f62d5",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -216.65965270996094,
+                "y": 1.6180976629257202,
+                "z": 347.681884765625
+            },
+            "target": {
+                "x": -188.33766174316406,
+                "y": 1.9680976867675781,
+                "z": 319.43536376953125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_late_walk_RealUnity.png",
+            "sha256": "d5f36f39f6c1f678a4df0a52d7d98aae227adb68970df106fac609264fae1b46",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -263.5364990234375,
+                "y": 1.6180976629257202,
+                "z": 395.5482482910156
+            },
+            "target": {
+                "x": -214.9104461669922,
+                "y": 1.2680976390838623,
+                "z": 345.1944580078125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_late_coast_RealUnity.png",
+            "sha256": "d64564c520d88e558a65965866cabb236d404bf030b185ad980eed3f65e3aa22",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -199.8325653076172,
+                "y": 35.96809768676758,
+                "z": 398.6795654296875
+            },
+            "target": {
+                "x": -234.3608856201172,
+                "y": 0.9680976867675781,
+                "z": 365.3359680175781
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_late_shore_RealUnity.png",
+            "sha256": "4072978d00847d14adb25ade88403f4c399816e12bd960600eb7fbc302594637",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -217.0967254638672,
+                "y": 1.6180976629257202,
+                "z": 382.00775146484375
+            },
+            "target": {
+                "x": -169.6202850341797,
+                "y": 0.06809772551059723,
+                "z": 427.8551940917969
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_late_pedestrian_RealUnity.png",
+            "sha256": "fccdeaf89b183373057bc7d91032663d2d4a0788ebd74244e568a02db6b0254c",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -204.70204162597656,
+                "y": 1.6180962324142456,
+                "z": 395.07403564453125
+            },
+            "target": {
+                "x": -254.13343811035156,
+                "y": 1.2680985927581787,
+                "z": 345.5105895996094
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S04_after_late_city_RealUnity.png",
+            "sha256": "37161a2a3d7155bf97e797a3d790cdeb39542d2c49b57851a9f68701fcee3e66",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -216.65965270996094,
+                "y": 1.6180976629257202,
+                "z": 347.681884765625
+            },
+            "target": {
+                "x": -188.33766174316406,
+                "y": 1.9680976867675781,
+                "z": 319.43536376953125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_day_walk_RealUnity.png",
+            "sha256": "1cd009dac718012ae60260c9ed10384e440986830ff7eb2c35d4ab44066a24cf",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_day_coast_RealUnity.png",
+            "sha256": "82b0768f4eefd6a8e6b1d9c1b005cf25eae88d99aaae03ed3aa43a943075943d",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_day_shore_RealUnity.png",
+            "sha256": "0a191a796272d83e6e2d4f343b8a688670cdd1c68cedf2ea5cb6e7933c38258b",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_day_pedestrian_RealUnity.png",
+            "sha256": "0ee3f80990bbaf1e60dfd3fef9cd9c62ad1155152d7f30c56d245992a8d8c832",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -338.5159606933594,
+                "y": 1.6181005239486694,
+                "z": 246.26393127441406
+            },
+            "target": {
+                "x": -387.9473571777344,
+                "y": 1.2681028842926025,
+                "z": 196.70046997070313
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_day_city_RealUnity.png",
+            "sha256": "1875d769e5e22a820b8957cea13962bbd9ce60968fd8061a3168885d6c59be84",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -350.47357177734375,
+                "y": 1.618101954460144,
+                "z": 198.8717803955078
+            },
+            "target": {
+                "x": -322.1515808105469,
+                "y": 1.968101978302002,
+                "z": 170.62525939941406
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_late_walk_RealUnity.png",
+            "sha256": "30f1820f417c452354140b8fe1064f4eb3877f6ee832010348331ae8a3952302",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_late_coast_RealUnity.png",
+            "sha256": "dcb5e6e1fc80e11f5ae98feb7657852d8bd3e71b6ef73ffd88d545c8d5ed9222",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_late_shore_RealUnity.png",
+            "sha256": "ba8bb57cfb06c645ee94f54c8b36ca20fd0caa8995f626b86f80c43d00a26441",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_late_pedestrian_RealUnity.png",
+            "sha256": "0706ba02dee1e43eda1111da905cc418c30092c1c99591c9c91bdeaa59295c0e",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -338.5159606933594,
+                "y": 1.6181005239486694,
+                "z": 246.26393127441406
+            },
+            "target": {
+                "x": -387.9473571777344,
+                "y": 1.2681028842926025,
+                "z": 196.70046997070313
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S05_after_late_city_RealUnity.png",
+            "sha256": "854a776fa64ac5d12627f1d48fe7302151d6b6210500caaf499f3b2130c80cbe",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -350.47357177734375,
+                "y": 1.618101954460144,
+                "z": 198.8717803955078
+            },
+            "target": {
+                "x": -322.1515808105469,
+                "y": 1.968101978302002,
+                "z": 170.62525939941406
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_day_walk_RealUnity.png",
+            "sha256": "ca282049a1bfcbb5211880a5da2e8439d84048c07bf138e383be7bbe0ca2af91",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -546.038330078125,
+                "y": 1.6181111335754395,
+                "z": 112.29168701171875
+            },
+            "target": {
+                "x": -497.41229248046875,
+                "y": 1.2681111097335815,
+                "z": 61.93788146972656
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_day_coast_RealUnity.png",
+            "sha256": "8849807c3e0471504055f84d6ce9c57273145266257db014736a048fc5629c9f",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -482.33441162109375,
+                "y": 35.968109130859375,
+                "z": 115.42298889160156
+            },
+            "target": {
+                "x": -516.8627319335938,
+                "y": 0.9681111574172974,
+                "z": 82.07940673828125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_day_shore_RealUnity.png",
+            "sha256": "6a95f8935a6a8619c8d962187b9dfdfd6341966977176cd72503ea78621f5938",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -499.59857177734375,
+                "y": 1.6181111335754395,
+                "z": 98.75119018554688
+            },
+            "target": {
+                "x": -452.12213134765625,
+                "y": 0.06811118125915527,
+                "z": 144.5986328125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_day_pedestrian_RealUnity.png",
+            "sha256": "780a33e0331913e9aeb85aee08f0906831bb600ef7c773d2eb842132e5de8fbc",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -487.2038879394531,
+                "y": 1.6181097030639648,
+                "z": 111.81748962402344
+            },
+            "target": {
+                "x": -536.63525390625,
+                "y": 1.268112063407898,
+                "z": 62.2540283203125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_day_city_RealUnity.png",
+            "sha256": "f1c0887c3f46083f223b8508afb7dd2b7b6e34a973b7048b00a04c9c0617d655",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "day",
+            "position": {
+                "x": -499.1614990234375,
+                "y": 1.6181111335754395,
+                "z": 64.42533874511719
+            },
+            "target": {
+                "x": -470.8395080566406,
+                "y": 1.9681111574172974,
+                "z": 36.17881774902344
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 1.100000023841858,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 50.0000114440918,
+                "y": 330.0,
+                "z": -0.0000013282359532240662
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_late_walk_RealUnity.png",
+            "sha256": "da3d6b0ec80327adaaeaffab54b3cf503337675f48942a4d9656a703dc728fad",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -546.038330078125,
+                "y": 1.6181111335754395,
+                "z": 112.29168701171875
+            },
+            "target": {
+                "x": -497.41229248046875,
+                "y": 1.2681111097335815,
+                "z": 61.93788146972656
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_late_coast_RealUnity.png",
+            "sha256": "c2d10fa34c85b4f35f87ce276763399b77bbc34d5f79eef37681c48d581307fb",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -482.33441162109375,
+                "y": 35.968109130859375,
+                "z": 115.42298889160156
+            },
+            "target": {
+                "x": -516.8627319335938,
+                "y": 0.9681111574172974,
+                "z": 82.07940673828125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_late_shore_RealUnity.png",
+            "sha256": "ffe556beddd2aa39a34a9dfb54664cf339decf7d5fad41afc4ab67341b3845b2",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -499.59857177734375,
+                "y": 1.6181111335754395,
+                "z": 98.75119018554688
+            },
+            "target": {
+                "x": -452.12213134765625,
+                "y": 0.06811118125915527,
+                "z": 144.5986328125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_late_pedestrian_RealUnity.png",
+            "sha256": "bf64524b22d0772f23fba504020bded10cb1818a90c725b5fd896963edd0fc34",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -487.2038879394531,
+                "y": 1.6181097030639648,
+                "z": 111.81748962402344
+            },
+            "target": {
+                "x": -536.63525390625,
+                "y": 1.268112063407898,
+                "z": 62.2540283203125
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        },
+        {
+            "filename": "R13_Pass2_S06_after_late_city_RealUnity.png",
+            "sha256": "cf6bc676c4e5c353c17f6fae1a9da652d253b9eb4f41afb5549c1754295166c5",
+            "source_scene": "Assets/Scenes/R13_VisualPass2.unity",
+            "lighting": "late",
+            "position": {
+                "x": -499.1614990234375,
+                "y": 1.6181111335754395,
+                "z": 64.42533874511719
+            },
+            "target": {
+                "x": -470.8395080566406,
+                "y": 1.9681111574172974,
+                "z": 36.17881774902344
+            },
+            "warmup_frames": 5,
+            "width": 1600,
+            "height": 900,
+            "field_of_view": 53.0,
+            "near_clip": 0.15000000596046448,
+            "far_clip": 4000.0,
+            "sun_intensity": 0.800000011920929,
+            "sun_shadow_strength": 0.44999998807907104,
+            "sun_euler": {
+                "x": 20.000001907348633,
+                "y": 295.0,
+                "z": 0.0
+            }
+        }
+    ],
+    "artistic_gate_approved": false,
+    "fps_measured": false,
+    "playmode_water_animation_tested": false
+}

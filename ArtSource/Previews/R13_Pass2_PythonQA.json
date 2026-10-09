@@ -1,0 +1,18 @@
+{
+  "tests_run": 37,
+  "failures": 0,
+  "errors": 0,
+  "success": true,
+  "patterns": [
+    "test_r7_contract.py",
+    "test_r8_winding_geo.py",
+    "test_r10_capture_integrity.py",
+    "test_r11_capture_integrity.py",
+    "test_r12_capture_integrity.py",
+    "test_r13_contract.py",
+    "test_r13_unity_native_import_contract.py",
+    "test_r13_pass2_contract.py"
+  ],
+  "python_version": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "unity_compilation_proof": false
+}
