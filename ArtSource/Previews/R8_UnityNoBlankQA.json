@@ -1,0 +1,17 @@
+﻿{
+    "status": "R8_UNITY_ALL_FACADES_URP_PASS_ART_PENDING",
+    "unity_version": "6000.6.2f1",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "r8_fbx_sha256": "9ae115abc04143013213b7aabe03bddaa2b3b7cbc202b5e511e14df834874b94",
+    "scene": "Assets/Scenes/R8_Copacabana_1468_All_Facades.unity",
+    "all_buildings": 1468,
+    "newly_detailed_buildings": 1418,
+    "prior_r7_detailed_buildings": 50,
+    "recognized_r8_meshes": 350,
+    "verified_road_triangles": 3731,
+    "windows_generated_blender": 182847,
+    "uv0_missing": 0,
+    "wrong_shader_materials": 0,
+    "art_approved": false,
+    "fps_measured": false
+}

@@ -1,0 +1,83 @@
+name: Resort R8 | 1468 textured Copacabana buildings 2x1 km
+on:
+  push:
+    branches: [codex/r8-full-facades-2x1]
+    paths:
+      - 'Tools/Blender/generate_r8_full_city_facades.py'
+      - 'Tools/tests/test_r8_native_fbx.py'
+      - 'Tools/tests/test_r8_winding_geo.py'
+      - 'Tools/Blender/generate_r7_buildings.py'
+      - 'Tools/Blender/assemble_r7_city_50.py'
+      - 'Tools/Blender/r7_contract.py'
+      - 'Tools/geo/r7_mask_city_50.py'
+      - 'UnityProject/Assets/Editor/ResortR8*.cs'
+      - '.github/workflows/r8-full-city-2x1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: resort-r8-fullcity-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  native-blender-real:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check Python syntax and geo invariants
+        run: |
+          python -m py_compile Tools/Blender/generate_r8_full_city_facades.py Tools/tests/test_r8_native_fbx.py
+          python -m unittest discover -s Tools/tests -p 'test_r7_contract.py' -v
+          python -m unittest discover -s Tools/tests -p 'test_r7_uv_pbr_pipeline.py' -v
+          python -m unittest discover -s Tools/tests -p 'test_r8_winding_geo.py' -v
+      - name: Install original Blender and OSM geometry runtime
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+          python -m pip install --disable-pip-version-check 'bpy==4.5.3' 'pyproj==3.7.2' 'shapely==2.1.2'
+      - name: Verify original real OSM geometry
+        run: |
+          mkdir -p build/R8_CIQA
+          python Tools/tests/test_r7_geometry_native.py 2>&1 | tee build/R8_CIQA/native-smoke.log
+      - name: Generate R7 50 measured OSM examples with UV0
+        run: |
+          set -euo pipefail
+          python -c "import bpy,sys,runpy;sys.argv=['blender','--','--mode','gallery','--no-render'];runpy.run_path('Tools/Blender/generate_r7_buildings.py',run_name='__main__')" 2>&1 | tee build/R8_CIQA/generate-r7.log
+      - name: Preserve all 3731 source road triangles and mask 50 detailed lots
+        run: |
+          set -euo pipefail
+          python Tools/geo/r7_mask_city_50.py 2>&1 | tee build/R8_CIQA/mask-r7.log
+      - name: Assemble and reimport real R7 city FBX
+        run: |
+          set -euo pipefail
+          python -c "import bpy,sys,runpy;sys.argv=['blender','--no-render'];runpy.run_path('Tools/Blender/assemble_r7_city_50.py',run_name='__main__')" 2>&1 | tee build/R8_CIQA/assemble-r7.log
+          python Tools/tests/test_r7_exported_fbx_native.py 2>&1 | tee build/R8_CIQA/reimport-r7.log
+      - name: Produce all 1418 formerly blank buildings with 50 textured styles
+        run: |
+          set -euo pipefail
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r8_full_city_facades.py',run_name='__main__')" 2>&1 | tee build/R8_CIQA/generate-r8.log
+      - name: Verify R8 real exported FBX and exact 2km coastline
+        run: |
+          set -euo pipefail
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r8_native_fbx.py',run_name='__main__')" 2>&1 | tee build/R8_CIQA/reimport-r8.log
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: Resort-R8-1468-Facades-Real-Blender-2x1km
+          path: |
+            UnityProject/Assets/Architecture/R7_Pilot50/
+            UnityProject/Assets/Architecture/R8_FullCity/
+            ArtSource/Previews/R7_FBX_UV_NATIVE_QA.json
+            build/R8_CIQA/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: Resort-R8-Diagnostic-Logs-NOT-APPROVED
+          path: build/R8_CIQA/
+          if-no-files-found: warn
+          retention-days: 7

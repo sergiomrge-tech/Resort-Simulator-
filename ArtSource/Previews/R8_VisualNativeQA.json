@@ -1,0 +1,59 @@
+﻿{
+    "status": "R8_REAL_URP_FULLCITY_CAPTURED_ART_PENDING",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "unity_version": "6000.6.2f1",
+    "r8_facade_renderers": 350,
+    "source_road_triangles": 3731,
+    "styles": 50,
+    "derived_fbx_sha256": "9ae115abc04143013213b7aabe03bddaa2b3b7cbc202b5e511e14df834874b94",
+    "captures": [
+        {
+            "filename": "R8_01_Dense_City_RealUnity.png",
+            "sha256": "0eb9315d24d87b41c10fc61490b4c2fb986db146659ecce35b158300c36ecf3f",
+            "position": {
+                "x": 290.0,
+                "y": 274.9999694824219,
+                "z": -310.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 58.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 859351
+        },
+        {
+            "filename": "R8_02_Orla_Aerial_RealUnity.png",
+            "sha256": "0103d7b85dcb5f2b772b41f23021951e9c1f1ea87ebecaa8cb8bfde37f0277de",
+            "position": {
+                "x": -340.0,
+                "y": 304.9999694824219,
+                "z": -380.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 52.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 821927
+        },
+        {
+            "filename": "R8_03_Facades_Rooftops_RealUnity.png",
+            "sha256": "0601eb89361c1f796e59715d9cbc99c185f34e31f7f16d3ade33a915eae834ac",
+            "position": {
+                "x": 120.0,
+                "y": 159.99998474121094,
+                "z": 190.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 57.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1116260
+        }
+    ],
+    "artistic_gate_passed": false,
+    "fps_measured": false
+}
