@@ -1,0 +1,43 @@
+﻿{
+    "status":  "NATIVE_UNITY_EDITOR_IMPORTED_AND_SCENE_SAVED",
+    "unity_version":  "6000.6.2f1",
+    "render_status":  "GENUINE_UNITY_CAMERA_RENDER",
+    "renderer":  "Unity 6000.6.2f1 Editor batchmode / DirectX11; Camera.Render()",
+    "screenshot":  "ArtSource/Previews/R3_Unity_Editor_Real_Camera_QA.png",
+    "screenshot_sha256":  "9675a85c4b3e02d1bd0ae908827194168c5df71d3d1bfb8d861b48cd1ba1bb31",
+    "screenshot_bytes":  112652,
+    "resolution":  [
+                       1600,
+                       900
+                   ],
+    "scene":  "Assets/Scenes/R3_Copacabana_Piloto_EditorQA.unity",
+    "scene_source":  "UnityProject/Assets/Scenes/R3_Copacabana_Piloto_EditorQA.unity",
+    "original_source_sha256":  "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+    "original_fbx_sha256":  "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+    "derived_fbx_sha256":  "e242d72002f8e534e3c4b193aac9741f707ecf247bd0f5764a256ff33a08401c",
+    "source_mesh_filters":  1,
+    "derived_mesh_filters":  13,
+    "hero_renderers":  12,
+    "source_triangles":  26764,
+    "derived_triangles":  54677,
+    "city_bounding_size":  [
+                               2108.656,
+                               90.0005,
+                               2133.338
+                           ],
+    "hero_bounding_center":  [
+                                 -184.2682,
+                                 5.0525,
+                                 142.7197
+                             ],
+    "hero_bounding_size":  [
+                               57.5224,
+                               10.105,
+                               61.7007
+                           ],
+    "visual_approval":  false,
+    "runtime_playtest":  false,
+    "build_windows_verified":  false,
+    "qa_origin":  "Remote Desktop authorized PC, isolated D: git worktree, SHA256 checked, real native Unity Editor",
+    "notes":  "Proof of native Editor asset import, saved scene and actual GPU render only. Artistic approval and playable executable pending."
+}
