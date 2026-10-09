@@ -36,6 +36,9 @@ public static class ResortR5UnityQA
         public string screenshot;
         public string screenshot_sha256;
         public string screenshot_status;
+        public string closeup_screenshot;
+        public string closeup_screenshot_sha256;
+        public string closeup_screenshot_status;
         public int original_mesh_count;
         public int derived_mesh_count;
         public int hero_renderers;
@@ -200,13 +203,22 @@ public static class ResortR5UnityQA
         cameraObj.tag="MainCamera";
         var cam=cameraObj.AddComponent<Camera>();
         cam.orthographic=true;
-        cam.orthographicSize=72f;
+        cam.orthographicSize=62f;
         cam.nearClipPlane=.1f;
         cam.farClipPlane=4200f;
         cam.backgroundColor=new Color(.62f,.72f,.84f);
         cam.clearFlags=CameraClearFlags.Skybox;
-        var close=heroes.OrderBy(x=>new Vector2(x.bounds.center.x,x.bounds.center.z).sqrMagnitude).First();
-        Vector3 aim=close.bounds.center;
+        var focusGroup=heroes.GroupBy(FindId)
+           .Select(g=>{
+               var bounds=g.First().bounds;
+               foreach(var renderer in g.Skip(1))bounds.Encapsulate(renderer.bounds);
+               return new { Id=g.Key, Bounds=bounds, Parts=g.Count() };
+           })
+           .OrderBy(x=>new Vector2(x.Bounds.center.x,x.Bounds.center.z).sqrMagnitude)
+           .First();
+        Vector3 aim=focusGroup.Bounds.center;
+        Debug.Log("R5_NATIVE_CAMERA_FOCUS OSM="+focusGroup.Id+
+                  " model_parts="+focusGroup.Parts+" dimensions="+focusGroup.Bounds.size);
         aim.y=Mathf.Max(10f,aim.y*.5f);
         cameraObj.transform.position=aim+new Vector3(50,98,-90);
         cameraObj.transform.LookAt(aim);
@@ -217,6 +229,7 @@ public static class ResortR5UnityQA
         report.scene=ScenePath;
         string screenshot=Path.Combine(qa,"R5_50_Fachadas_Real_Unity_Camera_QA.png");
         report.screenshot_status="NOT_RENDERED";
+        report.closeup_screenshot_status="NOT_RENDERED";
         RenderTexture tex=null;
         Texture2D image=null;
         try
@@ -235,6 +248,24 @@ public static class ResortR5UnityQA
             report.screenshot_status="GENUINE_UNITY_CAMERA_RENDER";
             report.screenshot="build/R5_UnityNativeQA/R5_50_Fachadas_Real_Unity_Camera_QA.png";
             report.screenshot_sha256=Sha256(screenshot);
+
+            // Independently render a close-up using the same *real Unity
+            // Camera.Render* and DirectX11 framebuffer, not a generated mockup.
+            cam.orthographicSize=23f;
+            cameraObj.transform.position=aim+new Vector3(25f,38f,-32f);
+            cameraObj.transform.LookAt(aim);
+            cam.Render();
+            RenderTexture.active=tex;
+            image.ReadPixels(new Rect(0,0,1600,900),0,0);
+            image.Apply(false);
+            string closeup=Path.Combine(qa,"R5_50_Fachadas_Close_Unity_Camera_QA.png");
+            File.WriteAllBytes(closeup,image.EncodeToPNG());
+            Assert(new FileInfo(closeup).Length>45000,"Unity close-up camera output too small");
+            report.closeup_screenshot="build/R5_UnityNativeQA/R5_50_Fachadas_Close_Unity_Camera_QA.png";
+            report.closeup_screenshot_sha256=Sha256(closeup);
+            report.closeup_screenshot_status="GENUINE_UNITY_CAMERA_RENDER";
+            Assert(EditorSceneManager.SaveScene(scene,ScenePath),
+                "Failed to save close-up camera framing in QA scene");
         }
         catch(Exception e)
         {
@@ -256,6 +287,6 @@ public static class ResortR5UnityQA
             JsonUtility.ToJson(report,true)+"\n",Encoding.UTF8);
         AssetDatabase.SaveAssets();
         Debug.Log("R5_NATIVE_UNITY_EDITOR_QA_PASS count="+ids.Count+
-                  " render="+report.screenshot_status+" triangles="+report.derived_triangles);
+                  " render="+report.screenshot_status+" close="+report.closeup_screenshot_status+" triangles="+report.derived_triangles);
     }
 }
