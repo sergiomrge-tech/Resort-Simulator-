@@ -1,0 +1,153 @@
+{
+  "status": "INSPECTED_SOURCE_NOT_MODIFIED",
+  "original_mesh_objects": 1,
+  "total_source_faces": 26764,
+  "materials": {
+    "Road": 3731,
+    "Building": 23033
+  },
+  "parcels": [
+    {
+      "id": "way/1048277518",
+      "hits": 13,
+      "boundary_hits": 1,
+      "roof_faces": 3,
+      "source_materials": {
+        "Building": 13
+      },
+      "sample_source_faces": [
+        {
+          "mesh": "copacabana_base",
+          "face_id": 17824,
+          "xy": [
+            -4.73,
+            -240.2
+          ],
+          "z": 18.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 17830,
+          "xy": [
+            2.88,
+            -242.54
+          ],
+          "z": 6.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 17831,
+          "xy": [
+            -3.14,
+            -235.83
+          ],
+          "z": 12.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 17836,
+          "xy": [
+            -0.48,
+            -233.47
+          ],
+          "z": 18.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 17838,
+          "xy": [
+            -3.85,
+            -224.4
+          ],
+          "z": 6.0,
+          "material": "Building"
+        }
+      ],
+      "zmin": 6.0,
+      "zmax": 18.0,
+      "has_existing_building_geometry": true
+    },
+    {
+      "id": "way/1048277521",
+      "hits": 20,
+      "boundary_hits": 2,
+      "roof_faces": 7,
+      "source_materials": {
+        "Building": 20
+      },
+      "sample_source_faces": [
+        {
+          "mesh": "copacabana_base",
+          "face_id": 16038,
+          "xy": [
+            64.31,
+            -222.43
+          ],
+          "z": 18.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 16039,
+          "xy": [
+            57.86,
+            -223.7
+          ],
+          "z": 18.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 16041,
+          "xy": [
+            47.81,
+            -221.3
+          ],
+          "z": 6.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 16042,
+          "xy": [
+            48.68,
+            -222.19
+          ],
+          "z": 12.0,
+          "material": "Building"
+        },
+        {
+          "mesh": "copacabana_base",
+          "face_id": 16053,
+          "xy": [
+            61.0,
+            -226.92
+          ],
+          "z": 6.0,
+          "material": "Building"
+        }
+      ],
+      "zmin": 6.0,
+      "zmax": 18.0,
+      "has_existing_building_geometry": true
+    },
+    {
+      "id": "way/1308635852",
+      "hits": 0,
+      "boundary_hits": 0,
+      "roof_faces": 0,
+      "source_materials": {},
+      "sample_source_faces": [],
+      "zmin": null,
+      "zmax": null,
+      "has_existing_building_geometry": false
+    }
+  ],
+  "geometry_safe_to_replace": false,
+  "no_mutation": "READ_ONLY_BPY_NO_WRITE_BLEND_OR_FBX",
+  "limits": "Face centroid proximity is diagnostic only; replacement requires component isolation verification, not this probe."
+}

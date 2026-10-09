@@ -1,0 +1,116 @@
+{
+  "status": "GENUINE_BLENDER_GIS_WITH_OSM_OVERLAYS",
+  "visual_stage": "OSM_PARCEL_LOCATION_QA_ONLY",
+  "source_blend": "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend",
+  "source_blend_sha256": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+  "source_fbx_sha256": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+  "preview": "ArtSource/Previews/R3_Orla_300m_OSM_Real_Blender_QA.png",
+  "preview_sha256": "3f57409fa9678ffd02a9f4fbe467f0ca07106f7c686154a31fee8ed85b70cfbb",
+  "preview_bytes": 3359641,
+  "city_faces": 26764,
+  "sites": [
+    {
+      "id": "way/1048277518",
+      "ring_xy_m": [
+        [
+          -11.304898,
+          -242.794387
+        ],
+        [
+          -12.237751,
+          -244.856641
+        ],
+        [
+          6.122988,
+          -246.015345
+        ],
+        [
+          7.685891,
+          -218.845519
+        ],
+        [
+          -9.85591,
+          -217.732446
+        ],
+        [
+          -11.304898,
+          -242.794387
+        ]
+      ],
+      "display_z": 19.3,
+      "face_hits": 13,
+      "source_has_building": true
+    },
+    {
+      "id": "way/1048277521",
+      "ring_xy_m": [
+        [
+          41.491571,
+          -239.548177
+        ],
+        [
+          61.802703,
+          -242.405776
+        ],
+        [
+          64.437995,
+          -221.946183
+        ],
+        [
+          44.428877,
+          -218.973122
+        ],
+        [
+          41.491571,
+          -239.548177
+        ]
+      ],
+      "display_z": 19.3,
+      "face_hits": 20,
+      "source_has_building": true
+    },
+    {
+      "id": "way/1308635852",
+      "ring_xy_m": [
+        [
+          122.828007,
+          -243.56619
+        ],
+        [
+          110.07228,
+          -241.94526
+        ],
+        [
+          107.784379,
+          -240.550312
+        ],
+        [
+          106.370326,
+          -238.177166
+        ],
+        [
+          106.488023,
+          -234.910457
+        ],
+        [
+          113.338216,
+          -236.093086
+        ],
+        [
+          123.675512,
+          -237.45641
+        ],
+        [
+          122.828007,
+          -243.56619
+        ]
+      ],
+      "display_z": 2.3,
+      "face_hits": 0,
+      "source_has_building": false
+    }
+  ],
+  "render_engine": "Blender Cycles CPU",
+  "limits": "No replacement/new buildings, no Unity scene/screenshot, footprint not land title, QA underlay not real terrain.",
+  "copyright": "© OpenStreetMap contributors — ODbL 1.0"
+}
