@@ -14,24 +14,36 @@ import json
 import math
 import re
 import xml.etree.ElementTree as ET
+from pyproj import Transformer
+from shapely.geometry import Polygon, box
 
 ROOT = Path(__file__).resolve().parents[2]
 OSM = ROOT / "geo/data/copacabana.osm.gz"
 CATALOG = ROOT / "ArtSource/ProceduralBuildings/Resort50Styles.json"
 OUTPUT = ROOT / "geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json"
 REPORT = ROOT / "geo/data/report.json"
+FRAME = ROOT / "geo/procedural/R4_SOURCE_FRAME.json"
 
-REFERENCE_LAT = -22.97
-M_PER_RAD = 6371008.8
+def frame_transform():
+    frame = json.loads(FRAME.read_text(encoding="utf-8"))
+    assert frame["game_area_m2"] == 2_000_000
+    tf = Transformer.from_crs("EPSG:4326", frame["crs"], always_xy=True)
+    east, north = tf.transform(*frame["avenue_reference_lonlat"])
+    angle = math.radians(frame["axis_angle_degrees_counterclockwise_from_east"])
+    co, si = math.cos(angle), math.sin(angle)
+    delta = frame["center_shift_inland_m"]
+    cx, cy = east - si * delta, north + co * delta
+    length, width = frame["along_coast_length_m"], frame["inland_width_m"]
+    region = box(-length/2, -width/2, length/2, width/2)
+    def to_local(lon, lat):
+        e, n = tf.transform(lon, lat)
+        dx, dy = e-cx, n-cy
+        return dx*co+dy*si, -dx*si+dy*co
+    return to_local, region
 
 
 def stable_int(building_id: str, salt: str = "") -> int:
     return int.from_bytes(sha256((building_id + "|" + salt).encode("ascii")).digest()[:8], "big")
-
-
-def projected(lon: float, lat: float) -> tuple[float, float]:
-    return (math.radians(lon) * M_PER_RAD * math.cos(math.radians(REFERENCE_LAT)),
-            math.radians(lat) * M_PER_RAD)
 
 
 def segment_distance(p, a, b):
@@ -115,9 +127,10 @@ def main():
     if len(family_styles) != 10 or any(len(v) != 5 for v in family_styles.values()):
         raise RuntimeError("Expected ten five-variant families")
 
+    to_local, region = frame_transform()
     with gzip.open(OSM, "rb") as fp:
         root = ET.parse(fp).getroot()
-    nodes = {n.attrib["id"]: projected(float(n.attrib["lon"]), float(n.attrib["lat"]))
+    nodes = {n.attrib["id"]: to_local(float(n.attrib["lon"]), float(n.attrib["lat"]))
              for n in root.findall("node") if n.get("id") and n.get("lat") and n.get("lon")}
     streets = []
     building_ways = []
@@ -127,7 +140,7 @@ def main():
         if tags.get("name", "").casefold() == "avenida atlântica" and tags.get("highway"):
             pts = [nodes[ref] for ref in refs if ref in nodes]
             streets.extend(zip(pts, pts[1:]))
-        if tags.get("building") and tags["building"] not in ("no", "construction", "demolished"):
+        if tags.get("building") not in (None,"no"):
             building_ways.append((w.get("id"), refs, tags))
     if not streets:
         raise RuntimeError("Avenida Atlântica is missing in frozen OSM: don't fake waterfront zones")
@@ -141,37 +154,59 @@ def main():
         if any(ref not in nodes for ref in refs):
             discarded["missing_osm_node"] += 1
             continue
-        ring = [nodes[ref] for ref in refs]
-        area = polygon_area_m2(ring)
-        if area < 3.0:
-            discarded["degenerate_geometry"] += 1
+        try:
+            polygon=Polygon([nodes[ref] for ref in refs])
+            if not polygon.is_valid:
+                polygon=polygon.buffer(0)
+            if polygon.is_empty:
+                discarded["invalid_geometry"]+=1
+                continue
+            clipped=polygon.intersection(region)
+        except Exception:
+            discarded["geometry_error"]+=1
             continue
-        centroid = (sum(p[0] for p in ring[:-1]) / (len(ring) - 1),
-                    sum(p[1] for p in ring[:-1]) / (len(ring) - 1))
-        distance = nearest_distance(centroid, streets)
-        ident = "way/" + osm_id
-        family, fidelity = choose_family(tags, distance, ident)
-        variants = family_styles[family]
-        style_id = variants[stable_int(ident, "style-choice") % len(variants)]
-        height, height_type, level_tag = floor_origin(tags)
-        # Preserve field distinctions: unknown floor count is NEVER surveyed.
-        plan.append({
-            "building_id": ident,
-            "style_id": style_id,
-            "visual_family": family,
-            "seed": stable_int(ident, "stable-procedural-seed") % 2147483647,
-            "visual_style_basis": fidelity,
-            "osm_building_tag": tags["building"],
-            "area_footprint_m2": round(area, 2),
-            "avenida_atlantica_distance_m": distance,
-            "height_for_visualization_m": height,
-            "height_provenance": height_type,
-            "osm_levels": level_tag,
-            "source_osm_way": ident,
-            "has_final_generated_mesh": False,
-            "requires_visual_art_approval": True,
-        })
-    plan.sort(key=lambda d: int(d["building_id"].split("/")[1]))
+        def parts(geometry):
+            if geometry.is_empty:return
+            if geometry.geom_type=="Polygon":
+                yield geometry
+            elif hasattr(geometry,"geoms"):
+                for part in geometry.geoms:
+                    yield from parts(part)
+        pieces=[part for part in parts(clipped) if part.area>=1.0]
+        if not pieces:
+            discarded["outside_source_roi"]+=1
+            continue
+        for part_idx, poly in enumerate(pieces):
+            # The true geographic base can split one source way when a polygon
+            # crosses the ROI. Every part is assigned a stable unique identity.
+            base_id="way/"+osm_id
+            ident=base_id if len(pieces)==1 else base_id+"#part"+str(part_idx+1)
+            centroid=(poly.centroid.x,poly.centroid.y)
+            distance=nearest_distance(centroid,streets)
+            family,fidelity=choose_family(tags,distance,ident)
+            variants=family_styles[family]
+            style_id=variants[stable_int(ident,"style-choice")%len(variants)]
+            height,height_type,level_tag=floor_origin(tags)
+            plan.append({
+                "building_id":ident,
+                "style_id":style_id,
+                "visual_family":family,
+                "seed":stable_int(ident,"stable-procedural-seed")%2147483647,
+                "visual_style_basis":fidelity,
+                "osm_building_tag":tags["building"],
+                "area_footprint_m2":round(poly.area,2),
+                "centroid_local_xy_m":[round(centroid[0],3),round(centroid[1],3)],
+                "footprint_ring_local_xy_m":[[round(x,3),round(y,3)] for x,y in list(poly.exterior.coords)],
+                "interior_rings_local_xy_m":[[[round(x,3),round(y,3)] for x,y in ring.coords] for ring in poly.interiors],
+                "avenida_atlantica_distance_m":distance,
+                "height_for_visualization_m":height,
+                "height_provenance":height_type,
+                "osm_levels":level_tag,
+                "source_osm_way":base_id,
+                "has_final_generated_mesh":False,
+                "requires_visual_art_approval":True,
+            })
+    plan.sort(key=lambda d: (int(d["building_id"].split("/")[1].split("#")[0]),d["building_id"]))
     counts = Counter(x["style_id"] for x in plan)
     families = Counter(x["visual_family"] for x in plan)
     height_sources = Counter(x["height_provenance"] for x in plan)
