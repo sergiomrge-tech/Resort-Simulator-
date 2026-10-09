@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install real GIS projection and polygon clipping
+        run: python -m pip install --disable-pip-version-check pyproj shapely
       - name: Generate stable stylistic identity for source OSM buildings
         run: python Tools/geo/assign_r4_city_styles.py
       - name: Validate all fifty detailed recipes and real OSM provenance
