@@ -1,0 +1,3079 @@
+{
+  "status": "ACTUAL_PROCEDURAL_BLENDER_FBX_GENERATED_NOT_UNITY_VALIDATED",
+  "version": "R4_PROCEDURAL_GEOMETRY_V1",
+  "mode": "gallery",
+  "start": 0,
+  "count": 50,
+  "skipped_count": 0,
+  "skipped_source_ids": [],
+  "total_source_buildings": 1468,
+  "catalog_sha256": "0f7cb0350582ef0c1d1a6c004c0bd1a1692d302dc7de3bb678d6284dfed33c4c",
+  "assignments_sha256": "cac5b363ad3c4734bd086a83715b6e52f454317c3fc7782a884d3efbe362a2d6",
+  "source_geo_unchanged": true,
+  "source_map_sha256": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+  "source_city_fbx_sha256": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+  "excluded_R3_hero_ids": [
+    "way/1048277518",
+    "way/1048277521"
+  ],
+  "meshes": [
+    {
+      "building_id": "way/488127741",
+      "style_id": "cop_art_deco_carioca_01",
+      "family": "art_deco_carioca",
+      "seed": 960970884,
+      "source_osm": "way/488127741",
+      "local_osm_centroid_xy_m": [
+        -994.378,
+        -326.838
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 27910,
+      "polygons_generated": 6978,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_art_deco_carioca_01__way_488127741.fbx",
+      "fbx_bytes": 215980,
+      "fbx_sha256": "ae4232663278eac63bc907a21c067363c7791d6ca21b0cb65bd21565e3c45ac9",
+      "unity_asset_guid": "1e52a499165e5ffa80194c82faea295c",
+      "source_ring_local_xy_m": [
+        [
+          -992.112,
+          -317.156
+        ],
+        [
+          -986.116,
+          -328.286
+        ],
+        [
+          -1000.0,
+          -337.043
+        ],
+        [
+          -1000.0,
+          -322.705
+        ],
+        [
+          -992.112,
+          -317.156
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 160.06,
+      "source_footprint_vertices": 4,
+      "windows": 107,
+      "balconies": 45,
+      "roof_features": 1,
+      "solid_boxes": 1162
+    },
+    {
+      "building_id": "way/586695371",
+      "style_id": "cop_art_deco_carioca_02",
+      "family": "art_deco_carioca",
+      "seed": 2065596189,
+      "source_osm": "way/586695371",
+      "local_osm_centroid_xy_m": [
+        -377.683,
+        125.82
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 55774,
+      "polygons_generated": 13944,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_art_deco_carioca_02__way_586695371.fbx",
+      "fbx_bytes": 400492,
+      "fbx_sha256": "19e6b4f44859bd38195b99b921b2537b85e4325f032e9a0d8126c023156daca9",
+      "unity_asset_guid": "9990f9a7ac8b6dd311ede45662dcd7e1",
+      "source_ring_local_xy_m": [
+        [
+          -366.519,
+          111.83
+        ],
+        [
+          -386.086,
+          110.119
+        ],
+        [
+          -388.847,
+          139.809
+        ],
+        [
+          -369.28,
+          141.521
+        ],
+        [
+          -366.519,
+          111.83
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 585.7,
+      "source_footprint_vertices": 4,
+      "windows": 203,
+      "balconies": 170,
+      "roof_features": 1,
+      "solid_boxes": 2323
+    },
+    {
+      "building_id": "way/176886419",
+      "style_id": "cop_art_deco_carioca_03",
+      "family": "art_deco_carioca",
+      "seed": 895623197,
+      "source_osm": "way/176886419",
+      "local_osm_centroid_xy_m": [
+        228.064,
+        259.18
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 27300,
+      "polygons_generated": 6826,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_art_deco_carioca_03__way_176886419.fbx",
+      "fbx_bytes": 223756,
+      "fbx_sha256": "8749356491eff5d94c053374a86067b62d5e1239b17535e1195e9651455f5d12",
+      "unity_asset_guid": "cacb5ff3cfe0f8460b99e485d487d0ae",
+      "source_ring_local_xy_m": [
+        [
+          236.612,
+          254.72
+        ],
+        [
+          220.852,
+          253.215
+        ],
+        [
+          217.436,
+          258.31
+        ],
+        [
+          219.933,
+          263.832
+        ],
+        [
+          235.297,
+          265.063
+        ],
+        [
+          238.628,
+          260.171
+        ],
+        [
+          236.612,
+          254.72
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 194.42,
+      "source_footprint_vertices": 6,
+      "windows": 107,
+      "balconies": 62,
+      "roof_features": 1,
+      "solid_boxes": 1136
+    },
+    {
+      "building_id": "way/488128345",
+      "style_id": "cop_art_deco_carioca_04",
+      "family": "art_deco_carioca",
+      "seed": 1511276736,
+      "source_osm": "way/488128345",
+      "local_osm_centroid_xy_m": [
+        -893.726,
+        -406.703
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 34346,
+      "polygons_generated": 8588,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_art_deco_carioca_04__way_488128345.fbx",
+      "fbx_bytes": 268556,
+      "fbx_sha256": "2460d8bd3d6522676d6169131e4ce368a7252c402371395d65a6960b46a2c2a5",
+      "unity_asset_guid": "b8179de0d4e28737ca6ad80fe9e9ae26",
+      "source_ring_local_xy_m": [
+        [
+          -882.251,
+          -415.789
+        ],
+        [
+          -888.425,
+          -419.282
+        ],
+        [
+          -890.19,
+          -416.197
+        ],
+        [
+          -893.924,
+          -418.306
+        ],
+        [
+          -904.739,
+          -399.318
+        ],
+        [
+          -902.346,
+          -397.965
+        ],
+        [
+          -902.67,
+          -397.411
+        ],
+        [
+          -895.147,
+          -393.155
+        ],
+        [
+          -882.251,
+          -415.789
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 279.6,
+      "source_footprint_vertices": 8,
+      "windows": 143,
+      "balconies": 62,
+      "roof_features": 1,
+      "solid_boxes": 1429
+    },
+    {
+      "building_id": "way/134013759",
+      "style_id": "cop_art_deco_carioca_05",
+      "family": "art_deco_carioca",
+      "seed": 1590421515,
+      "source_osm": "way/134013759",
+      "local_osm_centroid_xy_m": [
+        588.313,
+        -292.972
+      ],
+      "height_provenance": "OSM_EXPLICIT_HEIGHT_M",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 55990,
+      "polygons_generated": 13998,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_art_deco_carioca_05__way_134013759.fbx",
+      "fbx_bytes": 386764,
+      "fbx_sha256": "5ea572c85cde28404135f014f2be005e251581af4f0366b23daac9092efec745",
+      "unity_asset_guid": "cefff2b4ffb57a16061ac999b70c9449",
+      "source_ring_local_xy_m": [
+        [
+          599.809,
+          -305.628
+        ],
+        [
+          573.207,
+          -300.792
+        ],
+        [
+          576.816,
+          -280.316
+        ],
+        [
+          603.418,
+          -285.152
+        ],
+        [
+          599.809,
+          -305.628
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 7,
+      "height_visual_m": 22.0,
+      "source_footprint_area_m2": 562.15,
+      "source_footprint_vertices": 4,
+      "windows": 223,
+      "balconies": 72,
+      "roof_features": 3,
+      "solid_boxes": 2332
+    },
+    {
+      "building_id": "way/227727240",
+      "style_id": "cop_equipamento_especial_01",
+      "family": "equipamento_especial",
+      "seed": 2036389003,
+      "source_osm": "way/227727240",
+      "local_osm_centroid_xy_m": [
+        339.978,
+        235.296
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 21221,
+      "polygons_generated": 5306,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_equipamento_especial_01__way_227727240.fbx",
+      "fbx_bytes": 176412,
+      "fbx_sha256": "4954b41087ca57788f1fcee385bd121b5afdc011d2db0376348891b24585f622",
+      "unity_asset_guid": "a50b3c57571f4bddaebac80899cf1e4d",
+      "source_ring_local_xy_m": [
+        [
+          341.569,
+          242.944
+        ],
+        [
+          344.557,
+          235.784
+        ],
+        [
+          348.134,
+          227.206
+        ],
+        [
+          338.377,
+          227.566
+        ],
+        [
+          331.85,
+          243.538
+        ],
+        [
+          341.569,
+          242.944
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 151.28,
+      "source_footprint_vertices": 5,
+      "windows": 107,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 883
+    },
+    {
+      "building_id": "way/1041756195",
+      "style_id": "cop_equipamento_especial_02",
+      "family": "equipamento_especial",
+      "seed": 205812557,
+      "source_osm": "way/1041756195",
+      "local_osm_centroid_xy_m": [
+        303.92,
+        118.908
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 55884,
+      "polygons_generated": 13972,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_equipamento_especial_02__way_1041756195.fbx",
+      "fbx_bytes": 391820,
+      "fbx_sha256": "8153dc4cb7e0005bc5352624665edd980d41d4804be2ac615d2800c8adc776a3",
+      "unity_asset_guid": "8df8ce346e193d6f6f894a3a40839570",
+      "source_ring_local_xy_m": [
+        [
+          338.573,
+          121.266
+        ],
+        [
+          335.771,
+          103.115
+        ],
+        [
+          328.45,
+          104.587
+        ],
+        [
+          299.227,
+          110.46
+        ],
+        [
+          268.567,
+          116.615
+        ],
+        [
+          273.167,
+          134.714
+        ],
+        [
+          338.573,
+          121.266
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 1251.49,
+      "source_footprint_vertices": 6,
+      "windows": 287,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 2327
+    },
+    {
+      "building_id": "way/488128347",
+      "style_id": "cop_equipamento_especial_03",
+      "family": "equipamento_especial",
+      "seed": 507592709,
+      "source_osm": "way/488128347",
+      "local_osm_centroid_xy_m": [
+        -984.026,
+        -421.807
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 37133,
+      "polygons_generated": 9284,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_equipamento_especial_03__way_488128347.fbx",
+      "fbx_bytes": 280124,
+      "fbx_sha256": "c91dedb9eaf771712d4aadadc27d91fa8873b3e4bee8d73db0485be2f2a0184a",
+      "unity_asset_guid": "6615a44df6ce164ca7443a8865eee0dd",
+      "source_ring_local_xy_m": [
+        [
+          -970.362,
+          -428.163
+        ],
+        [
+          -982.595,
+          -436.787
+        ],
+        [
+          -997.691,
+          -415.451
+        ],
+        [
+          -985.457,
+          -406.827
+        ],
+        [
+          -979.57,
+          -415.143
+        ],
+        [
+          -970.362,
+          -428.163
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 391.24,
+      "source_footprint_vertices": 5,
+      "windows": 167,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 1546
+    },
+    {
+      "building_id": "way/488128349",
+      "style_id": "cop_equipamento_especial_04",
+      "family": "equipamento_especial",
+      "seed": 547193287,
+      "source_osm": "way/488128349",
+      "local_osm_centroid_xy_m": [
+        -884.313,
+        -374.93
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 65615,
+      "polygons_generated": 16406,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_equipamento_especial_04__way_488128349.fbx",
+      "fbx_bytes": 460508,
+      "fbx_sha256": "3750b073c6dba10185e99c18fd7398595054776da66f82ab990eb79a697a1454",
+      "unity_asset_guid": "8a689be903ec71bbed7166e2c6e517d9",
+      "source_ring_local_xy_m": [
+        [
+          -881.832,
+          -357.577
+        ],
+        [
+          -890.039,
+          -362.787
+        ],
+        [
+          -884.597,
+          -371.325
+        ],
+        [
+          -879.212,
+          -367.9
+        ],
+        [
+          -866.739,
+          -387.438
+        ],
+        [
+          -871.533,
+          -390.49
+        ],
+        [
+          -867.322,
+          -397.075
+        ],
+        [
+          -864.373,
+          -401.707
+        ],
+        [
+          -872.817,
+          -407.07
+        ],
+        [
+          -905.85,
+          -355.325
+        ],
+        [
+          -889.79,
+          -345.125
+        ],
+        [
+          -881.832,
+          -357.577
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 872.18,
+      "source_footprint_vertices": 11,
+      "windows": 299,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 2731
+    },
+    {
+      "building_id": "way/588408934",
+      "style_id": "cop_equipamento_especial_05",
+      "family": "equipamento_especial",
+      "seed": 495594665,
+      "source_osm": "way/588408934",
+      "local_osm_centroid_xy_m": [
+        -368.903,
+        202.433
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 23374,
+      "polygons_generated": 5844,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_equipamento_especial_05__way_588408934.fbx",
+      "fbx_bytes": 191548,
+      "fbx_sha256": "6242e345b75c7358ed91c2b9e5e140fa91a32e3433874825d555204124567305",
+      "unity_asset_guid": "098bf4ded8a3b86b559a0a4f817d861e",
+      "source_ring_local_xy_m": [
+        [
+          -363.02,
+          210.749
+        ],
+        [
+          -361.284,
+          195.745
+        ],
+        [
+          -375.126,
+          193.285
+        ],
+        [
+          -375.634,
+          210.572
+        ],
+        [
+          -363.02,
+          210.749
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 215.05,
+      "source_footprint_vertices": 4,
+      "windows": 119,
+      "balconies": 0,
+      "roof_features": 3,
+      "solid_boxes": 973
+    },
+    {
+      "building_id": "way/586695365",
+      "style_id": "cop_escritorio_clinica_01",
+      "family": "escritorio_clinica",
+      "seed": 1672527969,
+      "source_osm": "way/586695365",
+      "local_osm_centroid_xy_m": [
+        -394.372,
+        163.141
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 32621,
+      "polygons_generated": 8156,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_escritorio_clinica_01__way_586695365.fbx",
+      "fbx_bytes": 248572,
+      "fbx_sha256": "861d1643c39ae4d795a7595c95163872b1feb16755372e3068517ab59105c4e8",
+      "unity_asset_guid": "faeb721b8f74299dc7434fc16a70922a",
+      "source_ring_local_xy_m": [
+        [
+          -385.614,
+          150.379
+        ],
+        [
+          -400.644,
+          149.068
+        ],
+        [
+          -401.768,
+          161.211
+        ],
+        [
+          -403.132,
+          175.902
+        ],
+        [
+          -388.102,
+          177.213
+        ],
+        [
+          -385.614,
+          150.379
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 406.55,
+      "source_footprint_vertices": 5,
+      "windows": 167,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 1358
+    },
+    {
+      "building_id": "way/1041756191",
+      "style_id": "cop_escritorio_clinica_02",
+      "family": "escritorio_clinica",
+      "seed": 1771539989,
+      "source_osm": "way/1041756191",
+      "local_osm_centroid_xy_m": [
+        424.026,
+        66.33
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 25726,
+      "polygons_generated": 6432,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_escritorio_clinica_02__way_1041756191.fbx",
+      "fbx_bytes": 203564,
+      "fbx_sha256": "77cb89429131cd6a63ef48b8396d436034960e56a9aa98301779015ed240e0b9",
+      "unity_asset_guid": "10b262e56f8b0fb914d8505f62986d56",
+      "source_ring_local_xy_m": [
+        [
+          411.445,
+          64.554
+        ],
+        [
+          413.542,
+          73.601
+        ],
+        [
+          436.607,
+          68.111
+        ],
+        [
+          434.502,
+          59.055
+        ],
+        [
+          411.445,
+          64.554
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 220.28,
+      "source_footprint_vertices": 4,
+      "windows": 131,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 1071
+    },
+    {
+      "building_id": "way/1041990734",
+      "style_id": "cop_escritorio_clinica_03",
+      "family": "escritorio_clinica",
+      "seed": 2009188122,
+      "source_osm": "way/1041990734",
+      "local_osm_centroid_xy_m": [
+        802.128,
+        -113.282
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 38125,
+      "polygons_generated": 9534,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_escritorio_clinica_03__way_1041990734.fbx",
+      "fbx_bytes": 293292,
+      "fbx_sha256": "a3049f0a8ec50b3cc7a33c9c7f52017573c73b22d7fbddfb567885d0aefab316",
+      "unity_asset_guid": "cbc9e98d39c91f96100120b75d8a2a41",
+      "source_ring_local_xy_m": [
+        [
+          806.524,
+          -108.883
+        ],
+        [
+          801.139,
+          -111.194
+        ],
+        [
+          803.291,
+          -115.788
+        ],
+        [
+          808.748,
+          -114.523
+        ],
+        [
+          812.66,
+          -123.263
+        ],
+        [
+          813.542,
+          -124.377
+        ],
+        [
+          803.739,
+          -128.878
+        ],
+        [
+          799.336,
+          -119.359
+        ],
+        [
+          800.68,
+          -119.235
+        ],
+        [
+          797.316,
+          -112.062
+        ],
+        [
+          795.556,
+          -112.875
+        ],
+        [
+          790.968,
+          -103.094
+        ],
+        [
+          801.7,
+          -98.126
+        ],
+        [
+          806.524,
+          -108.883
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 276.45,
+      "source_footprint_vertices": 13,
+      "windows": 191,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 1585
+    },
+    {
+      "building_id": "way/488128332",
+      "style_id": "cop_escritorio_clinica_04",
+      "family": "escritorio_clinica",
+      "seed": 661005165,
+      "source_osm": "way/488128332",
+      "local_osm_centroid_xy_m": [
+        -930.274,
+        -392.677
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 42468,
+      "polygons_generated": 10618,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_escritorio_clinica_04__way_488128332.fbx",
+      "fbx_bytes": 310908,
+      "fbx_sha256": "8ea8db416fdefce18ffc5f2b473b982cb9b30cff30d74b79de511be543ae4209",
+      "unity_asset_guid": "ac5dbc6fe8119c10490ce0a691ee09dd",
+      "source_ring_local_xy_m": [
+        [
+          -932.456,
+          -409.159
+        ],
+        [
+          -937.656,
+          -400.619
+        ],
+        [
+          -940.429,
+          -396.061
+        ],
+        [
+          -945.941,
+          -386.996
+        ],
+        [
+          -928.091,
+          -376.194
+        ],
+        [
+          -914.605,
+          -398.357
+        ],
+        [
+          -932.456,
+          -409.159
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 541.33,
+      "source_footprint_vertices": 6,
+      "windows": 191,
+      "balconies": 0,
+      "roof_features": 1,
+      "solid_boxes": 1768
+    },
+    {
+      "building_id": "way/488128335",
+      "style_id": "cop_escritorio_clinica_05",
+      "family": "escritorio_clinica",
+      "seed": 305019862,
+      "source_osm": "way/488128335",
+      "local_osm_centroid_xy_m": [
+        -964.136,
+        -404.065
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 21046,
+      "polygons_generated": 5262,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_escritorio_clinica_05__way_488128335.fbx",
+      "fbx_bytes": 177372,
+      "fbx_sha256": "ae4d23bc9996ee771708f70db698d579e847532a4b1aec0642fc91769d14b123",
+      "unity_asset_guid": "eac951d6890505eb1b2b704be6352891",
+      "source_ring_local_xy_m": [
+        [
+          -956.251,
+          -404.542
+        ],
+        [
+          -965.289,
+          -411.874
+        ],
+        [
+          -972.015,
+          -403.588
+        ],
+        [
+          -962.992,
+          -396.256
+        ],
+        [
+          -956.251,
+          -404.542
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 124.2,
+      "source_footprint_vertices": 4,
+      "windows": 95,
+      "balconies": 0,
+      "roof_features": 3,
+      "solid_boxes": 876
+    },
+    {
+      "building_id": "way/359363522",
+      "style_id": "cop_hotel_classico_01",
+      "family": "hotel_classico",
+      "seed": 223158450,
+      "source_osm": "way/359363522",
+      "local_osm_centroid_xy_m": [
+        801.687,
+        -276.416
+      ],
+      "height_provenance": "OSM_LEVELS_ESTIMATE_3M_PER_FLOOR",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 74014,
+      "polygons_generated": 18504,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_classico_01__way_359363522.fbx",
+      "fbx_bytes": 516428,
+      "fbx_sha256": "2336a3291983084a5511cba29f0014c318833a53b7cfc6e73683f2ea28f8640e",
+      "unity_asset_guid": "8a7997a91fe319c039726eafcc79bc68",
+      "source_ring_local_xy_m": [
+        [
+          812.112,
+          -267.428
+        ],
+        [
+          804.744,
+          -289.809
+        ],
+        [
+          791.396,
+          -285.717
+        ],
+        [
+          798.489,
+          -262.932
+        ],
+        [
+          812.112,
+          -267.428
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 12,
+      "height_visual_m": 36.0,
+      "source_footprint_area_m2": 335.61,
+      "source_footprint_vertices": 4,
+      "windows": 311,
+      "balconies": 144,
+      "roof_features": 1,
+      "solid_boxes": 3083
+    },
+    {
+      "building_id": "way/322770915",
+      "style_id": "cop_hotel_classico_02",
+      "family": "hotel_classico",
+      "seed": 53071615,
+      "source_osm": "way/322770915",
+      "local_osm_centroid_xy_m": [
+        -755.927,
+        -283.643
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 31390,
+      "polygons_generated": 7848,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_classico_02__way_322770915.fbx",
+      "fbx_bytes": 247036,
+      "fbx_sha256": "329b2bf5a54a697e1acc5505b5468063df990bc884ccf918f607d1fbe81187df",
+      "unity_asset_guid": "629703acfc5ae97fe390d038ed98018d",
+      "source_ring_local_xy_m": [
+        [
+          -745.796,
+          -283.314
+        ],
+        [
+          -761.148,
+          -292.664
+        ],
+        [
+          -765.985,
+          -284.414
+        ],
+        [
+          -751.229,
+          -274.429
+        ],
+        [
+          -745.796,
+          -283.314
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 178.61,
+      "source_footprint_vertices": 4,
+      "windows": 113,
+      "balconies": 95,
+      "roof_features": 1,
+      "solid_boxes": 1307
+    },
+    {
+      "building_id": "way/206935581",
+      "style_id": "cop_hotel_classico_03",
+      "family": "hotel_classico",
+      "seed": 638692061,
+      "source_osm": "way/206935581",
+      "local_osm_centroid_xy_m": [
+        965.004,
+        -122.966
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 39074,
+      "polygons_generated": 9770,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_classico_03__way_206935581.fbx",
+      "fbx_bytes": 298524,
+      "fbx_sha256": "023228de5dc6c43015a811ef90943e162f051101dabb43a640d379e77e752d0c",
+      "unity_asset_guid": "8b4aa2ada9f1bc95e03cc5ee6ca9e905",
+      "source_ring_local_xy_m": [
+        [
+          973.276,
+          -115.666
+        ],
+        [
+          970.755,
+          -129.706
+        ],
+        [
+          968.051,
+          -129.21
+        ],
+        [
+          966.093,
+          -140.1
+        ],
+        [
+          963.828,
+          -139.683
+        ],
+        [
+          965.678,
+          -129.389
+        ],
+        [
+          956.6,
+          -127.698
+        ],
+        [
+          959.23,
+          -113.062
+        ],
+        [
+          973.276,
+          -115.666
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 234.92,
+      "source_footprint_vertices": 8,
+      "windows": 155,
+      "balconies": 87,
+      "roof_features": 1,
+      "solid_boxes": 1626
+    },
+    {
+      "building_id": "way/1041988848",
+      "style_id": "cop_hotel_classico_04",
+      "family": "hotel_classico",
+      "seed": 192954092,
+      "source_osm": "way/1041988848",
+      "local_osm_centroid_xy_m": [
+        957.58,
+        -182.082
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 49552,
+      "polygons_generated": 12390,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_classico_04__way_1041988848.fbx",
+      "fbx_bytes": 368700,
+      "fbx_sha256": "a99989d2a353b4bb946f8eb5d7f50f3fca5452961c65646c271d8f34a01f85ac",
+      "unity_asset_guid": "9ae3720a30b959054551b425283e3cfb",
+      "source_ring_local_xy_m": [
+        [
+          966.979,
+          -194.099
+        ],
+        [
+          956.7,
+          -190.665
+        ],
+        [
+          957.995,
+          -186.726
+        ],
+        [
+          953.224,
+          -185.134
+        ],
+        [
+          952.005,
+          -188.846
+        ],
+        [
+          942.846,
+          -185.794
+        ],
+        [
+          947.799,
+          -170.717
+        ],
+        [
+          957.208,
+          -173.858
+        ],
+        [
+          961.581,
+          -175.318
+        ],
+        [
+          972.008,
+          -178.795
+        ],
+        [
+          966.979,
+          -194.099
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 387.85,
+      "source_footprint_vertices": 10,
+      "windows": 185,
+      "balconies": 80,
+      "roof_features": 1,
+      "solid_boxes": 2062
+    },
+    {
+      "building_id": "way/1041988853",
+      "style_id": "cop_hotel_classico_05",
+      "family": "hotel_classico",
+      "seed": 144231954,
+      "source_osm": "way/1041988853",
+      "local_osm_centroid_xy_m": [
+        944.5,
+        -222.312
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 45009,
+      "polygons_generated": 11254,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_classico_05__way_1041988853.fbx",
+      "fbx_bytes": 335644,
+      "fbx_sha256": "d1cf004f2698ce06a453187397e29e6540fa7b50cc299b635148268d04f561de",
+      "unity_asset_guid": "037a0bbfd0403c9be5d790584b542827",
+      "source_ring_local_xy_m": [
+        [
+          943.8,
+          -214.99
+        ],
+        [
+          942.791,
+          -218.054
+        ],
+        [
+          946.595,
+          -219.331
+        ],
+        [
+          947.843,
+          -215.535
+        ],
+        [
+          958.741,
+          -219.174
+        ],
+        [
+          954.305,
+          -232.651
+        ],
+        [
+          940.855,
+          -228.161
+        ],
+        [
+          930.105,
+          -224.566
+        ],
+        [
+          934.302,
+          -211.82
+        ],
+        [
+          943.8,
+          -214.99
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 338.32,
+      "source_footprint_vertices": 9,
+      "windows": 173,
+      "balconies": 70,
+      "roof_features": 3,
+      "solid_boxes": 1873
+    },
+    {
+      "building_id": "way/1048277496",
+      "style_id": "cop_hotel_contemporaneo_01",
+      "family": "hotel_contemporaneo",
+      "seed": 962245346,
+      "source_osm": "way/1048277496",
+      "local_osm_centroid_xy_m": [
+        184.047,
+        -201.033
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 33972,
+      "polygons_generated": 8494,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_contemporaneo_01__way_1048277496.fbx",
+      "fbx_bytes": 260476,
+      "fbx_sha256": "27c6a19d803a4a3f896d88519440e52299cb82ca6b809ef4f75435307b29780a",
+      "unity_asset_guid": "4336cb03994f8eb0c2ec89bdafb0f6ad",
+      "source_ring_local_xy_m": [
+        [
+          193.216,
+          -192.388
+        ],
+        [
+          193.18,
+          -193.012
+        ],
+        [
+          190.974,
+          -204.544
+        ],
+        [
+          189.673,
+          -212.223
+        ],
+        [
+          175.702,
+          -210.281
+        ],
+        [
+          177.536,
+          -190.069
+        ],
+        [
+          193.216,
+          -192.388
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 302.37,
+      "source_footprint_vertices": 6,
+      "windows": 143,
+      "balconies": 60,
+      "roof_features": 1,
+      "solid_boxes": 1414
+    },
+    {
+      "building_id": "way/1042041782",
+      "style_id": "cop_hotel_contemporaneo_02",
+      "family": "hotel_contemporaneo",
+      "seed": 526203113,
+      "source_osm": "way/1042041782",
+      "local_osm_centroid_xy_m": [
+        640.305,
+        -249.608
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 66074,
+      "polygons_generated": 16520,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_contemporaneo_02__way_1042041782.fbx",
+      "fbx_bytes": 465228,
+      "fbx_sha256": "0bc792015ab4889970a5e437f4d81b1ca7c3b9de84aa72a34cd944c4f3b65249",
+      "unity_asset_guid": "dc68b19366f72aa15d89156d9ea981b5",
+      "source_ring_local_xy_m": [
+        [
+          645.219,
+          -284.335
+        ],
+        [
+          637.145,
+          -283.193
+        ],
+        [
+          637.701,
+          -279.019
+        ],
+        [
+          634.206,
+          -278.523
+        ],
+        [
+          633.704,
+          -282.222
+        ],
+        [
+          626.398,
+          -281.201
+        ],
+        [
+          635.22,
+          -215.803
+        ],
+        [
+          654.112,
+          -218.463
+        ],
+        [
+          645.219,
+          -284.335
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 1249.42,
+      "source_footprint_vertices": 8,
+      "windows": 239,
+      "balconies": 200,
+      "roof_features": 1,
+      "solid_boxes": 2751
+    },
+    {
+      "building_id": "way/1048277507",
+      "style_id": "cop_hotel_contemporaneo_03",
+      "family": "hotel_contemporaneo",
+      "seed": 1270068813,
+      "source_osm": "way/1048277507",
+      "local_osm_centroid_xy_m": [
+        33.507,
+        -193.318
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 36286,
+      "polygons_generated": 9072,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_contemporaneo_03__way_1048277507.fbx",
+      "fbx_bytes": 278428,
+      "fbx_sha256": "ee7ccab9b75c28a84b598c06ce1cb6d29118e4503c130bb4534e8df3a4bec19d",
+      "unity_asset_guid": "0df588bfa6d02cb4b14b0df7a85d81ca",
+      "source_ring_local_xy_m": [
+        [
+          36.327,
+          -205.544
+        ],
+        [
+          28.214,
+          -204.507
+        ],
+        [
+          30.435,
+          -181.395
+        ],
+        [
+          38.978,
+          -182.194
+        ],
+        [
+          36.327,
+          -205.544
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 195.69,
+      "source_footprint_vertices": 4,
+      "windows": 131,
+      "balconies": 74,
+      "roof_features": 1,
+      "solid_boxes": 1511
+    },
+    {
+      "building_id": "way/357286152",
+      "style_id": "cop_hotel_contemporaneo_04",
+      "family": "hotel_contemporaneo",
+      "seed": 1748836023,
+      "source_osm": "way/357286152",
+      "local_osm_centroid_xy_m": [
+        -681.946,
+        -366.993
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 67846,
+      "polygons_generated": 16962,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_contemporaneo_04__way_357286152.fbx",
+      "fbx_bytes": 474108,
+      "fbx_sha256": "68ee68ce5f826581593024d67fe1c9acde429a782f181364acd13dcbf268e22f",
+      "unity_asset_guid": "a4898dc6ee1dded0ebdd418afe2b7ad7",
+      "source_ring_local_xy_m": [
+        [
+          -705.307,
+          -351.451
+        ],
+        [
+          -679.824,
+          -339.093
+        ],
+        [
+          -658.584,
+          -382.536
+        ],
+        [
+          -684.068,
+          -394.894
+        ],
+        [
+          -705.307,
+          -351.451
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 1369.55,
+      "source_footprint_vertices": 4,
+      "windows": 263,
+      "balconies": 110,
+      "roof_features": 1,
+      "solid_boxes": 2826
+    },
+    {
+      "building_id": "way/1010809495",
+      "style_id": "cop_hotel_contemporaneo_05",
+      "family": "hotel_contemporaneo",
+      "seed": 731336617,
+      "source_osm": "way/1010809495",
+      "local_osm_centroid_xy_m": [
+        672.737,
+        -250.388
+      ],
+      "height_provenance": "OSM_EXPLICIT_HEIGHT_M",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 24910,
+      "polygons_generated": 6228,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_hotel_contemporaneo_05__way_1010809495.fbx",
+      "fbx_bytes": 212204,
+      "fbx_sha256": "f041cec204c688b8d753618b29c53f4ccbe504a7d1e4569a9c5086d75d7e455c",
+      "unity_asset_guid": "6b3e8fa6e86e8d599ef1e97070c3076a",
+      "source_ring_local_xy_m": [
+        [
+          685.257,
+          -232.756
+        ],
+        [
+          681.322,
+          -270.346
+        ],
+        [
+          660.213,
+          -268.013
+        ],
+        [
+          664.154,
+          -230.431
+        ],
+        [
+          685.257,
+          -232.756
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 3,
+      "height_visual_m": 9.0,
+      "source_footprint_area_m2": 802.45,
+      "source_footprint_vertices": 4,
+      "windows": 113,
+      "balconies": 28,
+      "roof_features": 3,
+      "solid_boxes": 1037
+    },
+    {
+      "building_id": "way/586972700",
+      "style_id": "cop_misto_loja_terrea_01",
+      "family": "misto_loja_terrea",
+      "seed": 1112904065,
+      "source_osm": "way/586972700",
+      "local_osm_centroid_xy_m": [
+        -564.112,
+        232.116
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 35436,
+      "polygons_generated": 8860,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_misto_loja_terrea_01__way_586972700.fbx",
+      "fbx_bytes": 271436,
+      "fbx_sha256": "4c831698e441ad84d2975bee98b5768318739e4eb6bf3df936d312fb43007290",
+      "unity_asset_guid": "84556ae59faccd89d2d8715b60668594",
+      "source_ring_local_xy_m": [
+        [
+          -554.054,
+          225.883
+        ],
+        [
+          -564.133,
+          221.093
+        ],
+        [
+          -575.044,
+          243.866
+        ],
+        [
+          -571.248,
+          245.667
+        ],
+        [
+          -566.43,
+          235.611
+        ],
+        [
+          -560.147,
+          238.6
+        ],
+        [
+          -554.054,
+          225.883
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 204.19,
+      "source_footprint_vertices": 6,
+      "windows": 149,
+      "balconies": 63,
+      "roof_features": 1,
+      "solid_boxes": 1475
+    },
+    {
+      "building_id": "way/488128337",
+      "style_id": "cop_misto_loja_terrea_02",
+      "family": "misto_loja_terrea",
+      "seed": 1303294722,
+      "source_osm": "way/488128337",
+      "local_osm_centroid_xy_m": [
+        -914.235,
+        -420.799
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 49377,
+      "polygons_generated": 12346,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_misto_loja_terrea_02__way_488128337.fbx",
+      "fbx_bytes": 367532,
+      "fbx_sha256": "d35a73ed6e1532eda54edb912488e8745d05e215b0bada272851bbad3b2af09d",
+      "unity_asset_guid": "a0c4d8d8851f8081ab5c04f9fed8f5e3",
+      "source_ring_local_xy_m": [
+        [
+          -903.721,
+          -419.632
+        ],
+        [
+          -909.669,
+          -423.672
+        ],
+        [
+          -904.915,
+          -430.591
+        ],
+        [
+          -910.098,
+          -433.6
+        ],
+        [
+          -915.311,
+          -426.001
+        ],
+        [
+          -919.914,
+          -429.141
+        ],
+        [
+          -920.681,
+          -428.003
+        ],
+        [
+          -926.668,
+          -419.259
+        ],
+        [
+          -911.188,
+          -408.719
+        ],
+        [
+          -903.721,
+          -419.632
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 289.4,
+      "source_footprint_vertices": 9,
+      "windows": 161,
+      "balconies": 135,
+      "roof_features": 1,
+      "solid_boxes": 2055
+    },
+    {
+      "building_id": "way/134013760",
+      "style_id": "cop_misto_loja_terrea_03",
+      "family": "misto_loja_terrea",
+      "seed": 1721600329,
+      "source_osm": "way/134013760",
+      "local_osm_centroid_xy_m": [
+        795.024,
+        -317.123
+      ],
+      "height_provenance": "OSM_LEVELS_ESTIMATE_3M_PER_FLOOR",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 135454,
+      "polygons_generated": 33864,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_misto_loja_terrea_03__way_134013760.fbx",
+      "fbx_bytes": 889436,
+      "fbx_sha256": "d657da30570f2633b4f792194556e50f00bd757372ea94676d526caa68ca3abb",
+      "unity_asset_guid": "bb1d190a78b69aac4099fe809b4be5c3",
+      "source_ring_local_xy_m": [
+        [
+          788.751,
+          -293.069
+        ],
+        [
+          812.613,
+          -298.712
+        ],
+        [
+          801.567,
+          -341.253
+        ],
+        [
+          777.19,
+          -335.081
+        ],
+        [
+          788.751,
+          -293.069
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 12,
+      "height_visual_m": 36.0,
+      "source_footprint_area_m2": 1086.46,
+      "source_footprint_vertices": 4,
+      "windows": 491,
+      "balconies": 301,
+      "roof_features": 1,
+      "solid_boxes": 5643
+    },
+    {
+      "building_id": "way/586695361",
+      "style_id": "cop_misto_loja_terrea_04",
+      "family": "misto_loja_terrea",
+      "seed": 1872021983,
+      "source_osm": "way/586695361",
+      "local_osm_centroid_xy_m": [
+        -346.578,
+        124.13
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 36574,
+      "polygons_generated": 9144,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_misto_loja_terrea_04__way_586695361.fbx",
+      "fbx_bytes": 280812,
+      "fbx_sha256": "fea164eda2cc7c483a09650ccd01ace99fece263fea4389a48f3f403ad98038b",
+      "unity_asset_guid": "d6750e42c9f2ce73f5efe2b51e0a8fd7",
+      "source_ring_local_xy_m": [
+        [
+          -337.924,
+          112.326
+        ],
+        [
+          -353.629,
+          112.943
+        ],
+        [
+          -354.904,
+          135.581
+        ],
+        [
+          -340.138,
+          136.107
+        ],
+        [
+          -337.924,
+          112.326
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 353.53,
+      "source_footprint_vertices": 4,
+      "windows": 155,
+      "balconies": 66,
+      "roof_features": 1,
+      "solid_boxes": 1523
+    },
+    {
+      "building_id": "way/586695362",
+      "style_id": "cop_misto_loja_terrea_05",
+      "family": "misto_loja_terrea",
+      "seed": 1713678512,
+      "source_osm": "way/586695362",
+      "local_osm_centroid_xy_m": [
+        -361.453,
+        127.236
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 38446,
+      "polygons_generated": 9612,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_misto_loja_terrea_05__way_586695362.fbx",
+      "fbx_bytes": 283724,
+      "fbx_sha256": "8fb7ec41bbbfea0b89cfc75dd134815f5596a8bf5901904651f225d32c9c0594",
+      "unity_asset_guid": "67b8d623639f8061abe6c26c49e5bbca",
+      "source_ring_local_xy_m": [
+        [
+          -353.629,
+          112.943
+        ],
+        [
+          -366.519,
+          111.83
+        ],
+        [
+          -369.28,
+          141.521
+        ],
+        [
+          -356.382,
+          142.641
+        ],
+        [
+          -353.629,
+          112.943
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 385.95,
+      "source_footprint_vertices": 4,
+      "windows": 167,
+      "balconies": 60,
+      "roof_features": 3,
+      "solid_boxes": 1601
+    },
+    {
+      "building_id": "way/134013926",
+      "style_id": "cop_predio_historico_01",
+      "family": "predio_historico",
+      "seed": 224054047,
+      "source_osm": "way/134013926",
+      "local_osm_centroid_xy_m": [
+        502.49,
+        -92.597
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 62255,
+      "polygons_generated": 15566,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_predio_historico_01__way_134013926.fbx",
+      "fbx_bytes": 449036,
+      "fbx_sha256": "c3808466f22b06bb47a8cdeb754d55a5f2be3a304d7f2c99e702fd67b0b9a729",
+      "unity_asset_guid": "7c7082b248c8cf10f1bfe140ecd79aaf",
+      "source_ring_local_xy_m": [
+        [
+          490.289,
+          -88.523
+        ],
+        [
+          493.171,
+          -89.175
+        ],
+        [
+          492.625,
+          -91.633
+        ],
+        [
+          497.171,
+          -92.662
+        ],
+        [
+          499.856,
+          -80.525
+        ],
+        [
+          495.192,
+          -79.466
+        ],
+        [
+          496.219,
+          -74.807
+        ],
+        [
+          512.313,
+          -78.454
+        ],
+        [
+          515.804,
+          -79.251
+        ],
+        [
+          509.32,
+          -108.563
+        ],
+        [
+          486.98,
+          -103.503
+        ],
+        [
+          490.289,
+          -88.523
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 587.18,
+      "source_footprint_vertices": 11,
+      "windows": 239,
+      "balconies": 100,
+      "roof_features": 1,
+      "solid_boxes": 2591
+    },
+    {
+      "building_id": "way/588408932",
+      "style_id": "cop_predio_historico_02",
+      "family": "predio_historico",
+      "seed": 1364551579,
+      "source_osm": "way/588408932",
+      "local_osm_centroid_xy_m": [
+        -381.715,
+        201.804
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 33005,
+      "polygons_generated": 8252,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_predio_historico_02__way_588408932.fbx",
+      "fbx_bytes": 254796,
+      "fbx_sha256": "b29b14d3cd34416fba1d43fe2c42f0972e462384541bb52e1f1702c630d613d8",
+      "unity_asset_guid": "6ede0ca49c0a5bf56cc68108dc6d84e7",
+      "source_ring_local_xy_m": [
+        [
+          -375.634,
+          210.572
+        ],
+        [
+          -375.126,
+          193.285
+        ],
+        [
+          -387.356,
+          193.104
+        ],
+        [
+          -387.515,
+          194.856
+        ],
+        [
+          -388.855,
+          209.796
+        ],
+        [
+          -375.634,
+          210.572
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 216.7,
+      "source_footprint_vertices": 5,
+      "windows": 119,
+      "balconies": 100,
+      "roof_features": 1,
+      "solid_boxes": 1374
+    },
+    {
+      "building_id": "way/588693296",
+      "style_id": "cop_predio_historico_03",
+      "family": "predio_historico",
+      "seed": 1565725661,
+      "source_osm": "way/588693296",
+      "local_osm_centroid_xy_m": [
+        -205.301,
+        167.731
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 23830,
+      "polygons_generated": 5958,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_predio_historico_03__way_588693296.fbx",
+      "fbx_bytes": 193948,
+      "fbx_sha256": "62fe8a4ddb55aa9e3aa2e092a98038fb7fc9d6c6e7b18b0258d314b3277cac85",
+      "unity_asset_guid": "30080cc27ea9d2901db74773c4b826b8",
+      "source_ring_local_xy_m": [
+        [
+          -199.434,
+          161.876
+        ],
+        [
+          -211.268,
+          162.421
+        ],
+        [
+          -210.927,
+          173.816
+        ],
+        [
+          -199.441,
+          172.914
+        ],
+        [
+          -199.434,
+          161.876
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 130.9,
+      "source_footprint_vertices": 4,
+      "windows": 95,
+      "balconies": 52,
+      "roof_features": 1,
+      "solid_boxes": 992
+    },
+    {
+      "building_id": "way/488128351",
+      "style_id": "cop_predio_historico_04",
+      "family": "predio_historico",
+      "seed": 286587776,
+      "source_osm": "way/488128351",
+      "local_osm_centroid_xy_m": [
+        -848.07,
+        -405.091
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 21389,
+      "polygons_generated": 5348,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_predio_historico_04__way_488128351.fbx",
+      "fbx_bytes": 178524,
+      "fbx_sha256": "b423c798bcf75b0e73a45dc4db2b853f817eb9d9dba6399006fd6ed783e31c58",
+      "unity_asset_guid": "f1b8e208c985c7f11109f62b4b871e31",
+      "source_ring_local_xy_m": [
+        [
+          -839.8,
+          -407.085
+        ],
+        [
+          -849.757,
+          -413.409
+        ],
+        [
+          -854.792,
+          -405.529
+        ],
+        [
+          -856.338,
+          -403.097
+        ],
+        [
+          -846.381,
+          -396.773
+        ],
+        [
+          -839.8,
+          -407.085
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 144.32,
+      "source_footprint_vertices": 5,
+      "windows": 89,
+      "balconies": 38,
+      "roof_features": 1,
+      "solid_boxes": 890
+    },
+    {
+      "building_id": "way/42432240",
+      "style_id": "cop_predio_historico_05",
+      "family": "predio_historico",
+      "seed": 1895871009,
+      "source_osm": "way/42432240",
+      "local_osm_centroid_xy_m": [
+        916.887,
+        -18.57
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 53110,
+      "polygons_generated": 13278,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_predio_historico_05__way_42432240.fbx",
+      "fbx_bytes": 383100,
+      "fbx_sha256": "b199ef7d004b9839bf4a88e17f3964ff9aba6aed764523c7c9a41103202d9ec1",
+      "unity_asset_guid": "36edb36400d4b10070f779a97934df91",
+      "source_ring_local_xy_m": [
+        [
+          936.51,
+          -15.343
+        ],
+        [
+          932.346,
+          -31.354
+        ],
+        [
+          897.212,
+          -22.128
+        ],
+        [
+          902.004,
+          -5.525
+        ],
+        [
+          936.51,
+          -15.343
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 610.45,
+      "source_footprint_vertices": 4,
+      "windows": 215,
+      "balconies": 60,
+      "roof_features": 3,
+      "solid_boxes": 2212
+    },
+    {
+      "building_id": "way/488128338",
+      "style_id": "cop_residencial_anos70_01",
+      "family": "residencial_anos70",
+      "seed": 2140324682,
+      "source_osm": "way/488128338",
+      "local_osm_centroid_xy_m": [
+        -931.955,
+        -429.571
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 44941,
+      "polygons_generated": 11238,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_anos70_01__way_488128338.fbx",
+      "fbx_bytes": 343212,
+      "fbx_sha256": "9296eb47618f41d1f1bbee2d9b30ee32c482ed4b677c8ad0aa9024a38a0be7bc",
+      "unity_asset_guid": "ce7053d94643cfd5cf41e89786c464bb",
+      "source_ring_local_xy_m": [
+        [
+          -926.668,
+          -419.259
+        ],
+        [
+          -920.681,
+          -428.003
+        ],
+        [
+          -927.88,
+          -432.912
+        ],
+        [
+          -923.217,
+          -439.718
+        ],
+        [
+          -927.258,
+          -442.47
+        ],
+        [
+          -931.791,
+          -435.85
+        ],
+        [
+          -936.553,
+          -439.097
+        ],
+        [
+          -945.0,
+          -426.739
+        ],
+        [
+          -940.958,
+          -423.988
+        ],
+        [
+          -939.662,
+          -425.881
+        ],
+        [
+          -934.354,
+          -422.26
+        ],
+        [
+          -930.93,
+          -419.936
+        ],
+        [
+          -927.71,
+          -417.733
+        ],
+        [
+          -926.668,
+          -419.259
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 293.76,
+      "source_footprint_vertices": 13,
+      "windows": 167,
+      "balconies": 69,
+      "roof_features": 1,
+      "solid_boxes": 1869
+    },
+    {
+      "building_id": "way/488128342",
+      "style_id": "cop_residencial_anos70_02",
+      "family": "residencial_anos70",
+      "seed": 1020657102,
+      "source_osm": "way/488128342",
+      "local_osm_centroid_xy_m": [
+        -932.411,
+        -457.326
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 39334,
+      "polygons_generated": 9834,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_anos70_02__way_488128342.fbx",
+      "fbx_bytes": 298012,
+      "fbx_sha256": "2ec717caee4b5303d081b7681bebb97c2f55a9ba5953b6d73f3efc121d0f12c8",
+      "unity_asset_guid": "b4ea047cb4b3f2364dae289c853eb72b",
+      "source_ring_local_xy_m": [
+        [
+          -932.473,
+          -468.233
+        ],
+        [
+          -941.857,
+          -451.814
+        ],
+        [
+          -932.348,
+          -446.419
+        ],
+        [
+          -922.964,
+          -462.839
+        ],
+        [
+          -932.473,
+          -468.233
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 206.76,
+      "source_footprint_vertices": 4,
+      "windows": 131,
+      "balconies": 110,
+      "roof_features": 1,
+      "solid_boxes": 1638
+    },
+    {
+      "building_id": "way/586695368",
+      "style_id": "cop_residencial_anos70_03",
+      "family": "residencial_anos70",
+      "seed": 992953934,
+      "source_osm": "way/586695368",
+      "local_osm_centroid_xy_m": [
+        -419.301,
+        147.133
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 44549,
+      "polygons_generated": 11138,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_anos70_03__way_586695368.fbx",
+      "fbx_bytes": 337884,
+      "fbx_sha256": "c5c0aeeeb76c903b58e200f18cd8f5a05222fd29e612c726f813650c1d504c03",
+      "unity_asset_guid": "8c342a68802b05dd550e8180cc6ed510",
+      "source_ring_local_xy_m": [
+        [
+          -413.985,
+          157.576
+        ],
+        [
+          -408.909,
+          158.019
+        ],
+        [
+          -407.071,
+          138.222
+        ],
+        [
+          -429.689,
+          136.243
+        ],
+        [
+          -431.533,
+          156.047
+        ],
+        [
+          -413.985,
+          157.576
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 451.53,
+      "source_footprint_vertices": 5,
+      "windows": 179,
+      "balconies": 100,
+      "roof_features": 1,
+      "solid_boxes": 1855
+    },
+    {
+      "building_id": "way/488128348",
+      "style_id": "cop_residencial_anos70_04",
+      "family": "residencial_anos70",
+      "seed": 226274801,
+      "source_osm": "way/488128348",
+      "local_osm_centroid_xy_m": [
+        -965.118,
+        -451.195
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 49428,
+      "polygons_generated": 12358,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_anos70_04__way_488128348.fbx",
+      "fbx_bytes": 364908,
+      "fbx_sha256": "5637d4ac01bf50b949a9b463d8b9bb908c0ed316b41b0dfe8faaa262f84f9d55",
+      "unity_asset_guid": "f9201ebcd246fb9c7b715c05fd431d11",
+      "source_ring_local_xy_m": [
+        [
+          -962.41,
+          -444.339
+        ],
+        [
+          -963.492,
+          -444.951
+        ],
+        [
+          -945.844,
+          -475.828
+        ],
+        [
+          -949.907,
+          -476.022
+        ],
+        [
+          -982.573,
+          -438.329
+        ],
+        [
+          -970.492,
+          -431.836
+        ],
+        [
+          -962.41,
+          -444.339
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 427.05,
+      "source_footprint_vertices": 6,
+      "windows": 209,
+      "balconies": 89,
+      "roof_features": 1,
+      "solid_boxes": 2058
+    },
+    {
+      "building_id": "way/588408933",
+      "style_id": "cop_residencial_anos70_05",
+      "family": "residencial_anos70",
+      "seed": 266059638,
+      "source_osm": "way/588408933",
+      "local_osm_centroid_xy_m": [
+        -382.114,
+        217.759
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 27310,
+      "polygons_generated": 6828,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_anos70_05__way_588408933.fbx",
+      "fbx_bytes": 214876,
+      "fbx_sha256": "91b1e4426616d52332e9d4a9b8c4860e680674ebe059191c90f0220a261fc159",
+      "unity_asset_guid": "6ecc2f742f7f9f5e8e44215fc6798356",
+      "source_ring_local_xy_m": [
+        [
+          -376.17,
+          226.693
+        ],
+        [
+          -375.634,
+          210.572
+        ],
+        [
+          -388.855,
+          209.796
+        ],
+        [
+          -388.259,
+          224.376
+        ],
+        [
+          -376.17,
+          226.693
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 194.22,
+      "source_footprint_vertices": 4,
+      "windows": 119,
+      "balconies": 40,
+      "roof_features": 3,
+      "solid_boxes": 1137
+    },
+    {
+      "building_id": "way/227727238",
+      "style_id": "cop_residencial_compacto_01",
+      "family": "residencial_compacto",
+      "seed": 368122636,
+      "source_osm": "way/227727238",
+      "local_osm_centroid_xy_m": [
+        224.728,
+        360.649
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 54358,
+      "polygons_generated": 13590,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_compacto_01__way_227727238.fbx",
+      "fbx_bytes": 393692,
+      "fbx_sha256": "138f6005220a43c75e9fac1d290b3684755315090a403439b120fb60934e33c8",
+      "unity_asset_guid": "d54889fe4b7e7689141ecd9c9b1ad60c",
+      "source_ring_local_xy_m": [
+        [
+          251.161,
+          365.572
+        ],
+        [
+          245.291,
+          349.419
+        ],
+        [
+          199.873,
+          355.83
+        ],
+        [
+          201.431,
+          371.457
+        ],
+        [
+          251.161,
+          365.572
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 778.8,
+      "source_footprint_vertices": 4,
+      "windows": 209,
+      "balconies": 87,
+      "roof_features": 1,
+      "solid_boxes": 2264
+    },
+    {
+      "building_id": "way/586695360",
+      "style_id": "cop_residencial_compacto_02",
+      "family": "residencial_compacto",
+      "seed": 549909642,
+      "source_osm": "way/586695360",
+      "local_osm_centroid_xy_m": [
+        -329.138,
+        124.78
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 53542,
+      "polygons_generated": 13386,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_compacto_02__way_586695360.fbx",
+      "fbx_bytes": 375980,
+      "fbx_sha256": "db25444acbeb2af82424081d8c63b67b2d8bd40502dfd014f38d7e76b103e641",
+      "unity_asset_guid": "8b75b09d43426ee8248691ead1fbb3f4",
+      "source_ring_local_xy_m": [
+        [
+          -318.502,
+          113.239
+        ],
+        [
+          -337.924,
+          112.326
+        ],
+        [
+          -340.138,
+          136.107
+        ],
+        [
+          -319.99,
+          137.154
+        ],
+        [
+          -318.502,
+          113.239
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 473.66,
+      "source_footprint_vertices": 4,
+      "windows": 179,
+      "balconies": 150,
+      "roof_features": 1,
+      "solid_boxes": 2230
+    },
+    {
+      "building_id": "way/488128350",
+      "style_id": "cop_residencial_compacto_03",
+      "family": "residencial_compacto",
+      "seed": 108671515,
+      "source_osm": "way/488128350",
+      "local_osm_centroid_xy_m": [
+        -854.797,
+        -392.734
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 25603,
+      "polygons_generated": 6402,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_compacto_03__way_488128350.fbx",
+      "fbx_bytes": 216860,
+      "fbx_sha256": "82c9895180807742ab114449f69dc87434f12ac5e63db5edf00e35e47edd298d",
+      "unity_asset_guid": "d1ecf76a6470a55e3642033b65500fd9",
+      "source_ring_local_xy_m": [
+        [
+          -861.504,
+          -393.383
+        ],
+        [
+          -863.392,
+          -390.442
+        ],
+        [
+          -854.168,
+          -384.583
+        ],
+        [
+          -846.381,
+          -396.773
+        ],
+        [
+          -852.372,
+          -400.572
+        ],
+        [
+          -855.322,
+          -395.955
+        ],
+        [
+          -858.555,
+          -398.015
+        ],
+        [
+          -861.504,
+          -393.383
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 137.0,
+      "source_footprint_vertices": 7,
+      "windows": 101,
+      "balconies": 57,
+      "roof_features": 1,
+      "solid_boxes": 1065
+    },
+    {
+      "building_id": "way/587517181",
+      "style_id": "cop_residencial_compacto_04",
+      "family": "residencial_compacto",
+      "seed": 1766749010,
+      "source_osm": "way/587517181",
+      "local_osm_centroid_xy_m": [
+        -581.353,
+        123.986
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 25637,
+      "polygons_generated": 6410,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_compacto_04__way_587517181.fbx",
+      "fbx_bytes": 210828,
+      "fbx_sha256": "1138a16b2e852e0a767982c47fb732ed1d3862a68466149f1aebbdb045053390",
+      "unity_asset_guid": "7be7e42489a19ccb75928b76fcdeb26d",
+      "source_ring_local_xy_m": [
+        [
+          -580.956,
+          133.685
+        ],
+        [
+          -573.555,
+          118.158
+        ],
+        [
+          -581.746,
+          114.287
+        ],
+        [
+          -586.212,
+          123.647
+        ],
+        [
+          -589.155,
+          129.806
+        ],
+        [
+          -580.956,
+          133.685
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 155.89,
+      "source_footprint_vertices": 5,
+      "windows": 107,
+      "balconies": 46,
+      "roof_features": 1,
+      "solid_boxes": 1067
+    },
+    {
+      "building_id": "way/134013929",
+      "style_id": "cop_residencial_compacto_05",
+      "family": "residencial_compacto",
+      "seed": 57710810,
+      "source_osm": "way/134013929",
+      "local_osm_centroid_xy_m": [
+        523.285,
+        59.965
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 58798,
+      "polygons_generated": 14700,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_compacto_05__way_134013929.fbx",
+      "fbx_bytes": 409084,
+      "fbx_sha256": "a681979a36dade9318e08daba01fcfb72f65883d8082b01aa682daedc63c5592",
+      "unity_asset_guid": "c699e690a6052b3f3b7e31a974974424",
+      "source_ring_local_xy_m": [
+        [
+          512.006,
+          82.25
+        ],
+        [
+          541.208,
+          77.173
+        ],
+        [
+          534.565,
+          37.679
+        ],
+        [
+          505.362,
+          42.756
+        ],
+        [
+          512.006,
+          82.25
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 1187.08,
+      "source_footprint_vertices": 4,
+      "windows": 263,
+      "balconies": 80,
+      "roof_features": 3,
+      "solid_boxes": 2449
+    },
+    {
+      "building_id": "way/586975771",
+      "style_id": "cop_residencial_orla_01",
+      "family": "residencial_orla",
+      "seed": 583759709,
+      "source_osm": "way/586975771",
+      "local_osm_centroid_xy_m": [
+        -567.101,
+        281.515
+      ],
+      "height_provenance": "OSM_LEVELS_ESTIMATE_3M_PER_FLOOR",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 119614,
+      "polygons_generated": 29904,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_orla_01__way_586975771.fbx",
+      "fbx_bytes": 774876,
+      "fbx_sha256": "84a41f6e8b81756e44fbccfabdc4805702dae705e194588ed836ca620792e43d",
+      "unity_asset_guid": "412143ac20c029494983a1d329274e13",
+      "source_ring_local_xy_m": [
+        [
+          -577.38,
+          258.473
+        ],
+        [
+          -591.551,
+          288.065
+        ],
+        [
+          -556.818,
+          304.559
+        ],
+        [
+          -542.655,
+          274.959
+        ],
+        [
+          -577.38,
+          258.473
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 11,
+      "height_visual_m": 30.0,
+      "source_footprint_area_m2": 1261.44,
+      "source_footprint_vertices": 4,
+      "windows": 505,
+      "balconies": 230,
+      "roof_features": 1,
+      "solid_boxes": 4983
+    },
+    {
+      "building_id": "way/488128340",
+      "style_id": "cop_residencial_orla_02",
+      "family": "residencial_orla",
+      "seed": 887549948,
+      "source_osm": "way/488128340",
+      "local_osm_centroid_xy_m": [
+        -903.924,
+        -438.706
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 43620,
+      "polygons_generated": 10906,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_orla_02__way_488128340.fbx",
+      "fbx_bytes": 327036,
+      "fbx_sha256": "52501493d8b77891e0a1bb232d9ebd1c2c26eb4965fe16683d88789b854c367e",
+      "unity_asset_guid": "713bd3fa866ba50fd4c626ba3f9e74fa",
+      "source_ring_local_xy_m": [
+        [
+          -891.13,
+          -439.99
+        ],
+        [
+          -909.166,
+          -450.417
+        ],
+        [
+          -916.718,
+          -437.427
+        ],
+        [
+          -910.098,
+          -433.6
+        ],
+        [
+          -904.915,
+          -430.591
+        ],
+        [
+          -898.689,
+          -426.993
+        ],
+        [
+          -891.13,
+          -439.99
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 313.11,
+      "source_footprint_vertices": 6,
+      "windows": 143,
+      "balconies": 120,
+      "roof_features": 1,
+      "solid_boxes": 1816
+    },
+    {
+      "building_id": "way/589316365",
+      "style_id": "cop_residencial_orla_03",
+      "family": "residencial_orla",
+      "seed": 1441674824,
+      "source_osm": "way/589316365",
+      "local_osm_centroid_xy_m": [
+        -919.173,
+        -62.469
+      ],
+      "height_provenance": "ESTIMATE_NOT_SURVEYED",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 53772,
+      "polygons_generated": 13444,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_orla_03__way_589316365.fbx",
+      "fbx_bytes": 398652,
+      "fbx_sha256": "84b16d5d9dfb1a6f61fac79a322c62df4be26c3dbac72ffd68d2950426458ef2",
+      "unity_asset_guid": "09bea5c854fc6d86899d610ed8191bac",
+      "source_ring_local_xy_m": [
+        [
+          -905.159,
+          -70.06
+        ],
+        [
+          -921.303,
+          -78.409
+        ],
+        [
+          -931.427,
+          -62.011
+        ],
+        [
+          -925.844,
+          -59.442
+        ],
+        [
+          -930.445,
+          -51.716
+        ],
+        [
+          -918.976,
+          -45.01
+        ],
+        [
+          -905.159,
+          -70.06
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 6,
+      "height_visual_m": 18.0,
+      "source_footprint_area_m2": 476.3,
+      "source_footprint_vertices": 6,
+      "windows": 197,
+      "balconies": 110,
+      "roof_features": 1,
+      "solid_boxes": 2239
+    },
+    {
+      "building_id": "way/586975773",
+      "style_id": "cop_residencial_orla_04",
+      "family": "residencial_orla",
+      "seed": 1259615289,
+      "source_osm": "way/586975773",
+      "local_osm_centroid_xy_m": [
+        -478.087,
+        246.997
+      ],
+      "height_provenance": "OSM_LEVELS_ESTIMATE_3M_PER_FLOOR",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 7,
+      "vertices_generated": 75550,
+      "polygons_generated": 18888,
+      "materials_generated": 7,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_orla_04__way_586975773.fbx",
+      "fbx_bytes": 516220,
+      "fbx_sha256": "912e7a0917fc5ded8884816e994a81aa0f385f2c36499d0b9db4c5bc616dcf2c",
+      "unity_asset_guid": "fc6464669ba71f4735750fc576ca4344",
+      "source_ring_local_xy_m": [
+        [
+          -475.795,
+          264.605
+        ],
+        [
+          -468.545,
+          231.958
+        ],
+        [
+          -480.38,
+          229.388
+        ],
+        [
+          -487.63,
+          262.035
+        ],
+        [
+          -475.795,
+          264.605
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 10,
+      "height_visual_m": 30.0,
+      "source_footprint_area_m2": 405.02,
+      "source_footprint_vertices": 4,
+      "windows": 319,
+      "balconies": 144,
+      "roof_features": 1,
+      "solid_boxes": 3147
+    },
+    {
+      "building_id": "way/586695359",
+      "style_id": "cop_residencial_orla_05",
+      "family": "residencial_orla",
+      "seed": 539147035,
+      "source_osm": "way/586695359",
+      "local_osm_centroid_xy_m": [
+        -335.287,
+        143.092
+      ],
+      "height_provenance": "OSM_LEVELS_ESTIMATE_3M_PER_FLOOR",
+      "measured_height_m": null,
+      "visual_only_not_surveyed": true,
+      "mesh_object_count": 8,
+      "vertices_generated": 73301,
+      "polygons_generated": 18326,
+      "materials_generated": 8,
+      "fbx": "UnityProject/Assets/Architecture/R4_Procedural/FBX/cop_residencial_orla_05__way_586695359.fbx",
+      "fbx_bytes": 492252,
+      "fbx_sha256": "e41cdcf76d76c338e5d54b8547cbb08424bece80efee385cbd4627786f67999c",
+      "unity_asset_guid": "8d171a6722f7d0dcbbe17665406a21ab",
+      "source_ring_local_xy_m": [
+        [
+          -319.99,
+          137.154
+        ],
+        [
+          -340.138,
+          136.107
+        ],
+        [
+          -349.911,
+          135.804
+        ],
+        [
+          -350.522,
+          148.824
+        ],
+        [
+          -321.171,
+          150.779
+        ],
+        [
+          -319.99,
+          137.154
+        ]
+      ],
+      "placement_frame": "R4_SOURCE_FRAME.json: EPSG:32723 rotated local XY metres; FBX is centered and Z-up in Blender; Y-up in Unity",
+      "floor_count_visual": 11,
+      "height_visual_m": 30.0,
+      "source_footprint_area_m2": 398.35,
+      "source_footprint_vertices": 5,
+      "windows": 318,
+      "balconies": 120,
+      "roof_features": 3,
+      "solid_boxes": 3053
+    }
+  ],
+  "real_blender_previews": [
+    {
+      "path": "ArtSource/Previews/R4_Procedural_gallery_Sheet_01_Blender.png",
+      "sha256": "cc9bcd80f2b724807606720ff8be95652c3ce39b8602d5e85766bafd549bb1e0",
+      "bytes": 2944653,
+      "engine": "CYCLES",
+      "size": [
+        1800,
+        1080
+      ],
+      "building_count": 10
+    },
+    {
+      "path": "ArtSource/Previews/R4_Procedural_gallery_Sheet_02_Blender.png",
+      "sha256": "2e67e8772ff39aba1cff8c4c5921d1a0006b0b979e8c3c67106bdd4df8994a6a",
+      "bytes": 2924812,
+      "engine": "CYCLES",
+      "size": [
+        1800,
+        1080
+      ],
+      "building_count": 10
+    },
+    {
+      "path": "ArtSource/Previews/R4_Procedural_gallery_Sheet_03_Blender.png",
+      "sha256": "6feb0ba31b6e3a44a462dd5eb8041e9ea721aa483747e63245398b6f1964d48b",
+      "bytes": 2849665,
+      "engine": "CYCLES",
+      "size": [
+        1800,
+        1080
+      ],
+      "building_count": 10
+    },
+    {
+      "path": "ArtSource/Previews/R4_Procedural_gallery_Sheet_04_Blender.png",
+      "sha256": "37a491d5c0119af2bd77841657b3b01c86b2889364a1a86b9fb47115959d9cbb",
+      "bytes": 2979173,
+      "engine": "CYCLES",
+      "size": [
+        1800,
+        1080
+      ],
+      "building_count": 10
+    },
+    {
+      "path": "ArtSource/Previews/R4_Procedural_gallery_Sheet_05_Blender.png",
+      "sha256": "2420bedb868498efc37315c3b1b30f44d6adce62c41038a812975a56cfe48abd",
+      "bytes": 2887301,
+      "engine": "CYCLES",
+      "size": [
+        1800,
+        1080
+      ],
+      "building_count": 10
+    }
+  ],
+  "geometry_is_not_surveyed": true,
+  "limits": "A physically generated FBX collection, not a Unity-built/imported map; prefab placement requires GIS duplication/removal gate and manual visual approval. PBR shader parameters in Blender may not reproduce identically in URP.",
+  "geodata_licence": "© OpenStreetMap contributors, ODbL 1.0"
+}
