@@ -111,7 +111,11 @@ if old_signatures!=reconstructed:
                 "sample":list(sig.keys())[:2]}
     print("R3_SOURCE_TRIANGLE_MISMATCH_DIAGNOSTIC",json.dumps({
           "original_blend":fingerprint_stats(old_signatures),
-          "reconstructed_OBJ":fingerprint_stats(reconstructed)}),flush=True)
+          "reconstructed_OBJ":fingerprint_stats(reconstructed),
+          "source_matrix_rows":[[round(float(x),5) for x in row] for row in old_city.matrix_world],
+          "reimport_matrix_rows":[[round(float(x),5) for x in row] for row in reimported.matrix_world],
+          "source_first_local_vertices":[[round(float(z),3) for z in v.co] for v in list(old_city.data.vertices)[:3]],
+          "reimport_first_local_vertices":[[round(float(z),3) for z in v.co] for v in list(reimported.data.vertices)[:3]]}),flush=True)
     unexpected=(reconstructed-old_signatures)
     missing=(old_signatures-reconstructed)
     raise RuntimeError(
