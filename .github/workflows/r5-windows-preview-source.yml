@@ -1,0 +1,27 @@
+name: Resort R5 | Integridade do Visual Preview Windows
+on:
+  push:
+    branches: [main,chatgpt/r5-windows-inspecao-executavel]
+    paths:
+      - 'UnityProject/Assets/Scripts/R5VisualPreviewFlyCamera.cs'
+      - 'UnityProject/Assets/Scripts/R5VisualPreviewFlyCamera.cs.meta'
+      - 'UnityProject/Assets/Editor/ResortR5WindowsPreviewBuild.cs'
+      - 'UnityProject/Assets/Scenes/R5_Copacabana_50_Predios_PreviewWindows.unity'
+      - 'Tools/tests/test_r5_windows_preview_source.py'
+      - '.github/workflows/r5-windows-preview-source.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-windows-preview-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check free-flight controls, Windows native builder, scene GUIDs and honesty
+        run: python -m unittest discover -s Tools/tests -p test_r5_windows_preview_source.py -v
