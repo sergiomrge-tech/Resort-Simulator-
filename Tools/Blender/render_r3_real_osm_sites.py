@@ -77,7 +77,8 @@ for idx, site in enumerate(data["parcels"]):
     ring=site["ring_xy_m"]
     spline.points.add(len(ring)-2)
     for p,pt in zip(spline.points,ring[:-1]):
-        p.co=(pt[0],pt[1],z,1.0)
+        v=city[0].matrix_world@Vector((pt[0],pt[1],z))
+        p.co=(v.x,v.y,v.z,1.0)
     spline.use_cyclic_u=True
     obj=bpy.data.objects.new(curve.name,curve)
     bpy.context.collection.objects.link(obj)
@@ -90,7 +91,9 @@ for idx, site in enumerate(data["parcels"]):
     text.extrude=.002
     label=bpy.data.objects.new("R3_PILOT_OSM_ANNOTATION_ONLY",text)
     bpy.context.collection.objects.link(label)
-    label.location=(site["centroid_local_xy_m"][0]-13,site["centroid_local_xy_m"][1],z+2.8)
+    label.location=city[0].matrix_world@Vector((site["centroid_local_xy_m"][0]-13,
+                                               site["centroid_local_xy_m"][1],z+2.8))
+    label.rotation_euler=city[0].matrix_world.to_euler()
     text.materials.append(mat)
     highlights.append({"id":site["id"],"ring_xy_m":ring,"display_z":round(z,3),
                        "face_hits":evidence["hits"],"source_has_building":evidence["has_existing_building_geometry"]})
@@ -101,6 +104,8 @@ bpy.ops.mesh.primitive_cube_add(size=1,location=(0,-150,-1.1))
 ground=bpy.context.object
 ground.name="TEMP_QA_BACKGROUND_NOT_GEOGRAPHIC_TERRAIN"
 ground.dimensions=(550,610,1)
+ground.location=city[0].matrix_world@Vector((0,-160,-1.1))
+ground.rotation_euler=city[0].matrix_world.to_euler()
 bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
 ground.data.materials.append(land)
 
@@ -119,8 +124,8 @@ sun.rotation_euler=(math.radians(34),math.radians(-14),math.radians(-21))
 camera_data=bpy.data.cameras.new("R3_Aerial_Real_OSM")
 camera=bpy.data.objects.new("R3_Aerial_Real_OSM",camera_data)
 bpy.context.collection.objects.link(camera)
-target=Vector((0,-160,9))
-camera.location=target+Vector((105,-110,410))
+target=city[0].matrix_world@Vector((0,-160,9))
+camera.location=target+(city[0].matrix_world.to_3x3()@Vector((105,-110,410)))
 camera.rotation_euler=(target-camera.location).to_track_quat("-Z","Y").to_euler()
 camera_data.type="ORTHO"
 camera_data.ortho_scale=418
@@ -153,6 +158,7 @@ report={
   "preview_sha256":sha(PREVIEW),
   "preview_bytes":PREVIEW.stat().st_size,
   "city_faces":sum(len(o.data.polygons) for o in city),
+  "georeferencing_alignment":"All overlay XY coordinates transformed from local OSM metres via the original BlenderGIS object matrix_world",
   "sites":highlights,
   "render_engine":"Blender Cycles CPU",
   "limits":"No replacement/new buildings, no Unity scene/screenshot, footprint not land title, QA underlay not real terrain.",
