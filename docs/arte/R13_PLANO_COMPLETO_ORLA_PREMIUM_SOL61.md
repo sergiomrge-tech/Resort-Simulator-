@@ -1,8 +1,8 @@
 # Project Resort — R13 | Plano mestre de aprimoramento visual de TODA a orla de Copacabana
-**Diretor de arte e integração:** ChatGPT (coordenação); **executor designado:** Codex Sol 6.1, esforço **medium**.  
-**Base verificável:** branch `codex/r12-urban-storefronts`, commit `afa4dfaf9d0bca735c574b0f72c10411d7968ad0`.  
-**Branch exclusiva:** `codex/r13-sol61-orla-premium`.  
-**Motor e pipeline:** Unity **6000.6.2f1**, URP 17.6 / Blender 4.5+ (Windows QA Blender 5.2), GitHub Actions, C# / Python.  
+**Diretor de arte e integração:** ChatGPT (coordenação); **executor designado:** Codex Sol 6.1, esforço **medium**.
+**Base verificável:** branch `codex/r12-urban-storefronts`, commit `afa4dfaf9d0bca735c574b0f72c10411d7968ad0`.
+**Branch exclusiva:** `codex/r13-sol61-orla-premium`.
+**Motor e pipeline:** Unity **6000.6.2f1**, URP 17.6 / Blender 4.5+ (Windows QA Blender 5.2), GitHub Actions, C# / Python.
 **Data do contrato:** 2026-10-09. **Não é especificação de feature jogável concluída.**
 
 ## 0 — Missão, prioridade e direção artística inegociáveis
@@ -76,7 +76,7 @@ Documentos de leitura obrigatória: `docs/arte/R8_GERADOR_1468_PREDIOS_2X1KM.md`
 - Definir budgets progressivos e ajustar depois do profiling. Proposta inicial para investigação, **não aprovação automática**: drawcalls <2500 nas câmeras representativas, <=10 ms GPU em cenas comuns no preset alto 1080p e FPS alvo 60, sem exigir isso de cenas ainda não otimizadas. Não sacrificar realismo com low-poly na visão do jogador.
 
 ## 9 — Integração ao JOGO principal no PC (objetivo da tarefa, mas com gate)
-O usuário espera a orla no **jogo jogável**, não apenas em um visualizador. O checkout de jogo está em `D:\sergi\Documents\Simulador-predial` (repositório `sergiomrge-tech/Simulador-predial`, projeto Unity `FacilityOps`); possui lógica de construção/gestão, quiosques, ciclo dia/noite, pessoas, materiais e mudanças locais **NÃO COMMITADAS**. NÃO usar git checkout/reset/clean sobre ele. Outro repositório `Resort-Simulator-` contém pipeline R7–R12 e cenas de QA visual. 
+O usuário espera a orla no **jogo jogável**, não apenas em um visualizador. O checkout de jogo está em `D:\sergi\Documents\Simulador-predial` (repositório `sergiomrge-tech/Simulador-predial`, projeto Unity `FacilityOps`); possui lógica de construção/gestão, quiosques, ciclo dia/noite, pessoas, materiais e mudanças locais **NÃO COMMITADAS**. NÃO usar git checkout/reset/clean sobre ele. Outro repositório `Resort-Simulator-` contém pipeline R7–R12 e cenas de QA visual.
 
 Fluxo obrigatório:
 1. Fazer comparação dos dois projetos e mapear arquitetura de cenas, pipelines, materiais, input, render pipeline e IDs. Apresentar plano de integração sem duplicar oceanos, solos, ruas, câmeras, NPCs ou quiosques.
