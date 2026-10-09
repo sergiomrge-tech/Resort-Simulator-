@@ -1,0 +1,58 @@
+name: Resort R4 | Cinquenta estilos OSM sem depender do PC
+on:
+  push:
+    branches: [chatgpt/r4-gerador-procedural-50-estilos]
+    paths:
+      - 'ArtSource/ProceduralBuildings/Resort50Styles.json'
+      - 'Tools/geo/assign_r4_city_styles.py'
+      - 'Tools/tests/test_r4_procedural_styles.py'
+      - '.github/workflows/r4-procedural-50-catalog.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r4-50-visual-archetypes
+  cancel-in-progress: true
+jobs:
+  deterministic-50-style-osm-blueprint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install real GIS projection and polygon clipping
+        run: python -m pip install --disable-pip-version-check pyproj shapely
+      - name: Generate stable stylistic identity for source OSM buildings
+        run: python Tools/geo/assign_r4_city_styles.py
+      - name: Validate all fifty detailed recipes and real OSM provenance
+        run: python -m unittest discover -s Tools/tests -p test_r4_procedural_styles.py -v
+      - name: Confirm reruns keep every city style identical
+        run: |
+          sha256sum geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json > /tmp/r4-before.sha
+          python Tools/geo/assign_r4_city_styles.py
+          sha256sum -c /tmp/r4-before.sha
+      - name: Upload catalog planning evidence, not claiming 3D meshes
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R4-50-Receitas-OSM-Blueprint-Sem-Meshes
+          path: |
+            ArtSource/ProceduralBuildings/Resort50Styles.json
+            geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json
+          if-no-files-found: error
+      - name: Commit deterministic OSM-building recipe assignments
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json
+          if git diff --cached --quiet; then
+            echo "R4 styles are already identical"
+          else
+            git commit -m "geo(R4): 50 estilos de fachadas por ID OSM, distribuição fixa"
+            git pull --rebase origin chatgpt/r4-gerador-procedural-50-estilos
+            git push origin HEAD:chatgpt/r4-gerador-procedural-50-estilos
+          fi
