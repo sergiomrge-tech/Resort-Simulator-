@@ -47,6 +47,7 @@ public static class ResortR6FacadeFinish
         { "equipamento_especial", new Color(.81f,.77f,.69f) },
     };
     private static readonly Dictionary<string, Material> Cached = new Dictionary<string, Material>();
+    private static readonly HashSet<string> ImportedTextures = new HashSet<string>();
 
     [Serializable]
     private sealed class Report
@@ -150,9 +151,10 @@ public static class ResortR6FacadeFinish
         string group = stone ? "stone" : "plaster";
         string path = TextureDir + "/R6_" + family + "_" + group +
                       (normal ? "_normal.png" : "_albedo.png");
+        if (ImportedTextures.Contains(path)) return path;
         if (!File.Exists(path))
         {
-            int seed = Math.Abs(family.Aggregate(17, (h, ch) => unchecked(h * 31 + (int)ch)));
+            int seed = family.Aggregate(17, (h, ch) => unchecked(h * 31 + (int)ch)) & 0x7fffffff;
             var tex = new Texture2D(Size, Size, TextureFormat.RGBA32, false, true);
             var colors = new Color32[Size * Size];
             for (int y = 0; y < Size; y++)
@@ -190,6 +192,7 @@ public static class ResortR6FacadeFinish
         if (!importer.mipmapEnabled) { importer.mipmapEnabled = true; dirty = true; }
         if (importer.anisoLevel != 4) { importer.anisoLevel = 4; dirty = true; }
         if (dirty) importer.SaveAndReimport();
+        ImportedTextures.Add(path);
         return path;
     }
 
@@ -279,6 +282,7 @@ public static class ResortR6FacadeFinish
         EnsureDirectory(MaterialDir);
         EnsureDirectory(TextureDir);
         Cached.Clear();
+        ImportedTextures.Clear();
         var ids = new HashSet<string>();
         var styles = new HashSet<string>();
         var assets = new HashSet<string>();
