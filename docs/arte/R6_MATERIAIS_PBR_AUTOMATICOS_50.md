@@ -24,7 +24,7 @@ ou substituição dos outros 1.418 edifícios do mapa.
   Serão 40 PNGs autorais persistentes no projeto quando o Editor executar;
   mipmaps, repeat, anisotropia e instancing ficam configurados.
 - Cria materiais `URP/Lit` editáveis em `Assets/Materials/R6_Facades/`,
-  associados apenas às malhas dos 50 edifícios. **Vidro nesta etapa usa
+  associados apenas às malhas dos 50 edifícios. A identidade OSM é lida\n  também nos ancestrais do objeto FBX (não somente no MeshRenderer), para\n  suportar a hierarquia de importação do Unity. A rotina identifica se um\n  **URP Render Pipeline Asset está realmente ativo** e registra uma advertência\n  caso não esteja, sem fingir que haverá imagem PBR correta. **Vidro nesta etapa usa
   aparência opaca e lustrosa; transparência e reflexos físicos exigem QA
   posterior.** Outros 1.418 blocos e geometria de ruas permanecem como antes.
 - Grava um `build/R6_PBR_FacadeQA/material_pass.json` com contagens,
