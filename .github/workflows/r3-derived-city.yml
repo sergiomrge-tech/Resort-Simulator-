@@ -1,0 +1,65 @@
+name: Resort R3 | Dois edificios autorais em cidade GIS derivada
+on:
+  push:
+    branches: [chatgpt/r3-piloto-osm-implantacao-real]
+    paths:
+      - 'Tools/Blender/generate_r3_derived_pilot.py'
+      - 'Tools/tests/test_r3_derived_pilot.py'
+      - '.github/workflows/r3-derived-city.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r3-derived-osm-city
+  cancel-in-progress: true
+jobs:
+  derivative-without-mutation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install actual Blender Python and projection packages
+        run: python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pyproj pillow
+      - name: Verify exact OSM polygon coordinates are reproducible
+        run: python Tools/geo/build_r3_exact_footprints.py
+      - name: Verify owner-authored building footprint fit before attempting replacement
+        run: python Tools/geo/study_r3_model_fit.py
+      - name: Generate derived Blender city by isolating only matching building face components
+        run: |
+          python - <<'PY'
+          import bpy,runpy
+          bpy.ops.wm.open_mainfile(filepath='ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend')
+          runpy.run_path('Tools/Blender/generate_r3_derived_pilot.py',run_name='__main__')
+          PY
+      - name: Assert original Copacabana and roads unchanged, FBX and render genuine
+        run: python -m unittest discover -s Tools/tests -p test_r3_derived_pilot.py -v
+      - name: Upload sidecar FBX and true render
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R3-2-Arquiteturas-Cidade-OSM-Derivada
+          path: |
+            UnityProject/Assets/Architecture/R3_Pilot/
+            UnityProject/Assets/Architecture/R3_Pilot.meta
+            ArtSource/Previews/R3_Piloto_Derivado_2_Arquiteturas_Blender_QA.png
+            ArtSource/Previews/R3_Piloto_Derivado_QA.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit only verified derivative, never overwrite original geodata
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Architecture/R3_Pilot/
+          git add -f UnityProject/Assets/Architecture/R3_Pilot.meta
+          git add -f ArtSource/Previews/R3_Piloto_Derivado_2_Arquiteturas_Blender_QA.png
+          git add -f ArtSource/Previews/R3_Piloto_Derivado_QA.json
+          if ! git diff --cached --quiet; then
+            git commit -m "art(R3): projeto derivado com duas fachadas autorais e malha OSM intacta"
+            git pull --rebase origin chatgpt/r3-piloto-osm-implantacao-real
+            git push origin HEAD:chatgpt/r3-piloto-osm-implantacao-real
+          fi
