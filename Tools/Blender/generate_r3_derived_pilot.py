@@ -118,8 +118,7 @@ for oid,proposal in compatible:
         checks["all_verts_tol_"+str(tolerance)]=diagnostic(selected)
     for tolerance in (0,.20,.45,.8):
         selected={f for f in bm.faces if f.material_index in buildslots
-           and touch((c.x,c.y),ring,dist=tolerance)
-           for c in [city.matrix_world@f.calc_center_median()]}
+           and touch(tuple((city.matrix_world@f.calc_center_median())[:2]),ring,dist=tolerance)}
         checks["centroids_tol_"+str(tolerance)]=diagnostic(selected)
     print("R3_SOURCE_FACE_ALIGNMENT_DIAGNOSTIC",oid,json.dumps(checks),flush=True)
     if not (5<=len(found)<=90):
