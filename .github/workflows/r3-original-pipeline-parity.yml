@@ -1,0 +1,47 @@
+name: Resort R3 | Reconstrucao OSM original sem 2 edificios
+on:
+  push:
+    branches: [chatgpt/r3-piloto-osm-implantacao-real]
+    paths:
+      - 'Tools/geo/r3_original_osm_pipeline.py'
+      - 'Tools/geo/rebuild_r3_original_mask_parity.py'
+      - 'Tools/tests/test_r3_source_pipeline_parity.py'
+      - '.github/workflows/r3-original-pipeline-parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r3-osm-source-masked-parity
+  cancel-in-progress: true
+jobs:
+  source-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact geodata tools without Blender/Unity or owner PC
+        run: python -m pip install --disable-pip-version-check pyproj shapely
+      - name: Rebuild original and two-ID masked cities using frozen OSM source
+        run: python Tools/geo/rebuild_r3_original_mask_parity.py
+      - name: Demand exact unchanged geometric triangles for all streets
+        run: python -m unittest discover -s Tools/tests -p test_r3_source_pipeline_parity.py -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R3-OSM-Original-Source-Mask-Parity
+          path: ArtSource/Previews/R3_GIS_Mask_Parity_QA.json
+          if-no-files-found: error
+      - name: Store evidence in R3 branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f ArtSource/Previews/R3_GIS_Mask_Parity_QA.json
+          if ! git diff --cached --quiet; then
+            git commit -m "geo(R3): verificar OBJ original e todos os triangulos das ruas intactos"
+            git pull --rebase origin chatgpt/r3-piloto-osm-implantacao-real
+            git push origin HEAD:chatgpt/r3-piloto-osm-implantacao-real
+          fi
