@@ -101,6 +101,17 @@ if not original_obj.is_file() or not masked_obj.is_file():
 reimported=import_original_obj(original_obj)
 reconstructed=triangle_signature(reimported)
 if old_signatures!=reconstructed:
+    def fingerprint_stats(sig):
+        points=[v for (mat,verts) in sig for v in verts]
+        counts={m:sum(n for (mm,_),n in sig.items() if mm==m)
+                for (m,_) in sig}
+        return {"faces":sum(sig.values()),"materials":counts,
+                "bbox":[min(x[0] for x in points),min(x[1] for x in points),
+                        max(x[0] for x in points),max(x[1] for x in points)],
+                "sample":list(sig.keys())[:2]}
+    print("R3_SOURCE_TRIANGLE_MISMATCH_DIAGNOSTIC",json.dumps({
+          "original_blend":fingerprint_stats(old_signatures),
+          "reconstructed_OBJ":fingerprint_stats(reconstructed)}),flush=True)
     unexpected=(reconstructed-old_signatures)
     missing=(old_signatures-reconstructed)
     raise RuntimeError(
