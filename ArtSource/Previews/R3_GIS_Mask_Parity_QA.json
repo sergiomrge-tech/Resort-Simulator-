@@ -1,0 +1,29 @@
+{
+  "status": "ORIGINAL_OSM_PIPELINE_GEOMETRY_PARITY",
+  "source_pipeline": "Tools/geo/r3_original_osm_pipeline.py",
+  "source_osm": "geo/data/copacabana.osm.gz",
+  "source_osm_sha256": "8fa230fc41b40234d4e37e17aa18b1bb697a20e33750293d440e110e8ee0bd8f",
+  "source_blend_sha256": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+  "source_fbx_sha256": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+  "masked_ways": [
+    "way/1048277518",
+    "way/1048277521"
+  ],
+  "before_material_faces": {
+    "Road": 3731,
+    "Building": 23033
+  },
+  "after_material_faces": {
+    "Road": 3731,
+    "Building": 23010
+  },
+  "removed_original_building_faces": 23,
+  "removed_road_faces": 0,
+  "exact_unchanged_faces_including_all_roads": 26741,
+  "before_obj_sha256": "9317db9735ada66c52de770b276cba80c86784d7c55fd0cc0225621178f96b25",
+  "after_obj_sha256": "27d409556d0a23dbf2b0e3dade912a1e7ae502071a6f921909aedbb997238842",
+  "before_obj_vertices": 62980,
+  "after_obj_vertices": 62929,
+  "source_blender_face_count_expected": 26764,
+  "limits": "This compares OSM pipeline geometry, not yet byte-parity with original Blender source. Future gate must verify Blender triangle parity before exporting any derivative Unity FBX."
+}
