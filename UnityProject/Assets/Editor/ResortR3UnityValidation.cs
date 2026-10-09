@@ -217,6 +217,8 @@ public static class ResortR3UnityValidation
 
         string screenshotPath = Path.Combine(qaFolder, "R3_Piloto_Real_Unity_Editor_QA.png");
         string renderStatus = "NOT_RENDERED";
+        string closeupScreenshotPath = Path.Combine(qaFolder, "R3_Piloto_Hotel_Residencial_Unity_Closeup_QA.png");
+        string closeupRenderStatus = "NOT_RENDERED";
         RenderTexture rt = null;
         Texture2D tex = null;
         try
@@ -232,6 +234,31 @@ public static class ResortR3UnityValidation
             File.WriteAllBytes(screenshotPath, tex.EncodeToPNG());
             Require(new FileInfo(screenshotPath).Length > 35000, "Unity screenshot is blank/too small");
             renderStatus = "GENUINE_UNITY_CAMERA_RENDER";
+
+            // A second, genuinely rendered camera view brings the architectural
+            // pair into frame. The earlier wide shot remains as geographical QA.
+            // Reuse the same native render target to avoid fake screenshot edits.
+            try
+            {
+                camera.orthographicSize = 39f;
+                camObj.transform.position = aim + new Vector3(46f, 72f, -72f);
+                camObj.transform.LookAt(aim);
+                camera.Render();
+                RenderTexture.active = rt;
+                tex.ReadPixels(new Rect(0, 0, 1600, 900), 0, 0);
+                tex.Apply(false);
+                File.WriteAllBytes(closeupScreenshotPath, tex.EncodeToPNG());
+                Require(new FileInfo(closeupScreenshotPath).Length > 30000,
+                        "Unity architectural closeup is blank/too small");
+                closeupRenderStatus = "GENUINE_UNITY_CAMERA_RENDER";
+                Require(EditorSceneManager.SaveScene(scene, ScenePath),
+                        "Unity could not save closeup QA camera placement");
+            }
+            catch (Exception closeupError)
+            {
+                Debug.LogWarning("R3_CLOSEUP_RENDER_NOT_AVAILABLE: " + closeupError);
+                closeupRenderStatus = "NOT_RENDERED";
+            }
         }
         catch (Exception ex)
         {
@@ -271,11 +298,12 @@ public static class ResortR3UnityValidation
             "  \"hero_bounding_size\": " + VectorJson(heroBounds.size) + ",\n" +
             "  \"scene\": \"" + ScenePath + "\",\n" +
             "  \"render_status\": \"" + renderStatus + "\",\n" +
+            "  \"closeup_render_status\": \"" + closeupRenderStatus + "\",\n" +
             "  \"visual_approval\": false,\n" +
             "  \"limits\": \"Scene is a genuine Unity Editor QA setup, not final gameplay or art.\"\n" +
             "}\n";
         File.WriteAllText(reportPath, report, Encoding.UTF8);
         AssetDatabase.SaveAssets();
-        Debug.Log("R3_NATIVE_UNITY_EDITOR_QA_PASS: " + reportPath + " render=" + renderStatus);
+        Debug.Log("R3_NATIVE_UNITY_EDITOR_QA_PASS: " + reportPath + " render=" + renderStatus + " closeup=" + closeupRenderStatus);
     }
 }
