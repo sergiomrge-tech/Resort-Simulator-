@@ -24,12 +24,16 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install actual Blender Python and projection packages
-        run: python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pyproj pillow
+        run: python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pyproj pillow shapely
       - name: Verify exact OSM polygon coordinates are reproducible
         run: python Tools/geo/build_r3_exact_footprints.py
       - name: Verify owner-authored building footprint fit before attempting replacement
         run: python Tools/geo/study_r3_model_fit.py
-      - name: Generate derived Blender city by isolating only matching building face components
+      - name: Rebuild source + safe OSM-mask cities using original author GIS pipeline
+        run: python Tools/geo/rebuild_r3_original_mask_parity.py
+      - name: Verify exact source-road triangle invariance before Blender
+        run: python -m unittest discover -s Tools/tests -p test_r3_source_pipeline_parity.py -v
+      - name: Generate derived Blender city and two author models after source parity
         run: |
           python - <<'PY'
           import bpy,runpy
