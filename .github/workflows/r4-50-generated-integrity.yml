@@ -1,0 +1,31 @@
+name: Resort R4 | Integridade dos 50 edificios gerados
+on:
+  push:
+    branches: [main,chatgpt/r4-gerador-3d-real-blender]
+    paths:
+      - 'ArtSource/Previews/R4_Procedural_gallery_*'
+      - 'UnityProject/Assets/Architecture/R4_Procedural/**'
+      - 'Tools/tests/test_r4_gallery_50_fbx.py'
+      - '.github/workflows/r4-50-generated-integrity.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ArtSource/Previews/R4_Procedural_gallery_*'
+      - 'UnityProject/Assets/Architecture/R4_Procedural/**'
+      - '.github/workflows/r4-50-generated-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-fbx-and-blender-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pixel decoder
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Check 50 unique real FBX models, immutable source hashes and 5 Blender sheets
+        run: python -m unittest discover -s Tools/tests -p test_r4_gallery_50_fbx.py -v
