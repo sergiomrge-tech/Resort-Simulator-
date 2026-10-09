@@ -1,0 +1,60 @@
+name: Resort R6 | Vegetação real OSM e kit Blender
+on:
+  push:
+    branches: [codex/vegetacao-osm-copacabana-r6]
+    paths:
+      - 'Tools/geo/generate_r6_vegetation.py'
+      - 'Tools/Blender/generate_r6_vegetation_kit.py'
+      - 'Tools/tests/test_r6_vegetation_*.py'
+      - 'geo/data/copacabana.osm.gz'
+      - 'geo/procedural/R4_SOURCE_FRAME.json'
+      - 'geo/procedural/R6_VEGETATION_INSTANCES.json'
+      - 'docs/arte/VEGETACAO_R6.md'
+      - '.github/workflows/r6-vegetacao-osm-copacabana.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: r6-vegetacao-osm-copacabana
+  cancel-in-progress: true
+jobs:
+  build-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependências de render headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+          python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pillow
+      - name: Gerar instâncias cartográficas protegidas por distância
+        run: python Tools/geo/generate_r6_vegetation.py --pilot-count 48
+      - name: Gerar kit de espécies, 12 LOD meshes, FBX e render Blender real
+        run: python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r6_vegetation_kit.py',run_name='__main__')"
+      - name: Validar fontes originais, geografia, determinismo, kit e exports reais
+        run: python -m unittest discover -s Tools/tests -p 'test_r6_vegetation_*.py' -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R6-Vegetacao-OSM-Blender-REAL
+          path: |
+            ArtSource/Vegetation/R6/
+            ArtSource/Previews/R6_Vegetation_Kit_Blender.png
+            geo/procedural/R6_VEGETATION_INSTANCES.json
+          if-no-files-found: error
+          retention-days: 45
+      - name: Versionar kit Blender validado somente na branch R6
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f ArtSource/Vegetation/R6/ ArtSource/Previews/R6_Vegetation_Kit_Blender.png
+          if ! git diff --cached --quiet; then
+            git commit -m "art(R6): versionar kit autoral de vegetacao Blender"
+            git push origin HEAD:codex/vegetacao-osm-copacabana-r6
+          fi
