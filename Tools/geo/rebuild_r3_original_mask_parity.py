@@ -57,8 +57,11 @@ def generate(out_dir,skip):
     shutil.copyfile(OSM,data/"copacabana.osm.gz")
     env=os.environ.copy()
     env["RESORT_R3_SKIP_OSM_IDS"]=",".join(skip)
-    subprocess.run([sys.executable,str(out_dir/"pipeline.py")],cwd=str(out_dir),
-                   env=env,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+    completed = subprocess.run([sys.executable,str(out_dir/"pipeline.py")],cwd=str(out_dir),
+                   env=env,check=False,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+    if completed.returncode:
+        raise RuntimeError("Original GIS writer failed (stdout/stderr):\n" +
+                           completed.stdout[-3000:] + "\n" + completed.stderr[-4000:])
     obj=data/"copacabana_base.obj"
     if not obj.is_file() or obj.stat().st_size<200000:
         raise RuntimeError("Original OSM pipeline did not generate a valid city OBJ")
