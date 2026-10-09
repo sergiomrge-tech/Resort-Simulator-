@@ -576,6 +576,7 @@ def run():
                 named_guid("folder:"+folder.relative_to(ROOT).as_posix())+
                 "\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n")
     output=[]
+    skipped=[]
     previews=[]
     for batch_i in range(0,len(items),10):
         sheet_items=items[batch_i:batch_i+10]
@@ -584,14 +585,25 @@ def run():
         # Render clean studio sheets with bounded memory usage.
         for item in sheet_items:
             style=source_style(item["style_id"],styles)
-            objs=generate_item(item,style,output,write_fbx=True)
+            try:
+                objs=generate_item(item,style,output,write_fbx=True)
+            except (RuntimeError,ValueError) as err:
+                if args.mode!="city":
+                    raise
+                # OSM contains narrow/degenerate outlines that cannot support
+                # an honest windowed multi-storey facade. Never fabricate a
+                # larger parcel or place geometry on a neighboring street.
+                skipped.append({"building_id":item["building_id"],
+                                "reason":str(err),"requires_manual_review":True})
+                print("R4_REQUIRES_MANUAL_REVIEW",item["building_id"],str(err),flush=True)
+                continue
             scene_objects.append(objs)
             labels.append(style["id"])
             print("R4_GEOMETRY_GENERATED",item["building_id"],style["id"],
                   "vertices",output[-1]["vertices_generated"],
                   "windows",output[-1]["windows"],
                   "balconies",output[-1]["balconies"],flush=True)
-        if not args.no_render and (batch_i//10)<args.max_preview_sheets:
+        if not args.no_render and scene_objects and (batch_i//10)<args.max_preview_sheets:
             previews.append(render_sheet(batch_i//10,scene_objects,labels,args.mode))
         # Each batch owns all its objects/materials and can be garbage
         # collected without corrupting previously written FBXs.
@@ -600,7 +612,9 @@ def run():
     result={
         "status":"ACTUAL_PROCEDURAL_BLENDER_FBX_GENERATED_NOT_UNITY_VALIDATED",
         "version":VERSION,"mode":args.mode,"start":args.start,
-        "count":len(output),"total_source_buildings":1468,
+        "count":len(output),"skipped_count":len(skipped),
+        "skipped_source_ids":skipped,
+        "total_source_buildings":1468,
         "catalog_sha256":digest(CATALOG),
         "assignments_sha256":digest(ASSIGNMENTS),
         "source_geo_unchanged":True,
@@ -615,7 +629,7 @@ def run():
     report=OUT/("R4_"+args.mode.upper()+"_GENERATION_REPORT.json")
     report.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print("R4_GENERATOR_COMPLETE",json.dumps({
-        "mode":args.mode,"count":len(output),
+        "mode":args.mode,"count":len(output),"skipped":len(skipped),
         "styles":len({m["style_id"] for m in output}),
         "polygons":sum(m["polygons_generated"] for m in output),
         "fbx_size_bytes":sum(m["fbx_bytes"] for m in output),
