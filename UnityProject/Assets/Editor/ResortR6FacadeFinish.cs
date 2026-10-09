@@ -198,6 +198,34 @@ public static class ResortR6FacadeFinish
         return path;
     }
 
+    // Imported FBX renderers can be nested under the named Blender object.
+    // Search ancestors, as in the successfully validated R5 Unity QA.
+    private static Match FindBuilding(Renderer renderer)
+    {
+        Transform node = renderer.transform;
+        while (node != null)
+        {
+            Match building = BuildingPattern.Match(node.gameObject.name);
+            if (building.Success) return building;
+            node = node.parent;
+        }
+        return null;
+    }
+
+    private static Match FindSemanticPart(Renderer renderer, Match building)
+    {
+        // The canonical source object, intermediate FBX nodes and mesh names
+        // can place the Blender material-category suffix at different levels.
+        Match result = MaterialPartPattern.Match(building.Groups["mesh"].Value);
+        if (result.Success) return result;
+        result = MaterialPartPattern.Match(renderer.gameObject.name);
+        if (result.Success) return result;
+        MeshFilter meshFilter = renderer.GetComponent<MeshFilter>();
+        if (meshFilter != null && meshFilter.sharedMesh != null)
+            return MaterialPartPattern.Match(meshFilter.sharedMesh.name);
+        return result;
+    }
+
     private static Color Shade(Color baseColor, int variant, string semantic)
     {
         float delta = (variant - 3) * .022f;
@@ -294,15 +322,15 @@ public static class ResortR6FacadeFinish
         foreach (var root in scene.GetRootGameObjects())
             foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
             {
-                var building = BuildingPattern.Match(renderer.gameObject.name);
-                if (!building.Success) continue; // Roads and other 1,418 volumes preserved.
+                var building = FindBuilding(renderer);
+                if (building == null) continue; // Roads and other 1,418 volumes preserved.
                 string style = building.Groups["style"].Value;
                 var parts = StylePattern.Match(style);
                 Require(parts.Success, "Unexpected R5 architectural style: " + style);
                 string family = parts.Groups["family"].Value;
                 Require(Families.ContainsKey(family), "Unrecognized family: " + family);
                 int variant = int.Parse(parts.Groups["variant"].Value);
-                var semantic = MaterialPartPattern.Match(building.Groups["mesh"].Value);
+                var semantic = FindSemanticPart(renderer, building);
                 Require(semantic.Success, "Unclassified geometry: " + renderer.gameObject.name);
                 string part = semantic.Groups["part"].Value;
                 var finish = Finish(style, family, variant, part, shader, assets, textures);
