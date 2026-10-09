@@ -1,0 +1,27 @@
+name: Resort R6 | 50 fachadas PBR (validacao fonte)
+on:
+  push:
+    branches:
+      - main
+      - chatgpt/r6-pbr-fachadas-50
+    paths:
+      - 'UnityProject/Assets/Editor/ResortR6FacadeFinish.cs'
+      - 'UnityProject/Assets/Editor/ResortR6FacadeFinish.cs.meta'
+      - 'Tools/tests/test_r6_facade_material_source.py'
+      - '.github/workflows/r6-fachadas-pbr-source.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-r6-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify fifty unique R5 OSM ways, semantic materials and safety gates
+        run: python -m unittest discover -s Tools/tests -p test_r6_facade_material_source.py -v
