@@ -1,0 +1,49 @@
+﻿{
+    "status": "R7_NATIVE_UNITY_CAPTURE_COMPLETED_ART_GATE_PENDING",
+    "unity_version": "6000.6.2f1",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "shader_pipeline": "UniversalRenderPipelineAsset",
+    "scene": "Assets/Scenes/R7_Copacabana_50_Fachadas_PBR_VisualQA.unity",
+    "recognized_buildings": 50,
+    "recognized_renderers": 370,
+    "meshes_without_uv0": 0,
+    "materials_using_r6": 370,
+    "screenshots": [
+        {
+            "filename": "R7_01_art_deco_carioca_RealUnity.png",
+            "sha256": "a7ff1821de82e958daccad862782403c8d64337e7be613ca7e4f557941075a29",
+            "osm_way": "176886419",
+            "style": "cop_art_deco_carioca_03",
+            "viewpoint": "OBLIQUE_45_REAL_UNITY",
+            "bytes": 308343
+        },
+        {
+            "filename": "R7_04_Pedestrian_RealUnity.png",
+            "sha256": "049410a84132f35f4909f2e5678834f737400c4652a583d3fd75b2e8a022bd27",
+            "osm_way": "176886419",
+            "style": "cop_art_deco_carioca_03",
+            "viewpoint": "PEDESTRIAN_CAMERA_REAL_UNITY",
+            "bytes": 75399
+        },
+        {
+            "filename": "R7_02_residencial_orla_RealUnity.png",
+            "sha256": "7935974b3cb359896c6dbd2a00fb5f9918d8cc13e527d2b68d708b74a1645fa1",
+            "osm_way": "586695359",
+            "style": "cop_residencial_orla_05",
+            "viewpoint": "OBLIQUE_45_REAL_UNITY",
+            "bytes": 306076
+        },
+        {
+            "filename": "R7_03_hotel_contemporaneo_RealUnity.png",
+            "sha256": "a76405bf9dac0e41405a840b04949b93e91a5143e02de6885cc843f38873f937",
+            "osm_way": "1048277507",
+            "style": "cop_hotel_contemporaneo_03",
+            "viewpoint": "OBLIQUE_45_REAL_UNITY",
+            "bytes": 141188
+        }
+    ],
+    "artistic_gate_passed": false,
+    "fps_measured": false,
+    "limitations": "Actual native Unity GPU Camera.Render with active URP required. Capture fails if any building lacks UV0 or URP/Lit. ART NOT APPROVED until human visual review. No actual gameplay or FPS measurement."
+}
