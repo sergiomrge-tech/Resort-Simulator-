@@ -63,7 +63,10 @@ com limitações; não certifica acabamento completo dos 2 km.
   [37959339234](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37959339234).
   Cadeia completa, reimportação de conectores e kit costeiro, renders/contratos
   e upload aprovados. CI Linux Blender não fabrica novas capturas Unity.
-  O checkpoint com os PNGs/cena Unity finais será validado em outra execução.
+  O checkpoint final de código/arte `46d3d9f`, incluindo os PNGs/cena Unity,
+  também passou: [37961277298](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37961277298).
+  Este registro posterior altera apenas documentação; os gates acima pertencem
+  ao SHA `46d3d9f`, sem alegar execução de Unity no runner Linux.
 - FPS/CPU/GPU/drawcalls/VRAM 1080p, gameplay e animação de água: **PENDENTE**.
 
 ## Limitações materiais
