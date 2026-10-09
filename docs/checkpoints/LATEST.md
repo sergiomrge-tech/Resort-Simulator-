@@ -2,6 +2,23 @@
 
 **Atualizado em 08/10/2026**. Ponto de recuperação durável para novos chats. Não presumir que informações antigas da conversa são mais recentes que os commits; conferir GitHub antes de escrever.
 
+## Atualização R3 — piloto fiel Copacabana 300 × 300 m (08/10/2026)
+
+**Desenvolvimento exclusivamente no GitHub, sem PC.** [PR #18 — R3 piloto geográfico](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/18) permanece **draft** e não foi integrada à `main`. Antes de retomar, ler `docs/arte/R3_PILOTO_GEOGRAFICO.md` nessa branch.
+
+**Fatos testados e aprovados:**
+
+- Polígonos exatos de três edifícios reais (`way/1048277518`, `way/1048277521`, `way/1308635852`) reconstruídos do OSM arquivado na mesma projeção/transformação da fonte BlenderGIS, sem chamadas externas, em `geo/pilot/R3_EXACT_OSM_PARCELS.json`.
+- Estudo conservador em `geo/pilot/R3_MODEL_FIT_STUDY.json`: `hotel.fbx` (OSM 1048277518) e `residencial_sacadas.fbx` (OSM 1048277521) cabem no polígono em escala 1:1 e giro validado. `townhouse.fbx` não cabe no terceiro contorno, portanto **bloqueado**, sem deformação. [Actions 37862663423](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37862663423) **SUCCESS**.
+- [Blender Cycles: imagem geográfica real com três contornos OSM](https://github.com/sergiomrge-tech/Resort-Simulator-/blob/chatgpt/r3-piloto-osm-implantacao-real/ArtSource/Previews/R3_Orla_300m_OSM_Real_Blender_QA.png). [Actions 37862776640](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37862776640) **SUCCESS**, mas apenas preview de localização, não screenshot Unity nem arte final.
+- Sondagem real da malha original: edifícios OSM 1048277518 e 1048277521 têm faces mapeadas; o terceiro não tem faces correspondentes nesta versão da cidade. Não inventar geometria no terceiro local.
+- Método de apagar componentes conectados do `.blend` foi corretamente **rejeitado**: a seleção abrangia um edifício vizinho. Nova estratégia usa o **gerador OSM original**, portado de `Simulador-predial` com origem documentada, para regenerar uma cópia omitindo somente dois IDs, sem editar fonte original.
+- [Actions 37863719605](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37863719605) **SUCCESS**: reconstrução original com **62.980 vértices e 26.764 faces**; omitir dois IDs remove **23 faces de edifícios e ZERO faces de ruas**, preservando exatamente as outras 26.741 faces trianguladas no OBJ. Essa prova de paridade OBJ ainda precisa de comparação final com o `.blend` antes de declarar um FBX derivado seguro.
+
+**Pendências/gates:** pipeline experimental `Tools/Blender/generate_r3_derived_pilot.py` e `.github/workflows/r3-derived-city.yml` deve comprovar a equivalência geométrica com o `.blend` original, gerar FBX derivado, renderizar, rodar testes e não tocar em originais. **Nenhum FBX derivado ou implantação Unity deve ser anunciado até passar.** O build Windows da R1 segue dependente de ativação legítima da Unity no GitHub Actions. Fase de economia/IA continua arquivada.
+
+---
+
 ## Marco visual GitHub-first — nove FBX originais na main (08/10/2026)
 
 **Concluído e aprovado em QA de arquivos/Blender, mas ainda não validado no Editor Unity:**
