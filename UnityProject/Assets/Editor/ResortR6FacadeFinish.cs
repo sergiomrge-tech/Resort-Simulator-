@@ -64,6 +64,7 @@ public static class ResortR6FacadeFinish
         public int selected_buildings;
         public int distinct_styles;
         public int finished_renderers;
+        public int material_part_name_fallbacks;
         public int material_assets;
         public int texture_assets;
         public string[] osm_way_ids;
@@ -228,6 +229,19 @@ public static class ResortR6FacadeFinish
         return result;
     }
 
+    // FBX exported names are occasionally truncated by Blender. In that case
+    // use the already native-validated R5 material category as a safe fallback.
+    private static string InferR5Part(Renderer renderer)
+    {
+        var material = renderer.sharedMaterial;
+        string name = material != null ? material.name.ToLowerInvariant() : "";
+        if (name.Contains("glass")) return "glass";
+        if (name.Contains("metal")) return "metal";
+        if (name.Contains("stone")) return "stone";
+        if (name.Contains("planter")) return "plants";
+        return "wall"; // R5 merged trims, wood, roof and shadow into facade material.
+    }
+
     private static Color Shade(Color baseColor, int variant, string semantic)
     {
         float delta = (variant - 3) * .022f;
@@ -264,7 +278,9 @@ public static class ResortR6FacadeFinish
             AssetDatabase.CreateAsset(mat, path);
         }
         else if (mat.shader != shader) mat.shader = shader;
-        mat.SetColor("_BaseColor", Shade(Families[family], variant, semantic));
+        Color tint = Shade(Families[family], variant, semantic);
+        if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", tint);
+        if (mat.HasProperty("_Color")) mat.SetColor("_Color", tint);
         float metallic = semantic == "metal" ? .70f :
                          semantic == "glass" ? .12f : semantic == "trim" ? .04f : 0f;
         float smooth = semantic == "glass" ? .89f :
@@ -272,8 +288,9 @@ public static class ResortR6FacadeFinish
                        semantic == "wood" ? .29f :
                        semantic == "roof" ? .23f :
                        semantic == "stone" ? .25f : .32f;
-        mat.SetFloat("_Metallic", metallic);
-        mat.SetFloat("_Smoothness", smooth);
+        if (mat.HasProperty("_Metallic")) mat.SetFloat("_Metallic", metallic);
+        if (mat.HasProperty("_Smoothness")) mat.SetFloat("_Smoothness", smooth);
+        if (mat.HasProperty("_Glossiness")) mat.SetFloat("_Glossiness", smooth);
         if (semantic == "wall" || semantic == "stone" ||
             semantic == "trim" || semantic == "roof")
         {
@@ -283,9 +300,10 @@ public static class ResortR6FacadeFinish
             var albedo = AssetDatabase.LoadAssetAtPath<Texture2D>(albedoPath);
             var normal = AssetDatabase.LoadAssetAtPath<Texture2D>(normalPath);
             Require(albedo != null && normal != null, "Generated textures missing");
-            mat.SetTexture("_BaseMap", albedo);
-            mat.SetTexture("_BumpMap", normal);
-            mat.SetFloat("_BumpScale", semantic == "wall" ? .22f : .35f);
+            if (mat.HasProperty("_BaseMap")) mat.SetTexture("_BaseMap", albedo);
+            if (mat.HasProperty("_MainTex")) mat.SetTexture("_MainTex", albedo);
+            if (mat.HasProperty("_BumpMap")) mat.SetTexture("_BumpMap", normal);
+            if (mat.HasProperty("_BumpScale")) mat.SetFloat("_BumpScale", semantic == "wall" ? .22f : .35f);
             mat.EnableKeyword("_NORMALMAP");
             // UVs originate in procedural Blender FBX; no scale claims until visual QA.
             textures.Add(albedoPath);
@@ -303,12 +321,12 @@ public static class ResortR6FacadeFinish
     {
         Require(AssetDatabase.LoadAssetAtPath<SceneAsset>(SourceScene) != null,
                 "R5 source QA scene unavailable");
-        Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-        Require(shader != null, "URP/Lit shader unavailable; cannot assert PBR preview");
         bool urpActive = GraphicsSettings.currentRenderPipeline != null &&
             GraphicsSettings.currentRenderPipeline.GetType().Name.Contains("UniversalRenderPipeline");
+        Shader shader = Shader.Find(urpActive ? "Universal Render Pipeline/Lit" : "Standard");
+        Require(shader != null, "Neither active URP/Lit nor Standard shader found");
         if (!urpActive)
-            Debug.LogWarning("RESORT_R6_URP_ASSET_NOT_ACTIVE: PBR materials can be authored, but scene rendering still requires an active URP pipeline asset.");
+            Debug.LogWarning("RESORT_R6_STANDARD_QA_FALLBACK: no active URP asset. Standard PBR test uses the same source masks and colors; URP shader approval remains pending.");
         string repo = Path.GetFullPath(Path.Combine(Application.dataPath, "..", ".."));
         string sourceBlend = Path.Combine(repo, "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend");
         string sourceFbx = Path.Combine(Application.dataPath,
@@ -324,6 +342,7 @@ public static class ResortR6FacadeFinish
         var assets = new HashSet<string>();
         var textures = new HashSet<string>();
         int finished = 0;
+        int inferredFallbacks = 0;
         Scene scene = EditorSceneManager.OpenScene(SourceScene, OpenSceneMode.Single);
         foreach (var root in scene.GetRootGameObjects())
             foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
@@ -337,8 +356,9 @@ public static class ResortR6FacadeFinish
                 Require(Families.ContainsKey(family), "Unrecognized family: " + family);
                 int variant = int.Parse(parts.Groups["variant"].Value);
                 var semantic = FindSemanticPart(renderer, building);
-                Require(semantic.Success, "Unclassified geometry: " + renderer.gameObject.name);
-                string part = semantic.Groups["part"].Value;
+                string part;
+                if (semantic.Success) part = semantic.Groups["part"].Value;
+                else { part = InferR5Part(renderer); inferredFallbacks++; }
                 var finish = Finish(style, family, variant, part, shader, assets, textures);
                 var existing = renderer.sharedMaterials;
                 Require(existing.Length > 0, "Renderer has no submesh material slots");
@@ -360,7 +380,7 @@ public static class ResortR6FacadeFinish
         var report = new Report
         {
             status = urpActive ? "R6_EDITOR_MATERIAL_SCENE_GENERATED_VISUAL_QA_PENDING" :
-                "R6_MATERIAL_ASSETS_GENERATED_URP_RENDER_PIPELINE_NOT_ACTIVE",
+                "R6_STANDARD_SHADER_VISUAL_QA_URP_PIPELINE_NOT_ACTIVE",
             origin_scene = SourceScene,
             generated_scene = OutputScene,
             unity_version = Application.unityVersion,
@@ -371,17 +391,18 @@ public static class ResortR6FacadeFinish
             selected_buildings = ids.Count,
             distinct_styles = styles.Count,
             finished_renderers = finished,
+            material_part_name_fallbacks = inferredFallbacks,
             material_assets = assets.Count,
             texture_assets = textures.Count,
             osm_way_ids = ids.OrderBy(x => x, StringComparer.Ordinal).ToArray(),
-            limitations = "Source asset workflow. PBR maps procedural author-owned, not photorealistic textures; no new native screenshot, FPS benchmark, or art approval yet."
+            limitations = "Source material QA. Exported mesh names may be truncated; R5 material-class fallback applied when necessary. Standard fallback used if URP inactive. PBR masks author-owned not photorealistic; UV availability to verify separately. No FPS or artistic approval."
         };
         string outDir = Path.Combine(repo, "build/R6_PBR_FacadeQA");
         Directory.CreateDirectory(outDir);
         File.WriteAllText(Path.Combine(outDir, "material_pass.json"),
             JsonUtility.ToJson(report, true) + "\n", Encoding.UTF8);
         Debug.Log("RESORT_R6_PBR_PASS ways=" + ids.Count +
-                  " styles=" + styles.Count + " renderers=" + finished +
+                  " styles=" + styles.Count + " renderers=" + finished + " nameFallbacks=" + inferredFallbacks +
                   " materials=" + assets.Count + " texture_assets=" + textures.Count);
     }
 }
