@@ -20,7 +20,7 @@ class R3FitGeometryTests(unittest.TestCase):
     def test_each_proposal_has_source_real_fbx_and_conservative_fit(self):
         self.assertEqual(self.study["status"],"R3_GEOMETRY_STUDY_NOT_INTEGRATED_IN_WORLD")
         self.assertEqual(len(self.study["sites"]),3)
-        self.assertIn("No Unity prefab",self.study["limits"])
+        self.assertIn("no Unity prefab",self.study["limits"])
         for oid,v in self.study["sites"].items():
             path=ROOT/v["source_fbx"]
             self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),v["source_fbx_sha256"])
