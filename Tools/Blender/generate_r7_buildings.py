@@ -1,9 +1,8 @@
 """Project Resort R7: actual procedural 3D facades from frozen OSM footprints.
 
 Blender 4.x headless:
-  blender -b --factory-startup --python Tools/Blender/generate_r4_buildings.py -- --mode pilot
-  blender -b --factory-startup --python Tools/Blender/generate_r4_buildings.py -- --mode gallery
-  blender -b --factory-startup --python Tools/Blender/generate_r4_buildings.py -- --mode city --start 0 --count 50 --no-render
+  blender -b --factory-startup --python Tools/Blender/generate_r7_buildings.py -- --mode pilot
+  blender -b --factory-startup --python Tools/Blender/generate_r7_buildings.py -- --mode gallery --no-render
 
 pilot: 10 building IDs (one per architectural family), actual source OSM footprints
 gallery: all 50 unique style recipes instantiated on representative OSM footprints
@@ -29,13 +28,16 @@ import bpy
 from mathutils import Vector
 from mathutils.geometry import tessellate_polygon
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from r7_contract import object_id, triangle_points, project_uv, wall_rectangles
+
 ROOT=Path(__file__).resolve().parents[2]
 CATALOG=ROOT/"ArtSource/ProceduralBuildings/Resort50Styles.json"
 ASSIGNMENTS=ROOT/"geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json"
 OUT=ROOT/"UnityProject/Assets/Architecture/R7_Pilot50/Procedural"
 IMAGES=ROOT/"ArtSource/Previews"
 HELD_BACK={"way/1048277518","way/1048277521"}  # R3 hero placements
-VERSION="R7_PROCEDURAL_GEOMETRY_UV_SEMANTIC_V1"
+VERSION="R7_PROCEDURAL_GEOMETRY_UV_SEMANTIC_V2"
 MATERIAL_KEYS=("wall","stone","trim","glass","metal","wood","roof","plants","shadow")
 COLORS={
  "residencial_orla":(.83,.78,.68),"residencial_anos70":(.75,.75,.71),
@@ -127,7 +129,9 @@ class Geometry:
                 corners.append(tuple(q))
         for face in ((3,2,1,0),(4,5,6,7),(0,1,5,4),
                      (1,2,6,5),(2,3,7,6),(3,0,4,7)):
-            self.face(key,[corners[i] for i in face])
+            # Outward normals for either OSM winding (t,n is often left handed).
+            winding=face if t.x*n.y-t.y*n.x>0 else tuple(reversed(face))
+            self.face(key,[corners[i] for i in winding])
         self.boxes+=1
 
     def add_edge_box(self,key,a,t,n,u,depth_center,z,length,thickness,height):
@@ -135,28 +139,38 @@ class Geometry:
            a[1]+t[1]*u+n[1]*depth_center,z)
         self.box(key,c,t,n,length,thickness,height)
 
-    def emit(self,collection,materials,ident):
+    def wall(self,a,t,n,length,height,openings):
+        # Remove actual apertures from the source perimeter plane; a pane behind
+        # an uncut wall is invisible in both Blender and Unity backface culling.
+        def point(u,z,depth=0):
+            return (a[0]+t[0]*u+n[0]*depth,a[1]+t[1]*u+n[1]*depth,z)
+        reverse=t[0]*n[1]-t[1]*n[0]>0
+        for x0,x1,z0,z1 in wall_rectangles(length,height,[h[:4] for h in openings]):
+            face=[point(x0,z0),point(x1,z0),point(x1,z1),point(x0,z1)]
+            self.face("wall",face[::-1] if reverse else face)
+        for x0,x1,z0,z1,depth in openings:
+            front=[point(x0,z0),point(x1,z0),point(x1,z1),point(x0,z1)]
+            back=[point(x0,z0,depth),point(x1,z0,depth),point(x1,z1,depth),point(x0,z1,depth)]
+            for i in range(4):
+                j=(i+1)%4
+                face=[front[i],back[i],back[j],front[j]]
+                self.face("stone",face[::-1] if reverse else face)
+
+    def emit(self,collection,materials,ident,building_id,style_id):
         objects=[]
         for key,spec in self.data.items():
             if not spec["f"]:continue
-            mesh=bpy.data.meshes.new(ident+"_"+key+"_mesh")
+            label=object_id(building_id,style_id,key)
+            mesh=bpy.data.meshes.new(label)
             mesh.from_pydata(spec["v"],[],spec["f"])
             mesh.update(calc_edges=True)
-            # Face-local dominant-axis UVs at 2m per repeat preserve physical
-            # scale across facade panels, reveals, balconies and roof planes.
-            uv=mesh.uv_layers.new(name="UVMap")
-            for poly in mesh.polygons:
-                n=poly.normal
-                drop=max(range(3),key=lambda axis:abs(n[axis]))
-                axes=([1,2] if drop==0 else [0,2] if drop==1 else [0,1])
-                for li in poly.loop_indices:
-                    co=mesh.vertices[mesh.loops[li].vertex_index].co
-                    uv.data[li].uv=(co[axes[0]]/2.0,co[axes[1]]/2.0)
-            obj=bpy.data.objects.new(ident+"_"+key,mesh)
+            project_uv(mesh)
+            obj=bpy.data.objects.new(label,mesh)
             collection.objects.link(obj)
             mesh.materials.append(materials[key])
             obj["r7_semantic_id"]="R7_"+key
-            obj["r7_style_id"]=ident.split("__",1)[0]
+            obj["r7_style_id"]=style_id
+            obj["r7_osm_id"]=building_id
             # Avoid costly full mesh bevels; detailed fascia geometry is explicit.
             objects.append(obj)
         return objects
@@ -204,8 +218,8 @@ def choose_buildings(data,mode,start,count):
                     raise RuntimeError("No measured OSM example for style "+sid)
                 modified=dict(original)
                 modified["style_id"]=sid
-                modified["building_id"]=original["building_id"]+"__style_"+str(style["variant"])
-                samples[sid]=modified
+                raise RuntimeError("No compatible real OSM footprint assigned to "+sid+
+                                   "; gallery must never clone a different way/style")
         if set(samples)!=styles:raise RuntimeError("Not all 50 catalog entries have geometric examples")
         return [samples[sid] for sid in sorted(styles)]
     if mode=="city":
@@ -249,8 +263,7 @@ def building_geometry(item,style):
         t=(delta[0]/length,delta[1]/length)
         # For CCW ring outward is to the RIGHT of travel.
         n=(sign*t[1],-sign*t[0])
-        G.face("wall",[(a[0],a[1],0),(b[0],b[1],0),
-                       (b[0],b[1],visual_height),(a[0],a[1],visual_height)])
+        openings=[]
         # Structural plinth, upper cornice and roof parapet rails sit slightly
         # within footprint. Do not add fake sidewalks or road geometry.
         G.add_edge_box("stone",a,t,n,length/2,-.12,.37,length-.04,.24,.75)
@@ -258,7 +271,9 @@ def building_geometry(item,style):
                        length-.04,.23,.33)
         G.add_edge_box("roof",a,t,n,length/2,-.17,visual_height+.34,
                        length-.03,.31,.68)
-        if length<3.1:continue
+        if length<3.1:
+            G.wall(a,t,n,length,visual_height,openings)
+            continue
         bay_count=int(clamp(round(length/2.9),1,12))
         bay_step=length/bay_count
         entry_bay=bay_count//2
@@ -269,54 +284,65 @@ def building_geometry(item,style):
             win_height=frame_h if ground else min(frame_h,2.08)
             win_width=min(window_w,bay_step*.68)
             for bi in range(bay_count):
+                win_width=min(window_w,bay_step*.68)
                 u=(bi+.5)*bay_step
                 if ground and ei==front_index and bi==entry_bay:
                     # Door with recessed frame and canopy later.
-                    G.add_edge_box("shadow",a,t,n,u,-.06,center_z,
+                    door_w=min(bay_step*.76,2.35)
+                    door_h=frame_h*1.3
+                    openings.append((u-door_w/2,u+door_w/2,
+                                     max(0,center_z-door_h/2),center_z+door_h/2,-.16))
+                    G.add_edge_box("shadow",a,t,n,u,-.20,center_z,
                                    min(bay_step*.76,2.35),.07,frame_h*1.3)
-                    G.add_edge_box("glass",a,t,n,u,-.04,center_z,
+                    G.add_edge_box("glass",a,t,n,u,-.14,center_z,
                                    min(bay_step*.65,2.10),.04,frame_h*1.20)
-                    G.add_edge_box("metal",a,t,n,u,-.06,center_z,
+                    G.add_edge_box("metal",a,t,n,u,-.11,center_z,
                                    .07,.085,frame_h*1.18)
                     continue
                 if floor>0 and winmode=="alternating_bays" and bi%2:
                     win_width*=.94
-                # Shadow recess, inner pane, four trim members and sill.
-                # The actual mesh has thickness, frames and multiple materials.
-                G.add_edge_box("shadow",a,t,n,u,-.06,center_z,
-                               win_width+.23,.065,win_height+.2)
-                G.add_edge_box("glass",a,t,n,u,-.05,center_z,
-                               win_width,.045,win_height)
-                edge=.085 if style["family"]=="art_deco_carioca" else .06
-                for xx in (-win_width/2,win_width/2):
-                    G.add_edge_box("trim",a,t,n,u+xx,-.05,center_z,
-                                   edge,.085,win_height+.22)
-                for zz in (-win_height/2,win_height/2):
-                    G.add_edge_box("trim",a,t,n,u,-.05,center_z+zz,
-                                   win_width+.21,.085,edge)
-                if winmode in ("large_tripartite","horizontal_ribbon"):
-                    for xx in (-win_width/6,win_width/6):
-                        G.add_edge_box("metal",a,t,n,u+xx,-.03,center_z,
-                                       .028,.055,win_height)
-                else:
-                    G.add_edge_box("metal",a,t,n,u,-.04,center_z,
-                                   .028,.06,win_height)
-                G.add_edge_box("stone",a,t,n,u,-.14,center_z-win_height/2-.09,
-                               win_width+.34,.26,.13)
-                G.windows+=1
-
                 eligible=not ground and style["balcony_type"]!="none"
                 balcony_pattern=style["balcony_type"]
                 if "alternating" in balcony_pattern:eligible &= ((floor+bi+ei)%2==0)
                 elif "vertical_bay" in balcony_pattern:eligible &= (bi%3==0)
                 elif "staggered" in balcony_pattern:eligible &= ((floor//2+bi)%2==0)
                 elif "recessed" in balcony_pattern:eligible &= ((floor+bi)%3!=1)
-                if eligible and bay_step>2.0:
+                eligible &= bay_step>2.0
+                bal_d=min(.92,style["balcony_depth_m"])
+                bal_len=min(bay_step*.78,win_width+.65)
+                floor_z=center_z-win_height/2-.15
+                pane_depth=-bal_d+.08 if eligible else -.12
+                hole_w=bal_len if eligible else win_width+.23
+                hole_bottom=floor_z+.08 if eligible else center_z-win_height/2-.10
+                openings.append((u-hole_w/2,u+hole_w/2,hole_bottom,
+                                 center_z+win_height/2+.10,pane_depth-.02))
+                # Shadow recess, inner pane, four trim members and sill.
+                # The actual mesh has thickness, frames and multiple materials.
+                G.add_edge_box("shadow",a,t,n,u,pane_depth-.07,center_z,
+                               win_width+.23,.065,win_height+.2)
+                G.add_edge_box("glass",a,t,n,u,pane_depth,center_z,
+                               win_width,.045,win_height)
+                edge=.085 if style["family"]=="art_deco_carioca" else .06
+                for xx in (-win_width/2,win_width/2):
+                    G.add_edge_box("trim",a,t,n,u+xx,pane_depth+.035,center_z,
+                                   edge,.085,win_height+.22)
+                for zz in (-win_height/2,win_height/2):
+                    G.add_edge_box("trim",a,t,n,u,pane_depth+.035,center_z+zz,
+                                   win_width+.21,.085,edge)
+                if winmode in ("large_tripartite","horizontal_ribbon"):
+                    for xx in (-win_width/6,win_width/6):
+                        G.add_edge_box("metal",a,t,n,u+xx,pane_depth+.04,center_z,
+                                       .028,.055,win_height)
+                else:
+                    G.add_edge_box("metal",a,t,n,u,pane_depth+.04,center_z,
+                                   .028,.06,win_height)
+                G.add_edge_box("stone",a,t,n,u,-.14,center_z-win_height/2-.09,
+                               win_width+.34,.26,.13)
+                G.windows+=1
+
+                if eligible:
                     # Keep each slab fully inside the mapped polygon, recessed along
                     # the inward normal to avoid colliding with adjacent lots.
-                    bal_d=min(.92,style["balcony_depth_m"])
-                    bal_len=min(bay_step*.78,win_width+.65)
-                    floor_z=center_z-win_height/2-.15
                     G.add_edge_box("stone",a,t,n,u,-bal_d*.52,floor_z,
                                    bal_len,bal_d,.16)
                     # Glass/metal/concrete railing along inward-most edge.
@@ -327,6 +353,7 @@ def building_geometry(item,style):
                         G.add_edge_box("metal",a,t,n,u+xoff,-bal_d*.28,
                                        floor_z+.50,.045,.07,1.0)
                     G.balconies+=1
+        G.wall(a,t,n,length,visual_height,openings)
         if ei==front_index:
             middle=length/2
             # A substantial architectural entry/canopy visible at street level.
@@ -347,11 +374,13 @@ def building_geometry(item,style):
     roof_vertices=[Vector((x,y,visual_height)) for x,y in pts]
     tess=tessellate_polygon([roof_vertices])
     for tri in tess:
-        # Blender 4.5 exposes tessellated *indices* rather than Vector values.
-        G.face("roof",[tuple(roof_vertices[int(i)]) for i in tri])
+        points=triangle_points(tri,roof_vertices)
+        # Roof top faces must point upward for clockwise as well as CCW ways.
+        a,b,c=points
+        cross=(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
+        G.face("roof",points if cross>0 else points[::-1])
     # Roof equipment models (water tanks, louvers, pergola) interior only;
     # limit their footprint to a small region around the polygon centroid.
-    from mathutils.geometry import intersect_point_tri_2d
     cx=sum(x for x,y in pts)/len(pts)
     cy=sum(y for x,y in pts)/len(pts)
     if style["roof_detail"] in ("water_tank_screen","service_screen"):
@@ -400,7 +429,7 @@ def generate_item(item,style,outputs,write_fbx=True):
     token=item["style_id"]+"__"+display_name
     group=empty_group("R7_"+token)
     geo,detail=building_geometry(item,style)
-    objects=geo.emit(group,palette(style),token)
+    objects=geo.emit(group,palette(style),token,item["building_id"],style["id"])
     if len(objects)<5 or detail["windows"]<3 or detail["solid_boxes"]<12:
         raise RuntimeError("Procedural building too shallow/no meaningful facade: "+token)
     polys=sum(len(o.data.polygons) for o in objects)
@@ -416,14 +445,13 @@ def generate_item(item,style,outputs,write_fbx=True):
         bpy.ops.export_scene.fbx(filepath=str(fbxpath),use_selection=True,
             object_types={"MESH"},axis_forward="-Z",axis_up="Y",global_scale=1.0,
             apply_unit_scale=True,bake_space_transform=False,
-            use_mesh_modifiers=True,add_leaf_bones=False)
+            use_mesh_modifiers=True,add_leaf_bones=False,use_custom_props=True)
         if fbxpath.stat().st_size<20000 or not fbxpath.read_bytes().startswith(b"Kaydara FBX Binary"):
             raise RuntimeError("Generated R7 FBX invalid: "+token)
-        if bpy.context.scene.render.engine!="BLENDER_EEVEE_NEXT":
-            pass
         metapath=fbxpath.with_suffix(fbxpath.suffix+".meta")
-        metapath.write_text("fileFormatVersion: 2\nguid: "+named_guid(token)+
-                            "\nModelImporter:\n  serializedVersion: 22200\n  externalObjects: {}\n")
+        if not metapath.exists():
+            metapath.write_text("fileFormatVersion: 2\nguid: "+named_guid(token)+
+                                "\nModelImporter:\n  serializedVersion: 22200\n  externalObjects: {}\n",encoding="utf-8")
     row={
         "building_id":item["building_id"],"style_id":style["id"],
         "family":style["family"],"seed":item["seed"],
@@ -436,8 +464,10 @@ def generate_item(item,style,outputs,write_fbx=True):
         "vertices_generated":verts,"polygons_generated":polys,
         "materials_generated":len(objects),
         "uv0_generated":len(objects),
-        "uv_method":"dominant-axis face-local projection; 2 metres per UV repeat",
-        "semantic_material_ids":["R7_"+k for k in MATERIAL_KEYS],
+        "uv_method":"orthonormal planar projection; 2 metres per UV repeat",
+        "semantic_material_ids":[o.data.materials[0].name for o in objects],
+        "semantic_categories":[o["r7_semantic_id"] for o in objects],
+        "object_names":[o.name for o in objects],
         "fbx":str(fbxpath.relative_to(ROOT)) if write_fbx else None,
         "fbx_bytes":fbxpath.stat().st_size if write_fbx else None,
         "fbx_sha256":digest(fbxpath) if write_fbx else None,
@@ -576,6 +606,9 @@ def run():
     parser.add_argument("--no-render",action="store_true")
     parser.add_argument("--max-preview-sheets",type=int,default=5)
     args=parser.parse_args(argv)
+    if args.mode=="city":
+        raise RuntimeError("R7_FULL_EXPANSION_BLOCKED: remaining plan indices are not raw city indices; "
+                           "supervisor must approve native Unity pilot QA before expansion implementation")
     if args.mode=="gallery" and args.max_preview_sheets<5 and not args.no_render:
         raise RuntimeError("Cannot silently skip gallery proof of all 50 styles")
     catalog=json.loads(CATALOG.read_text(encoding="utf-8"))

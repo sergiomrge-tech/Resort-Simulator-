@@ -7,12 +7,17 @@ import hashlib
 import json
 import math
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
 import bpy
+from mathutils import Vector
+from mathutils.kdtree import KDTree
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/"Tools/Blender"))
+from r7_contract import semantic_part, SUFFIX
 FBX = ROOT / "UnityProject/Assets/Architecture/R7_Pilot50/R7_Copacabana_50_Fachadas_Derivado.fbx"
 REPORT = ROOT / "ArtSource/Previews/R7_FBX_UV_NATIVE_QA.json"
 ORIG_BLEND = ROOT / "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend"
@@ -33,11 +38,43 @@ def main() -> None:
     assert FBX.is_file() and FBX.stat().st_size > 500000, "Integrated R7 FBX missing"
     assert sha(ORIG_BLEND) == EXPECTED_BLEND, "Original Blender GIS changed"
     assert sha(ORIG_FBX) == EXPECTED_FBX, "Original city FBX changed"
+    gallery=json.loads((ROOT/"UnityProject/Assets/Architecture/R7_Pilot50/Procedural/R7_GALLERY_GENERATION_REPORT.json").read_text(encoding="utf-8"))
+    expected={r["building_id"][4:].replace("#part","_part"):r for r in gallery["meshes"]}
+    assert len(expected)==50 and gallery["count"]==50
+    # Independently obtain the original GIS matrix and exact road triangles.
+    bpy.ops.wm.open_mainfile(filepath=str(ORIG_BLEND))
+    original=next(o for o in bpy.context.scene.objects if o.type=="MESH" and len(o.data.polygons)==26764)
+    frame=original.matrix_world.copy()
+    roads=[]
+    for poly in original.data.polygons:
+        if original.data.materials[poly.material_index].name.split(".")[0]=="Road":
+            roads.append(sorted(tuple(original.matrix_world@original.data.vertices[i].co) for i in poly.vertices))
+    assert len(roads)==3731
     bpy.ops.wm.read_factory_settings(use_empty=True)
     bpy.ops.import_scene.fbx(filepath=str(FBX))
     heroes = [obj for obj in bpy.context.scene.objects
               if obj.type == "MESH" and obj.name.startswith("R7B_")]
-    assert len(heroes) >= 300, f"Expected 300+ R7 real architectural meshes, got {len(heroes)}"
+    assert len(heroes)==sum(r["mesh_object_count"] for r in expected.values()), "R7 mesh count differs from gallery"
+    assert Counter(SUFFIX.sub("",o.name) for o in heroes)==Counter(n for r in expected.values() for n in r["object_names"]), "Lost/duplicate FBX object IDs"
+    bases=[o for o in bpy.context.scene.objects if o.type=="MESH" and not o.name.startswith("R7B_")]
+    assert len(bases)==1, "Missing/duplicated GIS base"
+    base=bases[0]
+    assert base.data.uv_layers.active is not None, "GIS base lacks UV0"
+    index=KDTree(len(roads))
+    for i,points in enumerate(roads): index.insert(sum((Vector(p) for p in points),Vector())/3,i)
+    index.balance()
+    unmatched=set(range(len(roads)))
+    for poly in base.data.polygons:
+        if "Roads" not in base.data.materials[poly.material_index].name: continue
+        points=sorted(tuple(base.matrix_world@base.data.vertices[i].co) for i in poly.vertices)
+        assert len(points)==3, "Road face topology changed"
+        center=sum((Vector(p) for p in points),Vector())/3
+        candidates=index.find_range(center,.005)
+        match=next((i for _,i,_ in candidates if i in unmatched and
+                    all(math.dist(a,b)<.003 for a,b in zip(points,roads[i]))),None)
+        assert match is not None, "Original road geometry/frame changed after FBX roundtrip"
+        unmatched.remove(match)
+    assert not unmatched, "Original road triangles lost"
     ids, styles, parts = set(), set(), Counter()
     vertices = triangles = uvloops = 0
     bad = []
@@ -52,10 +89,23 @@ def main() -> None:
             bad.append(f"No material: {obj.name}")
             continue
         for mat in mats:
-            material_part = mat.name.rsplit("_", 1)[-1].split(".", 1)[0]
+            material_part = semantic_part(mat.name)
             if material_part not in SEMANTICS or material_part != part:
                 bad.append(f"Wrong material category: {obj.name} => {mat.name}")
         mesh = obj.data
+        record=expected[match.group("way")]
+        assert record["style_id"]==match.group("style"), "OSM style assignment changed"
+        if part=="wall":
+            ring=record["source_ring_local_xy_m"]
+            inverse=frame.inverted()
+            local=[inverse@(obj.matrix_world@v.co) for v in mesh.vertices]
+            assert abs(min(p.z for p in local))<.005
+            assert abs(max(p.z for p in local)-record["height_visual_m"])<.005
+            def segment_distance(p,a,b):
+                dx,dy=b[0]-a[0],b[1]-a[1]
+                t=max(0,min(1,((p.x-a[0])*dx+(p.y-a[1])*dy)/(dx*dx+dy*dy)))
+                return math.hypot(p.x-a[0]-t*dx,p.y-a[1]-t*dy)
+            assert all(min(segment_distance(p,a,b) for a,b in zip(ring,ring[1:]))<.005 for p in local), "OSM perimeter/frame shifted"
         uv = mesh.uv_layers.active
         if uv is None or len(uv.data) != len(mesh.loops) or len(uv.data) == 0:
             bad.append(f"Missing UV0: {obj.name}")
@@ -65,6 +115,13 @@ def main() -> None:
                 or max(float(a[0]) for a in coords) - min(float(a[0]) for a in coords) < 0.001
                 or max(float(a[1]) for a in coords) - min(float(a[1]) for a in coords) < 0.001):
             bad.append(f"UV0 non-finite or collapsed: {obj.name}")
+        # Per-edge texel scale catches diagonal dominant-axis compression.
+        for poly in mesh.polygons:
+            loops=list(poly.loop_indices)
+            for a,b in zip(loops,loops[1:]+loops[:1]):
+                metres=(mesh.vertices[mesh.loops[a].vertex_index].co-mesh.vertices[mesh.loops[b].vertex_index].co).length
+                uvmetres=(uv.data[a].uv-uv.data[b].uv).length*2
+                assert abs(metres-uvmetres)<max(.002,metres*.001), "UV metric scale lost: "+obj.name
         ids.add(match.group("way"))
         styles.add(match.group("style"))
         parts[part] += 1
@@ -89,6 +146,9 @@ def main() -> None:
         "triangles": triangles,
         "uv0_loops": uvloops,
         "semantic_parts": dict(sorted(parts.items())),
+        "original_road_triangles_after_roundtrip": len(roads),
+        "osm_wall_perimeters_and_heights_verified": True,
+        "blender_version": bpy.app.version_string,
         "limitations": "Real exported FBX re-imported in Blender, not a Unity URP, scene framing or FPS check. Art still pending human approval."
     }
     REPORT.parent.mkdir(parents=True, exist_ok=True)

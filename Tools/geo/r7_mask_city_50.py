@@ -83,6 +83,10 @@ def main():
             raise RuntimeError("One R7 UV0 FBX is missing/corrupt")
         if model["style_id"]!=indexed[model["building_id"]]["style_id"]:
             raise RuntimeError("Style mismatch between full geodata and model")
+        footprint=indexed[model["building_id"]]
+        if (model["local_osm_centroid_xy_m"]!=footprint["centroid_local_xy_m"] or
+            model["source_ring_local_xy_m"]!=footprint["footprint_ring_local_xy_m"]):
+            raise RuntimeError("R7 model placement/footprint differs from frozen OSM: "+model["building_id"])
     original=reconstruct(OUT/"original",[])
     masked=reconstruct(OUT/"derived",sorted(ids))
     before,s_before,v0=obj_signatures(original)
@@ -94,7 +98,7 @@ def main():
     if added:raise RuntimeError("City mask created unknown/new triangles")
     if any(key[0]!="Building" for key in removed):
         raise RuntimeError("City mask reached original road/terrain geometry")
-    if removed and sum(removed.values())<50:
+    if sum(removed.values())<50:
         raise RuntimeError("Fewer than 50 building faces removed for 50 OSM models")
     if before["Road"]!=after["Road"] or after["Building"]>=before["Building"]:
         raise RuntimeError("Original city material counts invalid after selective masking")

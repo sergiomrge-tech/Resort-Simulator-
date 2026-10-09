@@ -26,13 +26,13 @@ public static class ResortR7FacadeFinish
     private const string TextureDir = "Assets/Textures/R7_Facades";
     private const int Size = 256;
     private static readonly Regex BuildingPattern = new Regex(
-        @"R7B_(?<way>[0-9]+(?:_part[0-9]+)?)__(?<style>cop_[a-z0-9_]+)__(?<mesh>.+)",
+        @"^R7B_(?<way>[0-9]+(?:_part[1-9][0-9]*)?)__(?<style>cop_[a-z0-9_]+_0[1-5])__(?<mesh>wall|stone|trim|glass|metal|wood|roof|plants|shadow)(?:\.[0-9]+)*$",
         RegexOptions.Compiled | RegexOptions.CultureInvariant);
     private static readonly Regex StylePattern = new Regex(
         @"^cop_(?<family>[a-z0-9_]+)_(?<variant>0[1-5])$",
         RegexOptions.Compiled | RegexOptions.CultureInvariant);
     private static readonly Regex MaterialPartPattern = new Regex(
-        @"R7_(?:[a-z0-9_]+_)?(?<part>wall|stone|trim|glass|metal|wood|roof|plants|shadow)(?:\.[0-9]+)?$",
+        @"^R7_(?:[a-z0-9_]+_)?(?<part>wall|stone|trim|glass|metal|wood|roof|plants|shadow)(?:\.[0-9]+)*$",
         RegexOptions.Compiled | RegexOptions.CultureInvariant);
     private static readonly Dictionary<string, Color> Families = new Dictionary<string, Color>
     {
@@ -61,14 +61,34 @@ public static class ResortR7FacadeFinish
         public bool urp_pipeline_active;
         public string source_blend_sha256;
         public string source_fbx_sha256;
+        public string derived_fbx_sha256;
         public int selected_buildings;
         public int distinct_styles;
         public int finished_renderers;
         public int material_semantic_fallbacks;
         public int material_assets;
         public int texture_assets;
+        public int background_urp_slots;
         public string[] osm_way_ids;
         public string limitations;
+    }
+
+    [Serializable] private sealed class ModelRecord
+    {
+        public string building_id;
+        public string style_id;
+        public int mesh_object_count;
+    }
+    [Serializable] private sealed class GalleryReport
+    {
+        public int count;
+        public ModelRecord[] meshes;
+    }
+    [Serializable] private sealed class NativeBlenderReport
+    {
+        public string status;
+        public string derived_fbx_sha256;
+        public int mesh_objects;
     }
 
     private static void Require(bool condition, string message)
@@ -191,6 +211,8 @@ public static class ResortR7FacadeFinish
         var importer = AssetImporter.GetAtPath(path) as TextureImporter;
         Require(importer != null, "Generated PNG not imported: " + path);
         bool dirty = false;
+        if (importer.sRGBTexture == normal) { importer.sRGBTexture = !normal; dirty = true; }
+        if (importer.convertToNormalmap) { importer.convertToNormalmap = false; dirty = true; }
         var wantedType = normal ? TextureImporterType.NormalMap : TextureImporterType.Default;
         if (importer.textureType != wantedType) { importer.textureType = wantedType; dirty = true; }
         if (importer.wrapMode != TextureWrapMode.Repeat) { importer.wrapMode = TextureWrapMode.Repeat; dirty = true; }
@@ -219,7 +241,7 @@ public static class ResortR7FacadeFinish
     {
         // The canonical source object, intermediate FBX nodes and mesh names
         // can place the Blender material-category suffix at different levels.
-        Match result = MaterialPartPattern.Match(building.Groups["mesh"].Value);
+        Match result = MaterialPartPattern.Match("R7_" + building.Groups["mesh"].Value);
         if (result.Success) return result;
         result = MaterialPartPattern.Match(renderer.gameObject.name);
         if (result.Success) return result;
@@ -289,6 +311,15 @@ public static class ResortR7FacadeFinish
                        semantic == "wood" ? .29f :
                        semantic == "roof" ? .23f :
                        semantic == "stone" ? .25f : .32f;
+        // Reset persistent URP state so running Build twice produces the same material.
+        mat.SetFloat("_Surface", 0f);
+        mat.SetFloat("_Blend", 0f);
+        mat.SetFloat("_SrcBlend", (float)BlendMode.One);
+        mat.SetFloat("_DstBlend", (float)BlendMode.Zero);
+        mat.SetFloat("_ZWrite", 1f);
+        mat.DisableKeyword("_SURFACE_TYPE_TRANSPARENT");
+        mat.SetShaderPassEnabled("ShadowCaster", true);
+        mat.renderQueue = (int)RenderQueue.Geometry;
         if (semantic == "glass")
         {
             tint.a = .58f;
@@ -297,7 +328,10 @@ public static class ResortR7FacadeFinish
             if (mat.HasProperty("_SrcBlend")) mat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
             if (mat.HasProperty("_DstBlend")) mat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
             if (mat.HasProperty("_ZWrite")) mat.SetFloat("_ZWrite", 0f);
+            mat.SetFloat("_SrcBlendAlpha", (float)BlendMode.One);
+            mat.SetFloat("_DstBlendAlpha", (float)BlendMode.OneMinusSrcAlpha);
             mat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            mat.SetShaderPassEnabled("ShadowCaster", false);
             mat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
             if (mat.HasProperty("_BaseColor")) mat.SetColor("_BaseColor", tint);
         }
@@ -329,53 +363,76 @@ public static class ResortR7FacadeFinish
         return mat;
     }
 
+    private static int FinishBackground(Renderer renderer, Shader shader, HashSet<string> assets)
+    {
+        var slots = renderer.sharedMaterials;
+        Require(slots.Length > 0, "BACKGROUND_MATERIALS_MISSING");
+        for (int i = 0; i < slots.Length; i++)
+        {
+            Require(slots[i] != null, "BACKGROUND_NULL_MATERIAL");
+            bool road = slots[i].name.StartsWith("R7_OSM_Roads_", StringComparison.Ordinal);
+            Require(road || slots[i].name.StartsWith("R7_OSM_Other_Buildings_", StringComparison.Ordinal),
+                "UNCLASSIFIED_BACKGROUND_MATERIAL: " + slots[i].name);
+            string path = MaterialDir + (road ? "/R7_OSM_Roads_URP.mat" : "/R7_OSM_Other_Buildings_URP.mat");
+            var mat = AssetDatabase.LoadAssetAtPath<Material>(path);
+            if (mat == null) { mat = new Material(shader); AssetDatabase.CreateAsset(mat, path); }
+            mat.shader = shader;
+            mat.SetColor("_BaseColor", road ? new Color(.24f,.26f,.27f) : new Color(.57f,.54f,.47f));
+            mat.SetFloat("_Smoothness", road ? .12f : .22f);
+            mat.SetFloat("_Metallic", 0f);
+            mat.enableInstancing = true;
+            EditorUtility.SetDirty(mat);
+            slots[i] = mat;
+            assets.Add(path);
+        }
+        renderer.sharedMaterials = slots;
+        return slots.Length;
+    }
+
     [MenuItem("Resort/R7/Gerar fachadas PBR dos 50 prédios")]
     public static void Build()
     {
         const string DerivedFbx = "Assets/Architecture/R7_Pilot50/R7_Copacabana_50_Fachadas_Derivado.fbx";
-        var pipeline = GraphicsSettings.currentRenderPipeline;
-        bool urpActive = pipeline != null && pipeline.GetType().Name.Contains("UniversalRenderPipeline");
-        if (!urpActive)
+        // Own a deterministic QA pipeline; never select an arbitrary existing asset.
+        EnsureDirectory("Assets/Settings");
+        const string rendererPath = "Assets/Settings/R7_QA_UniversalRenderer.asset";
+        const string pipelinePath = "Assets/Settings/R7_QA_URP.asset";
+        var rendererData = AssetDatabase.LoadAssetAtPath<UniversalRendererData>(rendererPath);
+        if (rendererData == null)
         {
-            string[] pipelineGuids = AssetDatabase.FindAssets("t:UniversalRenderPipelineAsset");
-            if (pipelineGuids.Length == 0)
-            {
-                // GUI menu creation does not reliably work with -batchmode.
-                // Use the public Unity 6 URP creation API; create real persistent assets
-                // in the disposable R7 QA project, never in the immutable GIS source.
-                EnsureDirectory("Assets/Settings");
-                const string rendererPath = "Assets/Settings/R7_QA_UniversalRenderer.asset";
-                const string pipelinePath = "Assets/Settings/R7_QA_URP.asset";
-                var rendererData = AssetDatabase.LoadAssetAtPath<UniversalRendererData>(rendererPath);
-                if (rendererData == null)
-                {
-                    rendererData = ScriptableObject.CreateInstance<UniversalRendererData>();
-                    AssetDatabase.CreateAsset(rendererData, rendererPath);
-                }
-                var urpAsset = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(pipelinePath);
-                if (urpAsset == null)
-                {
-                    urpAsset = UniversalRenderPipelineAsset.Create(rendererData);
-                    AssetDatabase.CreateAsset(urpAsset, pipelinePath);
-                }
-                AssetDatabase.SaveAssets();
-                pipelineGuids = AssetDatabase.FindAssets("t:UniversalRenderPipelineAsset");
-            }
-            RenderPipelineAsset qaPipeline = null;
-            foreach (string guid in pipelineGuids)
-            {
-                string assetPath = AssetDatabase.GUIDToAssetPath(guid);
-                qaPipeline = AssetDatabase.LoadAssetAtPath<RenderPipelineAsset>(assetPath);
-                if (qaPipeline != null) break;
-            }
-            Require(qaPipeline != null, "URP_PIPELINE_ASSET_NOT_FOUND: package presence is insufficient");
-            // This branch is the isolated R7 QA copy; do not modify original source projects.
-            GraphicsSettings.defaultRenderPipeline = qaPipeline;
-            QualitySettings.renderPipeline = qaPipeline;
-            pipeline = GraphicsSettings.currentRenderPipeline;
-            urpActive = pipeline != null && pipeline.GetType().Name.Contains("UniversalRenderPipeline");
+            rendererData = ScriptableObject.CreateInstance<UniversalRendererData>();
+            AssetDatabase.CreateAsset(rendererData, rendererPath);
         }
-        Require(urpActive, "URP_PIPELINE_ASSET_NOT_ACTIVE: R7 PBR validation refuses Standard fallback");
+        rendererData.postProcessData = AssetDatabase.LoadAssetAtPath<PostProcessData>(
+            "Packages/com.unity.render-pipelines.universal/Runtime/Data/PostProcessData.asset");
+        Require(rendererData.postProcessData != null, "URP_POST_PROCESS_RESOURCES_MISSING");
+        var qaPipeline = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(pipelinePath);
+        if (qaPipeline == null)
+        {
+            qaPipeline = UniversalRenderPipelineAsset.Create(rendererData);
+            AssetDatabase.CreateAsset(qaPipeline, pipelinePath);
+        }
+        Require(qaPipeline != null, "URP_PIPELINE_ASSET_NOT_FOUND");
+        qaPipeline.supportsHDR = true;
+        // URP exposes shadow support with internal setters. Configure the
+        // serialized asset through the Editor API, fail if this version differs.
+        var pipelineSettings = new SerializedObject(qaPipeline);
+        var mainShadows = pipelineSettings.FindProperty("m_MainLightShadowsSupported");
+        var softShadows = pipelineSettings.FindProperty("m_SoftShadowsSupported");
+        Require(mainShadows != null && softShadows != null, "URP_SHADOW_SETTINGS_API_MISSING");
+        mainShadows.boolValue = true;
+        softShadows.boolValue = true;
+        pipelineSettings.ApplyModifiedPropertiesWithoutUndo();
+        qaPipeline.mainLightShadowmapResolution = 2048;
+        qaPipeline.shadowDistance = 180f;
+        qaPipeline.shadowCascadeCount = 4;
+        qaPipeline.colorGradingMode = ColorGradingMode.HighDynamicRange;
+        EditorUtility.SetDirty(rendererData);
+        EditorUtility.SetDirty(qaPipeline);
+        GraphicsSettings.defaultRenderPipeline = qaPipeline;
+        QualitySettings.renderPipeline = qaPipeline;
+        bool urpActive = GraphicsSettings.currentRenderPipeline == qaPipeline;
+        Require(urpActive, "URP_PIPELINE_ASSET_NOT_ACTIVE: R7 refuses Standard fallback");
         Shader shader = Shader.Find("Universal Render Pipeline/Lit");
         Require(shader != null, "URP/Lit shader missing despite active URP");
         string repo = Path.GetFullPath(Path.Combine(Application.dataPath, "..", ".."));
@@ -386,6 +443,12 @@ public static class ResortR7FacadeFinish
         Require(derivedAsset != null, "R7_DERIVED_FBX_MISSING: run Blender R7 pipeline first");
         Require(File.Exists(sourceBlend) && File.Exists(sourceFbx), "GIS originals missing");
         string blendBefore = Sha256(sourceBlend), fbxBefore = Sha256(sourceFbx);
+        string nativeQaPath = Path.Combine(repo, "ArtSource/Previews/R7_FBX_UV_NATIVE_QA.json");
+        Require(File.Exists(nativeQaPath), "R7_NATIVE_BLENDER_QA_MISSING: copy the re-import report with the FBX");
+        var nativeQa = JsonUtility.FromJson<NativeBlenderReport>(File.ReadAllText(nativeQaPath));
+        string derivedHash = Sha256(Path.Combine(Application.dataPath, DerivedFbx.Substring("Assets/".Length)));
+        Require(nativeQa != null && nativeQa.status == "R7_NATIVE_BLENDER_FBX_REIMPORT_UV0_AND_SEMANTIC_PASS" &&
+            nativeQa.derived_fbx_sha256 == derivedHash, "R7_NATIVE_BLENDER_QA_STALE_OR_FAILED");
         EnsureDirectory(MaterialDir);
         EnsureDirectory(TextureDir);
         Cached.Clear();
@@ -400,7 +463,15 @@ public static class ResortR7FacadeFinish
             foreach (bool stone in new[] { false, true })
                 foreach (bool normal in new[] { false, true })
                     textures.Add(Texture(family, stone, normal));
-        int finished = 0;
+        string galleryPath = Path.Combine(Application.dataPath,
+            "Architecture/R7_Pilot50/Procedural/R7_GALLERY_GENERATION_REPORT.json");
+        Require(File.Exists(galleryPath), "R7_GALLERY_REPORT_MISSING");
+        var gallery = JsonUtility.FromJson<GalleryReport>(File.ReadAllText(galleryPath));
+        Require(gallery != null && gallery.count == 50 && gallery.meshes != null &&
+            gallery.meshes.Length == 50, "R7_GALLERY_REPORT_INVALID");
+        var expected = gallery.meshes.ToDictionary(x => x.building_id.Substring(4).Replace("#part", "_part"));
+        var counts = new Dictionary<string, int>();
+        int finished = 0, backgroundSlots = 0;
 
         Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         var city = PrefabUtility.InstantiatePrefab(derivedAsset) as GameObject;
@@ -409,12 +480,28 @@ public static class ResortR7FacadeFinish
         var sunObject = new GameObject("R7_QA_Sun");
         var sun = sunObject.AddComponent<Light>();
         sun.type = LightType.Directional; sun.intensity = 1.0f;
+        sun.shadows = LightShadows.Soft;
+        sun.shadowStrength = .85f;
+        sun.shadowBias = .03f;
+        sun.shadowNormalBias = .15f;
+        RenderSettings.sun = sun;
+        RenderSettings.ambientMode = AmbientMode.Trilight;
+        RenderSettings.ambientSkyColor = new Color(.38f,.44f,.52f);
+        RenderSettings.ambientEquatorColor = new Color(.26f,.28f,.30f);
+        RenderSettings.ambientGroundColor = new Color(.12f,.11f,.10f);
+        RenderSettings.ambientIntensity = 1f;
+        RenderSettings.fog = false;
+        RenderSettings.skybox = null;
         sun.transform.rotation = Quaternion.Euler(42f, -24f, -22f);
         var cameraObject = new GameObject("Main Camera");
         cameraObject.tag = "MainCamera";
         var qaCamera = cameraObject.AddComponent<Camera>();
         var urpCamera = cameraObject.AddComponent<UniversalAdditionalCameraData>();
         urpCamera.renderPostProcessing = true;
+        urpCamera.volumeLayerMask = 1;
+        urpCamera.volumeTrigger = qaCamera.transform;
+        qaCamera.clearFlags = CameraClearFlags.SolidColor;
+        qaCamera.backgroundColor = new Color(.38f,.48f,.60f);
         qaCamera.transform.position = new Vector3(0f, 420f, -570f);
         qaCamera.transform.LookAt(new Vector3(0f, 0f, 0f));
         qaCamera.allowHDR = true;
@@ -431,16 +518,33 @@ public static class ResortR7FacadeFinish
         }
         volume.sharedProfile = profile;
         if (!profile.TryGet<Tonemapping>(out var tone)) tone = profile.Add<Tonemapping>(true);
-        tone.mode.value = TonemappingMode.ACES;
+        if (!AssetDatabase.Contains(tone)) AssetDatabase.AddObjectToAsset(tone, profile);
+        tone.active = true;
+        tone.mode.Override(TonemappingMode.ACES);
         if (!profile.TryGet<ColorAdjustments>(out var exposure)) exposure = profile.Add<ColorAdjustments>(true);
-        exposure.postExposure.value = -.25f;
-        exposure.saturation.value = -4f;
+        if (!AssetDatabase.Contains(exposure)) AssetDatabase.AddObjectToAsset(exposure, profile);
+        exposure.active = true;
+        exposure.postExposure.Override(-.25f);
+        exposure.saturation.Override(-4f);
+        EditorUtility.SetDirty(tone);
+        EditorUtility.SetDirty(exposure);
         EditorUtility.SetDirty(profile);
         foreach (var root in scene.GetRootGameObjects())
             foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
             {
                 var building = FindBuilding(renderer);
-                if (building == null) continue; // Roads and other 1,418 volumes preserved.
+                if (building == null)
+                {
+                    Require(!renderer.name.StartsWith("R7B_", StringComparison.Ordinal),
+                        "TRUNCATED_BUILDING_ID: " + renderer.name);
+                    backgroundSlots += FinishBackground(renderer, shader, assets);
+                    continue;
+                }
+                string way = building.Groups["way"].Value;
+                Require(expected.ContainsKey(way), "UNKNOWN_OSM_BUILDING: " + way);
+                Require(expected[way].style_id == building.Groups["style"].Value,
+                    "OSM_STYLE_MISMATCH: " + way);
+                counts[way] = counts.ContainsKey(way) ? counts[way] + 1 : 1;
                 string style = building.Groups["style"].Value;
                 var parts = StylePattern.Match(style);
                 Require(parts.Success, "Unexpected R7 architectural style: " + style);
@@ -471,12 +575,18 @@ public static class ResortR7FacadeFinish
             }
         Require(ids.Count == 50, "R7 requires exactly 50 real OSM ways, found " + ids.Count);
         Require(styles.Count == 50, "R7 requires 50 distinct styles, found " + styles.Count);
-        Require(finished >= 300, "Too few classified R7 detailed renderers");
+        Require(finished == gallery.meshes.Sum(x => x.mesh_object_count), "R7_RENDERER_COUNT_MISMATCH");
+        Require(finished == nativeQa.mesh_objects, "R7_NATIVE_BLENDER_UNITY_MESH_COUNT_MISMATCH");
+        foreach (var pair in expected)
+            Require(counts.ContainsKey(pair.Key) && counts[pair.Key] == pair.Value.mesh_object_count,
+                "R7_BUILDING_PART_COUNT_MISMATCH: " + pair.Key);
+        Require(backgroundSlots == 2, "R7_BASE_CITY_MATERIAL_SLOTS_MISMATCH");
         Require(textures.Count == 40, "Expect 10 families x 2 textures x 2 patterns");
         Require(blendBefore == Sha256(sourceBlend) && fbxBefore == Sha256(sourceFbx),
                 "Original Copacabana source changed");
         AssetDatabase.SaveAssets();
-        Require(EditorSceneManager.SaveScene(scene, OutputScene, true),
+        EnsureDirectory("Assets/Scenes");
+        Require(EditorSceneManager.SaveScene(scene, OutputScene),
                 "Could not create independent R7 visual QA scene");
         var report = new Report
         {
@@ -488,12 +598,14 @@ public static class ResortR7FacadeFinish
             urp_pipeline_active = urpActive,
             source_blend_sha256 = blendBefore,
             source_fbx_sha256 = fbxBefore,
+            derived_fbx_sha256 = derivedHash,
             selected_buildings = ids.Count,
             distinct_styles = styles.Count,
             finished_renderers = finished,
             material_semantic_fallbacks = 0,
             material_assets = assets.Count,
             texture_assets = textures.Count,
+            background_urp_slots = backgroundSlots,
             osm_way_ids = ids.OrderBy(x => x, StringComparer.Ordinal).ToArray(),
             limitations = "Independent scene created from the R7-derived real Copacabana FBX. Requires active URP and UV0 on every architectural renderer; category-specific FBX material slot names are mandatory. No FPS or artistic approval."
         };

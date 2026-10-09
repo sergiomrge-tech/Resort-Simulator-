@@ -11,10 +11,14 @@ from collections import Counter
 import hashlib
 import json
 import math
+import sys
 from pathlib import Path
 
 import bpy
 from mathutils import Matrix,Vector
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from r7_contract import semantic_part, object_id, project_uv
 
 ROOT=Path(__file__).resolve().parents[2]
 ORIGINAL=ROOT/"ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend"
@@ -66,8 +70,10 @@ def material(name,color,metal=.0,rough=.72):
     return m
 
 def file_meta(path,is_folder=False):
-    uid=hashlib.sha256(("ResortR7:"+str(path.relative_to(ROOT))).encode()).hexdigest()[:32]
+    uid=hashlib.sha256(("ResortR7:"+path.relative_to(ROOT).as_posix()).encode()).hexdigest()[:32]
     mp=Path(str(path)+".meta")
+    if mp.exists():
+        return  # Preserve Unity importer settings and GUID on every regeneration.
     if is_folder:
         data="fileFormatVersion: 2\nguid: "+uid+"\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n"
     else:
@@ -83,6 +89,12 @@ def main():
         raise RuntimeError("Original OSM city safety gate missing")
     if info["masked_way_count"]!=50 or gallery["count"]!=50:
         raise RuntimeError("R7 requires exact 50 OSM models")
+    if (info["source_geo_original_sha256"]!=source_hash or
+        info["source_fbx_original_sha256"]!=fbx_hash or
+        info["source_50_models_report_sha256"]!=sha(GALLERY) or
+        info["original_obj_sha256"]!=sha(FULL_OBJ) or
+        info["derived_obj_sha256"]!=sha(DERIVED_OBJ)):
+        raise RuntimeError("Stale/mixed R7 gallery, mask or original GIS inputs")
     if sorted(x["building_id"] for x in gallery["meshes"])!=info["masked_way_ids"]:
         raise RuntimeError("Derived base and FBX collection target different buildings")
     bpy.ops.wm.open_mainfile(filepath=str(ORIGINAL))
@@ -91,6 +103,12 @@ def main():
     if len(old)!=1:raise RuntimeError("Original geographic blender has unknown mesh hierarchy")
     old=old[0]
     matrix=old.matrix_world.copy()
+    # Only the original metric XY GIS rotation/translation may be composed.
+    basis=matrix.to_3x3()
+    if (any(abs(basis.col[i].length-1)>1e-5 for i in range(3)) or
+        abs(basis.determinant()-1)>1e-5 or
+        (basis.col[2]-Vector((0,0,1))).length>1e-5):
+        raise RuntimeError("Original GIS frame is not a metric Z-up rigid transform")
     source=fingerprints(old)
     if len(old.data.polygons)!=26764 or sum(source.values())!=26764:
         raise RuntimeError("Reference Blender GIS source not loaded")
@@ -112,6 +130,7 @@ def main():
     old.hide_set(True)
     old.hide_render=True
     city.name="GIS_OSM_REAL_MAP_MINUS_50_REPLACED_WAYS"
+    project_uv(city.data)
     orig_names=[m.name if m else "NULL" for m in city.data.materials]
     for i,n in enumerate(orig_names):
         city.data.materials[i]=(material("R7_OSM_Roads_Source",(.28,.30,.31))
@@ -139,15 +158,17 @@ def main():
         for ob in models_mesh:
             ob.parent=None
             ob.matrix_world=transform@original_world[id(ob)]
-            semantic=(ob.data.materials[0].name.rsplit("_",1)[-1]
-                      if ob.data.materials and ob.data.materials[0] else "")
-            if semantic not in {"wall","stone","trim","glass","metal","wood","roof","plants","shadow"}:
+            if len(ob.data.materials)!=1 or ob.data.materials[0] is None:
                 raise RuntimeError("R7 semantic material ID lost before city FBX export: "+ob.name)
-            osm_token=name.removeprefix("way/").replace("#part","_part")
-            ob.name="R7B_"+osm_token+"__"+record["style_id"]+"__"+semantic
+            semantic=semantic_part(ob.data.materials[0].name)
+            ob.name=object_id(name,record["style_id"],semantic)
+            ob.data.name=ob.name
             if len(ob.name)>63:
                 raise RuntimeError("R7 stable FBX renderer label exceeds 63 chars: "+ob.name)
             objects.append(ob)
+        if len(models_mesh)!=record["mesh_object_count"] or any(
+            not ob.data.uv_layers.active for ob in models_mesh):
+            raise RuntimeError("Per-building FBX lost meshes/UV0 on import: "+name)
         for ob in selected:
             if ob.type!="MESH":
                 bpy.data.objects.remove(ob,do_unlink=True)
@@ -172,12 +193,14 @@ def main():
     bpy.ops.export_scene.fbx(filepath=str(OUT),use_selection=True,
        object_types={"MESH"},axis_forward="-Z",axis_up="Y",
        global_scale=1.0,apply_unit_scale=True,
-       bake_space_transform=False,use_mesh_modifiers=True,add_leaf_bones=False)
+       bake_space_transform=False,use_mesh_modifiers=True,add_leaf_bones=False,use_custom_props=True)
     if OUT.stat().st_size<500000:
         raise RuntimeError("R7 complete city FBX output failed")
     file_meta(OUT.parent,is_folder=True)
     file_meta(OUT,is_folder=False)
 
+    # Native mesh gates may run quickly with --no-render; no image is claimed.
+    render_preview="--no-render" not in sys.argv
     # QA camera targets one of the real OSM building sources in the middle
     # of Copacabana, not a fabricated street. Studio underlay is only preview.
     middle=min(gallery["meshes"],
@@ -214,10 +237,11 @@ def main():
     scene.render.resolution_percentage=100
     scene.render.image_settings.file_format="PNG"
     scene.render.filepath=str(PREVIEW)
-    scene.view_settings.view_transform="Standard"
+    scene.view_settings.view_transform="AgX"
     PREVIEW.parent.mkdir(parents=True,exist_ok=True)
-    bpy.ops.render.render(write_still=True)
-    if not PREVIEW.is_file() or PREVIEW.stat().st_size<45000:
+    if render_preview:
+        bpy.ops.render.render(write_still=True)
+    if render_preview and (not PREVIEW.is_file() or PREVIEW.stat().st_size<45000):
         raise RuntimeError("Blender did not generate authentic R7 city camera render")
 
     if sha(ORIGINAL)!=source_hash or sha(ORIGINAL_FBX)!=fbx_hash:
@@ -240,10 +264,10 @@ def main():
         "derived_fbx":str(OUT.relative_to(ROOT)),
         "derived_fbx_bytes":OUT.stat().st_size,
         "derived_fbx_sha256":sha(OUT),
-        "preview":str(PREVIEW.relative_to(ROOT)),
-        "preview_sha256":sha(PREVIEW),
-        "preview_bytes":PREVIEW.stat().st_size,
-        "render_engine":"Blender Cycles CPU",
+        "preview":str(PREVIEW.relative_to(ROOT)) if render_preview else None,
+        "preview_sha256":sha(PREVIEW) if render_preview else None,
+        "preview_bytes":PREVIEW.stat().st_size if render_preview else 0,
+        "render_engine":"Blender Cycles CPU" if render_preview else "NOT_RENDERED",
         "models":models,
         "limits":"Real Blender rendered derived Copacabana with exactly 50 R7 UV0/semantic models replacing masked OSM ways. NOT final art, playable Windows EXE, native Unity-validated URP materials, benchmark FPS or 1468 fully replaced buildings.",
         "license":"© OpenStreetMap contributors — ODbL 1.0"
