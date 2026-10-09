@@ -71,3 +71,98 @@ def project_uv(mesh):
             co = mesh.vertices[mesh.loops[li].vertex_index].co
             uv.data[li].uv = metric_uv(co, poly.normal)
     return uv
+
+
+def verify_planar_quad_retriangulation(original, rebuilt, allowed_material="Road"):
+    """Accept ONLY exact planar quad diagonal flips between equivalent GIS meshes.
+
+    Fingerprints are Counters of (material, sorted 3 rounded world vertices).
+    Two source triangles must share one diagonal, and the rebuild must contain
+    the two alternative triangles of the SAME 4 vertices/material. This cannot
+    hide moved vertices, removed roads, non-planar roof changes, or altered ways.
+    Returns the number of verified quad diagonal flips (zero is also valid).
+    """
+    from collections import Counter
+
+    original=Counter(original)
+    rebuilt=Counter(rebuilt)
+    if original == rebuilt:
+        return 0
+    missing=original-rebuilt
+    extra=rebuilt-original
+    if sum(missing.values())!=sum(extra.values()):
+        raise ValueError("GIS_TRIANGLE_COUNT_DRIFT")
+    if any(mat!=allowed_material for mat,triangle in list(missing)+list(extra)):
+        raise ValueError("GIS_NON_ROAD_TRIANGLE_DRIFT")
+
+    def cross(a,b):
+        return (a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0])
+
+    def area(tri):
+        a,b,c=tri
+        u=tuple(b[i]-a[i] for i in range(3))
+        v=tuple(c[i]-a[i] for i in range(3))
+        n=cross(u,v)
+        return .5*math.sqrt(sum(x*x for x in n))
+
+    def planar(vertices):
+        a,b,c,d=vertices
+        n=cross(tuple(b[i]-a[i] for i in range(3)),
+                tuple(c[i]-a[i] for i in range(3)))
+        magnitude=math.sqrt(sum(x*x for x in n))
+        if magnitude<1.e-8:
+            return False
+        distance=abs(sum(n[i]*(d[i]-a[i]) for i in range(3)))/magnitude
+        return distance<=.002
+
+    def exterior(triangles):
+        sides=Counter()
+        for tri in triangles:
+            a,b,c=tri
+            for u,v in ((a,b),(b,c),(c,a)):
+                sides[tuple(sorted((u,v)))]+=1
+        return {edge for edge,count in sides.items() if count==1}
+
+    flips=0
+    while missing:
+        first=sorted(missing)[0]
+        material,tri=first
+        valid=None
+        for second in sorted(missing):
+            if second==first or second[0]!=material:
+                continue
+            t2=second[1]
+            common=set(tri)&set(t2)
+            unique=set(tri)^set(t2)
+            if len(common)!=2 or len(unique)!=2:
+                continue
+            unique=sorted(unique)
+            common=sorted(common)
+            quad=sorted(set(tri)|set(t2))
+            if len(quad)!=4 or not planar(quad):
+                continue
+            alternate=((material,tuple(sorted((unique[0],unique[1],common[0])))),
+                       (material,tuple(sorted((unique[0],unique[1],common[1])))))
+            if not all(extra.get(t,0)>0 for t in alternate):
+                continue
+            if exterior((tri,t2))!=exterior((alternate[0][1],alternate[1][1])):
+                continue
+            before=area(tri)+area(t2)
+            after=area(alternate[0][1])+area(alternate[1][1])
+            if abs(before-after)>max(.005,before*1e-5):
+                continue
+            valid=second,alternate
+            break
+        if valid is None:
+            raise ValueError("GIS_UNEXPLAINED_TRIANGULATION_DRIFT: "+repr(first))
+        second,alternate=valid
+        for entry in (first,second):
+            missing[entry]-=1
+            if missing[entry]==0:del missing[entry]
+        for entry in alternate:
+            extra[entry]-=1
+            if extra[entry]==0:del extra[entry]
+        flips+=1
+    if extra:
+        raise ValueError("GIS_ADDED_UNKNOWN_TRIANGLES: "+repr(list(extra.items())[:2]))
+    return flips

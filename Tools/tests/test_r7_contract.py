@@ -156,4 +156,31 @@ class ContractTests(unittest.TestCase):
         with self.assertRaises(RuntimeError): P.expansion_rows(source["buildings"]+[source["buildings"][0]],pilot)
 
 
+class RetriangulationSafetyTests(unittest.TestCase):
+    def test_accepts_only_identical_coplanar_quad_with_other_diagonal(self):
+        from collections import Counter
+        verify = C.verify_planar_quad_retriangulation
+        a=(0.0,0.0,0.06); b=(4.0,0.0,0.06)
+        c=(4.0,3.0,0.06); d=(0.0,3.0,0.06)
+        src=Counter({("Road",tuple(sorted(t))):1 for t in ((a,b,c),(a,c,d))})
+        dst=Counter({("Road",tuple(sorted(t))):1 for t in ((a,b,d),(b,c,d))})
+        self.assertEqual(verify(src,dst),1)
+        self.assertEqual(verify(src,src),0)
+        badpoint=(0.0,3.01,0.06)
+        moved=Counter({("Road",tuple(sorted(t))):1
+                       for t in ((a,b,badpoint),(b,c,badpoint))})
+        with self.assertRaises(ValueError):
+            verify(src,moved)
+        warped=(0.0,3.0,0.5)
+        distorted=Counter({("Road",tuple(sorted(t))):1
+                           for t in ((a,b,warped),(b,c,warped))})
+        with self.assertRaises(ValueError):
+            verify(src,distorted)
+        changed=Counter({("Building",tuple(sorted(t))):1
+                         for t in ((a,b,d),(b,c,d))})
+        with self.assertRaises(ValueError):
+            verify(src,changed)
+
+
+
 if __name__ == "__main__": unittest.main()

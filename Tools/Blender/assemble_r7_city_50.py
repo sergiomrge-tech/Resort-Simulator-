@@ -18,7 +18,7 @@ import bpy
 from mathutils import Matrix,Vector
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from r7_contract import semantic_part, object_id, project_uv
+from r7_contract import semantic_part, object_id, project_uv, verify_planar_quad_retriangulation
 
 ROOT=Path(__file__).resolve().parents[2]
 ORIGINAL=ROOT/"ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend"
@@ -114,27 +114,24 @@ def main():
         raise RuntimeError("Reference Blender GIS source not loaded")
     test=import_obj(FULL_OBJ,matrix)
     original_test = fingerprints(test)
-    if original_test != source:
-        missing=source-original_test
-        extra=original_test-source
-        source_roads=sum(n for (mat,face),n in source.items() if mat=="Road")
-        obj_roads=sum(n for (mat,face),n in original_test.items() if mat=="Road")
-        raise RuntimeError(
-            "Original OBJ from OSM pipeline is not exactly the existing Blender city"
-            + f"; Blender source triangles={sum(source.values())}, OBJ triangles={sum(original_test.values())}"
-            + f"; missing={sum(missing.values())}, extra={sum(extra.values())}"
-            + f"; road_source={source_roads}, road_obj={obj_roads}"
-            + f"; missing_sample={list(missing.items())[:2]}"
-            + f"; extra_sample={list(extra.items())[:2]}")
+    # Blender and the OSM OBJ importer may split a planar road quad along
+    # opposite diagonals. Preserve EXACT vertices, areas, outer boundaries
+    # and materials; reject every other difference.
+    road_quad_flips = verify_planar_quad_retriangulation(source, original_test)
+    print("R7_ORIGINAL_BLENDER_OBJ_PARITY", {
+        "source_triangles": sum(source.values()),
+        "obj_triangles": sum(original_test.values()),
+        "verified_planar_road_quad_flips": road_quad_flips,
+    }, flush=True)
     bpy.data.objects.remove(test,do_unlink=True)
     city=import_obj(DERIVED_OBJ,matrix)
     derived=fingerprints(city)
-    removed=source-derived
-    if derived-source or any(x[0]!="Building" for x in removed):
+    removed=original_test-derived
+    if derived-original_test or any(x[0]!="Building" for x in removed):
         raise RuntimeError("R7 original Blender GIS lost/changed road or untouched faces")
     if sum(removed.values())!=info["building_faces_removed"]:
         raise RuntimeError("Blender source subtraction differs from 50-ID OSM mask")
-    road_before=sum(n for (mat,face),n in source.items() if mat=="Road")
+    road_before=sum(n for (mat,face),n in original_test.items() if mat=="Road")
     road_after=sum(n for (mat,face),n in derived.items() if mat=="Road")
     if road_before!=3731 or road_after!=road_before:
         raise RuntimeError("Actual original Blender road faces changed")
@@ -262,6 +259,7 @@ def main():
         "original_blend_sha256":source_hash,
         "original_fbx_sha256":fbx_hash,
         "source_mask_report_sha256":sha(MASK_REPORT),
+        "verified_original_planar_road_quad_flips":road_quad_flips,
         "original_faces":sum(source.values()),
         "old_building_faces_removed":sum(removed.values()),
         "original_road_faces":road_before,
