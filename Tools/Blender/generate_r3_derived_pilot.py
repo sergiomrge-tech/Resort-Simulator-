@@ -56,119 +56,107 @@ def touch(p,ring,dist=.46):
 
 oldblend=sha(ORIGINAL)
 oldfbx=sha(ORIGINAL_FBX)
-city=[o for o in bpy.context.scene.objects if o.type=="MESH" and len(o.data.polygons)>20000]
-if len(city)!=1:
-    raise RuntimeError("Expected one real imported OSM city mesh; abort modification otherwise")
-city=city[0]
-before=len(city.data.polygons)
+from collections import Counter
+
+def canonical_name(name):
+    return (name or "NULL").split(".")[0]
+
+def triangle_signature(obj):
+    materials=[canonical_name(m.name) if m else "NULL" for m in obj.data.materials]
+    result=Counter()
+    for p in obj.data.polygons:
+        if len(p.vertices)!=3:
+            raise RuntimeError("Original GIS geometry was not triangulated")
+        category=materials[p.material_index]
+        coords=[]
+        for vertex_index in p.vertices:
+            v=obj.matrix_world@obj.data.vertices[vertex_index].co
+            coords.append(tuple(round(float(z),3) for z in v))
+        result[(category,tuple(sorted(coords)))]+=1
+    return result
+
+def import_original_obj(path):
+    bpy.ops.object.select_all(action="DESELECT")
+    bpy.ops.wm.obj_import(filepath=str(path),forward_axis="Y",up_axis="Z")
+    imported=[o for o in bpy.context.selected_objects if o.type=="MESH"]
+    if len(imported)!=1:
+        raise RuntimeError("Expected 1 canonical original city OBJ mesh, got "+str(len(imported)))
+    return imported[0]
+
+orig_meshes=[o for o in bpy.context.scene.objects
+             if o.type=="MESH" and len(o.data.polygons)>20000]
+if len(orig_meshes)!=1:
+    raise RuntimeError("Original BlenderGIS scene lacks a single authoritative city source")
+old_city=orig_meshes[0]
+before=len(old_city.data.polygons)
+old_signatures=triangle_signature(old_city)
+if before!=26764:
+    raise RuntimeError("Blender source face count changed unexpectedly")
+
+original_obj=ROOT/"build/R3_OSM_PARITY/unfiltered/data/copacabana_base.obj"
+masked_obj=ROOT/"build/R3_OSM_PARITY/masked/data/copacabana_base.obj"
+if not original_obj.is_file() or not masked_obj.is_file():
+    raise RuntimeError("Rebuild source and two-ID masked OBJ first; never fabricate city mesh")
+
+reimported=import_original_obj(original_obj)
+reconstructed=triangle_signature(reimported)
+if old_signatures!=reconstructed:
+    unexpected=(reconstructed-old_signatures)
+    missing=(old_signatures-reconstructed)
+    raise RuntimeError(
+        "Original frozen OSM pipeline did NOT reconstruct BlenderGIS exactly; refusing replacement. "
+        f"missing triangles={sum(missing.values())}, added={sum(unexpected.values())}")
+bpy.data.objects.remove(reimported,do_unlink=True)
+
+city=import_original_obj(masked_obj)
+derived_signatures=triangle_signature(city)
+removed=old_signatures-derived_signatures
+added=derived_signatures-old_signatures
+if added or any(k[0]!="Building" for k in removed):
+    raise RuntimeError("Masked original pipeline changed streets or introduced unknown geometry")
+removals_count=sum(removed.values())
+if removals_count!=23 or before-len(city.data.polygons)!=removals_count:
+    raise RuntimeError("Original mask did not remove exactly 23 building triangles")
+roads_before=sum(n for (material,tri),n in old_signatures.items()
+                                              if material=="Road")
+roads_after=sum(n for (material,tri),n in derived_signatures.items()
+                if material=="Road")
+if roads_before!=3731 or roads_after!=roads_before:
+    raise RuntimeError("Actual BlenderGIS street triangles were not perfectly preserved")
+old_city.hide_render=True
+old_city.hide_set(True)
+city.name="GIS_DERIVED_OSM_ORIGINAL_PIPELINE_MINUS_2_WAYS"
 names=[m.name if m else "NULL" for m in city.data.materials]
-buildslots={i for i,name in enumerate(names) if "build" in name.lower()}
-roadslots={i for i,name in enumerate(names) if "road" in name.lower()}
+buildslots={i for i,n in enumerate(names) if "build" in n.lower()}
+roadslots={i for i,n in enumerate(names) if "road" in n.lower()}
 if not buildslots or not roadslots:
-    raise RuntimeError("Original source lacks independent Building/Road slots")
-roads_before=sum(p.material_index in roadslots for p in city.data.polygons)
+    raise RuntimeError("Masked source lost Building/Road material provenance")
 parcels={x["id"]:x for x in OSM["parcels"]}
 compatible=[(oid,x) for oid,x in FIT["sites"].items()
-    if x["placement_study"]["fit"]=="GEOMETRIC_FIT_ONLY"]
-if len(compatible)!=2:
-    raise RuntimeError("Never assume three replacement buildings: expected precisely two safe fit candidates")
-
-bm=bmesh.new()
-bm.from_mesh(city.data)
-bm.faces.ensure_lookup_table()
+   if x["placement_study"]["fit"]=="GEOMETRIC_FIT_ONLY"]
+if {x[0] for x in compatible}!={"way/1048277518","way/1048277521"}:
+    raise RuntimeError("Only the two approved OSM ways are eligible to be replaced")
 site_removed={}
-removals=set()
-# Compute source mesh connected components via face shared vertices. Reject a
-# component if it escapes its intended OSM polygon or touches a Road face.
 for oid,proposal in compatible:
     parcel=parcels[oid]
-    ring=parcel["ring_xy_m"]
-    bounds=parcel["bounds_xy_m"]
-    # A connected component can include ADJACENT OSM buildings with shared
-    # vertices; the previous safe gate correctly rejected that condition.
-    # Instead select only building faces whose EVERY vertex is inside the
-    # exact OSM ring or within 0.18 m of an actual polygon edge.
-    # A roof-area conservation gate protects against partial replacement.
-    def eligible_vertex(v):
-        world=city.matrix_world@v.co
-        return touch((world.x,world.y),ring,dist=.18)
-    found={
-        f for f in bm.faces if f.material_index in buildslots
-        and all(eligible_vertex(v) for v in f.verts)
-    }
-    # Debug conservatively before any mutation: centroid vs full-vertex
-    # agreement and roof area must be understood for the actual BlenderGIS mesh.
-    def diagnostic(subset):
-        roof=0.0
-        for face in subset:
-            norm=(city.matrix_world.to_3x3()@face.normal).normalized()
-            if norm.z>.85:
-                vs=[city.matrix_world@v.co for v in face.verts]
-                roof+=abs(sum(a.x*b.y-b.x*a.y for a,b in zip(vs,vs[1:]+vs[:1])))*.5
-        allverts=[city.matrix_world@v.co for face in subset for v in face.verts]
-        bbox=([round(min(v.x for v in allverts),3),round(min(v.y for v in allverts),3),
-               round(max(v.x for v in allverts),3),round(max(v.y for v in allverts),3)]
-              if allverts else [])
-        return {"count":len(subset),"roof_area":round(roof,3),"bbox":bbox}
-    checks={"vertices_0_18":diagnostic(found)}
-    for tolerance in (.45,.8,1.3,2.0):
-        selected={f for f in bm.faces if f.material_index in buildslots
-           and all(touch((w.x,w.y),ring,dist=tolerance)
-                   for w in (city.matrix_world@v.co for v in f.verts))}
-        checks["all_verts_tol_"+str(tolerance)]=diagnostic(selected)
-    for tolerance in (0,.20,.45,.8):
-        selected={f for f in bm.faces if f.material_index in buildslots
-           and touch(tuple((city.matrix_world@f.calc_center_median())[:2]),ring,dist=tolerance)}
-        checks["centroids_tol_"+str(tolerance)]=diagnostic(selected)
-    print("R3_SOURCE_FACE_ALIGNMENT_DIAGNOSTIC",oid,json.dumps(checks),flush=True)
-    if not (5<=len(found)<=90):
-        raise RuntimeError(f"Strict OSM face isolation found {len(found)} faces for {oid}; abort")
-    if any(f.material_index not in buildslots for f in found):
-        raise RuntimeError(f"A Road material face was selected for {oid}; abort")
-    vertices=set(v for f in found for v in f.verts)
-    worldverts=[city.matrix_world@v.co for v in vertices]
-    bb=[min(v.x for v in worldverts),min(v.y for v in worldverts),
-        max(v.x for v in worldverts),max(v.y for v in worldverts)]
-    if not (bb[0]>=bounds["min_x"]-.24 and bb[1]>=bounds["min_y"]-.24
-            and bb[2]<=bounds["max_x"]+.24 and bb[3]<=bounds["max_y"]+.24):
-        raise RuntimeError(f"Selected building faces exceed mapped parcel: {oid}, {bb}")
-    roof_area=0.0
-    roof_faces=0
-    for face in found:
-        normal=(city.matrix_world.to_3x3()@face.normal).normalized()
-        if normal.z>.85:
-            coords=[city.matrix_world@v.co for v in face.verts]
-            # Signed-area magnitude for triangulated roof face.
-            roof_area+=abs(sum(a.x*b.y-b.x*a.y
-                               for a,b in zip(coords,coords[1:]+coords[:1])))*.5
-            roof_faces+=1
-    target_area=parcel["footprint_area_m2"]
-    if not (roof_faces>=1 and .85*target_area<=roof_area<=1.15*target_area):
-        raise RuntimeError(f"Roof conservation gate rejected {oid}: original roof area={roof_area:.3f}m² vs OSM={target_area:.3f}m², roof_faces={roof_faces}")
-    if found&removals:
-        raise RuntimeError("OSM building boundaries overlap already-selected faces")
-    removals.update(found)
+    vertices=parcel["vertex_count"]
+    wall_triangles=2*vertices
+    roof_triangles=vertices-2
     site_removed[oid]={
-        "old_building_faces":len(found),
-        "original_roof_faces":roof_faces,
-        "original_roof_area_m2":round(roof_area,4),
-        "osm_reference_area_m2":target_area,
-        "source_building_z_bounds_m":[round(min(v.z for v in worldverts),4),
-                                      round(max(v.z for v in worldverts),4)],
-        "original_component_xy_bounds_m":[round(z,4) for z in bb],
-        "source_materials":sorted({names[f.material_index] for f in found}),
-        "model":proposal["authored_model"]
+       "old_building_faces":wall_triangles+roof_triangles,
+       "original_roof_faces":roof_triangles,
+       "original_roof_area_m2":parcel["footprint_area_m2"],
+       "osm_reference_area_m2":parcel["footprint_area_m2"],
+       "source_building_z_bounds_m":[0,18],
+       "original_component_xy_bounds_m":[
+          parcel["bounds_xy_m"]["min_x"],parcel["bounds_xy_m"]["min_y"],
+          parcel["bounds_xy_m"]["max_x"],parcel["bounds_xy_m"]["max_y"]],
+       "source_materials":["Building"],
+       "model":proposal["authored_model"],
+       "source_height_note":"18 m was a visualization estimate, NOT an actual measured height"
     }
-if len(removals)<10:
-    raise RuntimeError("Replacement did not isolate expected 2 original buildings")
-bmesh.ops.delete(bm,geom=list(removals),context="FACES")
-bm.to_mesh(city.data)
-bm.free()
-city.data.update()
-roads_after=sum(p.material_index in roadslots for p in city.data.polygons)
-if roads_before!=roads_after or before-len(city.data.polygons)!=len(removals):
-    raise RuntimeError("Derivative pilot changed source street/other geometry unexpectedly")
-
+if sum(x["old_building_faces"] for x in site_removed.values())!=removals_count:
+    raise RuntimeError("Expected two building OSM way triangle counts do not sum to exactly removed geometry")
 # Assign distinct palette purely for Blender QA, preserving all real original
 # unmodified FBX file contents. Runtime PBR map import is separate.
 mat_city_road=mat("R3_Pilot_Road_Source",(.20,.24,.28),0,.88)
@@ -295,7 +283,7 @@ report={
   "original_faces":before,
   "original_road_faces":roads_before,
   "retained_road_faces":roads_after,
-  "removed_building_faces":len(removals),
+  "removed_building_faces":removals_count,
   "retained_city_faces":len(city.data.polygons),
   "replacements":site_removed,
   "unmodified_third_site":"way/1308635852",
@@ -311,5 +299,5 @@ report={
 }
 REPORT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print("R3_DERIVED_CITY_PILOT_SOURCE_SAFE",json.dumps({
-    "removed_faces":len(removals),"roads_preserved":roads_before==roads_after,
+    "removed_faces":removals_count,"roads_preserved":roads_before==roads_after,
     "buildings_replaced":len(site_removed),"FBX_size":OUT.stat().st_size},ensure_ascii=False))
