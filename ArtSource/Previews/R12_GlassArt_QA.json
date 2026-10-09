@@ -1,0 +1,20 @@
+{
+  "status": "R12_ORIGINAL_GLASS_REFLECTION_ART_GENERATED",
+  "size_px": [
+    512,
+    1024
+  ],
+  "textures": [
+    {
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_glass_showcase.png",
+      "sha256": "bffeb7919efa82ed0e4214403475ed75fa73d38b8d78c493ae6e377994b8d1cd",
+      "bytes": 601352
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_glass_entrance.png",
+      "sha256": "56a2d9f7418b88f9b561ae935099a9f6c885a6dcc484f00d71b3be6420ec7f0b",
+      "bytes": 591579
+    }
+  ],
+  "limitations": "Authored diffused facade reflection and interiors, not actual gameplay transparency or physical raytrace."
+}

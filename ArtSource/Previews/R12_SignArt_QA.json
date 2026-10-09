@@ -1,0 +1,95 @@
+{
+  "status": "R12_ORIGINAL_SIGN_GRAPHICS_GENERATED",
+  "count": 12,
+  "pixel_size": [
+    1024,
+    256
+  ],
+  "copyright": "Original generic Portuguese categories; no copied brands or logos.",
+  "signs": [
+    {
+      "name": "CAFE",
+      "subtitle": "CAFE E CONFEITARIA",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_00.png",
+      "sha256": "660ae4f16443d20b5c4548ea0ddb2f2b7f71a5eba6d3900b845d6132520fc1e8",
+      "bytes": 178684
+    },
+    {
+      "name": "BOUTIQUE",
+      "subtitle": "MODA & ESTILO",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_01.png",
+      "sha256": "967a54f6bf153e517ca74e0dcc0ed4b786337607977123dbe6227c58e8e95531",
+      "bytes": 180535
+    },
+    {
+      "name": "MERCADO",
+      "subtitle": "MERCEARIA DE BAIRRO",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_02.png",
+      "sha256": "d4d0d63d580a6dcb4cefa52d193c7bc4bafed5f637f66e29466736a1680d46ba",
+      "bytes": 183740
+    },
+    {
+      "name": "PADARIA",
+      "subtitle": "PAES E DOCES",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_03.png",
+      "sha256": "7d08cc9023ebe05e96fd15aecd2d390c4bec8ea6582517203edf0c4320135c17",
+      "bytes": 179348
+    },
+    {
+      "name": "GALERIA",
+      "subtitle": "ARTE & DESIGN",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_04.png",
+      "sha256": "d6c86188d6be2dc001bd1a62532ec1d581907e792d08ead7c78c399bf8f41351",
+      "bytes": 178919
+    },
+    {
+      "name": "FARMACIA",
+      "subtitle": "SAUDE & BEM ESTAR",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_05.png",
+      "sha256": "84cff6da77a114bed0585dd5773e5876ef8c799d0b7228844f22e17df034a1f7",
+      "bytes": 181291
+    },
+    {
+      "name": "HOTEL",
+      "subtitle": "HOSPEDAGEM",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_06.png",
+      "sha256": "b5c0c2523925a78179f94fed5157ff83772027447534907c246e9561ab5528ab",
+      "bytes": 176183
+    },
+    {
+      "name": "RESTAURANTE",
+      "subtitle": "COZINHA CARIOCA",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_07.png",
+      "sha256": "d24b931dcaa5354ed2628a0891217b3b97a7d9ade37485a635bb2260773198d5",
+      "bytes": 180171
+    },
+    {
+      "name": "SERVICOS",
+      "subtitle": "SERVICOS & ESCRITORIOS",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_08.png",
+      "sha256": "0739a26f36886c44782d20c7339bab8bbc87847b489ec50989659164c187bdc6",
+      "bytes": 184498
+    },
+    {
+      "name": "CLINICA",
+      "subtitle": "ATENDIMENTO ESPECIALIZADO",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_09.png",
+      "sha256": "84755d2a5f67abca60704699c86f0a4a0cb6877a6ce481be6d9ac87f044bdadd",
+      "bytes": 182179
+    },
+    {
+      "name": "FLORICULTURA",
+      "subtitle": "FLORES & PRESENTES",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_10.png",
+      "sha256": "0fb82cbf8757cbc89a5f80283aba6a6e6b7b2ad9ddc8f8ee6f4624175e372da5",
+      "bytes": 180568
+    },
+    {
+      "name": "ATELIE",
+      "subtitle": "OFICINA CRIATIVA",
+      "path": "UnityProject/Assets/Textures/R12_Storefronts/r12_sign_11.png",
+      "sha256": "13ea5dd4f14258b9939865e616281b2c1018ac8af50bdd688456affe1d73f91a",
+      "bytes": 176889
+    }
+  ]
+}

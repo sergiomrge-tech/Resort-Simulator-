@@ -1,0 +1,153 @@
+﻿{
+    "status": "R12_REAL_STREET_SHOPFRONTS_CAPTURED_ART_PENDING",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "unity_version": "6000.6.2f1",
+    "r8_facade_renderers": 350,
+    "r9_osm_trees": 48,
+    "r10_coastal_meshes": 9,
+    "r11_detail_renderers": 210,
+    "r12_street_renderers": 19,
+    "source_road_triangles": 3731,
+    "styles": 50,
+    "derived_fbx_sha256": "39299aab341de4227b47295146c7b4f13ab54746b724c6f4b0b2b8b9ed09051e",
+    "captures": [
+        {
+            "filename": "R12_01_Dense_City_RealUnity.png",
+            "sha256": "0f4310d92e36ededb2ea754a47ec183c09622e3acf0b41260058d4cc3da5a10f",
+            "position": {
+                "x": 290.0,
+                "y": 274.9999694824219,
+                "z": -310.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 58.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1424222
+        },
+        {
+            "filename": "R12_02_Orla_Aerial_RealUnity.png",
+            "sha256": "bb57f46b1c476b4dbdf5bbe2e37534c752f0cb1026092d6b5ca7e27e233a6f56",
+            "position": {
+                "x": -340.0,
+                "y": 304.9999694824219,
+                "z": -380.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 52.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1091177
+        },
+        {
+            "filename": "R12_03_Facades_Rooftops_RealUnity.png",
+            "sha256": "4e50a020cd438d10cd6ad34db7067593dbdb0ac42d66beb7e01810dba92ccfcc",
+            "position": {
+                "x": 120.0,
+                "y": 159.99998474121094,
+                "z": 190.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 57.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1464267
+        },
+        {
+            "filename": "R12_04_Arvore_Calcada_RealUnity.png",
+            "sha256": "dcb45d7663ecfbfe8bf2c7f933bf6c6d3986e84122dd488b65397a9820163ee5",
+            "position": {
+                "x": -140.19683837890625,
+                "y": 9.856539726257324,
+                "z": 193.1513214111328
+            },
+            "target": {
+                "x": -152.19683837890625,
+                "y": 4.556539535522461,
+                "z": 209.1513214111328
+            },
+            "bytes": 1454706
+        },
+        {
+            "filename": "R12_05_Mosaico_RealUnity.png",
+            "sha256": "07b5d04de369627ed51792c077bd23c84eb822578f69ee47f7c2ab3eb54acbbe",
+            "position": {
+                "x": -298.20635986328125,
+                "y": 26.937103271484375,
+                "z": 287.9744873046875
+            },
+            "target": {
+                "x": -298.20635986328125,
+                "y": -0.062896728515625,
+                "z": 287.9744873046875
+            },
+            "bytes": 1226995
+        },
+        {
+            "filename": "R12_06_Varandas_RealUnity.png",
+            "sha256": "465e94a9fb29a1d8541eb269192b09baf2af2361998f641b61f938ef876df8d6",
+            "position": {
+                "x": -1.3504066467285156,
+                "y": 12.093334197998047,
+                "z": -2.7718348503112793
+            },
+            "target": {
+                "x": -8.494987487792969,
+                "y": 10.293334007263184,
+                "z": -8.244948387145996
+            },
+            "bytes": 1284618
+        },
+        {
+            "filename": "R12_07_Coberturas_RealUnity.png",
+            "sha256": "3a4a4ca0be85edc3d3f3275d479960ab0e97c49adfd2b8a17e49909e4bfa92c9",
+            "position": {
+                "x": -1.1929206848144531,
+                "y": 24.7933292388916,
+                "z": 0.7497344017028809
+            },
+            "target": {
+                "x": -10.719024658203125,
+                "y": 19.593332290649414,
+                "z": -6.547754764556885
+            },
+            "bytes": 1732976
+        },
+        {
+            "filename": "R12_08_Fachada_Comercial_RealUnity.png",
+            "sha256": "fd18e950d3341a17fbaf8495f60ebf87ebc5125b9f4737869ee1858278f3b3f0",
+            "position": {
+                "x": -30.20819854736328,
+                "y": 3.14669132232666,
+                "z": -12.081419944763184
+            },
+            "target": {
+                "x": -37.19392013549805,
+                "y": 2.046672821044922,
+                "z": -3.584379196166992
+            },
+            "bytes": 1604034
+        },
+        {
+            "filename": "R12_09_Vitrine_Letreiro_RealUnity.png",
+            "sha256": "d138d9e456ab9bd698c3dd804ca5d40dbb173829d310f065e34abf08faefbb03",
+            "position": {
+                "x": -33.891578674316406,
+                "y": 2.1966817378997803,
+                "z": -7.601161956787109
+            },
+            "target": {
+                "x": -37.19392013549805,
+                "y": 1.6466728448867798,
+                "z": -3.584379196166992
+            },
+            "bytes": 1454886
+        }
+    ],
+    "artistic_gate_passed": false,
+    "fps_measured": false
+}
