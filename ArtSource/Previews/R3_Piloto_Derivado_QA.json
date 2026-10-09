@@ -1,0 +1,64 @@
+{
+  "status": "DERIVED_PILOT_BLENDER_GIS_NOT_UNITY_VALIDATED",
+  "source_original_blend_sha256": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+  "source_original_fbx_sha256": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+  "original_faces": 26764,
+  "original_road_faces": 3731,
+  "retained_road_faces": 3731,
+  "removed_building_faces": 23,
+  "retained_city_faces": 26741,
+  "replacements": {
+    "way/1048277518": {
+      "old_building_faces": 13,
+      "original_roof_faces": 3,
+      "original_roof_area_m2": 479.368,
+      "osm_reference_area_m2": 479.368,
+      "source_building_z_bounds_m": [
+        0,
+        18
+      ],
+      "original_component_xy_bounds_m": [
+        -12.2378,
+        -246.0153,
+        7.6859,
+        -217.7324
+      ],
+      "source_materials": [
+        "Building"
+      ],
+      "model": "hotel",
+      "source_height_note": "18 m was a visualization estimate, NOT an actual measured height"
+    },
+    "way/1048277521": {
+      "old_building_faces": 10,
+      "original_roof_faces": 2,
+      "original_roof_area_m2": 421.755,
+      "osm_reference_area_m2": 421.755,
+      "source_building_z_bounds_m": [
+        0,
+        18
+      ],
+      "original_component_xy_bounds_m": [
+        41.4916,
+        -242.4058,
+        64.438,
+        -218.9731
+      ],
+      "source_materials": [
+        "Building"
+      ],
+      "model": "residencial_sacadas",
+      "source_height_note": "18 m was a visualization estimate, NOT an actual measured height"
+    }
+  },
+  "unmodified_third_site": "way/1308635852",
+  "authored_model_mesh_objects": 12,
+  "pilot_derived_fbx": "UnityProject/Assets/Architecture/R3_Pilot/R3_Orla_Piloto_Derivado.fbx",
+  "pilot_derived_fbx_sha256": "e242d72002f8e534e3c4b193aac9741f707ecf247bd0f5764a256ff33a08401c",
+  "pilot_derived_fbx_bytes": 1095596,
+  "preview": "ArtSource/Previews/R3_Piloto_Derivado_2_Arquiteturas_Blender_QA.png",
+  "preview_sha256": "c2af0c8306966d95caa32b942aee0d322926216ed1fc3d3d79f2eaa87667a1f9",
+  "preview_bytes": 2704399,
+  "engine": "Blender Cycles CPU",
+  "limits": "In-memory derived geometry for study only. Two original building components isolated; no roads deleted. Original files preserved. Not Unity compiled or final art."
+}
