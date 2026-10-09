@@ -1,9 +1,8 @@
-"""R3 provenance: adapted from user-owned Simulador-predial/Tools/Copacabana/pipeline.py
-Original source ref: codex/copacabana-osm-real-20261008
-Original Git blob: ab0c923aae808f034c9bee9b47fc0f1ec21d7316
-Change: optional RESORT_R3_SKIP_OSM_IDS env mask; no other geometry algorithm changes.
-Use ONLY a frozen offline OSM snapshot. NEVER use --download in the R3 workflow.
-"""
+# R3 provenance: adapted from user-owned Simulador-predial/Tools/Copacabana/pipeline.py
+# Original source ref: codex/copacabana-osm-real-20261008
+# Original Git blob: ab0c923aae808f034c9bee9b47fc0f1ec21d7316
+# Change: optional RESORT_R3_SKIP_OSM_IDS env mask; no other geometry algorithm changes.
+# Use ONLY a frozen offline OSM snapshot. NEVER use --download in the R3 workflow.
 #!/usr/bin/env python3
 """Real OSM -> geographic GeoJSON + locally clipped 3D OBJ for Copacabana.
 
