@@ -332,9 +332,11 @@ def building_geometry(item,style):
             G.add_edge_box("stone",a,t,n,length/2,-.14,
                            visual_height+.10,length-.01,.30,.20)
     # Triangulate the exact source polygon without inventing a rectangle.
-    tess=tessellate_polygon([[Vector((x,y,visual_height)) for x,y in pts]])
+    roof_vertices=[Vector((x,y,visual_height)) for x,y in pts]
+    tess=tessellate_polygon([roof_vertices])
     for tri in tess:
-        G.face("roof",[(v.x,v.y,v.z) for v in tri])
+        # Blender 4.5 exposes tessellated *indices* rather than Vector values.
+        G.face("roof",[tuple(roof_vertices[int(i)]) for i in tri])
     # Roof equipment models (water tanks, louvers, pergola) interior only;
     # limit their footprint to a small region around the polygon centroid.
     from mathutils.geometry import intersect_point_tri_2d
