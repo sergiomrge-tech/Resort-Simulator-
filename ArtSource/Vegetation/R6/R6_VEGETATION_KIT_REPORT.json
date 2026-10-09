@@ -1,0 +1,201 @@
+{
+  "status": "R6_BLENDER_AUTHORED_SPECIES_KIT",
+  "renderer": "Blender Cycles CPU",
+  "source": "Original Python-authored custom meshes and shader-node materials; no external assets.",
+  "species": [
+    {
+      "id": "palmeira_copacabana",
+      "lods": [
+        {
+          "name": "LOD0",
+          "object": "palmeira_copacabana_LOD0",
+          "vertices": 4010,
+          "polygons": 2208,
+          "bounds_m": [
+            5.7,
+            5.371,
+            5.014
+          ]
+        },
+        {
+          "name": "LOD1",
+          "object": "palmeira_copacabana_LOD1",
+          "vertices": 1008,
+          "polygons": 528,
+          "bounds_m": [
+            5.157,
+            4.847,
+            5.015
+          ]
+        },
+        {
+          "name": "LOD2",
+          "object": "palmeira_copacabana_LOD2",
+          "vertices": 486,
+          "polygons": 262,
+          "bounds_m": [
+            4.787,
+            5.021,
+            5.015
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arvore_tropical_ampla",
+      "lods": [
+        {
+          "name": "LOD0",
+          "object": "arvore_tropical_ampla_LOD0",
+          "vertices": 1512,
+          "polygons": 935,
+          "bounds_m": [
+            2.876,
+            3.002,
+            5.155
+          ]
+        },
+        {
+          "name": "LOD1",
+          "object": "arvore_tropical_ampla_LOD1",
+          "vertices": 546,
+          "polygons": 320,
+          "bounds_m": [
+            2.846,
+            2.722,
+            5.101
+          ]
+        },
+        {
+          "name": "LOD2",
+          "object": "arvore_tropical_ampla_LOD2",
+          "vertices": 336,
+          "polygons": 208,
+          "bounds_m": [
+            2.615,
+            3.037,
+            5.129
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arvore_tropical_densa",
+      "lods": [
+        {
+          "name": "LOD0",
+          "object": "arvore_tropical_densa_LOD0",
+          "vertices": 1917,
+          "polygons": 1175,
+          "bounds_m": [
+            3.518,
+            3.364,
+            5.289
+          ]
+        },
+        {
+          "name": "LOD1",
+          "object": "arvore_tropical_densa_LOD1",
+          "vertices": 666,
+          "polygons": 384,
+          "bounds_m": [
+            3.456,
+            3.576,
+            5.131
+          ]
+        },
+        {
+          "name": "LOD2",
+          "object": "arvore_tropical_densa_LOD2",
+          "vertices": 366,
+          "polygons": 224,
+          "bounds_m": [
+            3.026,
+            2.699,
+            5.125
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arbusto_tropical",
+      "lods": [
+        {
+          "name": "LOD0",
+          "object": "arbusto_tropical_LOD0",
+          "vertices": 912,
+          "polygons": 532,
+          "bounds_m": [
+            1.558,
+            1.54,
+            0.901
+          ]
+        },
+        {
+          "name": "LOD1",
+          "object": "arbusto_tropical_LOD1",
+          "vertices": 315,
+          "polygons": 168,
+          "bounds_m": [
+            1.611,
+            1.463,
+            0.87
+          ]
+        },
+        {
+          "name": "LOD2",
+          "object": "arbusto_tropical_LOD2",
+          "vertices": 150,
+          "polygons": 80,
+          "bounds_m": [
+            1.122,
+            1.101,
+            0.862
+          ]
+        }
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "path": "ArtSource/Vegetation/R6/FBX/palmeira_copacabana_LOD0-2.fbx",
+      "bytes": 173884,
+      "sha256": "8c8ced487c9ef4dcbfc88cee4329ddf86622f2760665698e68d22ecb7aeab890",
+      "binary_fbx": true
+    },
+    {
+      "path": "ArtSource/Vegetation/R6/FBX/arvore_tropical_ampla_LOD0-2.fbx",
+      "bytes": 99116,
+      "sha256": "fd7be315af2fa99e171fa3a8a126316b66c9c2aa4342e5f6cdf68ee43bdfcc0e",
+      "binary_fbx": true
+    },
+    {
+      "path": "ArtSource/Vegetation/R6/FBX/arvore_tropical_densa_LOD0-2.fbx",
+      "bytes": 116524,
+      "sha256": "2bff9aec4609224631356470b2c8ababa5c83faac266e74e0b09e866f6875db8",
+      "binary_fbx": true
+    },
+    {
+      "path": "ArtSource/Vegetation/R6/FBX/arbusto_tropical_LOD0-2.fbx",
+      "bytes": 63948,
+      "sha256": "850da85a83c9ddce7a1976cae579adec33c79ed4f2fbb1eeb5ca43dcb1bfe4cb",
+      "binary_fbx": true
+    }
+  ],
+  "blend": {
+    "path": "ArtSource/Vegetation/R6/R6_Vegetation_Kit.blend",
+    "bytes": 1676590,
+    "sha256": "a6e17c24c08920a5bcb1140e8a5c288d63e3389a8663932b06873fd81fa22527"
+  },
+  "preview": {
+    "path": "ArtSource/Previews/R6_Vegetation_Kit_Blender.png",
+    "kind": "genuine Blender Cycles render; not a Unity screenshot",
+    "bytes": 1805661,
+    "sha256": "849076c141cc97a61d81d8fcbe2573e83df3f60fba2627d8fead38e1ed328a7b"
+  },
+  "limitations": [
+    "Species/variant meshes are authoring originals; botanical species are not inferred from untagged OSM nodes.",
+    "LOD variants are geometry-density tiers; Unity LODGroup hookup and in-game material/import validation remain pending.",
+    "No Unity-licensed build, scene integration, FPS, or memory measurements are claimed."
+  ]
+}
