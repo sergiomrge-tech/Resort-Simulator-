@@ -17,7 +17,7 @@ from mathutils.kdtree import KDTree
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/"Tools/Blender"))
-from r7_contract import semantic_part, SUFFIX
+from r7_contract import semantic_part, SUFFIX, verify_planar_quad_retriangulation
 FBX = ROOT / "UnityProject/Assets/Architecture/R7_Pilot50/R7_Copacabana_50_Fachadas_Derivado.fbx"
 REPORT = ROOT / "ArtSource/Previews/R7_FBX_UV_NATIVE_QA.json"
 ORIG_BLEND = ROOT / "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend"
@@ -60,21 +60,45 @@ def main() -> None:
     assert len(bases)==1, "Missing/duplicated GIS base"
     base=bases[0]
     assert base.data.uv_layers.active is not None, "GIS base lacks UV0"
-    index=KDTree(len(roads))
-    for i,points in enumerate(roads): index.insert(sum((Vector(p) for p in points),Vector())/3,i)
-    index.balance()
-    unmatched=set(range(len(roads)))
+    # FBX import can add <3mm numeric roundoff, and Blender 4.5 may reverse
+    # the diagonal of coplanar road quads. Both effects are accepted ONLY when
+    # the same original road vertices, boundary edges, area and material survive.
+    # This does NOT accept moved streets, altered footprints or unknown triangles.
+    original_vertices=sorted({point for road in roads for point in road})
+    point_index=KDTree(len(original_vertices))
+    for idx,position in enumerate(original_vertices):
+        point_index.insert(Vector(position),idx)
+    point_index.balance()
+    before=Counter(("Road",tuple(tri)) for tri in roads)
+    after=Counter()
+    matched_vertices=set()
+    matched_faces=0
     for poly in base.data.polygons:
-        if "Roads" not in base.data.materials[poly.material_index].name: continue
-        points=sorted(tuple(base.matrix_world@base.data.vertices[i].co) for i in poly.vertices)
-        assert len(points)==3, "Road face topology changed"
-        center=sum((Vector(p) for p in points),Vector())/3
-        candidates=index.find_range(center,.005)
-        match=next((i for _,i,_ in candidates if i in unmatched and
-                    all(math.dist(a,b)<.003 for a,b in zip(points,roads[i]))),None)
-        assert match is not None, "Original road geometry/frame changed after FBX roundtrip"
-        unmatched.remove(match)
-    assert not unmatched, "Original road triangles lost"
+        if "Roads" not in base.data.materials[poly.material_index].name:
+            continue
+        assert len(poly.vertices)==3, "Road face topology changed"
+        matched_faces+=1
+        mapped=[]
+        for vertex_index in poly.vertices:
+            position=base.matrix_world@base.data.vertices[vertex_index].co
+            nearest,source_index,error=point_index.find(position)
+            assert source_index is not None and error<.003, (
+                "Road vertex shifted more than 3mm in FBX roundtrip")
+            matched_vertices.add(source_index)
+            mapped.append(original_vertices[source_index])
+        assert len(set(mapped))==3, "Road triangle collapsed during FBX roundtrip"
+        after[("Road",tuple(sorted(mapped)))]+=1
+    assert matched_faces==3731, "Original road triangle count changed"
+    assert len(matched_vertices)==len(original_vertices), (
+        "One or more original road vertices vanished from FBX")
+    road_quad_flips=verify_planar_quad_retriangulation(before,after)
+    print("R7_NATIVE_FBX_ROAD_FRAME_PARITY", {
+        "original_faces":len(roads),
+        "reimported_faces":matched_faces,
+        "original_vertices":len(original_vertices),
+        "matched_vertices":len(matched_vertices),
+        "certified_planar_road_quad_flips":road_quad_flips,
+    },flush=True)
     ids, styles, parts = set(), set(), Counter()
     vertices = triangles = uvloops = 0
     bad = []
@@ -139,6 +163,7 @@ def main() -> None:
         "derived_fbx_sha256": sha(FBX),
         "original_blender_sha256": sha(ORIG_BLEND),
         "original_fbx_sha256": sha(ORIG_FBX),
+        "road_quad_flips":road_quad_flips,
         "distinct_osm_ways": len(ids),
         "distinct_styles": len(styles),
         "mesh_objects": len(heroes),
