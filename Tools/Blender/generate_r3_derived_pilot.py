@@ -99,6 +99,10 @@ if not original_obj.is_file() or not masked_obj.is_file():
     raise RuntimeError("Rebuild source and two-ID masked OBJ first; never fabricate city mesh")
 
 reimported=import_original_obj(original_obj)
+# The original BlenderGIS .blend rotates its local OSM mesh 46 degrees
+# (source matrix_world). Rebuilt OBJ mesh vertices ARE bitwise equivalent in
+# local coordinates, so restore the original frame BEFORE triangle QA.
+reimported.matrix_world=old_city.matrix_world.copy()
 reconstructed=triangle_signature(reimported)
 if old_signatures!=reconstructed:
     def fingerprint_stats(sig):
@@ -124,6 +128,7 @@ if old_signatures!=reconstructed:
 bpy.data.objects.remove(reimported,do_unlink=True)
 
 city=import_original_obj(masked_obj)
+city.matrix_world=old_city.matrix_world.copy()
 derived_signatures=triangle_signature(city)
 removed=old_signatures-derived_signatures
 added=derived_signatures-old_signatures
@@ -200,7 +205,8 @@ for oid,study in compatible:
     angle=math.radians(fit["yaw_blender_degrees"])
     center=fit["center_xy_m"]
     old_ground=site_removed[oid]["source_building_z_bounds_m"][0]
-    transform=(Matrix.Translation(Vector((center[0],center[1],old_ground)))
+    transform=(old_city.matrix_world
+       @ Matrix.Translation(Vector((center[0],center[1],old_ground)))
        @ Matrix.Rotation(angle,4,"Z")
        @ Matrix.Scale(scal,4)
        @ Matrix.Translation(Vector((-(low.x+high.x)*.5,-(low.y+high.y)*.5,-low.z))))
@@ -266,8 +272,8 @@ sun.rotation_euler=(math.radians(38),math.radians(-23),math.radians(-22))
 cd=bpy.data.cameras.new("R3_Derived_Camera")
 cam=bpy.data.objects.new("R3_Derived_Camera",cd)
 bpy.context.collection.objects.link(cam)
-target=Vector((25,-220,7))
-cam.location=target+Vector((100,-130,250))
+target=old_city.matrix_world@Vector((25,-220,7))
+cam.location=target+(old_city.matrix_world.to_3x3()@Vector((100,-130,250)))
 cam.rotation_euler=(target-cam.location).to_track_quat("-Z","Y").to_euler()
 cd.type="ORTHO"
 cd.ortho_scale=320
