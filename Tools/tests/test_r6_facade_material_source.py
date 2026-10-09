@@ -58,9 +58,11 @@ class R6FacadeSourceTests(unittest.TestCase):
                       "WriteIfDifferent(absolutePath, tex.EncodeToPNG())"):
             self.assertIn(value, self.code)
         self.assertIn("Require(textures.Count == 40", self.code)
+        self.assertIn("InferR5Part(renderer)", self.code)
+        self.assertIn("material_part_name_fallbacks = inferredFallbacks", self.code)
         self.assertIn('GraphicsSettings.currentRenderPipeline != null', self.code)
         self.assertIn('urp_pipeline_active = urpActive', self.code)
-        self.assertIn('R6_MATERIAL_ASSETS_GENERATED_URP_RENDER_PIPELINE_NOT_ACTIVE', self.code)
+        self.assertIn('R6_STANDARD_SHADER_VISUAL_QA_URP_PIPELINE_NOT_ACTIVE', self.code)
         self.assertIn("Require(ids.Count == 50", self.code)
         self.assertIn("Require(styles.Count == 50", self.code)
 
