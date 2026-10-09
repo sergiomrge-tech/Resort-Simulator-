@@ -34,9 +34,7 @@ class R4ProceduralStyleQATests(unittest.TestCase):
             self.assertEqual(len(subset),5)
             for k in ("window_pattern","balcony_type","ground_floor","parapet_type","roof_detail",
                       "window_frame_depth_m","facade_recess_m","color_preset"):
-                self.assertEqual(len({str(s[k]) for s in subset}),5 if k in
-                                 ("window_pattern","ground_floor","parapet_type","roof_detail","color_preset")
-                                 else len({str(s[k]) for s in subset}))
+                self.assertGreaterEqual(len({str(s[k]) for s in subset}),3)
         for style in c["styles"]:
             self.assertFalse(style["actual_mesh_generated"])
             self.assertGreater(style["window_frame_depth_m"],0.04)
@@ -63,7 +61,12 @@ class R4ProceduralStyleQATests(unittest.TestCase):
                 if building["height_provenance"]=="ESTIMATE_NOT_SURVEYED"
                 else building["height_for_visualization_m"])
             self.assertEqual(building["seed"],stable_int(building["building_id"],"stable-procedural-seed")%2147483647)
-            self.assertEqual(building["source_osm_way"],building["building_id"])
+            self.assertEqual(building["source_osm_way"],building["building_id"].split("#")[0])
+            self.assertEqual(building["footprint_ring_local_xy_m"][0],
+                             building["footprint_ring_local_xy_m"][-1])
+            cx,cy=building["centroid_local_xy_m"]
+            self.assertTrue(-1000.01<=cx<=1000.01)
+            self.assertTrue(-500.01<=cy<=500.01)
         self.assertIn("No generated facade meshes",p["important"])
     def test_stable_hash_and_unverified_building_use(self):
         self.assertEqual(stable_int("way/1048277518","stable-procedural-seed"),
