@@ -16,6 +16,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 public static class ResortR6FacadeFinish
 {
@@ -57,6 +58,7 @@ public static class ResortR6FacadeFinish
         public string generated_scene;
         public string unity_version;
         public string render_shader;
+        public bool urp_pipeline_active;
         public string source_blend_sha256;
         public string source_fbx_sha256;
         public int selected_buildings;
@@ -303,6 +305,10 @@ public static class ResortR6FacadeFinish
                 "R5 source QA scene unavailable");
         Shader shader = Shader.Find("Universal Render Pipeline/Lit");
         Require(shader != null, "URP/Lit shader unavailable; cannot assert PBR preview");
+        bool urpActive = GraphicsSettings.currentRenderPipeline != null &&
+            GraphicsSettings.currentRenderPipeline.GetType().Name.Contains("UniversalRenderPipeline");
+        if (!urpActive)
+            Debug.LogWarning("RESORT_R6_URP_ASSET_NOT_ACTIVE: PBR materials can be authored, but scene rendering still requires an active URP pipeline asset.");
         string repo = Path.GetFullPath(Path.Combine(Application.dataPath, "..", ".."));
         string sourceBlend = Path.Combine(repo, "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend");
         string sourceFbx = Path.Combine(Application.dataPath,
@@ -353,11 +359,13 @@ public static class ResortR6FacadeFinish
                 "Could not create independent R6 visual QA scene");
         var report = new Report
         {
-            status = "R6_EDITOR_MATERIAL_SCENE_GENERATED_VISUAL_QA_PENDING",
+            status = urpActive ? "R6_EDITOR_MATERIAL_SCENE_GENERATED_VISUAL_QA_PENDING" :
+                "R6_MATERIAL_ASSETS_GENERATED_URP_RENDER_PIPELINE_NOT_ACTIVE",
             origin_scene = SourceScene,
             generated_scene = OutputScene,
             unity_version = Application.unityVersion,
             render_shader = shader.name,
+            urp_pipeline_active = urpActive,
             source_blend_sha256 = blendBefore,
             source_fbx_sha256 = fbxBefore,
             selected_buildings = ids.Count,
