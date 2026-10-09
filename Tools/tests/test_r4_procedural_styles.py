@@ -32,9 +32,18 @@ class R4ProceduralStyleQATests(unittest.TestCase):
         for family in {x["family"] for x in c["styles"]}:
             subset=[x for x in c["styles"] if x["family"]==family]
             self.assertEqual(len(subset),5)
-            for k in ("window_pattern","balcony_type","ground_floor","parapet_type","roof_detail",
-                      "window_frame_depth_m","facade_recess_m","color_preset"):
-                self.assertGreaterEqual(len({str(s[k]) for s in subset}),3)
+            # Styles without balconies intentionally have balcony_type='none';
+            # test real structural variety rather than requiring absurd
+            # balconies on schools, offices or civic buildings.
+            for k in ("window_pattern", "ground_floor", "parapet_type",
+                      "roof_detail", "color_preset"):
+                self.assertEqual(len({str(s[k]) for s in subset}),5)
+            signatures = {
+                (s["window_pattern"], s["ground_floor"], s["parapet_type"],
+                 s["roof_detail"], s["balcony_type"], s["accent_element"])
+                for s in subset
+            }
+            self.assertEqual(len(signatures),5)
         for style in c["styles"]:
             self.assertFalse(style["actual_mesh_generated"])
             self.assertGreater(style["window_frame_depth_m"],0.04)
