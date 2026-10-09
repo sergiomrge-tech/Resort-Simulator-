@@ -1,0 +1,1234 @@
+{
+  "status": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+  "frame_m": [
+    2000,
+    1000
+  ],
+  "angle_degrees": 46,
+  "source_sha256": {
+    "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+    "UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+    "geo/data/copacabana.osm.gz": "8fa230fc41b40234d4e37e17aa18b1bb697a20e33750293d440e110e8ee0bd8f",
+    "geo/procedural/R4_SOURCE_FRAME.json": "6d433f4cdb2c92ce951920fc696c1fef4c1fe9d2ccd2eeb4f6a80525fe850797",
+    "geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json": "b4986c589e6abd58dc4de2e87224dec6067e1554de0e42aee11c6b4045699c5c",
+    "geo/procedural/R9_VEGETATION_SELECTED.json": "328bb2cbed68240302cfec1727818c0bbfaf56d702b978b1f9913b23eb82a0d2",
+    "ArtSource/Blender/R13_VisualPass2_Coastal_Sectors.blend": "9f8d7217348e84f432e450c860175d8d1ce62d5810c22e86bbb43198b0e6ece6",
+    "UnityProject/Assets/Architecture/R13_Pass2/R13_VisualPass2_Coastal_Sectors.fbx": "46c10aea437056b646dd7787476a4519d1787eeb4bc800d188fcdbfda2830129"
+  },
+  "source_road_triangles": 3731,
+  "fbx_sha256": "d7cb6f13c8ea2266ddcf577265d3b88cbfba2036d898dee185636cd837f47e8f",
+  "meshes": 31,
+  "faces": 381594,
+  "mesh_faces": {
+    "R14_S00_curbstone": 4808,
+    "R14_S00_gutter": 4938,
+    "R14_S00_sidewalk": 4144,
+    "R14_S01_curbstone": 26060,
+    "R14_S01_gutter": 26940,
+    "R14_S01_sidewalk": 19038,
+    "R14_S01_stonetile": 538,
+    "R14_S02_curbstone": 22050,
+    "R14_S02_gutter": 22134,
+    "R14_S02_sidewalk": 15846,
+    "R14_S03_curbstone": 10548,
+    "R14_S03_gutter": 11452,
+    "R14_S03_sidewalk": 6940,
+    "R14_S04_curbstone": 12130,
+    "R14_S04_gutter": 12374,
+    "R14_S04_sidewalk": 7834,
+    "R14_S05_curbstone": 11516,
+    "R14_S05_gutter": 11814,
+    "R14_S05_sidewalk": 8428,
+    "R14_S06_curbstone": 12624,
+    "R14_S06_gutter": 12712,
+    "R14_S06_sidewalk": 8424,
+    "R14_S07_curbstone": 13728,
+    "R14_S07_gutter": 13648,
+    "R14_S07_sidewalk": 8632,
+    "R14_S08_curbstone": 12550,
+    "R14_S08_gutter": 12694,
+    "R14_S08_sidewalk": 9038,
+    "R14_S09_curbstone": 14070,
+    "R14_S09_gutter": 14494,
+    "R14_S09_sidewalk": 9448
+  },
+  "sectors": [
+    {
+      "sector": "S00",
+      "local_x_m": [
+        -1000,
+        -800
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 166.3232758569967,
+          "polygon_count": 8,
+          "minimum_lot_distance_m": 3.7430695642873038,
+          "mesh": "R14_S00_gutter"
+        },
+        "curbstone": {
+          "area_m2": 103.52379730903097,
+          "polygon_count": 12,
+          "minimum_lot_distance_m": 3.563069564287328,
+          "mesh": "R14_S00_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 971.3118608416714,
+          "polygon_count": 10,
+          "minimum_lot_distance_m": 1.2430695642873268,
+          "mesh": "R14_S00_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            -877.989013671875,
+            -500.0
+          ],
+          [
+            -800.0,
+            -439.7483190969723
+          ]
+        ],
+        "curbstone": [
+          [
+            -878.2320453739462,
+            -500.0
+          ],
+          [
+            -800.0,
+            -439.671512730371
+          ]
+        ],
+        "sidewalk": [
+          [
+            -940.7184557545769,
+            -500.0
+          ],
+          [
+            -800.0,
+            -436.44223538401815
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 26.800419621030894,
+        "maximum": 164.93369078126636,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/1108247196",
+          "xy": [
+            -841.6235761070452,
+            -482.49861523816935
+          ],
+          "source_xy": [
+            -840.0468520453741,
+            -480.20892472667583
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S01",
+      "local_x_m": [
+        -800,
+        -600
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 906.8047993082462,
+          "polygon_count": 23,
+          "minimum_lot_distance_m": 0.2496973121803901,
+          "mesh": "R14_S01_gutter"
+        },
+        "curbstone": {
+          "area_m2": 555.7605003814948,
+          "polygon_count": 32,
+          "minimum_lot_distance_m": 0.2496969244668705,
+          "mesh": "R14_S01_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 4340.45835531366,
+          "polygon_count": 29,
+          "minimum_lot_distance_m": 0.2496586822333272,
+          "mesh": "R14_S01_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 44.83511219440884,
+          "polygon_count": 5,
+          "minimum_lot_distance_m": 0.24970006024925934,
+          "mesh": "R14_S01_stonetile"
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            -800.0,
+            -500.0
+          ],
+          [
+            -600.0,
+            -360.316598946157
+          ]
+        ],
+        "curbstone": [
+          [
+            -800.0,
+            -500.0
+          ],
+          [
+            -600.0,
+            -360.2753632589676
+          ]
+        ],
+        "sidewalk": [
+          [
+            -800.0,
+            -500.0
+          ],
+          [
+            -600.0,
+            -360.15943563824186
+          ]
+        ],
+        "stonetile": [
+          [
+            -747.5828162851374,
+            -495.000222542152
+          ],
+          [
+            -701.7389956350933,
+            -480.87930030649045
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 1.7711359757213252,
+        "maximum": 30.203069916474814,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/1108247192",
+          "xy": [
+            -744.7776139538166,
+            -487.5274854318286
+          ],
+          "source_xy": [
+            -744.7371185302866,
+            -484.76378573832415
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/1108247221",
+          "xy": [
+            -640.3137058853495,
+            -387.73809904403555
+          ],
+          "source_xy": [
+            -641.9870406475287,
+            -389.84939448383204
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S02",
+      "local_x_m": [
+        -600,
+        -400
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 749.0762320683475,
+          "polygon_count": 23,
+          "minimum_lot_distance_m": 0.24999999999996267,
+          "mesh": "R14_S02_gutter"
+        },
+        "curbstone": {
+          "area_m2": 476.0761414131684,
+          "polygon_count": 24,
+          "minimum_lot_distance_m": 0.24969743456739416,
+          "mesh": "R14_S02_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 3606.4152725108374,
+          "polygon_count": 24,
+          "minimum_lot_distance_m": 0.24969697526462506,
+          "mesh": "R14_S02_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            -600.0,
+            -431.458850664574
+          ],
+          [
+            -400.0,
+            -342.07085362183403
+          ]
+        ],
+        "curbstone": [
+          [
+            -600.0,
+            -431.64948484030407
+          ],
+          [
+            -400.0,
+            -342.05748006660434
+          ]
+        ],
+        "sidewalk": [
+          [
+            -600.0,
+            -434.1065475497142
+          ],
+          [
+            -400.0,
+            -341.92800458073094
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 29.232350358692585,
+        "maximum": 78.51057426411086,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/148199719",
+          "xy": [
+            -466.99028421749784,
+            -372.77435485991384
+          ],
+          "source_xy": [
+            -465.21099444367934,
+            -374.88263953419613
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/302187017",
+          "xy": [
+            -465.2458980723109,
+            -379.4199853328855
+          ],
+          "source_xy": [
+            -463.3768347524667,
+            -381.4808319732639
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/1108247129",
+          "xy": [
+            -493.1193177207545,
+            -337.20731639287726
+          ],
+          "source_xy": [
+            -496.19797983187055,
+            -339.7626334699205
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/1108247275",
+          "xy": [
+            -472.6585500085984,
+            -352.0613132135853
+          ],
+          "source_xy": [
+            -472.1626495330069,
+            -349.36691055836394
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S03",
+      "local_x_m": [
+        -400,
+        -200
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 373.45650547222203,
+          "polygon_count": 17,
+          "minimum_lot_distance_m": 0.2496986030128109,
+          "mesh": "R14_S03_gutter"
+        },
+        "curbstone": {
+          "area_m2": 224.80771302676487,
+          "polygon_count": 17,
+          "minimum_lot_distance_m": 0.24969860301280375,
+          "mesh": "R14_S03_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1242.2983607899175,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.2496974670213446,
+          "mesh": "R14_S03_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            -400.0,
+            -370.1267734999784
+          ],
+          [
+            -200.0,
+            -311.9320378227729
+          ]
+        ],
+        "curbstone": [
+          [
+            -400.0,
+            -370.3141376042593
+          ],
+          [
+            -200.0,
+            -311.9382133575725
+          ]
+        ],
+        "sidewalk": [
+          [
+            -400.0,
+            -372.7290527261033
+          ],
+          [
+            -200.0,
+            -312.09392287112877
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 78.51057426411086,
+        "maximum": 93.12680791473608,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/2368201415",
+          "xy": [
+            -360.2934816300871,
+            -350.1716222486687
+          ],
+          "source_xy": [
+            -361.9506045102533,
+            -347.98625215108905
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/2368201417",
+          "xy": [
+            -361.1476757896186,
+            -358.05031600540724
+          ],
+          "source_xy": [
+            -360.5381809612655,
+            -355.3480963821821
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/12408418904",
+          "xy": [
+            -220.8679962158203,
+            -315.7250061035156
+          ],
+          "source_xy": [
+            -222.30014307616443,
+            -317.7742527760206
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/13277742784",
+          "xy": [
+            -298.0880105686026,
+            -329.3110029276564
+          ],
+          "source_xy": [
+            -296.5208695683576,
+            -331.25888369794916
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S04",
+      "local_x_m": [
+        -200,
+        0
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 418.1663473968238,
+          "polygon_count": 14,
+          "minimum_lot_distance_m": 0.24999999999998648,
+          "mesh": "R14_S04_gutter"
+        },
+        "curbstone": {
+          "area_m2": 263.5006414162145,
+          "polygon_count": 14,
+          "minimum_lot_distance_m": 0.24999999999998482,
+          "mesh": "R14_S04_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1489.7986940309233,
+          "polygon_count": 13,
+          "minimum_lot_distance_m": 0.24969750699309534,
+          "mesh": "R14_S04_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            -200.0,
+            -338.1180114746094
+          ],
+          [
+            0.0,
+            -296.3055987543522
+          ]
+        ],
+        "curbstone": [
+          [
+            -200.0,
+            -338.3281497278533
+          ],
+          [
+            0.0,
+            -296.5937342642674
+          ]
+        ],
+        "sidewalk": [
+          [
+            -200.0,
+            -340.77383324689197
+          ],
+          [
+            0.0,
+            -296.78306369422097
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 82.50805946606452,
+        "maximum": 94.0208320519737,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/302187019",
+          "xy": [
+            -102.36394701324888,
+            -312.7438192014124
+          ],
+          "source_xy": [
+            -103.30289909109636,
+            -315.31886759304405
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S05",
+      "local_x_m": [
+        0,
+        200
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 396.085075499507,
+          "polygon_count": 10,
+          "minimum_lot_distance_m": 0.2496987122917691,
+          "mesh": "R14_S05_gutter"
+        },
+        "curbstone": {
+          "area_m2": 248.51842049568748,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24969864812502046,
+          "mesh": "R14_S05_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1406.737085672856,
+          "polygon_count": 13,
+          "minimum_lot_distance_m": 0.24969763380725463,
+          "mesh": "R14_S05_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            0.0,
+            -323.6340026855469
+          ],
+          [
+            200.0,
+            -295.1185255984648
+          ]
+        ],
+        "curbstone": [
+          [
+            0.0,
+            -323.838825855878
+          ],
+          [
+            200.0,
+            -295.1279274340879
+          ]
+        ],
+        "sidewalk": [
+          [
+            0.0,
+            -326.32856419130354
+          ],
+          [
+            200.0,
+            -294.9067764479568
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 84.98754546349997,
+        "maximum": 93.85668237194518,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/2368197456",
+          "xy": [
+            108.17907340488247,
+            -298.90909616474073
+          ],
+          "source_xy": [
+            109.24845151311203,
+            -301.4421477391861
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/2368197457",
+          "xy": [
+            110.3817303736464,
+            -306.5208206885994
+          ],
+          "source_xy": [
+            109.17044993284449,
+            -308.9825020900618
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S06",
+      "local_x_m": [
+        200,
+        400
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 422.15525901493004,
+          "polygon_count": 15,
+          "minimum_lot_distance_m": 0.24969967081180194,
+          "mesh": "R14_S06_gutter"
+        },
+        "curbstone": {
+          "area_m2": 268.0367186687056,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.24969942185182936,
+          "mesh": "R14_S06_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1567.3274271207135,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.24968613510476348,
+          "mesh": "R14_S06_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            200.0,
+            -345.2410516553623
+          ],
+          [
+            400.0,
+            -299.6619138661604
+          ]
+        ],
+        "curbstone": [
+          [
+            200.0,
+            -345.4240972707883
+          ],
+          [
+            400.0,
+            -299.4815662267435
+          ]
+        ],
+        "sidewalk": [
+          [
+            200.0,
+            -347.7833518696122
+          ],
+          [
+            400.0,
+            -299.1018513267537
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 83.54785291767578,
+        "maximum": 87.49376193412755,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/302187021",
+          "xy": [
+            248.62327139993525,
+            -320.11692037744496
+          ],
+          "source_xy": [
+            250.02862760984502,
+            -317.7341931864095
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/2368197455",
+          "xy": [
+            249.15665245335248,
+            -313.1250712624316
+          ],
+          "source_xy": [
+            250.55444897726392,
+            -310.8145102305278
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/12408397892",
+          "xy": [
+            373.0110753029745,
+            -322.9236232510313
+          ],
+          "source_xy": [
+            375.2284240722527,
+            -321.7682530073755
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/13281204936",
+          "xy": [
+            306.63404387872333,
+            -308.9004608162314
+          ],
+          "source_xy": [
+            307.5665017291506,
+            -311.2201941442251
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S07",
+      "local_x_m": [
+        400,
+        600
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 462.1467703255051,
+          "polygon_count": 15,
+          "minimum_lot_distance_m": 0.24969996753469847,
+          "mesh": "R14_S07_gutter"
+        },
+        "curbstone": {
+          "area_m2": 297.66909900454795,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.24969971046315367,
+          "mesh": "R14_S07_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1992.8422478372456,
+          "polygon_count": 13,
+          "minimum_lot_distance_m": 0.24969920640802,
+          "mesh": "R14_S07_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            400.0,
+            -390.3163685363255
+          ],
+          [
+            600.0,
+            -322.54827005048713
+          ]
+        ],
+        "curbstone": [
+          [
+            400.0,
+            -390.4979699831855
+          ],
+          [
+            600.0,
+            -322.49677766292535
+          ]
+        ],
+        "sidewalk": [
+          [
+            400.0,
+            -392.8386108538252
+          ],
+          [
+            600.0,
+            -322.03227351212286
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 77.20208292973643,
+        "maximum": 87.31386379849637,
+        "sample_step_m": 10
+      },
+      "ramps": [],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S08",
+      "local_x_m": [
+        600,
+        800
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 429.99230175245793,
+          "polygon_count": 10,
+          "minimum_lot_distance_m": 0.2496998427333103,
+          "mesh": "R14_S08_gutter"
+        },
+        "curbstone": {
+          "area_m2": 274.1537656642439,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24999999999994238,
+          "mesh": "R14_S08_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 2244.908738801621,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24969849069489758,
+          "mesh": "R14_S08_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            600.0,
+            -433.6204556869567
+          ],
+          [
+            800.0,
+            -358.13953758655083
+          ]
+        ],
+        "curbstone": [
+          [
+            600.0,
+            -433.8072541844873
+          ],
+          [
+            800.0,
+            -358.09682806219996
+          ]
+        ],
+        "sidewalk": [
+          [
+            600.0,
+            -436.2148792637713
+          ],
+          [
+            800.0,
+            -357.5018116010359
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 78.67961512667301,
+        "maximum": 83.08338842545206,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/2368196613",
+          "xy": [
+            615.7892576649429,
+            -378.9658754955404
+          ],
+          "source_xy": [
+            616.4287820035112,
+            -381.6735375725568
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/2368196616",
+          "xy": [
+            617.6404565304332,
+            -371.16487693398165
+          ],
+          "source_xy": [
+            618.3094736639664,
+            -373.8016089965007
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    },
+    {
+      "sector": "S09",
+      "local_x_m": [
+        800,
+        1000
+      ],
+      "parts": {
+        "gutter": {
+          "area_m2": 481.4892306087835,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24970072460822557,
+          "mesh": "R14_S09_gutter"
+        },
+        "curbstone": {
+          "area_m2": 302.7711931755468,
+          "polygon_count": 15,
+          "minimum_lot_distance_m": 0.24999999999996497,
+          "mesh": "R14_S09_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 2036.5513782812118,
+          "polygon_count": 14,
+          "minimum_lot_distance_m": 0.24965994689489168,
+          "mesh": "R14_S09_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "bounds_xy_m": {
+        "gutter": [
+          [
+            800.0,
+            -492.9419860839844
+          ],
+          [
+            1000.0,
+            -408.18284431933455
+          ]
+        ],
+        "curbstone": [
+          [
+            800.0,
+            -493.1941304482747
+          ],
+          [
+            1000.0,
+            -408.47176435429515
+          ]
+        ],
+        "sidewalk": [
+          [
+            800.0,
+            -496.44399114357174
+          ],
+          [
+            1000.0,
+            -408.6574986624841
+          ]
+        ]
+      },
+      "promenade_landward_edge_to_road_sample_distance_m": {
+        "minimum": 74.76933847052162,
+        "maximum": 85.66952100107939,
+        "sample_step_m": 10
+      },
+      "ramps": [
+        {
+          "osm_id": "node/2368196615",
+          "xy": [
+            881.0413397875776,
+            -442.6665678366469
+          ],
+          "source_xy": [
+            882.8212328173354,
+            -440.57803847832935
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        },
+        {
+          "osm_id": "node/2368196618",
+          "xy": [
+            882.7520440518334,
+            -446.28759805346493
+          ],
+          "source_xy": [
+            880.9677277556771,
+            -448.3820226556194
+          ],
+          "kind": "inferred_curb_cut_at_tagged_crossing"
+        }
+      ],
+      "native_gate": "PASS_REIMPORT_GIS_UV_NORMALS",
+      "unity_gate": "PENDING",
+      "visual_gate": "PENDING"
+    }
+  ],
+  "road_z_m": 0.06,
+  "curb_rise_m": 0.14,
+  "gutter_top_m": 0.065,
+  "sidewalk_top_m": 0.2,
+  "widths_m": {
+    "curbstone": 0.18,
+    "gutter": 0.28,
+    "sidewalk": 2.32
+  },
+  "numeric_sliver_faces_removed": 86,
+  "numeric_sliver_total_area_removed_m2": 0.009486129536298904,
+  "ramp_locations_inferred": true,
+  "artistic_gate_approved": false,
+  "fps_measured": false,
+  "limitations": [
+    "GIS is clipped to y +/-500; curved R13 shoreline extends outside it at map ends. No invented road across missing substrate.",
+    "No surveyed entrances, curb heights or crossing geometry. No gameplay collision approval.",
+    "8m connection search intentionally leaves wider promenade-road gaps pending."
+  ],
+  "native_blender_version": "5.2.1 LTS",
+  "native_missing_uv0": 0,
+  "native_meshes": 31,
+  "native_top_triangles_checked": 95291,
+  "native_uv_metric_max_error": 0.008132685545584328,
+  "native_boundaries": [
+    {
+      "boundary": 1,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 1,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 1,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 2,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 2,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 2,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 3,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 3,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 3,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 4,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 4,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 4,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 5,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 5,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 5,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 6,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 6,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 6,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 7,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 7,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 7,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 8,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 8,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 8,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 9,
+      "part": "gutter",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 9,
+      "part": "curbstone",
+      "max_gap_m": 0.0
+    },
+    {
+      "boundary": 9,
+      "part": "sidewalk",
+      "max_gap_m": 0.0
+    }
+  ],
+  "native_source_invariants": "PASS",
+  "native_lot_and_road_exclusion": "PASS_REIMPORTED_TOP_TRIANGLE_CENTROIDS"
+}

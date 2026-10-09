@@ -1,0 +1,2001 @@
+{
+  "status": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+  "frame_m": [
+    2000,
+    1000
+  ],
+  "source_sha256": {
+    "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+    "UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+    "geo/data/copacabana.osm.gz": "8fa230fc41b40234d4e37e17aa18b1bb697a20e33750293d440e110e8ee0bd8f",
+    "geo/procedural/R4_SOURCE_FRAME.json": "6d433f4cdb2c92ce951920fc696c1fef4c1fe9d2ccd2eeb4f6a80525fe850797",
+    "geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json": "b4986c589e6abd58dc4de2e87224dec6067e1554de0e42aee11c6b4045699c5c",
+    "geo/procedural/R9_VEGETATION_SELECTED.json": "328bb2cbed68240302cfec1727818c0bbfaf56d702b978b1f9913b23eb82a0d2",
+    "ArtSource/Blender/R13_VisualPass2_Coastal_Sectors.blend": "9f8d7217348e84f432e450c860175d8d1ce62d5810c22e86bbb43198b0e6ece6",
+    "UnityProject/Assets/Architecture/R13_Pass2/R13_VisualPass2_Coastal_Sectors.fbx": "46c10aea437056b646dd7787476a4519d1787eeb4bc800d188fcdbfda2830129"
+  },
+  "fbx_sha256": "7fdaebe2c2094907de19d0406ea94218128b0a1d47f4f222ea7329740b171080",
+  "meshes": 105,
+  "faces": 1142680,
+  "mesh_faces": {
+    "R14_S00_art_curbstone": 6156,
+    "R14_S00_art_curbstone_LOD1": 3078,
+    "R14_S00_art_curbstone_LOD2": 1230,
+    "R14_S00_art_foliage": 5376,
+    "R14_S00_art_foliage_LOD1": 2688,
+    "R14_S00_art_foliage_LOD2": 1075,
+    "R14_S00_art_granite": 28028,
+    "R14_S00_art_granite_LOD1": 14014,
+    "R14_S00_art_granite_LOD2": 5604,
+    "R14_S00_art_stonetile": 108,
+    "R14_S00_art_stonetile_LOD1": 54,
+    "R14_S00_art_stonetile_LOD2": 20,
+    "R14_S00_art_timber": 26784,
+    "R14_S00_art_timber_LOD1": 13392,
+    "R14_S00_art_timber_LOD2": 5356,
+    "R14_S01_art_curbstone": 18360,
+    "R14_S01_art_curbstone_LOD1": 9180,
+    "R14_S01_art_curbstone_LOD2": 3672,
+    "R14_S01_art_foliage": 12288,
+    "R14_S01_art_foliage_LOD1": 6144,
+    "R14_S01_art_foliage_LOD2": 2457,
+    "R14_S01_art_granite": 30132,
+    "R14_S01_art_granite_LOD1": 15066,
+    "R14_S01_art_granite_LOD2": 6026,
+    "R14_S01_art_stonetile": 112,
+    "R14_S01_art_stonetile_LOD1": 56,
+    "R14_S01_art_stonetile_LOD2": 22,
+    "R14_S01_art_timber": 71178,
+    "R14_S01_art_timber_LOD1": 35728,
+    "R14_S01_art_timber_LOD2": 14286,
+    "R14_S02_art_curbstone": 7020,
+    "R14_S02_art_curbstone_LOD1": 3510,
+    "R14_S02_art_curbstone_LOD2": 1404,
+    "R14_S02_art_foliage": 12288,
+    "R14_S02_art_foliage_LOD1": 6144,
+    "R14_S02_art_foliage_LOD2": 2457,
+    "R14_S02_art_granite": 26836,
+    "R14_S02_art_granite_LOD1": 13418,
+    "R14_S02_art_granite_LOD2": 5366,
+    "R14_S02_art_stonetile": 108,
+    "R14_S02_art_stonetile_LOD1": 54,
+    "R14_S02_art_stonetile_LOD2": 20,
+    "R14_S02_art_timber": 54998,
+    "R14_S02_art_timber_LOD1": 27648,
+    "R14_S02_art_timber_LOD2": 11058,
+    "R14_S03_art_curbstone": 20736,
+    "R14_S03_art_curbstone_LOD1": 10368,
+    "R14_S03_art_curbstone_LOD2": 4146,
+    "R14_S03_art_foliage": 12288,
+    "R14_S03_art_foliage_LOD1": 6144,
+    "R14_S03_art_foliage_LOD2": 2457,
+    "R14_S03_art_granite": 17352,
+    "R14_S03_art_granite_LOD1": 8676,
+    "R14_S03_art_granite_LOD2": 3470,
+    "R14_S03_art_stonetile": 108,
+    "R14_S03_art_stonetile_LOD1": 54,
+    "R14_S03_art_stonetile_LOD2": 20,
+    "R14_S03_art_timber": 50230,
+    "R14_S03_art_timber_LOD1": 25260,
+    "R14_S03_art_timber_LOD2": 10104,
+    "R14_S07_art_curbstone": 3780,
+    "R14_S07_art_curbstone_LOD1": 1890,
+    "R14_S07_art_curbstone_LOD2": 756,
+    "R14_S07_art_foliage": 12288,
+    "R14_S07_art_foliage_LOD1": 6144,
+    "R14_S07_art_foliage_LOD2": 2457,
+    "R14_S07_art_granite": 18336,
+    "R14_S07_art_granite_LOD1": 9168,
+    "R14_S07_art_granite_LOD2": 3666,
+    "R14_S07_art_stonetile": 112,
+    "R14_S07_art_stonetile_LOD1": 56,
+    "R14_S07_art_stonetile_LOD2": 22,
+    "R14_S07_art_timber": 50129,
+    "R14_S07_art_timber_LOD1": 25206,
+    "R14_S07_art_timber_LOD2": 10082,
+    "R14_S08_art_curbstone": 10260,
+    "R14_S08_art_curbstone_LOD1": 5130,
+    "R14_S08_art_curbstone_LOD2": 2052,
+    "R14_S08_art_foliage": 12288,
+    "R14_S08_art_foliage_LOD1": 6144,
+    "R14_S08_art_foliage_LOD2": 2457,
+    "R14_S08_art_granite": 15120,
+    "R14_S08_art_granite_LOD1": 7560,
+    "R14_S08_art_granite_LOD2": 3024,
+    "R14_S08_art_stonetile": 108,
+    "R14_S08_art_stonetile_LOD1": 54,
+    "R14_S08_art_stonetile_LOD2": 20,
+    "R14_S08_art_timber": 51766,
+    "R14_S08_art_timber_LOD1": 26024,
+    "R14_S08_art_timber_LOD2": 10406,
+    "R14_S09_art_curbstone": 19116,
+    "R14_S09_art_curbstone_LOD1": 9558,
+    "R14_S09_art_curbstone_LOD2": 3822,
+    "R14_S09_art_foliage": 12288,
+    "R14_S09_art_foliage_LOD1": 6144,
+    "R14_S09_art_foliage_LOD2": 2457,
+    "R14_S09_art_granite": 15068,
+    "R14_S09_art_granite_LOD1": 7534,
+    "R14_S09_art_granite_LOD2": 3012,
+    "R14_S09_art_stonetile": 108,
+    "R14_S09_art_stonetile_LOD1": 54,
+    "R14_S09_art_stonetile_LOD2": 20,
+    "R14_S09_art_timber": 50226,
+    "R14_S09_art_timber_LOD1": 25256,
+    "R14_S09_art_timber_LOD2": 10100
+  },
+  "sectors": [
+    {
+      "sector": "S00",
+      "material_batches_lod0": [
+        "R14_S00_art_timber",
+        "R14_S00_art_granite",
+        "R14_S00_art_foliage",
+        "R14_S00_art_curbstone",
+        "R14_S00_art_stonetile"
+      ]
+    },
+    {
+      "sector": "S01",
+      "material_batches_lod0": [
+        "R14_S01_art_timber",
+        "R14_S01_art_granite",
+        "R14_S01_art_foliage",
+        "R14_S01_art_curbstone",
+        "R14_S01_art_stonetile"
+      ]
+    },
+    {
+      "sector": "S02",
+      "material_batches_lod0": [
+        "R14_S02_art_timber",
+        "R14_S02_art_granite",
+        "R14_S02_art_foliage",
+        "R14_S02_art_curbstone",
+        "R14_S02_art_stonetile"
+      ]
+    },
+    {
+      "sector": "S03",
+      "material_batches_lod0": [
+        "R14_S03_art_timber",
+        "R14_S03_art_granite",
+        "R14_S03_art_foliage",
+        "R14_S03_art_curbstone",
+        "R14_S03_art_stonetile"
+      ]
+    },
+    {
+      "sector": "S07",
+      "material_batches_lod0": [
+        "R14_S07_art_timber",
+        "R14_S07_art_granite",
+        "R14_S07_art_foliage",
+        "R14_S07_art_curbstone",
+        "R14_S07_art_stonetile"
+      ]
+    },
+    {
+      "sector": "S08",
+      "material_batches_lod0": [
+        "R14_S08_art_timber",
+        "R14_S08_art_granite",
+        "R14_S08_art_foliage",
+        "R14_S08_art_curbstone",
+        "R14_S08_art_stonetile"
+      ]
+    },
+    {
+      "sector": "S09",
+      "material_batches_lod0": [
+        "R14_S09_art_timber",
+        "R14_S09_art_granite",
+        "R14_S09_art_foliage",
+        "R14_S09_art_curbstone",
+        "R14_S09_art_stonetile"
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "sector": "S00",
+      "kind": "urban_group",
+      "xy": [
+        -988.7382947836345,
+        -657.6598989593496
+      ],
+      "seed": 14061,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.7916985293562464,
+        0.6109119728857478
+      ],
+      "n": [
+        -0.6109119728857478,
+        0.7916985293562464
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S00",
+      "kind": "urban_group",
+      "xy": [
+        -960.3646282124708,
+        -636.6349569659684
+      ],
+      "seed": 14061,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.7922371362064353,
+        0.610213339755389
+      ],
+      "n": [
+        -0.610213339755389,
+        0.7922371362064353
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S00",
+      "kind": "urban_group",
+      "xy": [
+        -934.3730792749632,
+        -617.6782842580214
+      ],
+      "seed": 14061,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.7278599865344733,
+        0.6857257760956899
+      ],
+      "n": [
+        -0.6857257760956899,
+        0.7278599865344733
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S00",
+      "kind": "urban_group",
+      "xy": [
+        -909.5405767062383,
+        -599.6950880529139
+      ],
+      "seed": 14061,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.8502736027307447,
+        0.5263409546095378
+      ],
+      "n": [
+        -0.5263409546095378,
+        0.8502736027307447
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S00",
+      "kind": "urban_group",
+      "xy": [
+        -880.5412260510586,
+        -579.1646286470615
+      ],
+      "seed": 14061,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.805955082191665,
+        0.5919766933667463
+      ],
+      "n": [
+        -0.5919766933667463,
+        0.805955082191665
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S00",
+      "kind": "urban_group",
+      "xy": [
+        -858.8783767671783,
+        -563.7047195761021
+      ],
+      "seed": 14061,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.8148022709810893,
+        0.5797389578112373
+      ],
+      "n": [
+        -0.5797389578112373,
+        0.8148022709810893
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S00",
+      "kind": "urban_group",
+      "xy": [
+        -833.3264600668319,
+        -551.9148355108013
+      ],
+      "seed": 14061,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9222012388723027,
+        0.38671032443211306
+      ],
+      "n": [
+        -0.38671032443211306,
+        0.9222012388723027
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S00",
+      "kind": "kiosk",
+      "variant": 0,
+      "xy": [
+        -895,
+        -589.4846462901746
+      ],
+      "fictional": true,
+      "envelope_uv_m": [
+        3.1,
+        1.7
+      ],
+      "t": [
+        0.8059550821916213,
+        0.5919766933668058
+      ],
+      "n": [
+        -0.5919766933668058,
+        0.8059550821916213
+      ]
+    },
+    {
+      "sector": "S01",
+      "kind": "urban_group",
+      "xy": [
+        -784.980892022752,
+        -528.0474434086799
+      ],
+      "seed": 14062,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.8542922782032526,
+        0.5197929428169418
+      ],
+      "n": [
+        -0.5197929428169418,
+        0.8542922782032526
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S01",
+      "kind": "urban_group",
+      "xy": [
+        -762.9982880688482,
+        -513.4497121656153
+      ],
+      "seed": 14062,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.830796698412662,
+        0.5565760019140427
+      ],
+      "n": [
+        -0.5565760019140427,
+        0.830796698412662
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S01",
+      "kind": "urban_group",
+      "xy": [
+        -736.6262952733092,
+        -503.98539495856676
+      ],
+      "seed": 14062,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.990577227508122,
+        0.13695530782821863
+      ],
+      "n": [
+        -0.13695530782821863,
+        0.990577227508122
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S01",
+      "kind": "urban_group",
+      "xy": [
+        -710.1515096957507,
+        -498.0638108648069
+      ],
+      "seed": 14062,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9526701777212728,
+        0.3040058099453336
+      ],
+      "n": [
+        -0.3040058099453336,
+        0.9526701777212728
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S01",
+      "kind": "urban_group",
+      "xy": [
+        -683.8582760918428,
+        -489.673398353989
+      ],
+      "seed": 14062,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9526701777213044,
+        0.30400580994523535
+      ],
+      "n": [
+        -0.30400580994523535,
+        0.9526701777213044
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S01",
+      "kind": "urban_group",
+      "xy": [
+        -656.3183757256535,
+        -484.066804532662
+      ],
+      "seed": 14062,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9754779560757861,
+        0.2200971540256866
+      ],
+      "n": [
+        -0.2200971540256866,
+        0.9754779560757861
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S01",
+      "kind": "urban_group",
+      "xy": [
+        -631.1797369246478,
+        -478.47704968352764
+      ],
+      "seed": 14062,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9765805010751627,
+        0.21515232957089753
+      ],
+      "n": [
+        -0.21515232957089753,
+        0.9765805010751627
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S01",
+      "kind": "palm",
+      "xy": [
+        -742.9825653311854,
+        -504.0642006672395
+      ],
+      "height_m": 5.6247028670002,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S01",
+      "kind": "palm",
+      "xy": [
+        -651.8135157138049,
+        -482.2503726781885
+      ],
+      "height_m": 5.581057299109321,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S01",
+      "kind": "kiosk",
+      "variant": 1,
+      "xy": [
+        -695,
+        -492.9288248595058
+      ],
+      "fictional": true,
+      "envelope_uv_m": [
+        3.1,
+        1.7
+      ],
+      "t": [
+        0.9526701777213356,
+        0.30400580994513704
+      ],
+      "n": [
+        -0.30400580994513704,
+        0.9526701777213356
+      ]
+    },
+    {
+      "sector": "S02",
+      "kind": "urban_group",
+      "xy": [
+        -588.770756286399,
+        -472.49823844618027
+      ],
+      "seed": 14063,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9892258221671899,
+        0.14639765284200149
+      ],
+      "n": [
+        -0.14639765284200149,
+        0.9892258221671899
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S02",
+      "kind": "urban_group",
+      "xy": [
+        -558.3428704295602,
+        -467.81810450974575
+      ],
+      "seed": 14063,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9820418949924,
+        0.18866297061091736
+      ],
+      "n": [
+        -0.18866297061091736,
+        0.9820418949924
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S02",
+      "kind": "urban_group",
+      "xy": [
+        -537.5854389901879,
+        -464.75523010497625
+      ],
+      "seed": 14063,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9969439320586453,
+        0.07812039638562507
+      ],
+      "n": [
+        -0.07812039638562507,
+        0.9969439320586453
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S02",
+      "kind": "urban_group",
+      "xy": [
+        -509.54445845235347,
+        -464.2483078673983
+      ],
+      "seed": 14063,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9977995755748273,
+        -0.066302390474962
+      ],
+      "n": [
+        0.066302390474962,
+        0.9977995755748273
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S02",
+      "kind": "urban_group",
+      "xy": [
+        -480.26700314737934,
+        -466.20661572638335
+      ],
+      "seed": 14063,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9977518969574549,
+        -0.06701605865612024
+      ],
+      "n": [
+        0.06701605865612024,
+        0.9977518969574549
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S02",
+      "kind": "urban_group",
+      "xy": [
+        -459.8268789146435,
+        -466.7750432904723
+      ],
+      "seed": 14063,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9968895919332508,
+        -0.07881079554957533
+      ],
+      "n": [
+        0.07881079554957533,
+        0.9968895919332508
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S02",
+      "kind": "urban_group",
+      "xy": [
+        -429.6660318858942,
+        -469.2950173394802
+      ],
+      "seed": 14063,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9971866790661784,
+        -0.07495816895419975
+      ],
+      "n": [
+        0.07495816895419975,
+        0.9971866790661784
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S02",
+      "kind": "palm",
+      "xy": [
+        -541.676022505877,
+        -464.27576769532425
+      ],
+      "height_m": 5.990824609637122,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S02",
+      "kind": "palm",
+      "xy": [
+        -461.2023192179834,
+        -465.8663055271188
+      ],
+      "height_m": 5.507147048411108,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S02",
+      "kind": "kiosk",
+      "variant": 2,
+      "xy": [
+        -495,
+        -464.9170436852107
+      ],
+      "fictional": true,
+      "envelope_uv_m": [
+        3.1,
+        1.7
+      ],
+      "t": [
+        0.9977518969574509,
+        -0.06701605865617669
+      ],
+      "n": [
+        0.06701605865617669,
+        0.9977518969574509
+      ]
+    },
+    {
+      "sector": "S03",
+      "kind": "urban_group",
+      "xy": [
+        -389.47639702774694,
+        -467.0072105466594
+      ],
+      "seed": 14064,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9904588807551793,
+        0.1378085829445967
+      ],
+      "n": [
+        -0.1378085829445967,
+        0.9904588807551793
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S03",
+      "kind": "urban_group",
+      "xy": [
+        -362.5346120788812,
+        -463.2818520713272
+      ],
+      "seed": 14064,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9910273543262687,
+        0.13365920461036754
+      ],
+      "n": [
+        -0.13365920461036754,
+        0.9910273543262687
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S03",
+      "kind": "urban_group",
+      "xy": [
+        -336.99168614413793,
+        -459.437044428222
+      ],
+      "seed": 14064,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9901600743189165,
+        0.13993936981692315
+      ],
+      "n": [
+        -0.13993936981692315,
+        0.9901600743189165
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S03",
+      "kind": "urban_group",
+      "xy": [
+        -306.8455409916543,
+        -455.5288944083556
+      ],
+      "seed": 14064,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.983529751915966,
+        0.18074630589895413
+      ],
+      "n": [
+        -0.18074630589895413,
+        0.983529751915966
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S03",
+      "kind": "urban_group",
+      "xy": [
+        -280.94446900444404,
+        -450.64273521764284
+      ],
+      "seed": 14064,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9814969199020559,
+        0.19147792620241405
+      ],
+      "n": [
+        -0.19147792620241405,
+        0.9814969199020559
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S03",
+      "kind": "urban_group",
+      "xy": [
+        -254.99668049920754,
+        -445.19146389125007
+      ],
+      "seed": 14064,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9829654544342572,
+        0.18379041158029544
+      ],
+      "n": [
+        -0.18379041158029544,
+        0.9829654544342572
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S03",
+      "kind": "urban_group",
+      "xy": [
+        -229.02282110081495,
+        -440.2785563086396
+      ],
+      "seed": 14064,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9823926441421287,
+        0.18682797631895823
+      ],
+      "n": [
+        -0.18682797631895823,
+        0.9823926441421287
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S03",
+      "kind": "palm",
+      "xy": [
+        -345.4672535601894,
+        -460.07953500267655
+      ],
+      "height_m": 6.060770785767463,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S03",
+      "kind": "palm",
+      "xy": [
+        -260.98865549209967,
+        -445.5118161326789
+      ],
+      "height_m": 5.53563865281549,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S03",
+      "kind": "kiosk",
+      "variant": 0,
+      "xy": [
+        -295,
+        -453.0520026860207
+      ],
+      "fictional": true,
+      "envelope_uv_m": [
+        3.1,
+        1.7
+      ],
+      "t": [
+        0.9835297519159759,
+        0.18074630589890006
+      ],
+      "n": [
+        -0.18074630589890006,
+        0.9835297519159759
+      ]
+    },
+    {
+      "sector": "S07",
+      "kind": "urban_group",
+      "xy": [
+        411.1015261281355,
+        -446.4587187899888
+      ],
+      "seed": 14068,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9852754333071886,
+        -0.17097461952386897
+      ],
+      "n": [
+        0.17097461952386897,
+        0.9852754333071886
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S07",
+      "kind": "urban_group",
+      "xy": [
+        439.84512693419055,
+        -451.4465892325355
+      ],
+      "seed": 14068,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9852754333071886,
+        -0.17097461952386897
+      ],
+      "n": [
+        0.17097461952386897,
+        0.9852754333071886
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S07",
+      "kind": "urban_group",
+      "xy": [
+        465.59416340955744,
+        -455.9148136149338
+      ],
+      "seed": 14068,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9852754333071981,
+        -0.17097461952381462
+      ],
+      "n": [
+        0.17097461952381462,
+        0.9852754333071981
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S07",
+      "kind": "urban_group",
+      "xy": [
+        488.2503975652587,
+        -459.8463447215318
+      ],
+      "seed": 14068,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9852754333071981,
+        -0.17097461952381462
+      ],
+      "n": [
+        0.17097461952381462,
+        0.9852754333071981
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S07",
+      "kind": "urban_group",
+      "xy": [
+        519.384980781617,
+        -465.24912179228664
+      ],
+      "seed": 14068,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9852754333071981,
+        -0.17097461952381462
+      ],
+      "n": [
+        0.17097461952381462,
+        0.9852754333071981
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S07",
+      "kind": "urban_group",
+      "xy": [
+        543.9083531918243,
+        -469.5046569711175
+      ],
+      "seed": 14068,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9852754333071981,
+        -0.17097461952381462
+      ],
+      "n": [
+        0.17097461952381462,
+        0.9852754333071981
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S07",
+      "kind": "urban_group",
+      "xy": [
+        566.3926076678409,
+        -473.406344483421
+      ],
+      "seed": 14068,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9852754333071981,
+        -0.17097461952381462
+      ],
+      "n": [
+        0.17097461952381462,
+        0.9852754333071981
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S07",
+      "kind": "palm",
+      "xy": [
+        449.4903582752672,
+        -452.32032401066203
+      ],
+      "height_m": 6.379657846274967,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S07",
+      "kind": "palm",
+      "xy": [
+        548.9005562246178,
+        -469.5709528161815
+      ],
+      "height_m": 6.023987097504959,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S07",
+      "kind": "kiosk",
+      "variant": 1,
+      "xy": [
+        505,
+        -462.4528993829455
+      ],
+      "fictional": true,
+      "envelope_uv_m": [
+        3.1,
+        1.7
+      ],
+      "t": [
+        0.9852754333071886,
+        -0.17097461952386897
+      ],
+      "n": [
+        0.17097461952386897,
+        0.9852754333071886
+      ]
+    },
+    {
+      "sector": "S08",
+      "kind": "urban_group",
+      "xy": [
+        613.819598898909,
+        -483.3752759358462
+      ],
+      "seed": 14069,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.971474515674973,
+        -0.23714397608642052
+      ],
+      "n": [
+        0.23714397608642052,
+        0.971474515674973
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S08",
+      "kind": "urban_group",
+      "xy": [
+        636.2526958833,
+        -488.85135763327935
+      ],
+      "seed": 14069,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749856,
+        -0.23714397608636836
+      ],
+      "n": [
+        0.23714397608636836,
+        0.9714745156749856
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S08",
+      "kind": "urban_group",
+      "xy": [
+        667.1092813502589,
+        -496.38367397098637
+      ],
+      "seed": 14069,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749856,
+        -0.23714397608636836
+      ],
+      "n": [
+        0.23714397608636836,
+        0.9714745156749856
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S08",
+      "kind": "urban_group",
+      "xy": [
+        689.3551568728011,
+        -501.814053551529
+      ],
+      "seed": 14069,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749602,
+        -0.23714397608647264
+      ],
+      "n": [
+        0.23714397608647264,
+        0.9714745156749602
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S08",
+      "kind": "urban_group",
+      "xy": [
+        719.9813690742408,
+        -509.2901341040583
+      ],
+      "seed": 14069,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749856,
+        -0.23714397608636836
+      ],
+      "n": [
+        0.23714397608636836,
+        0.9714745156749856
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S08",
+      "kind": "urban_group",
+      "xy": [
+        741.6749821088301,
+        -514.5857024053307
+      ],
+      "seed": 14069,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749856,
+        -0.23714397608636836
+      ],
+      "n": [
+        0.23714397608636836,
+        0.9714745156749856
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S08",
+      "kind": "urban_group",
+      "xy": [
+        769.3006545211647,
+        -521.3293294302454
+      ],
+      "seed": 14069,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749856,
+        -0.23714397608636836
+      ],
+      "n": [
+        0.23714397608636836,
+        0.9714745156749856
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S08",
+      "kind": "palm",
+      "xy": [
+        650.5805484458417,
+        -491.5488903741153
+      ],
+      "height_m": 6.297345705478143,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S08",
+      "kind": "palm",
+      "xy": [
+        743.9603805235862,
+        -514.3435847360271
+      ],
+      "height_m": 5.480321211719653,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S08",
+      "kind": "kiosk",
+      "variant": 2,
+      "xy": [
+        705,
+        -505.33307324228673
+      ],
+      "fictional": true,
+      "envelope_uv_m": [
+        3.1,
+        1.7
+      ],
+      "t": [
+        0.9714745156749856,
+        -0.23714397608636836
+      ],
+      "n": [
+        0.23714397608636836,
+        0.9714745156749856
+      ]
+    },
+    {
+      "sector": "S09",
+      "kind": "urban_group",
+      "xy": [
+        810.5382956845315,
+        -531.3957367647813
+      ],
+      "seed": 14070,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749602,
+        -0.23714397608647264
+      ],
+      "n": [
+        0.23714397608647264,
+        0.9714745156749602
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S09",
+      "kind": "urban_group",
+      "xy": [
+        839.4931247479303,
+        -538.4638205695591
+      ],
+      "seed": 14070,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749602,
+        -0.23714397608647264
+      ],
+      "n": [
+        0.23714397608647264,
+        0.9714745156749602
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S09",
+      "kind": "urban_group",
+      "xy": [
+        867.3923993971815,
+        -545.2742358851408
+      ],
+      "seed": 14070,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749856,
+        -0.23714397608636836
+      ],
+      "n": [
+        0.23714397608636836,
+        0.9714745156749856
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S09",
+      "kind": "urban_group",
+      "xy": [
+        892.8586428450141,
+        -551.4907306359139
+      ],
+      "seed": 14070,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9714745156749602,
+        -0.23714397608647264
+      ],
+      "n": [
+        0.23714397608647264,
+        0.9714745156749602
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S09",
+      "kind": "urban_group",
+      "xy": [
+        915.1851594483145,
+        -557.9508747013228
+      ],
+      "seed": 14070,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9565684715674934,
+        -0.29150773437943256
+      ],
+      "n": [
+        0.29150773437943256,
+        0.9565684715674934
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S09",
+      "kind": "urban_group",
+      "xy": [
+        940.8685973928012,
+        -566.3013557791014
+      ],
+      "seed": 14070,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9380249251999555,
+        -0.34656779957696315
+      ],
+      "n": [
+        0.34656779957696315,
+        0.9380249251999555
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S09",
+      "kind": "urban_group",
+      "xy": [
+        971.814877600778,
+        -577.7349370717142
+      ],
+      "seed": 14070,
+      "envelope_uv_m": [
+        5,
+        1.1
+      ],
+      "t": [
+        0.9380249251999555,
+        -0.34656779957696315
+      ],
+      "n": [
+        0.34656779957696315,
+        0.9380249251999555
+      ],
+      "fictional": true
+    },
+    {
+      "sector": "S09",
+      "kind": "palm",
+      "xy": [
+        854.9619193357897,
+        -541.4398655348562
+      ],
+      "height_m": 6.264219913360245,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S09",
+      "kind": "palm",
+      "xy": [
+        941.0895611360218,
+        -565.5829942475654
+      ],
+      "height_m": 6.560050261651571,
+      "fictional": true,
+      "envelope_uv_m": [
+        2,
+        2
+      ],
+      "t": [
+        1,
+        0
+      ],
+      "n": [
+        0,
+        1
+      ]
+    },
+    {
+      "sector": "S09",
+      "kind": "kiosk",
+      "variant": 0,
+      "xy": [
+        905,
+        -554.5470166469111
+      ],
+      "fictional": true,
+      "envelope_uv_m": [
+        3.1,
+        1.7
+      ],
+      "t": [
+        0.9565684715674934,
+        -0.29150773437943256
+      ],
+      "n": [
+        0.29150773437943256,
+        0.9565684715674934
+      ]
+    }
+  ],
+  "facades": [
+    {
+      "sector": "S00",
+      "osm_id": "way/1047144242",
+      "style_id": "cop_hotel_contemporaneo_02",
+      "windows": 30,
+      "seed": 238007887968039664,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S00",
+      "osm_id": "way/1047144243",
+      "style_id": "cop_residencial_anos70_04",
+      "windows": 20,
+      "seed": 14826174579472038878,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S00",
+      "osm_id": "way/1047144244",
+      "style_id": "cop_residencial_anos70_05",
+      "windows": 30,
+      "seed": 10969618505753849768,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S00",
+      "osm_id": "way/1047144245",
+      "style_id": "cop_residencial_orla_04",
+      "windows": 10,
+      "seed": 14943654320921758667,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S00",
+      "osm_id": "way/1048571131",
+      "style_id": "cop_hotel_contemporaneo_03",
+      "windows": 10,
+      "seed": 9203491625680242397,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1047144265",
+      "style_id": "cop_residencial_compacto_05",
+      "windows": 45,
+      "seed": 11312834972953109132,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1047272519",
+      "style_id": "cop_residencial_compacto_04",
+      "windows": 15,
+      "seed": 6332559889548599744,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1047272520",
+      "style_id": "cop_hotel_classico_05",
+      "windows": 15,
+      "seed": 3363817375030759793,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1047272521",
+      "style_id": "cop_residencial_compacto_05",
+      "windows": 10,
+      "seed": 12169362392185848910,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1047272522",
+      "style_id": "cop_misto_loja_terrea_05",
+      "windows": 35,
+      "seed": 7130073569909859561,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1047272963",
+      "style_id": "cop_art_deco_carioca_01",
+      "windows": 25,
+      "seed": 271202943043252228,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1048571124",
+      "style_id": "cop_residencial_compacto_04",
+      "windows": 10,
+      "seed": 4673747608934899996,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S01",
+      "osm_id": "way/1343107208",
+      "style_id": "cop_predio_historico_04",
+      "windows": 10,
+      "seed": 13566037163954027847,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S02",
+      "osm_id": "way/115811470",
+      "style_id": "cop_residencial_anos70_01",
+      "windows": 10,
+      "seed": 9935269358614307267,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S02",
+      "osm_id": "way/1042045591",
+      "style_id": "cop_hotel_classico_05",
+      "windows": 25,
+      "seed": 2517351717057954841,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S02",
+      "osm_id": "way/1343107201",
+      "style_id": "cop_residencial_compacto_05",
+      "windows": 10,
+      "seed": 10653283550776148823,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S02",
+      "osm_id": "way/1343107203",
+      "style_id": "cop_residencial_orla_02",
+      "windows": 5,
+      "seed": 5984948003917347557,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S02",
+      "osm_id": "way/1343107204",
+      "style_id": "cop_misto_loja_terrea_02",
+      "windows": 10,
+      "seed": 8807452308231500341,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S02",
+      "osm_id": "way/1343107206",
+      "style_id": "cop_hotel_classico_05",
+      "windows": 10,
+      "seed": 3982739262156490154,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S03",
+      "osm_id": "way/1343107192",
+      "style_id": "cop_predio_historico_04",
+      "windows": 10,
+      "seed": 5059808662612777077,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S03",
+      "osm_id": "way/1343107195",
+      "style_id": "cop_residencial_compacto_02",
+      "windows": 10,
+      "seed": 10533564491948731806,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S03",
+      "osm_id": "way/1343107196",
+      "style_id": "cop_residencial_orla_02",
+      "windows": 10,
+      "seed": 6913422267999513333,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S03",
+      "osm_id": "way/1343107197",
+      "style_id": "cop_art_deco_carioca_04",
+      "windows": 10,
+      "seed": 13374362630043137883,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S03",
+      "osm_id": "way/1343107198",
+      "style_id": "cop_residencial_orla_04",
+      "windows": 10,
+      "seed": 9859040445560839340,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S03",
+      "osm_id": "way/1343107199",
+      "style_id": "cop_hotel_contemporaneo_04",
+      "windows": 5,
+      "seed": 15213770473046931732,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S03",
+      "osm_id": "way/1343107200",
+      "style_id": "cop_hotel_classico_03",
+      "windows": 5,
+      "seed": 2147396574765293338,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S07",
+      "osm_id": "way/1343107177",
+      "style_id": "cop_misto_loja_terrea_01",
+      "windows": 10,
+      "seed": 14855639307595326215,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S07",
+      "osm_id": "way/1343107178",
+      "style_id": "cop_hotel_classico_01",
+      "windows": 10,
+      "seed": 10154413925763341878,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S08",
+      "osm_id": "way/1042049442",
+      "style_id": "cop_residencial_orla_01",
+      "windows": 5,
+      "seed": 7547093284097377703,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S08",
+      "osm_id": "way/1343107173",
+      "style_id": "cop_predio_historico_05",
+      "windows": 10,
+      "seed": 17438767516909860917,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S08",
+      "osm_id": "way/1343107174",
+      "style_id": "cop_residencial_orla_03",
+      "windows": 10,
+      "seed": 8122707412437202689,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S08",
+      "osm_id": "way/1343107175",
+      "style_id": "cop_art_deco_carioca_02",
+      "windows": 10,
+      "seed": 6688469264526775620,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S09",
+      "osm_id": "way/1343107168",
+      "style_id": "cop_residencial_compacto_05",
+      "windows": 10,
+      "seed": 12836933798102042424,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S09",
+      "osm_id": "way/1343107169",
+      "style_id": "cop_residencial_orla_02",
+      "windows": 10,
+      "seed": 13813862372903313854,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S09",
+      "osm_id": "way/1343107170",
+      "style_id": "cop_residencial_orla_03",
+      "windows": 10,
+      "seed": 2490123736701269685,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S09",
+      "osm_id": "way/1343107171",
+      "style_id": "cop_hotel_classico_01",
+      "windows": 10,
+      "seed": 3697002069293731497,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    },
+    {
+      "sector": "S09",
+      "osm_id": "way/1343107172",
+      "style_id": "cop_residencial_orla_02",
+      "windows": 10,
+      "seed": 15506817921562077879,
+      "lattice": "R8 3.10m bays and 3.2m floors; same window width/height"
+    }
+  ],
+  "artistic_gate_approved": false,
+  "fps_measured": false,
+  "native_blender_version": "5.2.1 LTS",
+  "native_missing_uv0": 0,
+  "native_placement_envelopes_checked": 68,
+  "native_lod_batches": 35
+}

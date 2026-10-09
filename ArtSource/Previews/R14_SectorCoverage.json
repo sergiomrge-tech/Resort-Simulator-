@@ -1,0 +1,695 @@
+{
+  "stage": "R14_URBAN_FINISH_PARTIAL_ART_PENDING",
+  "base_commit": "5217a65",
+  "frame_m": [
+    2000,
+    1000
+  ],
+  "connector_fbx_sha256": "d7cb6f13c8ea2266ddcf577265d3b88cbfba2036d898dee185636cd837f47e8f",
+  "art_fbx_sha256": "7fdaebe2c2094907de19d0406ea94218128b0a1d47f4f222ea7329740b171080",
+  "sectors": [
+    {
+      "sector": "S00",
+      "status": "INTERMEDIARIO",
+      "previous_status": "BASE",
+      "local_x_m": [
+        -1000,
+        -800
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 13890,
+      "parts": {
+        "gutter": {
+          "area_m2": 166.3232758569967,
+          "polygon_count": 8,
+          "minimum_lot_distance_m": 3.7430695642873038,
+          "mesh": "R14_S00_gutter"
+        },
+        "curbstone": {
+          "area_m2": 103.52379730903097,
+          "polygon_count": 12,
+          "minimum_lot_distance_m": 3.563069564287328,
+          "mesh": "R14_S00_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 971.3118608416714,
+          "polygon_count": 10,
+          "minimum_lot_distance_m": 1.2430695642873268,
+          "mesh": "R14_S00_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 15,
+      "art_triangles_including_lod": 112963,
+      "urban_groups_new": 7,
+      "palms_new": 0,
+      "kiosks_new": 1,
+      "kiosk_variants": [
+        0
+      ],
+      "facades_new": 5,
+      "facade_osm_ids": [
+        "way/1047144242",
+        "way/1047144243",
+        "way/1047144244",
+        "way/1047144245",
+        "way/1048571131"
+      ],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 0,
+      "ramps_inferred": 1,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 26.800419621030894,
+        "maximum": 164.93369078126636,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S01",
+      "status": "INTERMEDIARIO",
+      "previous_status": "BASE",
+      "local_x_m": [
+        -800,
+        -600
+      ],
+      "connector_meshes": 4,
+      "connector_triangles": 72576,
+      "parts": {
+        "gutter": {
+          "area_m2": 906.8047993082462,
+          "polygon_count": 23,
+          "minimum_lot_distance_m": 0.2496973121803901,
+          "mesh": "R14_S01_gutter"
+        },
+        "curbstone": {
+          "area_m2": 555.7605003814948,
+          "polygon_count": 32,
+          "minimum_lot_distance_m": 0.2496969244668705,
+          "mesh": "R14_S01_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 4340.45835531366,
+          "polygon_count": 29,
+          "minimum_lot_distance_m": 0.2496586822333272,
+          "mesh": "R14_S01_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 44.83511219440884,
+          "polygon_count": 5,
+          "minimum_lot_distance_m": 0.24970006024925934,
+          "mesh": "R14_S01_stonetile"
+        }
+      },
+      "art_meshes_including_lod": 15,
+      "art_triangles_including_lod": 224707,
+      "urban_groups_new": 7,
+      "palms_new": 2,
+      "kiosks_new": 1,
+      "kiosk_variants": [
+        1
+      ],
+      "facades_new": 8,
+      "facade_osm_ids": [
+        "way/1047144265",
+        "way/1047272519",
+        "way/1047272520",
+        "way/1047272521",
+        "way/1047272522",
+        "way/1047272963",
+        "way/1048571124",
+        "way/1343107208"
+      ],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 0,
+      "ramps_inferred": 2,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 1.7711359757213252,
+        "maximum": 30.203069916474814,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S02",
+      "status": "INTERMEDIARIO",
+      "previous_status": "BASE",
+      "local_x_m": [
+        -600,
+        -400
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 60030,
+      "parts": {
+        "gutter": {
+          "area_m2": 749.0762320683475,
+          "polygon_count": 23,
+          "minimum_lot_distance_m": 0.24999999999996267,
+          "mesh": "R14_S02_gutter"
+        },
+        "curbstone": {
+          "area_m2": 476.0761414131684,
+          "polygon_count": 24,
+          "minimum_lot_distance_m": 0.24969743456739416,
+          "mesh": "R14_S02_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 3606.4152725108374,
+          "polygon_count": 24,
+          "minimum_lot_distance_m": 0.24969697526462506,
+          "mesh": "R14_S02_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 15,
+      "art_triangles_including_lod": 172329,
+      "urban_groups_new": 7,
+      "palms_new": 2,
+      "kiosks_new": 1,
+      "kiosk_variants": [
+        2
+      ],
+      "facades_new": 6,
+      "facade_osm_ids": [
+        "way/115811470",
+        "way/1042045591",
+        "way/1343107201",
+        "way/1343107203",
+        "way/1343107204",
+        "way/1343107206"
+      ],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 0,
+      "ramps_inferred": 4,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 29.232350358692585,
+        "maximum": 78.51057426411086,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S03",
+      "status": "INTERMEDIARIO",
+      "previous_status": "BASE",
+      "local_x_m": [
+        -400,
+        -200
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 28940,
+      "parts": {
+        "gutter": {
+          "area_m2": 373.45650547222203,
+          "polygon_count": 17,
+          "minimum_lot_distance_m": 0.2496986030128109,
+          "mesh": "R14_S03_gutter"
+        },
+        "curbstone": {
+          "area_m2": 224.80771302676487,
+          "polygon_count": 17,
+          "minimum_lot_distance_m": 0.24969860301280375,
+          "mesh": "R14_S03_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1242.2983607899175,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.2496974670213446,
+          "mesh": "R14_S03_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 15,
+      "art_triangles_including_lod": 171413,
+      "urban_groups_new": 7,
+      "palms_new": 2,
+      "kiosks_new": 1,
+      "kiosk_variants": [
+        0
+      ],
+      "facades_new": 7,
+      "facade_osm_ids": [
+        "way/1343107192",
+        "way/1343107195",
+        "way/1343107196",
+        "way/1343107197",
+        "way/1343107198",
+        "way/1343107199",
+        "way/1343107200"
+      ],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 0,
+      "ramps_inferred": 4,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 78.51057426411086,
+        "maximum": 93.12680791473608,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S04",
+      "status": "INTERMEDIARIO",
+      "previous_status": "INTERMEDIARIO",
+      "local_x_m": [
+        -200,
+        0
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 32338,
+      "parts": {
+        "gutter": {
+          "area_m2": 418.1663473968238,
+          "polygon_count": 14,
+          "minimum_lot_distance_m": 0.24999999999998648,
+          "mesh": "R14_S04_gutter"
+        },
+        "curbstone": {
+          "area_m2": 263.5006414162145,
+          "polygon_count": 14,
+          "minimum_lot_distance_m": 0.24999999999998482,
+          "mesh": "R14_S04_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1489.7986940309233,
+          "polygon_count": 13,
+          "minimum_lot_distance_m": 0.24969750699309534,
+          "mesh": "R14_S04_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 0,
+      "art_triangles_including_lod": 0,
+      "urban_groups_new": 0,
+      "palms_new": 0,
+      "kiosks_new": 0,
+      "kiosk_variants": [],
+      "facades_new": 0,
+      "facade_osm_ids": [],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 8,
+      "ramps_inferred": 1,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 82.50805946606452,
+        "maximum": 94.0208320519737,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S05",
+      "status": "INTERMEDIARIO",
+      "previous_status": "INTERMEDIARIO",
+      "local_x_m": [
+        0,
+        200
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 31758,
+      "parts": {
+        "gutter": {
+          "area_m2": 396.085075499507,
+          "polygon_count": 10,
+          "minimum_lot_distance_m": 0.2496987122917691,
+          "mesh": "R14_S05_gutter"
+        },
+        "curbstone": {
+          "area_m2": 248.51842049568748,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24969864812502046,
+          "mesh": "R14_S05_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1406.737085672856,
+          "polygon_count": 13,
+          "minimum_lot_distance_m": 0.24969763380725463,
+          "mesh": "R14_S05_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 0,
+      "art_triangles_including_lod": 0,
+      "urban_groups_new": 0,
+      "palms_new": 0,
+      "kiosks_new": 0,
+      "kiosk_variants": [],
+      "facades_new": 0,
+      "facade_osm_ids": [],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 8,
+      "ramps_inferred": 2,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 84.98754546349997,
+        "maximum": 93.85668237194518,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S06",
+      "status": "INTERMEDIARIO",
+      "previous_status": "INTERMEDIARIO",
+      "local_x_m": [
+        200,
+        400
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 33760,
+      "parts": {
+        "gutter": {
+          "area_m2": 422.15525901493004,
+          "polygon_count": 15,
+          "minimum_lot_distance_m": 0.24969967081180194,
+          "mesh": "R14_S06_gutter"
+        },
+        "curbstone": {
+          "area_m2": 268.0367186687056,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.24969942185182936,
+          "mesh": "R14_S06_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1567.3274271207135,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.24968613510476348,
+          "mesh": "R14_S06_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 0,
+      "art_triangles_including_lod": 0,
+      "urban_groups_new": 0,
+      "palms_new": 0,
+      "kiosks_new": 0,
+      "kiosk_variants": [],
+      "facades_new": 0,
+      "facade_osm_ids": [],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 8,
+      "ramps_inferred": 4,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 83.54785291767578,
+        "maximum": 87.49376193412755,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S07",
+      "status": "INTERMEDIARIO",
+      "previous_status": "BASE",
+      "local_x_m": [
+        400,
+        600
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 36008,
+      "parts": {
+        "gutter": {
+          "area_m2": 462.1467703255051,
+          "polygon_count": 15,
+          "minimum_lot_distance_m": 0.24969996753469847,
+          "mesh": "R14_S07_gutter"
+        },
+        "curbstone": {
+          "area_m2": 297.66909900454795,
+          "polygon_count": 16,
+          "minimum_lot_distance_m": 0.24969971046315367,
+          "mesh": "R14_S07_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 1992.8422478372456,
+          "polygon_count": 13,
+          "minimum_lot_distance_m": 0.24969920640802,
+          "mesh": "R14_S07_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 15,
+      "art_triangles_including_lod": 144092,
+      "urban_groups_new": 7,
+      "palms_new": 2,
+      "kiosks_new": 1,
+      "kiosk_variants": [
+        1
+      ],
+      "facades_new": 2,
+      "facade_osm_ids": [
+        "way/1343107177",
+        "way/1343107178"
+      ],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 0,
+      "ramps_inferred": 0,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 77.20208292973643,
+        "maximum": 87.31386379849637,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S08",
+      "status": "INTERMEDIARIO",
+      "previous_status": "BASE",
+      "local_x_m": [
+        600,
+        800
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 34282,
+      "parts": {
+        "gutter": {
+          "area_m2": 429.99230175245793,
+          "polygon_count": 10,
+          "minimum_lot_distance_m": 0.2496998427333103,
+          "mesh": "R14_S08_gutter"
+        },
+        "curbstone": {
+          "area_m2": 274.1537656642439,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24999999999994238,
+          "mesh": "R14_S08_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 2244.908738801621,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24969849069489758,
+          "mesh": "R14_S08_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 15,
+      "art_triangles_including_lod": 152413,
+      "urban_groups_new": 7,
+      "palms_new": 2,
+      "kiosks_new": 1,
+      "kiosk_variants": [
+        2
+      ],
+      "facades_new": 4,
+      "facade_osm_ids": [
+        "way/1042049442",
+        "way/1343107173",
+        "way/1343107174",
+        "way/1343107175"
+      ],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 0,
+      "ramps_inferred": 2,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 78.67961512667301,
+        "maximum": 83.08338842545206,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S09",
+      "status": "INTERMEDIARIO",
+      "previous_status": "BASE",
+      "local_x_m": [
+        800,
+        1000
+      ],
+      "connector_meshes": 3,
+      "connector_triangles": 38012,
+      "parts": {
+        "gutter": {
+          "area_m2": 481.4892306087835,
+          "polygon_count": 11,
+          "minimum_lot_distance_m": 0.24970072460822557,
+          "mesh": "R14_S09_gutter"
+        },
+        "curbstone": {
+          "area_m2": 302.7711931755468,
+          "polygon_count": 15,
+          "minimum_lot_distance_m": 0.24999999999996497,
+          "mesh": "R14_S09_curbstone"
+        },
+        "sidewalk": {
+          "area_m2": 2036.5513782812118,
+          "polygon_count": 14,
+          "minimum_lot_distance_m": 0.24965994689489168,
+          "mesh": "R14_S09_sidewalk"
+        },
+        "stonetile": {
+          "area_m2": 0.0,
+          "polygon_count": 0,
+          "minimum_lot_distance_m": null
+        }
+      },
+      "art_meshes_including_lod": 15,
+      "art_triangles_including_lod": 164763,
+      "urban_groups_new": 7,
+      "palms_new": 2,
+      "kiosks_new": 1,
+      "kiosk_variants": [
+        0
+      ],
+      "facades_new": 5,
+      "facade_osm_ids": [
+        "way/1343107168",
+        "way/1343107169",
+        "way/1343107170",
+        "way/1343107171",
+        "way/1343107172"
+      ],
+      "original_osm_trees_total": 48,
+      "r13_groups_preserved": 0,
+      "ramps_inferred": 2,
+      "fictional_planting": true,
+      "promenade_road_gap": {
+        "minimum": 74.76933847052162,
+        "maximum": 85.66952100107939,
+        "sample_step_m": 10
+      },
+      "qa": {
+        "connectors_native": "R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "art_native": "R14_ART_NATIVE_FBX_REIMPORT_PASS_ART_PENDING",
+        "unity_gate": "PENDING",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    }
+  ],
+  "connectors_meshes": 31,
+  "art_meshes": 105,
+  "source_invariants": "PASS",
+  "unity_native_gate": "PENDING",
+  "r14_unity_png_count": 0,
+  "fps_measured": false,
+  "gameplay_integrated": false,
+  "artistic_gate_approved": false,
+  "limits": [
+    "GIS is clipped to y +/-500; curved R13 shoreline extends outside it at map ends. No invented road across missing substrate.",
+    "No surveyed entrances, curb heights or crossing geometry. No gameplay collision approval.",
+    "8m connection search intentionally leaves wider promenade-road gaps pending.",
+    "Connector LOD decimation and gap closure across missing GIS substrate pending; no premium approval."
+  ]
+}

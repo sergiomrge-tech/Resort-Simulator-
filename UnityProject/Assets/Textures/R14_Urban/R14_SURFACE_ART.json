@@ -1,0 +1,319 @@
+{
+  "author": "Project Resort original procedural artwork",
+  "seed": 14061,
+  "external_assets": false,
+  "textures": [
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_asphalt_base.png",
+      "sha256": "e3e8331a00f1fb7c5eda5214064195922679bec0e6a9b16fb9e495db395ac0f0",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_asphalt_normal.png",
+      "sha256": "20e85392cfb6233ffcfba303da977b0ffb4655a404a52af0e5cc5be56bae97e7",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_asphalt_mask.png",
+      "sha256": "c4f882597195506499d8f13d2bf0b2054a25ec583c8afd921e20b7b937e867ef",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_sidewalk_base.png",
+      "sha256": "effe1e5761503dab446a5deb79a90ee1f6a892ccc5454e61f6ee5dd8f2e7fa1e",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_sidewalk_normal.png",
+      "sha256": "898f02d7319aee47dd4a1f16cbe4f5e001964ece300750dc4917ff55735b590c",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_sidewalk_mask.png",
+      "sha256": "9145823629fab8a4ffdc8abbe2dc2e23bb5e74f3833ddf94513d93cc6902f0f2",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_curbstone_base.png",
+      "sha256": "df12dba60a759fc3a0ec4b2f9af381c31c4801b3e258bec6cc7a93a0fbb0c71a",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_curbstone_normal.png",
+      "sha256": "9bd93d8f6a9b815bbc639dafd91a0483852f9b446599fe3e0d6e17e70d80f2ad",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_curbstone_mask.png",
+      "sha256": "a59561b61c81895b3735d624b13183d1fd1803f951b12fa9b78bc2ed1c691699",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_gutter_base.png",
+      "sha256": "d97c05ef6126170d30fc1db49a3b4bc23b3ca3e86ec6fc9c512d74f0ec63f6d0",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_gutter_normal.png",
+      "sha256": "3c4c54192dc35f67ad705e5ff1a80d4d480e43a31198ec481f37b1c607f999cb",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_gutter_mask.png",
+      "sha256": "d82b9bb1eef92fc976367805a3931482aec8ccdc37074ea3e3b0b1bf49f35979",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_stonetile_base.png",
+      "sha256": "e339f2924ac03ace2b072fb30a23522efd485adc11edc336ce0a5f0dfad1405b",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_stonetile_normal.png",
+      "sha256": "27c899e841ec28785d64d2ec210bc0c1159f935340c0570d8c7450c2f0f4d9e3",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_stonetile_mask.png",
+      "sha256": "44c44a2dfbdc3efeb5b40d6fc47618d68685d7627da5d7c5e607b1ebf2cabcbd",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_timber_base.png",
+      "sha256": "25fa823146162a7108faabd143544158f404d1e42e99833a4c4dbd2b6130fb7d",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_timber_normal.png",
+      "sha256": "bc9d0bd9c7379030a1f303eedeae61d37bd02c27aa575698b3f8404fbbb0aba5",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_timber_mask.png",
+      "sha256": "f699a540a488a4656e317aef6b1d002ad80f019db013955b13068b0712317f86",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_foliage_base.png",
+      "sha256": "28c84df105586ea4989e7e8f486b4153bc3da76404d7dda27e42cafe8cc77044",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_foliage_normal.png",
+      "sha256": "349e0e3cb35c82ebe083ea4ab575c7f641da144fe602538e9d255b85da4273c9",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_foliage_mask.png",
+      "sha256": "82948764834de85ba3678b32ac688a88259500a244450bb2f111c1bead94b3cd",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_granite_base.png",
+      "sha256": "82c49204e71c6ae32fba174af97e23c16fc19af9a52900205713a77f18dd56ea",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_granite_normal.png",
+      "sha256": "c5023e45582daba864a5266398749831b9903e886b1d10c0a9adcc407b229d4c",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R14_Urban/r14_granite_mask.png",
+      "sha256": "515cc1001e36c096d1e0e6b901cb9b2c42bb89e9909ae9568e65ec76448fc42c",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    }
+  ]
+}

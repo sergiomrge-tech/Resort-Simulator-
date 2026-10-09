@@ -1,0 +1,71 @@
+{
+  "status": "R14_REAL_BLENDER_ASSET_QA_ART_PENDING",
+  "blender_version": "5.2.1 LTS",
+  "renderer": "Cycles",
+  "shots": [
+    {
+      "path": "ArtSource/Previews/R14_S01_Connectors_RealBlender_AssetQA.png",
+      "sha256": "fbcb3b6e24c0984b315eaf6b0dbc08a90ebfb192aa257fd9374ce2e3e39b2958",
+      "camera_local": [
+        -710.68798828125,
+        -476.43896484375,
+        1.75
+      ],
+      "target_local": [
+        -695.68798828125,
+        -471.43896484375,
+        0.18000000715255737
+      ],
+      "renderer": "Blender Cycles",
+      "scope": "asset inspection; GIS streets + R14; no city or gameplay",
+      "resolution": [
+        1600,
+        900
+      ]
+    },
+    {
+      "path": "ArtSource/Previews/R14_S05_Connectors_RealBlender_AssetQA.png",
+      "sha256": "2b25602ebc21f278ff2a6387c91b360a88ec00dd7344da10f4dafe7b752011b9",
+      "camera_local": [
+        122.39300537109375,
+        -325.7969970703125,
+        1.75
+      ],
+      "target_local": [
+        137.39300537109375,
+        -320.7969970703125,
+        0.18000000715255737
+      ],
+      "renderer": "Blender Cycles",
+      "scope": "asset inspection; GIS streets + R14; no city or gameplay",
+      "resolution": [
+        1600,
+        900
+      ]
+    },
+    {
+      "path": "ArtSource/Previews/R14_S08_Connectors_RealBlender_AssetQA.png",
+      "sha256": "01cdb8bc6a1b270705fd7f9a506fa794a86c59fc6073691933e753c4e5faf445",
+      "camera_local": [
+        709.635009765625,
+        -419.15899658203125,
+        1.75
+      ],
+      "target_local": [
+        724.635009765625,
+        -414.15899658203125,
+        0.18000000715255737
+      ],
+      "renderer": "Blender Cycles",
+      "scope": "asset inspection; GIS streets + R14; no city or gameplay",
+      "resolution": [
+        1600,
+        900
+      ]
+    }
+  ],
+  "connector_fbx_sha256": "d7cb6f13c8ea2266ddcf577265d3b88cbfba2036d898dee185636cd837f47e8f",
+  "art_fbx_sha256": "7fdaebe2c2094907de19d0406ea94218128b0a1d47f4f222ea7329740b171080",
+  "unity_screenshot": false,
+  "artistic_gate_approved": false
+}
