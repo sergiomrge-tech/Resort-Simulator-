@@ -1,0 +1,26 @@
+name: Resort R6 | Evidencia visual Unity nativa (hash e gate)
+on:
+  push:
+    branches: [chatgpt/r6-pbr-fachadas-50]
+    paths:
+      - 'ArtSource/Previews/R6_*RealUnity.png'
+      - 'ArtSource/Previews/R6_*NativeQA.json'
+      - 'Tools/tests/test_r6_native_visual_evidence.py'
+      - 'docs/arte/R6_RESULTADO_UNITY_NATIVE_20261009.md'
+      - '.github/workflows/r6-native-visual-evidence.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-hash-not-art-approval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify native PNG SHA256, 1600x900, original GIS and failed artistic gate
+        run: python -m unittest discover -s Tools/tests -p test_r6_native_visual_evidence.py -v

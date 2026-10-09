@@ -1,0 +1,49 @@
+﻿{
+    "status": "R6_NATIVE_UNITY_CAPTURE_COMPLETED_ART_GATE_PENDING",
+    "unity_version": "6000.6.2f1",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "shader_pipeline": "BUILT_IN_STANDARD_FALLBACK",
+    "scene": "Assets/Scenes/R6_Copacabana_50_Fachadas_PBR_VisualQA.unity",
+    "recognized_buildings": 50,
+    "recognized_renderers": 370,
+    "meshes_without_uv0": 370,
+    "materials_using_r6": 370,
+    "screenshots": [
+        {
+            "filename": "R6_01_art_deco_carioca_RealUnity.png",
+            "sha256": "e0468122429dd9ef7ba4736f9abf0e6867984de4609a723832e83a9151bbb93b",
+            "osm_way": "176886419",
+            "style": "cop_art_deco_carioca_03",
+            "viewpoint": "OBLIQUE_45_REAL_UNITY",
+            "bytes": 90320
+        },
+        {
+            "filename": "R6_04_Pedestrian_RealUnity.png",
+            "sha256": "fa82287e51808995e865ad17341a8b016a5417c5aea9b65f09a4e40f6fad0832",
+            "osm_way": "176886419",
+            "style": "cop_art_deco_carioca_03",
+            "viewpoint": "PEDESTRIAN_CAMERA_REAL_UNITY",
+            "bytes": 59944
+        },
+        {
+            "filename": "R6_02_residencial_orla_RealUnity.png",
+            "sha256": "5a608cd3af52b2ad72b9d33c9e867533d46750b84748d8ac7f6458bff824550c",
+            "osm_way": "586695359",
+            "style": "cop_residencial_orla_05",
+            "viewpoint": "OBLIQUE_45_REAL_UNITY",
+            "bytes": 155240
+        },
+        {
+            "filename": "R6_03_hotel_contemporaneo_RealUnity.png",
+            "sha256": "9579a623855a1d94e59b4eda18fd6d44aad2aab68aa1256f2f32622681fdfbab",
+            "osm_way": "1048277507",
+            "style": "cop_hotel_contemporaneo_03",
+            "viewpoint": "OBLIQUE_45_REAL_UNITY",
+            "bytes": 85159
+        }
+    ],
+    "artistic_gate_passed": false,
+    "fps_measured": false,
+    "limitations": "Actual native Unity GPU Camera.Render. ART NOT APPROVED: first inspect screenshots. Standard shader fallback if URP not active; mesh UV availability logged. No actual gameplay or FPS measurement."
+}
