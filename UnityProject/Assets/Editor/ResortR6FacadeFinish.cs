@@ -341,6 +341,12 @@ public static class ResortR6FacadeFinish
         var styles = new HashSet<string>();
         var assets = new HashSet<string>();
         var textures = new HashSet<string>();
+        // Generate the complete reusable texture library independently of how
+        // Blender truncated FBX mesh labels in an individual R5 import.
+        foreach (string family in Families.Keys)
+            foreach (bool stone in new[] { false, true })
+                foreach (bool normal in new[] { false, true })
+                    textures.Add(Texture(family, stone, normal));
         int finished = 0;
         int inferredFallbacks = 0;
         Scene scene = EditorSceneManager.OpenScene(SourceScene, OpenSceneMode.Single);
