@@ -57,25 +57,30 @@ jobs:
           python -m pip install --disable-pip-version-check 'bpy==4.5.3' 'pyproj==3.7.2' 'shapely==2.1.2'
       - name: Record provenance and fail fast on real Blender API, winding, apertures and FBX suffixes
         run: |
+          set -euo pipefail
           mkdir -p build/R7_CIQA
           python -c "import json,os,bpy;from pathlib import Path;Path('build/R7_CIQA/provenance.json').write_text(json.dumps({'commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'blender':bpy.app.version_string},indent=2))"
           python Tools/tests/test_r7_geometry_native.py 2>&1 | tee build/R7_CIQA/native-smoke.log
       - name: Generate exactly 50 OSM models with UV0 and individual semantic material slots
         run: |
+          set -euo pipefail
           python -c "import bpy,sys,runpy;sys.argv=['blender','--','--mode','gallery','--no-render'];runpy.run_path('Tools/Blender/generate_r7_buildings.py',run_name='__main__')" 2>&1 | tee build/R7_CIQA/generate.log
       - name: Verify exact OSM mask with all original road triangles
         run: python Tools/geo/r7_mask_city_50.py 2>&1 | tee build/R7_CIQA/mask.log
       - name: Assemble R7 derived FBX (defer optional render until after native gates)
         run: |
+          set -euo pipefail
           python -c "import bpy,sys,runpy;sys.argv=['blender','--no-render'];runpy.run_path('Tools/Blender/assemble_r7_city_50.py',run_name='__main__')" 2>&1 | tee build/R7_CIQA/assemble.log
       - name: Validate real exported FBX after independent Blender re-import (UV and semantic per mesh)
         run: |
+          set -euo pipefail
           python Tools/tests/test_r7_exported_fbx_native.py 2>&1 | tee build/R7_CIQA/reimport.log
       - name: Generate non-applied 1,418-building expansion manifest
         run: python Tools/geo/r7_expansion_plan.py
       - name: Optional authentic Blender city render
         if: github.event_name == 'workflow_dispatch' && inputs.render_preview
         run: |
+          set -euo pipefail
           python -c "import bpy,runpy;runpy.run_path('Tools/Blender/assemble_r7_city_50.py',run_name='__main__')" 2>&1 | tee build/R7_CIQA/render.log
           python Tools/tests/test_r7_exported_fbx_native.py 2>&1 | tee build/R7_CIQA/render-reimport.log
       - uses: actions/upload-artifact@v4

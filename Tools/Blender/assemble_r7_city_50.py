@@ -113,8 +113,19 @@ def main():
     if len(old.data.polygons)!=26764 or sum(source.values())!=26764:
         raise RuntimeError("Reference Blender GIS source not loaded")
     test=import_obj(FULL_OBJ,matrix)
-    if fingerprints(test)!=source:
-        raise RuntimeError("Original OBJ from OSM pipeline is not exactly the existing Blender city")
+    original_test = fingerprints(test)
+    if original_test != source:
+        missing=source-original_test
+        extra=original_test-source
+        source_roads=sum(n for (mat,face),n in source.items() if mat=="Road")
+        obj_roads=sum(n for (mat,face),n in original_test.items() if mat=="Road")
+        raise RuntimeError(
+            "Original OBJ from OSM pipeline is not exactly the existing Blender city"
+            + f"; Blender source triangles={sum(source.values())}, OBJ triangles={sum(original_test.values())}"
+            + f"; missing={sum(missing.values())}, extra={sum(extra.values())}"
+            + f"; road_source={source_roads}, road_obj={obj_roads}"
+            + f"; missing_sample={list(missing.items())[:2]}"
+            + f"; extra_sample={list(extra.items())[:2]}")
     bpy.data.objects.remove(test,do_unlink=True)
     city=import_obj(DERIVED_OBJ,matrix)
     derived=fingerprints(city)
