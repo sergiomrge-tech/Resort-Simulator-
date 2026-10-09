@@ -84,47 +84,50 @@ for oid,proposal in compatible:
     parcel=parcels[oid]
     ring=parcel["ring_xy_m"]
     bounds=parcel["bounds_xy_m"]
-    seeds=[]
-    for f in bm.faces:
-        if f.material_index not in buildslots: continue
-        center=city.matrix_world@f.calc_center_median()
-        xy=center.x,center.y
-        if (bounds["min_x"]-1.2<=xy[0]<=bounds["max_x"]+1.2 and
-            bounds["min_y"]-1.2<=xy[1]<=bounds["max_y"]+1.2 and
-            touch(xy,ring)):
-            seeds.append(f)
-    if len(seeds)<4:
-        raise RuntimeError(f"Too few source building face seeds for {oid}: {len(seeds)}")
-    found=set()
-    for first in seeds:
-        if first in found:continue
-        pending=[first]
-        while pending:
-            f=pending.pop()
-            if f in found:continue
-            found.add(f)
-            for v in f.verts:
-                for other in v.link_faces:
-                    if other not in found:
-                        pending.append(other)
-    if len(found)<5 or len(found)>140:
-        raise RuntimeError(f"Cannot isolate OSM building component safely: {oid}, {len(found)} faces")
+    # A connected component can include ADJACENT OSM buildings with shared
+    # vertices; the previous safe gate correctly rejected that condition.
+    # Instead select only building faces whose EVERY vertex is inside the
+    # exact OSM ring or within 0.18 m of an actual polygon edge.
+    # A roof-area conservation gate protects against partial replacement.
+    def eligible_vertex(v):
+        world=city.matrix_world@v.co
+        return touch((world.x,world.y),ring,dist=.18)
+    found={
+        f for f in bm.faces if f.material_index in buildslots
+        and all(eligible_vertex(v) for v in f.verts)
+    }
+    if not (5<=len(found)<=90):
+        raise RuntimeError(f"Strict OSM face isolation found {len(found)} faces for {oid}; abort")
     if any(f.material_index not in buildslots for f in found):
-        raise RuntimeError(f"Road/land face entered building component {oid} — NOT modifying GIS")
+        raise RuntimeError(f"A Road material face was selected for {oid}; abort")
     vertices=set(v for f in found for v in f.verts)
     worldverts=[city.matrix_world@v.co for v in vertices]
-    if not worldverts:
-        raise RuntimeError("Empty real-building component")
     bb=[min(v.x for v in worldverts),min(v.y for v in worldverts),
         max(v.x for v in worldverts),max(v.y for v in worldverts)]
-    if not (bb[0]>=bounds["min_x"]-1.9 and bb[1]>=bounds["min_y"]-1.9
-            and bb[2]<=bounds["max_x"]+1.9 and bb[3]<=bounds["max_y"]+1.9):
-        raise RuntimeError(f"Source component extends beyond original mapped footprint: {oid}, bounds {bb}")
+    if not (bb[0]>=bounds["min_x"]-.24 and bb[1]>=bounds["min_y"]-.24
+            and bb[2]<=bounds["max_x"]+.24 and bb[3]<=bounds["max_y"]+.24):
+        raise RuntimeError(f"Selected building faces exceed mapped parcel: {oid}, {bb}")
+    roof_area=0.0
+    roof_faces=0
+    for face in found:
+        normal=(city.matrix_world.to_3x3()@face.normal).normalized()
+        if normal.z>.85:
+            coords=[city.matrix_world@v.co for v in face.verts]
+            # Signed-area magnitude for triangulated roof face.
+            roof_area+=abs(sum(a.x*b.y-b.x*a.y
+                               for a,b in zip(coords,coords[1:]+coords[:1])))*.5
+            roof_faces+=1
+    target_area=parcel["footprint_area_m2"]
+    if not (roof_faces>=1 and .85*target_area<=roof_area<=1.15*target_area):
+        raise RuntimeError(f"Roof conservation gate rejected {oid}: original roof area={roof_area:.3f}m² vs OSM={target_area:.3f}m², roof_faces={roof_faces}")
     if found&removals:
-        raise RuntimeError("Two unrelated OSM ways share topology — cannot replace")
+        raise RuntimeError("OSM building boundaries overlap already-selected faces")
     removals.update(found)
     site_removed[oid]={
         "old_building_faces":len(found),
+        "original_roof_faces":roof_faces,
+        "original_roof_area_m2":round(roof_area,4),
+        "osm_reference_area_m2":target_area,
         "source_building_z_bounds_m":[round(min(v.z for v in worldverts),4),
                                       round(max(v.z for v in worldverts),4)],
         "original_component_xy_bounds_m":[round(z,4) for z in bb],
