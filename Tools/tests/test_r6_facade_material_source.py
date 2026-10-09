@@ -52,7 +52,7 @@ class R6FacadeSourceTests(unittest.TestCase):
                       "TextureWrapMode.Repeat", "TextureImporterType.NormalMap",
                       "importer.mipmapEnabled = true", "mat.enableInstancing = true",
                       "ImportedTextures.Contains(path)", "Texture2D(Size, Size",
-                      "WriteIfDifferent(path, tex.EncodeToPNG())"):
+                      "WriteIfDifferent(absolutePath, tex.EncodeToPNG())"):
             self.assertIn(value, self.code)
         self.assertIn("Require(textures.Count == 40", self.code)
         self.assertIn("Require(ids.Count == 50", self.code)
