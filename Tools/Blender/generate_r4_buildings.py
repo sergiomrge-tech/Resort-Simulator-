@@ -504,7 +504,13 @@ def camera_and_lighting():
     cam_data.clip_end=400
     bpy.context.scene.camera=cam
     scene=bpy.context.scene
-    scene.render.engine="BLENDER_EEVEE_NEXT" if hasattr(bpy.app,"version") and bpy.app.version>=(4,2) else "BLENDER_EEVEE"
+    # Blender pip on a headless GitHub runner may lack a GPU/EGL context.
+    # Cycles CPU renders true Blender geometry without needing OpenGL.
+    scene.render.engine="CYCLES"
+    scene.cycles.device="CPU"
+    scene.cycles.samples=12
+    scene.cycles.use_denoising=False
+    bpy.context.view_layer.cycles.use_denoising=False
     scene.render.resolution_x=1800
     scene.render.resolution_y=1080
     scene.render.resolution_percentage=100
