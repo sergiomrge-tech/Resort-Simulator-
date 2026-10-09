@@ -1,0 +1,157 @@
+{
+  "status": "EXACT_OSM_FOOTPRINTS_GEOMETRY_ONLY",
+  "source_osm": "geo/data/copacabana.osm.gz",
+  "source_frame": "geo/pilot/COPACABANA_FRAME_SOURCE.json",
+  "bounds_300x300_xy_m": {
+    "min_x": -150.0,
+    "max_x": 150.0,
+    "min_y": -310.0,
+    "max_y": -10.0
+  },
+  "geography": "Copacabana RJ. Blender X/Y horizontal, Z up. FBX Unity X/Z horizontal, Y up.",
+  "models_available": "Nine authored FBX assets in Assets/Architecture, but not positioned/approved",
+  "parcel_count": 3,
+  "parcels": [
+    {
+      "id": "way/1048277518",
+      "category": "yes",
+      "vertex_count": 5,
+      "ring_xy_m": [
+        [
+          -11.304898,
+          -242.794387
+        ],
+        [
+          -12.237751,
+          -244.856641
+        ],
+        [
+          6.122988,
+          -246.015345
+        ],
+        [
+          7.685891,
+          -218.845519
+        ],
+        [
+          -9.85591,
+          -217.732446
+        ],
+        [
+          -11.304898,
+          -242.794387
+        ]
+      ],
+      "centroid_local_xy_m": [
+        -1.886468,
+        -231.898358
+      ],
+      "footprint_area_m2": 479.368,
+      "bounds_xy_m": {
+        "min_x": -12.2378,
+        "min_y": -246.0153,
+        "max_x": 7.6859,
+        "max_y": -217.7324
+      },
+      "actual_height_m": null,
+      "existing_map_building_present": "PENDING_BLENDER_PROBE",
+      "source": "frozen OSM way, EPSG:32723 rotated local metres"
+    },
+    {
+      "id": "way/1048277521",
+      "category": "yes",
+      "vertex_count": 4,
+      "ring_xy_m": [
+        [
+          41.491571,
+          -239.548177
+        ],
+        [
+          61.802703,
+          -242.405776
+        ],
+        [
+          64.437995,
+          -221.946183
+        ],
+        [
+          44.428877,
+          -218.973122
+        ],
+        [
+          41.491571,
+          -239.548177
+        ]
+      ],
+      "centroid_local_xy_m": [
+        53.024273,
+        -230.740283
+      ],
+      "footprint_area_m2": 421.755,
+      "bounds_xy_m": {
+        "min_x": 41.4916,
+        "min_y": -242.4058,
+        "max_x": 64.438,
+        "max_y": -218.9731
+      },
+      "actual_height_m": null,
+      "existing_map_building_present": "PENDING_BLENDER_PROBE",
+      "source": "frozen OSM way, EPSG:32723 rotated local metres"
+    },
+    {
+      "id": "way/1308635852",
+      "category": "yes",
+      "vertex_count": 7,
+      "ring_xy_m": [
+        [
+          122.828007,
+          -243.56619
+        ],
+        [
+          110.07228,
+          -241.94526
+        ],
+        [
+          107.784379,
+          -240.550312
+        ],
+        [
+          106.370326,
+          -238.177166
+        ],
+        [
+          106.488023,
+          -234.910457
+        ],
+        [
+          113.338216,
+          -236.093086
+        ],
+        [
+          123.675512,
+          -237.45641
+        ],
+        [
+          122.828007,
+          -243.56619
+        ]
+      ],
+      "centroid_local_xy_m": [
+        115.067463,
+        -239.302839
+      ],
+      "footprint_area_m2": 102.101,
+      "bounds_xy_m": {
+        "min_x": 106.3703,
+        "min_y": -243.5662,
+        "max_x": 123.6755,
+        "max_y": -234.9105
+      },
+      "actual_height_m": null,
+      "existing_map_building_present": "PENDING_BLENDER_PROBE",
+      "source": "frozen OSM way, EPSG:32723 rotated local metres"
+    }
+  ],
+  "copyright": "© OpenStreetMap contributors; ODbL 1.0",
+  "limits": "Footprints are mapped building shapes, NOT legal parcel boundaries, height surveys, or purchase rights."
+}

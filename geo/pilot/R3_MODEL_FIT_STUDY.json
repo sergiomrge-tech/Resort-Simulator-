@@ -1,0 +1,110 @@
+{
+  "status": "R3_GEOMETRY_STUDY_NOT_INTEGRATED_IN_WORLD",
+  "metric_projection": "EPSG:32723 original rotated local Blender XY",
+  "source_footprints": "geo/pilot/R3_EXACT_OSM_PARCELS.json",
+  "source_model_measurements": "ArtSource/Previews/Owned_CoastalUrbanKit_QA.json",
+  "proposed_count": 2,
+  "sites": {
+    "way/1048277518": {
+      "osm_building_footprint_id": "way/1048277518",
+      "authored_model": "hotel",
+      "source_fbx": "ArtSource/LocalProjectOwned/CoastalUrbanKit/hotel.fbx",
+      "source_fbx_sha256": "4cb6792ea27d6ee186a110dd2cd1e77cb91818cbedc68f7a0131d3dce8700ba6",
+      "original_fbx_dimensions_m": [
+        12.22,
+        18.68,
+        10.105
+      ],
+      "osm_footprint_m2": 479.368,
+      "placement_study": {
+        "fit": "GEOMETRIC_FIT_ONLY",
+        "scale": 1.0,
+        "yaw_blender_degrees": 165,
+        "center_xy_m": [
+          -1.8865,
+          -231.8984
+        ],
+        "proposed_footprint_xy_m": [
+          [
+            6.7022,
+            -224.3024
+          ],
+          [
+            -5.5265,
+            -221.0258
+          ],
+          [
+            -10.4751,
+            -239.4943
+          ],
+          [
+            1.7535,
+            -242.7709
+          ]
+        ],
+        "horizontal_clearance_m": 0.22,
+        "height_unverified_m": 10.105,
+        "height_measured_from_fbx_not_from_osm": true
+      }
+    },
+    "way/1048277521": {
+      "osm_building_footprint_id": "way/1048277521",
+      "authored_model": "residencial_sacadas",
+      "source_fbx": "ArtSource/LocalProjectOwned/CoastalUrbanKit/residencial_sacadas.fbx",
+      "source_fbx_sha256": "ce56f68939d99f48df746a028bd3b81da2431ae23cf3e6bd22ff61e26fc39e87",
+      "original_fbx_dimensions_m": [
+        12.22,
+        16.88,
+        8.08
+      ],
+      "osm_footprint_m2": 421.755,
+      "placement_study": {
+        "fit": "GEOMETRIC_FIT_ONLY",
+        "scale": 1.0,
+        "yaw_blender_degrees": 90,
+        "center_xy_m": [
+          53.0243,
+          -230.7403
+        ],
+        "proposed_footprint_xy_m": [
+          [
+            61.6843,
+            -237.0703
+          ],
+          [
+            61.6843,
+            -224.4103
+          ],
+          [
+            44.3643,
+            -224.4103
+          ],
+          [
+            44.3643,
+            -237.0703
+          ]
+        ],
+        "horizontal_clearance_m": 0.22,
+        "height_unverified_m": 8.08,
+        "height_measured_from_fbx_not_from_osm": true
+      }
+    },
+    "way/1308635852": {
+      "osm_building_footprint_id": "way/1308635852",
+      "authored_model": "townhouse",
+      "source_fbx": "ArtSource/LocalProjectOwned/CoastalUrbanKit/townhouse.fbx",
+      "source_fbx_sha256": "e12ed79a39ac45e614c3b07831acb094f9bd3843f99024fc3ab9bbd5727aab71",
+      "original_fbx_dimensions_m": [
+        6.62,
+        15.88,
+        6.98
+      ],
+      "osm_footprint_m2": 102.101,
+      "placement_study": {
+        "fit": "NO_CONSERVATIVE_FIT_WITHOUT_GEOMETRY_CHANGES",
+        "reason": "Do not deform original architecture, clone over existing GIS mesh or ignore setback."
+      }
+    }
+  },
+  "limits": "No source map removal, no Unity prefab, no actual building height or plot ownership. Fit by 2D rectangle is preliminary."
+}
