@@ -1,0 +1,75 @@
+﻿{
+    "status": "R9_REAL_URP_URBAN_CAPTURED_ART_PENDING",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "unity_version": "6000.6.2f1",
+    "r8_facade_renderers": 350,
+    "r9_osm_trees": 48,
+    "source_road_triangles": 3731,
+    "styles": 50,
+    "derived_fbx_sha256": "9ae115abc04143013213b7aabe03bddaa2b3b7cbc202b5e511e14df834874b94",
+    "captures": [
+        {
+            "filename": "R9_01_Dense_City_RealUnity.png",
+            "sha256": "10bcd8bfdadef0d62c7d4189e16da746833f57545ddd344b8971069ad7d581e5",
+            "position": {
+                "x": 290.0,
+                "y": 274.9999694824219,
+                "z": -310.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 58.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1140868
+        },
+        {
+            "filename": "R9_02_Orla_Aerial_RealUnity.png",
+            "sha256": "3d2f7256b7ba27b59a9f86dfc28e6157d375b1195368ba088835067555a1af1c",
+            "position": {
+                "x": -340.0,
+                "y": 304.9999694824219,
+                "z": -380.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 52.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1031370
+        },
+        {
+            "filename": "R9_03_Facades_Rooftops_RealUnity.png",
+            "sha256": "d93ef2201c78a60b0c2a3a83b619a90c072721d654b91f2768e0f4c61548c5e2",
+            "position": {
+                "x": 120.0,
+                "y": 159.99998474121094,
+                "z": 190.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 57.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1451371
+        },
+        {
+            "filename": "R9_04_Arvore_Calcada_RealUnity.png",
+            "sha256": "1d836272dffc7b5bb731917037adc05a844dff621ee3ff3c17b89989e9e78b56",
+            "position": {
+                "x": -140.19683837890625,
+                "y": 9.856539726257324,
+                "z": 193.1513214111328
+            },
+            "target": {
+                "x": -152.19683837890625,
+                "y": 4.556539535522461,
+                "z": 209.1513214111328
+            },
+            "bytes": 1408356
+        }
+    ],
+    "artistic_gate_passed": false,
+    "fps_measured": false
+}

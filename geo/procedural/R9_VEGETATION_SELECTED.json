@@ -1,0 +1,1655 @@
+{
+  "status": "R9_SELECTED_48_TRUE_OSM_TREES_REAL_ROAD_MESH_GUARDED",
+  "source_real_road_triangles": 3731,
+  "safety_margin_m": 1.25,
+  "selection_candidates": 120,
+  "selected_count": 48,
+  "replaced_pilot_ids": [
+    "node/12124306369",
+    "node/12124306383",
+    "node/12131079374",
+    "node/12392563691",
+    "node/12392563704",
+    "node/12392563716",
+    "node/12410100388"
+  ],
+  "added_nonroad_ids": [
+    "node/12124316717",
+    "node/12124316727",
+    "node/12396636701",
+    "node/12408444761",
+    "node/12408496298",
+    "node/12410100491",
+    "node/3626002382"
+  ],
+  "rejected_by_original_road": [
+    {
+      "osm_id": "node/12410100388",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.0
+    },
+    {
+      "osm_id": "node/12392563704",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.57
+    },
+    {
+      "osm_id": "node/12124306369",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.631
+    },
+    {
+      "osm_id": "node/12124306383",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.0
+    },
+    {
+      "osm_id": "node/12392563716",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.719
+    },
+    {
+      "osm_id": "node/12131079374",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 1.155
+    },
+    {
+      "osm_id": "node/12392563691",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.151
+    },
+    {
+      "osm_id": "node/12408496262",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.601
+    },
+    {
+      "osm_id": "node/12408503611",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.664
+    },
+    {
+      "osm_id": "node/12124316731",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.553
+    },
+    {
+      "osm_id": "node/12410100456",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 1.216
+    },
+    {
+      "osm_id": "node/12410100475",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.661
+    },
+    {
+      "osm_id": "node/3626020095",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.778
+    },
+    {
+      "osm_id": "node/12124306393",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.532
+    },
+    {
+      "osm_id": "node/12392563686",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 1.149
+    },
+    {
+      "osm_id": "node/12392563719",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 1.228
+    },
+    {
+      "osm_id": "node/12408496268",
+      "reason": "real_osm_road_face_or_1_25m_safety_margin",
+      "actual_road_distance_m": 0.844
+    }
+  ],
+  "sources": {
+    "r7_fbx": "ae3d0d90e5fd5b8bc333a994df5ca0bc03ba0ad3f9fe0bc1e68f6e2be93e5914",
+    "r9_120": "83e974014f28d6769c75d9c464c4c718a79d62bba70eb75715bc3418a58c8d74"
+  },
+  "instances": [
+    {
+      "osm_id": "node/3626002377",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1868747,
+          -22.973812
+        ],
+        "local_m_xy": [
+          -227.643,
+          -267.722
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 249.09
+      },
+      "seed": 2971765245,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 11.3,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 9.65,
+        "building_edge_distance_m": 8.36,
+        "coastline_distance_m": 195.7,
+        "actual_source_osm_road_clearance_min_m": 10.045
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12410100379",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1773658,
+          -22.966964
+        ],
+        "local_m_xy": [
+          993.017,
+          -457.47
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 341.372
+      },
+      "seed": 4072728899,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 4.47,
+        "road_clearance_required_m": 2.25,
+        "minimum_road_clearance_margin_m": 2.22,
+        "building_edge_distance_m": 31.15,
+        "coastline_distance_m": 145.95,
+        "actual_source_osm_road_clearance_min_m": 12.964
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12392563693",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.187087,
+          -22.9663953
+        ],
+        "local_m_xy": [
+          355.278,
+          311.357
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 115.656
+      },
+      "seed": 1379834778,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 7.16,
+        "road_clearance_required_m": 5.25,
+        "minimum_road_clearance_margin_m": 1.91,
+        "building_edge_distance_m": 4.91,
+        "coastline_distance_m": 771.9,
+        "actual_source_osm_road_clearance_min_m": 3.159
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12410100411",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1903569,
+          -22.9802626
+        ],
+        "local_m_xy": [
+          -992.467,
+          -497.692
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 348.283
+      },
+      "seed": 4155178406,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 35.33,
+        "road_clearance_required_m": 3.75,
+        "minimum_road_clearance_margin_m": 31.58,
+        "building_edge_distance_m": 9.92,
+        "coastline_distance_m": 153.76,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12408397887",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_de_rua_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1823461,
+          -22.9700559
+        ],
+        "local_m_xy": [
+          393.574,
+          -320.505
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 301.182
+      },
+      "seed": 3593241665,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 3.84,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 1.89,
+        "building_edge_distance_m": 3.33,
+        "coastline_distance_m": 148.8,
+        "actual_source_osm_road_clearance_min_m": 2.589
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/3626025949",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1886766,
+          -22.9769934
+        ],
+        "local_m_xy": [
+          -610.794,
+          -374.832
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 224.109
+      },
+      "seed": 2673722556,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 4.31,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 2.66,
+        "building_edge_distance_m": 13.63,
+        "coastline_distance_m": 127.02,
+        "actual_source_osm_road_clearance_min_m": 3.063
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12408496294",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.180097,
+          -22.9682034
+        ],
+        "local_m_xy": [
+          701.057,
+          -347.712
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 52.055
+      },
+      "seed": 621041821,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 7.15,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 5.5,
+        "building_edge_distance_m": 2.95,
+        "coastline_distance_m": 179.2,
+        "actual_source_osm_road_clearance_min_m": 5.902
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/10923029191",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "canteiro_ou_area_verde_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1898644,
+          -22.967019
+        ],
+        "local_m_xy": [
+          109.692,
+          471.303
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 146.158
+      },
+      "seed": 1743734967,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 17.54,
+        "road_clearance_required_m": 2.75,
+        "minimum_road_clearance_margin_m": 14.79,
+        "building_edge_distance_m": 34.47,
+        "coastline_distance_m": 916.54,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/4293334870",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1792495,
+          -22.96567
+        ],
+        "local_m_xy": [
+          964.875,
+          -218.595
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 101.101
+      },
+      "seed": 1206183952,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 6.59,
+        "road_clearance_required_m": 3.75,
+        "minimum_road_clearance_margin_m": 2.84,
+        "building_edge_distance_m": 5.65,
+        "coastline_distance_m": 367.19,
+        "actual_source_osm_road_clearance_min_m": 4.091
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/4326256920",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1835119,
+          -22.9683496
+        ],
+        "local_m_xy": [
+          449.144,
+          -103.91
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 27.571
+      },
+      "seed": 328935650,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 6.62,
+        "road_clearance_required_m": 5.25,
+        "minimum_road_clearance_margin_m": 1.37,
+        "building_edge_distance_m": 17.11,
+        "coastline_distance_m": 371.1,
+        "actual_source_osm_road_clearance_min_m": 2.617
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/3626020096",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_de_rua_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1875245,
+          -22.9755537
+        ],
+        "local_m_xy": [
+          -413.731,
+          -351.488
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 320.797
+      },
+      "seed": 3827255095,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 2.74,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 1.09,
+        "building_edge_distance_m": 26.13,
+        "coastline_distance_m": 144.28,
+        "actual_source_osm_road_clearance_min_m": 1.493
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124316753",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_de_rua_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1890875,
+          -22.9787437
+        ],
+        "local_m_xy": [
+          -780.774,
+          -477.085
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 81.844
+      },
+      "seed": 976442573,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 3.56,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 1.91,
+        "building_edge_distance_m": 30.43,
+        "coastline_distance_m": 63.55,
+        "actual_source_osm_road_clearance_min_m": 2.307
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124316737",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1851811,
+          -22.9731928
+        ],
+        "local_m_xy": [
+          -58.641,
+          -347.109
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 219.477
+      },
+      "seed": 2618460627,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 30.06,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 28.41,
+        "building_edge_distance_m": 56.71,
+        "coastline_distance_m": 101.33,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124306400",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1834293,
+          -22.9712601
+        ],
+        "local_m_xy": [
+          220.335,
+          -331.097
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 76.054
+      },
+      "seed": 907355792,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 10.46,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 8.81,
+        "building_edge_distance_m": 20.68,
+        "coastline_distance_m": 119.69,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12396497798",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1799958,
+          -22.9668248
+        ],
+        "local_m_xy": [
+          819.305,
+          -250.579
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 34.082
+      },
+      "seed": 406615996,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 8.11,
+        "road_clearance_required_m": 5.25,
+        "minimum_road_clearance_margin_m": 2.86,
+        "building_edge_distance_m": 3.6,
+        "coastline_distance_m": 301.6,
+        "actual_source_osm_road_clearance_min_m": 4.114
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12394945829",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1872882,
+          -22.9676518
+        ],
+        "local_m_xy": [
+          239.845,
+          230.955
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 220.536
+      },
+      "seed": 2631095291,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 6.3,
+        "road_clearance_required_m": 4.5,
+        "minimum_road_clearance_margin_m": 1.8,
+        "building_edge_distance_m": 15.6,
+        "coastline_distance_m": 680.68,
+        "actual_source_osm_road_clearance_min_m": 2.299
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124316748",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1865235,
+          -22.9748063
+        ],
+        "local_m_xy": [
+          -283.097,
+          -369.443
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 263.127
+      },
+      "seed": 3139233040,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 24.15,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 22.5,
+        "building_edge_distance_m": 12.95,
+        "coastline_distance_m": 106.67,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12487072038",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1884345,
+          -22.9779506
+        ],
+        "local_m_xy": [
+          -670.928,
+          -465.593
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 298.048
+      },
+      "seed": 3555854326,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 7.4,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 5.75,
+        "building_edge_distance_m": 53.79,
+        "coastline_distance_m": 48.01,
+        "actual_source_osm_road_clearance_min_m": 6.147
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12408496263",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1861696,
+          -22.9730394
+        ],
+        "local_m_xy": [
+          -115.784,
+          -261.678
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 24.216
+      },
+      "seed": 288909412,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 5.52,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 3.87,
+        "building_edge_distance_m": 12.02,
+        "coastline_distance_m": 188.33,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12124316721",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1850601,
+          -22.9722894
+        ],
+        "local_m_xy": [
+          22.69,
+          -287.537
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 119.386
+      },
+      "seed": 1424332614,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 5.12,
+        "road_clearance_required_m": 2.25,
+        "minimum_road_clearance_margin_m": 2.47,
+        "building_edge_distance_m": 28.84,
+        "coastline_distance_m": 158.21,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12487072026",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_de_rua_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1880042,
+          -22.9763608
+        ],
+        "local_m_xy": [
+          -512.52,
+          -376.977
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 358.624
+      },
+      "seed": 4278547833,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 2.63,
+        "road_clearance_required_m": 2.25,
+        "minimum_road_clearance_margin_m": 0.38,
+        "building_edge_distance_m": 30.32,
+        "coastline_distance_m": 114.32,
+        "actual_source_osm_road_clearance_min_m": 1.384
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12410100457",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1833941,
+          -22.970397
+        ],
+        "local_m_xy": [
+          292.385,
+          -268.182
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 114.21
+      },
+      "seed": 1362582459,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 7.67,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 6.02,
+        "building_edge_distance_m": 11.32,
+        "coastline_distance_m": 189.06,
+        "actual_source_osm_road_clearance_min_m": 12.898
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124306382",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1791743,
+          -22.9684804
+        ],
+        "local_m_xy": [
+          743.608,
+          -437.622
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 196.036
+      },
+      "seed": 2338804055,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 15.95,
+        "road_clearance_required_m": 1.55,
+        "minimum_road_clearance_margin_m": 14.4,
+        "building_edge_distance_m": 5.11,
+        "coastline_distance_m": 101.94,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124316712",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1801313,
+          -22.9690613
+        ],
+        "local_m_xy": [
+          629.488,
+          -410.299
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 212.553
+      },
+      "seed": 2535858873,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 19.08,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 17.43,
+        "building_edge_distance_m": 39.23,
+        "coastline_distance_m": 101.42,
+        "actual_source_osm_road_clearance_min_m": 17.829
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124306390",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_de_rua_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1842469,
+          -22.9715802
+        ],
+        "local_m_xy": [
+          137.041,
+          -294.378
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 247.183
+      },
+      "seed": 2949007174,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 2.83,
+        "road_clearance_required_m": 2.25,
+        "minimum_road_clearance_margin_m": 0.58,
+        "building_edge_distance_m": 26.11,
+        "coastline_distance_m": 152.54,
+        "actual_source_osm_road_clearance_min_m": 1.581
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12396636651",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1778715,
+          -22.967749
+        ],
+        "local_m_xy": [
+          894.177,
+          -479.331
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 58.092
+      },
+      "seed": 693062930,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 15.81,
+        "road_clearance_required_m": 1.55,
+        "minimum_road_clearance_margin_m": 14.26,
+        "building_edge_distance_m": 8.12,
+        "coastline_distance_m": 97.13,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12410100381",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1812233,
+          -22.9683509
+        ],
+        "local_m_xy": [
+          609.969,
+          -274.84
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 20.328
+      },
+      "seed": 242520366,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 6.92,
+        "road_clearance_required_m": 3.75,
+        "minimum_road_clearance_margin_m": 3.17,
+        "building_edge_distance_m": 4.74,
+        "coastline_distance_m": 230.19,
+        "actual_source_osm_road_clearance_min_m": 4.423
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12396508904",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1792897,
+          -22.9664241
+        ],
+        "local_m_xy": [
+          901.258,
+          -272.858
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 193.953
+      },
+      "seed": 2313947029,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 9.26,
+        "road_clearance_required_m": 5.25,
+        "minimum_road_clearance_margin_m": 4.01,
+        "building_edge_distance_m": 2.55,
+        "coastline_distance_m": 299.39,
+        "actual_source_osm_road_clearance_min_m": 5.264
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12410100302",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1781985,
+          -22.967078
+        ],
+        "local_m_xy": [
+          925.275,
+          -403.968
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 348.311
+      },
+      "seed": 4155517462,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 7.27,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 5.62,
+        "building_edge_distance_m": 10.81,
+        "coastline_distance_m": 177.72,
+        "actual_source_osm_road_clearance_min_m": 9.634
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12408503631",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1826976,
+          -22.9706682
+        ],
+        "local_m_xy": [
+          319.499,
+          -340.765
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 237.757
+      },
+      "seed": 2836551461,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 4.14,
+        "road_clearance_required_m": 1.55,
+        "minimum_road_clearance_margin_m": 2.59,
+        "building_edge_distance_m": 5.51,
+        "coastline_distance_m": 119.22,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12408503616",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1820496,
+          -22.9694222
+        ],
+        "local_m_xy": [
+          465.506,
+          -294.514
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 194.703
+      },
+      "seed": 2322901232,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 7.65,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 6.0,
+        "building_edge_distance_m": 9.82,
+        "coastline_distance_m": 186.1,
+        "actual_source_osm_road_clearance_min_m": 6.402
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12396497797",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1794683,
+          -22.9678532
+        ],
+        "local_m_xy": [
+          773.496,
+          -368.049
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 241.341
+      },
+      "seed": 2879310981,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 6.1,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 4.45,
+        "building_edge_distance_m": 14.6,
+        "coastline_distance_m": 176.62,
+        "actual_source_osm_road_clearance_min_m": 4.847
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12396636698",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1812356,
+          -22.9697358
+        ],
+        "local_m_xy": [
+          497.464,
+          -379.089
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 87.268
+      },
+      "seed": 1041146463,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 16.51,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 14.86,
+        "building_edge_distance_m": 4.14,
+        "coastline_distance_m": 108.24,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/3626031354",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1891963,
+          -22.9781041
+        ],
+        "local_m_xy": [
+          -736.868,
+          -420.392
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 4.566
+      },
+      "seed": 54469778,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 9.65,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 8.0,
+        "building_edge_distance_m": 9.43,
+        "coastline_distance_m": 108.32,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12410100470",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1840124,
+          -22.9709036
+        ],
+        "local_m_xy": [
+          208.071,
+          -260.501
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 191.867
+      },
+      "seed": 2289060567,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 7.9,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 6.25,
+        "building_edge_distance_m": 12.71,
+        "coastline_distance_m": 188.35,
+        "actual_source_osm_road_clearance_min_m": 6.649
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12410096494",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1857438,
+          -22.9725294
+        ],
+        "local_m_xy": [
+          -44.732,
+          -254.73
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 40.854
+      },
+      "seed": 487410611,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 10.48,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 8.46,
+        "building_edge_distance_m": 14.3,
+        "coastline_distance_m": 194.04,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12392563720",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.185377,
+          -22.9667803
+        ],
+        "local_m_xy": [
+          444.492,
+          154.48
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 193.165
+      },
+      "seed": 2304552345,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 6.15,
+        "road_clearance_required_m": 4.5,
+        "minimum_road_clearance_margin_m": 1.65,
+        "building_edge_distance_m": 3.22,
+        "coastline_distance_m": 626.39,
+        "actual_source_osm_road_clearance_min_m": 2.149
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12394913313",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1794526,
+          -22.9672705
+        ],
+        "local_m_xy": [
+          821.573,
+          -324.972
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 150.889
+      },
+      "seed": 1800171677,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 47.86,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 46.21,
+        "building_edge_distance_m": 2.76,
+        "coastline_distance_m": 229.87,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12410100462",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1829405,
+          -22.9700161
+        ],
+        "local_m_xy": [
+          354.986,
+          -273.114
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 344.095
+      },
+      "seed": 4105211984,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 11.99,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 10.34,
+        "building_edge_distance_m": 10.5,
+        "coastline_distance_m": 190.83,
+        "actual_source_osm_road_clearance_min_m": 10.741
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12396636680",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1797269,
+          -22.9686658
+        ],
+        "local_m_xy": [
+          689.806,
+          -410.452
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 102.378
+      },
+      "seed": 1221417836,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 5.87,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 4.22,
+        "building_edge_distance_m": 27.63,
+        "coastline_distance_m": 115.58,
+        "actual_source_osm_road_clearance_min_m": 4.615
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/3626025937",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1881425,
+          -22.9758456
+        ],
+        "local_m_xy": [
+          -480.716,
+          -327.529
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 160.385
+      },
+      "seed": 1913465452,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 9.97,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 8.32,
+        "building_edge_distance_m": 2.68,
+        "coastline_distance_m": 165.77,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/12408444761",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_ampla",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1873877,
+          -22.9671538
+        ],
+        "local_m_xy": [
+          272.991,
+          276.201
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 117.441
+      },
+      "seed": 1401127582,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 15.01,
+        "road_clearance_required_m": 3.0,
+        "minimum_road_clearance_margin_m": 12.01,
+        "building_edge_distance_m": 2.44,
+        "coastline_distance_m": 728.88,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_ampla"
+    },
+    {
+      "osm_id": "node/3626002382",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_de_rua_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1870538,
+          -22.9742851
+        ],
+        "local_m_xy": [
+          -278.372,
+          -290.282
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 28.45
+      },
+      "seed": 339416389,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 2.55,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 0.9,
+        "building_edge_distance_m": 17.76,
+        "coastline_distance_m": 183.59,
+        "actual_source_osm_road_clearance_min_m": 1.301
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12396636701",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.181811,
+          -22.9699908
+        ],
+        "local_m_xy": [
+          436.448,
+          -355.503
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 153.153
+      },
+      "seed": 1827181277,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 4.65,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 3.0,
+        "building_edge_distance_m": 14.01,
+        "coastline_distance_m": 121.05,
+        "actual_source_osm_road_clearance_min_m": 3.402
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12408496298",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1807297,
+          -22.968548
+        ],
+        "local_m_xy": [
+          628.788,
+          -326.652
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 351.938
+      },
+      "seed": 4198787211,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 9.48,
+        "road_clearance_required_m": 1.65,
+        "minimum_road_clearance_margin_m": 7.83,
+        "building_edge_distance_m": 8.34,
+        "coastline_distance_m": 182.56,
+        "actual_source_osm_road_clearance_min_m": 15.507
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124316717",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_de_rua_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.18469,
+          -22.971948
+        ],
+        "local_m_xy": [
+          76.235,
+          -289.235
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 163.71
+      },
+      "seed": 1953131473,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 2.68,
+        "road_clearance_required_m": 2.25,
+        "minimum_road_clearance_margin_m": 0.43,
+        "building_edge_distance_m": 27.95,
+        "coastline_distance_m": 155.79,
+        "actual_source_osm_road_clearance_min_m": 1.51
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12410100491",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1876542,
+          -22.9750958
+        ],
+        "local_m_xy": [
+          -385.94,
+          -307.034
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 260.744
+      },
+      "seed": 3110794933,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 4.91,
+        "road_clearance_required_m": 3.0,
+        "minimum_road_clearance_margin_m": 1.91,
+        "building_edge_distance_m": 9.67,
+        "coastline_distance_m": 185.23,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    },
+    {
+      "osm_id": "node/12124316727",
+      "osm_tags": {
+        "natural": "tree"
+      },
+      "type": "arvore_tropical_densa",
+      "category": "arvore_em_calcada_ou_lote_osm",
+      "coordinates": {
+        "geographic_wgs84_lon_lat": [
+          -43.1856717,
+          -22.9729789
+        ],
+        "local_m_xy": [
+          -75.896,
+          -294.247
+        ]
+      },
+      "orientation": {
+        "yaw_degrees": 270.838
+      },
+      "seed": 3231229125,
+      "origin": "OpenStreetMap natural=tree point; ODbL 1.0",
+      "guards": {
+        "road_centerline_distance_m": 6.38,
+        "road_clearance_required_m": 2.25,
+        "minimum_road_clearance_margin_m": 4.13,
+        "building_edge_distance_m": 30.0,
+        "coastline_distance_m": 153.34,
+        "actual_source_osm_road_clearance_min_m": "no_road_nearby"
+      },
+      "asset_lod_collection": "arvore_tropical_densa"
+    }
+  ],
+  "limitations": "No adjusted coordinates. True OSM tree nodes only. Existing roads triangles source from derived R7 preserve original GIS. No curb lines or underground utility survey."
+}

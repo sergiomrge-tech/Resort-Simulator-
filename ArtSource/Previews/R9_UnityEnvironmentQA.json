@@ -1,0 +1,19 @@
+﻿{
+    "status": "R9_UNITY_URBAN_ENV_PBR_PASS_VISUAL_PENDING",
+    "unity_version": "6000.6.2f1",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "renderer": "Direct3D11",
+    "source_scene": "Assets/Scenes/R8_Copacabana_1468_All_Facades.unity",
+    "produced_scene": "Assets/Scenes/R9_Copacabana_Orla_Parques_Arvores.unity",
+    "environment_fbx_sha256": "5893e274b5fac4175ec49ab5ea3f7f74acffe4f791c0bed1e08febaef74b7eba",
+    "coastline_samples": 201,
+    "osmtrees": 48,
+    "mapped_green_or_water_surfaces": 19,
+    "surface_meshes": 22,
+    "geographic_road_triangles": 3731,
+    "facade_renderers": 350,
+    "unmatched_material_slots": 0,
+    "meshes_without_uv0": 0,
+    "visual_approval": false,
+    "fps_measured": false
+}
