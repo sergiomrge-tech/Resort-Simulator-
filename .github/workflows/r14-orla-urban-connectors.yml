@@ -143,6 +143,8 @@ jobs:
             UnityProject/Assets/Textures/R14_Urban/
             ArtSource/Blender/R14_*.blend
             ArtSource/Previews/R14_*
+            UnityProject/Assets/Materials/R14_Urban/
+            UnityProject/Assets/Scenes/R14_Copacabana_*
 
           if-no-files-found: error
           retention-days: 30

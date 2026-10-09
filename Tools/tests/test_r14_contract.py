@@ -62,7 +62,7 @@ class R14(unittest.TestCase):
  def test_capture_pairing_if_present(self):
   p=ROOT/'ArtSource/Previews/R14_VisualNativeQA.json'
   if not p.exists():self.skipTest('Capture gate pending, no invented frames')
-  q=json.loads(p.read_text());self.assertEqual(len(q['captures']),60)
+  q=json.loads(p.read_text());self.assertEqual(len(q['captures']),72)
   before=j('ArtSource/Previews/R14_VisualNativeQA_before.json');after=j('ArtSource/Previews/R14_VisualNativeQA_after.json')
   for a,b in zip(before['captures'],after['captures']):
    for key in ('position','target','lighting','sun_euler','sun_intensity','sun_shadow_strength','width','height','field_of_view'):self.assertEqual(a[key],b[key])

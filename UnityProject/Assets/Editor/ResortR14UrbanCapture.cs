@@ -49,6 +49,20 @@ public static class ResortR14UrbanCapture {
   // Import handedness differs from Blender: obtain coastal tangent from real world anchors.
   Vector3 tangent=(anchors[6]-anchors[4]).normalized;
   Vector3 outward=Vector3.Cross(Vector3.up,tangent).normalized;
+  // Obtain the nearest REAL imported curb vertex for each sector. The
+  // temporary FBX instance is removed before either version is rendered.
+  var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Architecture/R14_Urban/R14_GIS_Urban_Connectors.fbx");
+  Need(prefab!=null,"CONNECTOR_CAMERA_FBX_MISSING");
+  var temp=UnityEngine.Object.Instantiate(prefab);
+  var curbAnchors=new Dictionary<int,Vector3>();
+  foreach(int sector in new[]{1,5,8}){
+   var filter=temp.GetComponentsInChildren<MeshFilter>().Single(f=>f.name=="R14_S"+sector.ToString("00")+"_curbstone");
+   var anchor=anchors[sector];
+   var candidates=filter.sharedMesh.vertices.Select(v=>filter.transform.TransformPoint(v)).Where(v=>v.y>.10f).ToArray();
+   Need(candidates.Length>0,"CURB_TOP_VERTICES_MISSING");
+   curbAnchors[sector]=candidates.OrderBy(v=>(new Vector2(v.x-anchor.x,v.z-anchor.z)).sqrMagnitude).First();
+  }
+  UnityEngine.Object.DestroyImmediate(temp);
   var views=new[]{
    new {id="walk",pos=p-along*42+Vector3.up*1.65f,target=p+along*28+Vector3.up*1.3f},
    new {id="coast",pos=p+sea*48+Vector3.up*36,target=p+Vector3.up*1.0f},
@@ -72,9 +86,13 @@ public static class ResortR14UrbanCapture {
    foreach(var v in views)
     shots.Add(Capture(cam,v.pos+shift,v.target+shift,
       Path.Combine(dir,"R14_S"+sector.ToString("00")+"_"+version+"_"+time+"_"+v.id+"_RealUnity.png"),source,time));
+   var curb=curbAnchors[sector];
+   var towardsPromenade=new Vector3(anchor.x-curb.x,0,anchor.z-curb.z).normalized;
+   shots.Add(Capture(cam,curb+towardsPromenade*3+Vector3.up*1.65f,curb+Vector3.up*.10f,
+     Path.Combine(dir,"R14_S"+sector.ToString("00")+"_"+version+"_"+time+"_curb_RealUnity.png"),source,time));
   }
   }
-  Need(shots.Count==30,"PARTIAL_CAPTURES_MISSING");
+  Need(shots.Count==36,"PARTIAL_CAPTURES_MISSING");
   File.WriteAllText(Path.Combine(dir,"R14_VisualNativeQA_"+version+".json"),
     JsonUtility.ToJson(new Report{
      status="R14_REAL_UNITY_CAPTURE_"+version.ToUpper()+"_ART_PENDING",
@@ -88,8 +106,8 @@ public static class ResortR14UrbanCapture {
   string repo=ResortR14UrbanFinish.Repo(),dir=Path.Combine(repo,"build/R14_QA");
   var before=JsonUtility.FromJson<Report>(File.ReadAllText(Path.Combine(dir,"R14_VisualNativeQA_before.json")));
   var after=JsonUtility.FromJson<Report>(File.ReadAllText(Path.Combine(dir,"R14_VisualNativeQA_after.json")));
-  Need(before!=null&&after!=null&&before.captures.Length==30&&after.captures.Length==30,
-   "NEED_6_BEFORE_AND_6_AFTER_GPU_PNGS");
+  Need(before!=null&&after!=null&&before.captures.Length==36&&after.captures.Length==36,
+   "NEED_36_BEFORE_AND_36_AFTER_GPU_PNGS");
   Need(before.unity_version==after.unity_version&&before.renderer==after.renderer&&before.gpu==after.gpu&&before.urp_version==after.urp_version,
    "BEFORE_AFTER_DEVICE_MISMATCH");
   Need(before.connector_fbx_sha256==after.connector_fbx_sha256&&before.art_fbx_sha256==after.art_fbx_sha256,"ASSET_HASH_CHANGED_BETWEEN_CAPTURES");
@@ -98,7 +116,7 @@ public static class ResortR14UrbanCapture {
    Need(File.Exists(path)&&ResortR14UrbanFinish.Sha(path)==row.sha256,
     "GPU_PNG_PROVENANCE_MISMATCH:"+row.filename);
   }
-  for(int i=0;i<30;i++){
+  for(int i=0;i<36;i++){
    var a=before.captures[i];var b=after.captures[i];
    Need(a.lighting==b.lighting&&Vector3.Distance(a.position,b.position)<.001f&&
     Vector3.Distance(a.target,b.target)<.001f&&Vector3.Distance(a.sun_euler,b.sun_euler)<.001f&&a.sun_intensity==b.sun_intensity,"CAMERA_LIGHTING_NOT_COMPARABLE:"+i);
@@ -109,6 +127,6 @@ public static class ResortR14UrbanCapture {
     status="R14_REAL_UNITY_CAPTURED_ART_PENDING",connector_fbx_sha256=after.connector_fbx_sha256,art_fbx_sha256=after.art_fbx_sha256,unity_version=after.unity_version,
     gpu=after.gpu,renderer=after.renderer,urp_version=after.urp_version,captures=merged
    },true));
-  Debug.Log("R14_REAL_GPU_CAPTURE_PASS count="+merged.Length+" paired_views=30");
+  Debug.Log("R14_REAL_GPU_CAPTURE_PASS count="+merged.Length+" paired_views=36");
  }
 }

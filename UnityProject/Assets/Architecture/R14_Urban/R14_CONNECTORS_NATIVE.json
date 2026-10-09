@@ -1230,5 +1230,100 @@
     }
   ],
   "native_source_invariants": "PASS",
-  "native_lot_and_road_exclusion": "PASS_REIMPORTED_TOP_TRIANGLE_CENTROIDS"
+  "native_lot_and_road_exclusion": "PASS_REIMPORTED_TOP_TRIANGLE_CENTROIDS",
+  "native_material_slots": {
+    "R14_S00_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S00_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S00_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S01_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S01_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S01_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S01_stonetile": [
+      "R14_stonetile"
+    ],
+    "R14_S02_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S02_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S02_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S03_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S03_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S03_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S04_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S04_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S04_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S05_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S05_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S05_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S06_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S06_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S06_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S07_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S07_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S07_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S08_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S08_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S08_sidewalk": [
+      "R14_sidewalk"
+    ],
+    "R14_S09_curbstone": [
+      "R14_curbstone"
+    ],
+    "R14_S09_gutter": [
+      "R14_gutter"
+    ],
+    "R14_S09_sidewalk": [
+      "R14_sidewalk"
+    ]
+  }
 }

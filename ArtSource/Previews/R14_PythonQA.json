@@ -3,11 +3,8 @@
   "tests_run": 46,
   "failures": 0,
   "errors": 0,
-  "skipped": 2,
-  "skip_reasons": [
-    "Capture gate pending, no invented frames",
-    "Unity gate pending, no native report"
-  ],
+  "skipped": 0,
+  "skip_reasons": [],
   "patterns": [
     "test_r7_contract.py",
     "test_r8_winding_geo.py",

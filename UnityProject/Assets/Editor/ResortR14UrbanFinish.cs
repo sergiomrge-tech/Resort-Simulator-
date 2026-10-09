@@ -56,6 +56,12 @@ public static class ResortR14UrbanFinish {
   Need(AssetDatabase.LoadAssetAtPath<SceneAsset>(Source)!=null,"R13_SOURCE_SCENE_MISSING");
   var scene=EditorSceneManager.OpenScene(Source,OpenSceneMode.Single);Folder(Dir);
   var sourceRenderers=scene.GetRootGameObjects().SelectMany(o=>o.GetComponentsInChildren<MeshRenderer>(true)).ToArray();
+  // R13 intentionally used a flat white fallback mosaic in seven BASE
+  // sectors. R14 has actual art there: reuse the proven metric PBR mosaic
+  // on this derived scene, without editing the R13 material or scene.
+  var mosaic=sourceRenderers.Single(r=>r.name=="R13_S05_mosaic"&&r.gameObject.activeInHierarchy).sharedMaterial;
+  Need(mosaic!=null&&mosaic.GetTexture("_BaseMap")!=null,"R13_PBR_MOSAIC_MISSING");
+  foreach(var r in sourceRenderers.Where(r=>r.name.StartsWith("R13_S")&&r.name.EndsWith("_mosaic")&&r.gameObject.activeInHierarchy))r.sharedMaterial=mosaic;
   var roads=sourceRenderers.Single(r=>r.name.StartsWith("GIS_OSM_REAL_MAP_MINUS_50_REPLACED_WAYS"));
   Need(roads.GetComponent<MeshFilter>().sharedMesh.triangles.Length/3==3731,"GIS_ROADS_CHANGED");
   Need(sourceRenderers.Count(r=>r.name.StartsWith("R9_TREE_"))==48,"OSM_TREE_POSITIONS_LOST");

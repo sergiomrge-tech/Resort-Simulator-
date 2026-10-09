@@ -1,0 +1,21 @@
+{
+    "status": "R14_UNITY_NATIVE_PASS_ART_PENDING",
+    "unity_version": "6000.6.2f1",
+    "urp_version": "17.6.0",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "connector_fbx_sha256": "d7cb6f13c8ea2266ddcf577265d3b88cbfba2036d898dee185636cd837f47e8f",
+    "art_fbx_sha256": "7fdaebe2c2094907de19d0406ea94218128b0a1d47f4f222ea7329740b171080",
+    "connector_meshes": 31,
+    "art_meshes": 105,
+    "missing_uv0": 0,
+    "shader_errors": 0,
+    "missing_material_slots": 0,
+    "default_materials": 0,
+    "texture2d_count": 24,
+    "road_triangles": 3731,
+    "original_trees": 48,
+    "artistic_gate_approved": false,
+    "fps_measured": false,
+    "playmode_water_animation_tested": false
+}

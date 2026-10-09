@@ -47,11 +47,23 @@ com limitações; não certifica acabamento completo dos 2 km.
 - Blender export/reimport: PASS, UV0/materials/LOD/source hashes.
 - Três renders reais Blender de assets S01/S05/S08 com câmera/hash: produzidos;
   mostram conectores contra via GIS, sem edifícios/cidade completa, não Unity.
-- Unity: execução em cópia isolada `build/R14_NativeWorkspace`, com Editor
-  6000.6.2f1 e URP17.6; resultado nativo/capturas será registrado no checkpoint.
-  As primeiras tentativas falharam no IPC UPM; não confundidas com compilação.
-- CI R7–R14: workflow implementado para regenerar toda cadeia, reimportar e
-  enviar assets/logs; execução GitHub precisa de resultado real antes de PASS.
+- Unity: **PASS nativo**, cópia isolada `build/R14_NativeWorkspace`, Editor
+  6000.6.2f1 / URP17.6 / D3D11 / RTX4060Ti. 31+105 meshes, 24 Texture2D,
+  zero UV0/material slots/default material/shader ausentes; sem escala 100×.
+  48 árvores e 3.731 triângulos viários preservados. As primeiras tentativas
+  falharam no IPC UPM; servidor exclusivo e ProgramData nativo resolveram.
+- Capturas: **72 PNGs Unity reais**, 36 antes + 36 depois, S01/S05/S08 ×
+  seis vistas × dia/tarde. Mesmo dispositivo/câmera/luz/FOV53/1600×900,
+  cinco warmup frames, processos Editor separados e SHA-256 checados.
+  A câmera próxima da guia foi revisada para apontar ao detalhe real.
+  Relatórios técnico/pareamento/execução sanitizados em ArtSource/Previews.
+- Testes locais: **46/46**, regressões R7–R13 e nove contratos R14; sem skips
+  depois de obter Unity real. Testes não equivalem a aprovação premium.
+- CI R7–R14: **PASS** no checkpoint `ad162e8`, execução
+  [37959339234](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37959339234).
+  Cadeia completa, reimportação de conectores e kit costeiro, renders/contratos
+  e upload aprovados. CI Linux Blender não fabrica novas capturas Unity.
+  O checkpoint com os PNGs/cena Unity finais será validado em outra execução.
 - FPS/CPU/GPU/drawcalls/VRAM 1080p, gameplay e animação de água: **PENDENTE**.
 
 ## Limitações materiais
@@ -63,9 +75,26 @@ apenas gaps até 8 m; gaps maiores continuam abertos. Não afirmar conexão
 pedonal completa, ausência de colisões de gameplay ou cidade tropical final.
 Em S05 o bordo do mosaico R13 está a 85–94 m da via GIS, medido a cada 10 m;
 o gate de conexão total **não passou**. S01 recebe 78,38 m² de transição StoneTile.
+O kit costeiro acompanha a faixa R13, inclusive os extremos fora de y=-500.
+Isso é registrado por mesh na cobertura; o gate desses assets contra o limite
+terrestre está **PENDENTE**, não constitui expansão de gameplay aprovada.
+Reconciliar faixa artística/costa/frame antes de tratá-la como mundo jogável.
 
 O solo interior, diversidade de fachadas completas, mar/areia finais, grelhas,
 bueiros e sinalização ainda precisam de trabalho. Colisores de calçadas/guias
 no builder são preparação, não prova de percurso em Play Mode. LOD de sólidos
 urbanos e desempenho precisam de profiler. Renders de assets não substituem
 inspeção da cidade nativa e aprovação do diretor.
+
+Inspeção real: S01 pedestre mostra banco/mosaico PBR; S08 costa mostra quiosque
+e plantio novo. O fallback branco de mosaico nos sete setores foi substituído
+somente na cena R14 pelo PBR R13 já testado. S05 cidade ainda revela piso grande
+e repetição arquitetônica; a vista de guia expõe a separação entre calçada
+aditiva e underlay. Nenhuma dessas imagens recebe aprovação artística.
+
+Fotos: [S01 pedestre](../../ArtSource/Previews/R14_S01_after_day_pedestrian_RealUnity.png),
+[S08 costa](../../ArtSource/Previews/R14_S08_after_day_coast_RealUnity.png),
+[S05 guia](../../ArtSource/Previews/R14_S05_after_day_curb_RealUnity.png).
+Cena nativa R14 foi produzida e copiada para Assets/Scenes, com oito materiais.
+Um checkout limpo precisa reconstruir os assets R7–R13 antes de abrir a cena;
+builder/CI e cópia isolada garantem reprodução sem mexer nas cenas fontes.

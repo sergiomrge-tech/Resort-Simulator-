@@ -71,6 +71,7 @@ def main():
     q.update(status='R14_NATIVE_FBX_REIMPORT_PASS_ART_PENDING',native_blender_version=bpy.app.version_string,
        native_missing_uv0=0,native_meshes=len(meshes),native_top_triangles_checked=checked,
        native_uv_metric_max_error=max_uv_error,native_boundaries=seam_checks,native_source_invariants='PASS',
+       native_material_slots={o.name:[m.name for m in o.data.materials] for o in meshes},
        native_lot_and_road_exclusion='PASS_REIMPORTED_TOP_TRIANGLE_CENTROIDS')
     for s in q['sectors']:s['native_gate']='PASS_REIMPORT_GIS_UV_NORMALS'
     (OUT/'R14_CONNECTORS_NATIVE.json').write_text(json.dumps(q,indent=2)+'\n')

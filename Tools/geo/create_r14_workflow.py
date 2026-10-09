@@ -36,6 +36,8 @@ def main():
             UnityProject/Assets/Textures/R14_Urban/
             ArtSource/Blender/R14_*.blend
             ArtSource/Previews/R14_*
+            UnityProject/Assets/Materials/R14_Urban/
+            UnityProject/Assets/Scenes/R14_Copacabana_*
 ''')
     s=s.replace('          path: build/R12_CIQA/','          path: |\n            build/R12_CIQA/\n            build/R14_QA/')
     (ROOT/'.github/workflows/r14-orla-urban-connectors.yml').write_text(s,encoding='utf-8',newline='\n')
