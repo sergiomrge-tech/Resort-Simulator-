@@ -1,0 +1,30 @@
+name: Resort R5 | Provas da Unity DX11 e 50 Predios
+on:
+  push:
+    branches: [chatgpt/r5-implantacao-automatica-fachadas,main]
+    paths:
+      - 'Tools/tests/test_r5_native_evidence.py'
+      - 'ArtSource/Previews/R5_Unity_DX11_*'
+      - 'UnityProject/Assets/Scenes/R5_Copacabana_50_Predios_EditorQA.unity'
+      - 'UnityProject/Assets/Architecture/R5_Pilot50/**'
+      - '.github/workflows/r5-native-evidence.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PNG decoder
+        run: python -m pip install --disable-pip-version-check pillow
+      - name: Independently test 50 OSM replacements, Unity report, original hashes and real camera screenshots
+        run: |
+          python -m unittest discover -s Tools/tests -p test_r5_real_city_50.py -v
+          python -m unittest discover -s Tools/tests -p test_r5_native_evidence.py -v
