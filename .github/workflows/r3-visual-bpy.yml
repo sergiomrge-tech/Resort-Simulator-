@@ -1,0 +1,72 @@
+name: Resort R3 | Visual georreferenciado Blender Python
+on:
+  push:
+    branches: [chatgpt/r3-piloto-osm-implantacao-real]
+    paths:
+      - 'Tools/Blender/render_r3_real_osm_sites.py'
+      - 'Tools/tests/test_r3_blender_site_preview.py'
+      - '.github/workflows/r3-visual-bpy.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r3-python-bpy-overview
+  cancel-in-progress: true
+jobs:
+  render-from-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pip Blender Python and exact projection
+        run: python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pyproj pillow
+      - name: Recover exact OSM site outlines
+        run: python Tools/geo/build_r3_exact_footprints.py
+      - name: Inspect true geographic source geometry with bpy
+        run: |
+          python - <<'PY'
+          import bpy,runpy
+          bpy.ops.wm.open_mainfile(filepath='ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend')
+          runpy.run_path('Tools/Blender/probe_r3_real_building_faces.py',run_name='__main__')
+          PY
+      - name: Render aerial photograph-style inspection from genuine 3D city mesh
+        run: |
+          python - <<'PY'
+          import bpy,runpy
+          bpy.ops.wm.open_mainfile(filepath='ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend')
+          runpy.run_path('Tools/Blender/render_r3_real_osm_sites.py',run_name='__main__')
+          PY
+      - name: Validate OSM polygons and source mesh evidence
+        run: python -m unittest discover -s Tools/tests -p test_r3_exact_sites.py -v
+      - name: Validate real Blender render pixels and original map hashes
+        run: python -m unittest discover -s Tools/tests -p test_r3_blender_site_preview.py -v
+      - name: Upload real Blender image/geometry reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R3-Orla-300m-Real-BlenderGIS-Preview
+          path: |
+            geo/pilot/R3_EXACT_OSM_PARCELS.json
+            ArtSource/Previews/R3_Pilot_OSM_Geometry_Probe.json
+            ArtSource/Previews/R3_Orla_300m_OSM_Real_Blender_QA.png
+            ArtSource/Previews/R3_Orla_300m_Blender_QA.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit real rendering and inspection evidence
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f geo/pilot/R3_EXACT_OSM_PARCELS.json
+          git add -f ArtSource/Previews/R3_Pilot_OSM_Geometry_Probe.json
+          git add -f ArtSource/Previews/R3_Orla_300m_OSM_Real_Blender_QA.png
+          git add -f ArtSource/Previews/R3_Orla_300m_Blender_QA.json
+          if ! git diff --cached --quiet; then
+            git commit -m "art(R3): render real Copacabana BlenderGIS e contornos OSM verificados"
+            git pull --rebase origin chatgpt/r3-piloto-osm-implantacao-real
+            git push origin HEAD:chatgpt/r3-piloto-osm-implantacao-real
+          fi
