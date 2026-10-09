@@ -1,0 +1,70 @@
+name: Resort R4 | Gerar lote OSM para Unity (ate 100)
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: 'Indice inicial (0 a 1467) nos footprints OSM'
+        type: number
+        required: true
+        default: 0
+      count:
+        description: 'Edificios por lote (1 a 100)'
+        type: number
+        required: true
+        default: 50
+permissions:
+  contents: read
+jobs:
+  export-source-osm-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Blender headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+          python -m pip install --disable-pip-version-check 'bpy>=4.3,<5'
+      - name: Generate procedural 3D geometry for requested OSM IDs
+        env:
+          START: ${{ inputs.start }}
+          COUNT: ${{ inputs.count }}
+        run: |
+          set -euo pipefail
+          test "$START" -ge 0
+          test "$START" -lt 1468
+          test "$COUNT" -ge 1
+          test "$COUNT" -le 100
+          python -c "import bpy,runpy,sys,os;sys.argv=['blender','--','--mode','city','--start',os.environ['START'],'--count',os.environ['COUNT'],'--no-render'];runpy.run_path('Tools/Blender/generate_r4_buildings.py',run_name='__main__')"
+      - name: Validate binary FBX, hashes and source provenance for batch
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          root=Path(".")
+          report=json.loads((root/"UnityProject/Assets/Architecture/R4_Procedural/R4_CITY_GENERATION_REPORT.json").read_text())
+          assert report["status"]=="ACTUAL_PROCEDURAL_BLENDER_FBX_GENERATED_NOT_UNITY_VALIDATED"
+          assert report["count"] + report["skipped_count"] > 0
+          assert report["count"] + report["skipped_count"] <= 100
+          assert len(report["real_blender_previews"])==0
+          for b in report["meshes"]:
+              f=root/b["fbx"]
+              raw=f.read_bytes()
+              assert raw.startswith(b"Kaydara FBX Binary")
+              assert hashlib.sha256(raw).hexdigest()==b["fbx_sha256"]
+              assert b["polygons_generated"]>100
+              assert (Path(str(f)+".meta")).exists()
+          print("OSM_BATCH_QA_PASSED","generated",report["count"],"manual_review",report["skipped_count"])
+          PY
+      - name: Download 3D FBX batch and manual-review list
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R4-OSM-Lote-${{ inputs.start }}-${{ inputs.count }}-FBX
+          path: |
+            UnityProject/Assets/Architecture/R4_Procedural/
+            UnityProject/Assets/Architecture/R4_Procedural.meta
+          if-no-files-found: error
+          retention-days: 30
