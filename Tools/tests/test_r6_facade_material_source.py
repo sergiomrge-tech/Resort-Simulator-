@@ -39,7 +39,10 @@ class R6FacadeSourceTests(unittest.TestCase):
             self.assertIsNotNone(m, mesh["style_id"])
             self.assertEqual(m.group("family"), mesh["family"])
         self.assertIn('R5_REPLACED_way_', self.code)
-        self.assertIn('BuildingPattern.Match(renderer.gameObject.name)', self.code)
+        self.assertIn('FindBuilding(renderer)', self.code)
+        self.assertIn('Transform node = renderer.transform', self.code)
+        self.assertIn('node = node.parent', self.code)
+        self.assertIn('FindSemanticPart(renderer, building)', self.code)
         self.assertIn('MaterialPartPattern.Match(building.Groups["mesh"].Value)', self.code)
 
     def test_pbr_semantics_and_actual_tileable_maps_are_implemented(self):
@@ -55,6 +58,9 @@ class R6FacadeSourceTests(unittest.TestCase):
                       "WriteIfDifferent(absolutePath, tex.EncodeToPNG())"):
             self.assertIn(value, self.code)
         self.assertIn("Require(textures.Count == 40", self.code)
+        self.assertIn('GraphicsSettings.currentRenderPipeline != null', self.code)
+        self.assertIn('urp_pipeline_active = urpActive', self.code)
+        self.assertIn('R6_MATERIAL_ASSETS_GENERATED_URP_RENDER_PIPELINE_NOT_ACTIVE', self.code)
         self.assertIn("Require(ids.Count == 50", self.code)
         self.assertIn("Require(styles.Count == 50", self.code)
 
