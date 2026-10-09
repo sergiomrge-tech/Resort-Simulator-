@@ -68,4 +68,4 @@ O pipeline ativo e os pacotes do checkout limpo estavam atrasados em relação a
 
 No CI, um FBX reexportado com bpy4.5 pode ter bytes diferentes do checkpoint Windows Blender5.2. O relatório de cobertura só associa os PNGs Unity ao FBX quando o hash técnico coincide; caso contrário as imagens históricas continuam preservadas, mas o artefato regenerado fica com visual Unity PENDENTE. Isso evita certificar por screenshot um FBX diferente.
 
-Publicação GitHub/CI: em verificação após push; este relatório será suplementado com a URL e resultado reais. Nenhum merge foi autorizado/executado.
+Publicação concluída: commits `c011620` e `afaf46a`, branch `codex/r13-sol61-orla-premium`, PR [#35](https://github.com/sergiomrge-tech/Resort-Simulator-/pull/35). [GitHub Actions 37952888314](https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37952888314) concluiu **success** no commit `afaf46a8f4b5cd19fcb230e773ffe6adef7f3ab5`: cadeia R7–R13, geração/reimportação/renders Pass2, cobertura, contratos e upload aprovados. Artefato `Resort-R13-Pass2-2km-S04-S06-Art-Pending`. CI Linux/bpy4.5 é evidência Blender, não nova execução Unity. Nenhum merge foi executado.

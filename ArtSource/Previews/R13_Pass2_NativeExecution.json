@@ -10,8 +10,12 @@
     "UnityProject/Assets/Architecture/R13_Pass2/R13_VisualPass2_Coastal_Sectors.fbx": "46c10aea437056b646dd7787476a4519d1787eeb4bc800d188fcdbfda2830129"
   },
   "native_gate_output": {
-    "build/R13_Pass2_generate.log": [],
-    "build/R13_Pass2_reimport.log": [],
+    "build/R13_Pass2_generate.log": [
+      "R13_NATIVE_GENERATION_PASS 105 516024 ['way/1042050704', 'way/1042050705', 'way/1042050706', 'way/1042050707', 'way/115811110', 'way/115811373', 'way/115811391', 'way/115811392', 'way/1343107180', 'way/1343107184', 'way/1343107185', 'way/1343107187', 'way/1343107188', 'way/1343107189', 'way/1343107190', 'way/1343107191', 'way/427315852', 'way/427315854', 'way/427315856', 'way/427315863', 'way/427315865', 'way/427315866', 'way/427315868', 'way/427315870']"
+    ],
+    "build/R13_Pass2_reimport.log": [
+      "R13_NATIVE_REIMPORT_PASS 105 516024 54 shared boundaries; UV0 finite; sources intact"
+    ],
     "build/R13_Pass2_UnityBuild_Final.log": [
       "R13_WORLD_METRE_SCALE_GATE_PASS center=(-368.17, -0.03, 216.53) extents=(75.47, 0.00, 77.73)",
       "R13_UNITY_NATIVE_PASS meshes=105 roads=3731 trees=48 missingUV=0 shaderErrors=0"
@@ -33,5 +37,17 @@
   "fps_measured": false,
   "gameplay_integrated": false,
   "baseline_qa_source_read_only": "D:/ProjectResort_R8_UnityQA/UnityProject",
-  "qa_workspace": "D:/ProjectResort_R13_Sol61_Pass2/build/UnityQA"
+  "qa_workspace": "D:/ProjectResort_R13_Sol61_Pass2/build/UnityQA",
+  "github_actions": {
+    "run_id": 37952888314,
+    "url": "https://github.com/sergiomrge-tech/Resort-Simulator-/actions/runs/37952888314",
+    "head_sha": "afaf46a8f4b5cd19fcb230e773ffe6adef7f3ab5",
+    "conclusion": "success",
+    "blender_meshes": 105,
+    "blender_triangles": 516396,
+    "native_contiguous_boundaries": 54,
+    "unity_capture_binding_to_regenerated_fbx": false,
+    "artifact_id": 11626409259,
+    "artifact_sha256": "006f632869750089f81f9be7c07cf19db1387d03576553832cd1a6956cd9eeae"
+  }
 }
