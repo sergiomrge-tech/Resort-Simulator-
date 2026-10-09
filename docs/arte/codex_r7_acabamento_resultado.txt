@@ -1,0 +1,54 @@
+R7 ACABAMENTO — RELATÓRIO PARA SUPERVISÃO
+Data: 2026-10-09
+Worktree: D:\ProjectResort_R7_Acabamento_Codex
+Branch: codex/r7-acabamento-local
+
+RESUMO
+- Criado pipeline Blender R7 separado de R4/R5 para 50 modelos reais OSM, com UVMap/UV0 por face, projeção pelo eixo dominante e escala de 2 m por repetição.
+- Criados IDs semânticos curtos em material slots FBX e nomes compactos de renderer R7B_<osm>__<style>__<semantic>, com hard fail acima de 63 caracteres.
+- Criados mask/assemble R7 em diretórios de saída R7. O montador exige igualdade de fontes, paridade geométrica, 3.731 faces de rua e frame GIS existente de 46 graus.
+- Criado editor Unity R7 que carrega o FBX de cidade derivada em cena independente; exige URP/Lit ativo, cria/tenta ativar URP Asset somente no projeto QA, confere UV0 e semântica de todos os slots e não usa Standard/fallback. Configura albedo/normal/metallic/smoothness, vidro transparente, ACES e exposição -0.25.
+- Criado capture R7 com hard fail para ausência de URP ou UV0, sem aprovação artística embutida.
+- Criados testes Python, workflow GitHub Actions para Blender real e manifesto determinístico com 1.418 IDs remanescentes em 29 lotes, não aplicado ao mapa.
+- Documentação detalhada: docs/arte/R7_ACABAMENTO_UV0_PBR.md.
+
+CAUSA TÉCNICA
+O gerador R4 não gerava UVs. No FBX, nomes longos podiam perder categorias e o R6 aplicava o mesmo material a todos os slots do renderer; R6 também caiu para Standard por não haver URP Asset ativo. R7 transfere a semântica para slots de material curtos e exige UV0/URP, sem fallback aprovado.
+
+VERIFICAÇÕES EXECUTADAS
+- python -m unittest discover -s Tools/tests -p test_r7_uv_pbr_pipeline.py -v — 6/6 passaram.
+- python -m py_compile Tools/Blender/generate_r7_buildings.py Tools/Blender/assemble_r7_city_50.py Tools/geo/r7_mask_city_50.py Tools/geo/r7_expansion_plan.py — passou.
+- git diff --check — passou.
+- Hash original BLEND: 2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4.
+- Hash original FBX: 2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339.
+- Sem executável Blender nesta sessão; Unity não executada. Nenhum FBX/render/cena/captura nativa Unity R7 nem compilação/FPS foram produzidos. Gate visual continua pendente/reprovado até inspeção humana. Workflow criado em .github/workflows/r7-uv-pbr-pilot.yml para executar o pipeline Blender e render real.
+
+ARQUIVOS PRINCIPAIS
+- Tools/Blender/generate_r7_buildings.py
+- Tools/geo/r7_mask_city_50.py
+- Tools/Blender/assemble_r7_city_50.py
+- UnityProject/Assets/Editor/ResortR7FacadeFinish.cs
+- UnityProject/Assets/Editor/ResortR7VisualCapture.cs
+- Tools/tests/test_r7_uv_pbr_pipeline.py
+- .github/workflows/r7-uv-pbr-pilot.yml
+- geo/procedural/R7_EXPANSION_PLAN.json
+- docs/arte/R7_ACABAMENTO_UV0_PBR.md
+
+COMANDOS BLENDER / MANIFESTO
+python -c "import bpy,sys,runpy;sys.argv=['blender','--','--mode','gallery'];runpy.run_path('Tools/Blender/generate_r7_buildings.py',run_name='__main__')"
+python Tools/geo/r7_mask_city_50.py
+python -c "import bpy,runpy;runpy.run_path('Tools/Blender/assemble_r7_city_50.py',run_name='__main__')"
+python Tools/geo/r7_expansion_plan.py
+
+UNITY (SOMENTE NA CÓPIA OPERACIONAL AUTORIZADA PELO SUPERVISOR)
+Unity.exe -batchmode -quit -projectPath D:\ProjectResort_R5_UnityQA\UnityProject -executeMethod ResortR7FacadeFinish.Build -logFile D:\ProjectResort_R5_UnityQA\R7_Build.log
+Unity.exe -batchmode -quit -projectPath D:\ProjectResort_R5_UnityQA\UnityProject -executeMethod ResortR7VisualCapture.Run -logFile D:\ProjectResort_R5_UnityQA\R7_Capture.log
+Não foi aberto nem editado D:\ProjectResort_R5_UnityQA nesta sessão.
+
+FALHAS/BLOQUEIOS
+- Commit falhou sem alterar o índice: Git não conseguiu criar D:/ProjectResort_GitHub/.git/worktrees/ProjectResort_R7_Acabamento_Codex/index.lock (Permission denied). Não foi usado índice alternativo nem contorno; supervisor deve revisar/adicionar/commitar os arquivos.
+- D:\CodexTemp\codex_r7_acabamento_resultado.txt fica fora da raiz gravável autorizada. O sandbox impediu a criação fora do worktree; cópia do relatório está neste arquivo para o supervisor transferir.
+- Workflow real do GitHub Actions não foi disparado nesta sessão.
+
+STATUS
+Implementação do pipeline R7 em código: preparada. Artefatos 3D Blender R7: pendentes de workflow. Unity nativa R7: pendente. Gate artístico: NÃO APROVADO. Os 1.418 prédios restantes foram planejados, não gerados/aplicados.

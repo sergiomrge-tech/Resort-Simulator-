@@ -1,0 +1,89 @@
+name: Resort R7 | UV0 e fachadas Copacabana - Blender REAL
+on:
+  push:
+    branches: [codex/r7-acabamento-urbano-uv-pbr]
+    paths:
+      - 'Tools/Blender/generate_r7_buildings.py'
+      - 'Tools/Blender/assemble_r7_city_50.py'
+      - 'Tools/geo/r7_mask_city_50.py'
+      - 'Tools/geo/r7_expansion_plan.py'
+      - 'Tools/tests/test_r7_*.py'
+      - 'UnityProject/Assets/Editor/ResortR7*.cs'
+      - '.github/workflows/r7-uv-pbr-pilot.yml'
+  pull_request:
+    branches: [main, chatgpt/r6-pbr-fachadas-50]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r7-uv-pilot
+  cancel-in-progress: false
+jobs:
+  static-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify UV, semantic FBX identifiers, real OSM IDs, immutable GIS and hard Unity gates
+        run: python -m unittest discover -s Tools/tests -p 'test_r7_uv_pbr_pipeline.py' -v
+      - name: Check Python syntax
+        run: python -m py_compile Tools/Blender/generate_r7_buildings.py Tools/Blender/assemble_r7_city_50.py Tools/geo/r7_mask_city_50.py Tools/geo/r7_expansion_plan.py Tools/tests/test_r7_exported_fbx_native.py
+  blender-real-pilot:
+    needs: static-gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Blender Python runtime and frozen OSM geometry dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+          python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pillow pyproj shapely
+      - name: Generate exactly 50 OSM models with UV0 and individual semantic material slots
+        run: >-
+          python -c "import bpy,sys,runpy;sys.argv=['blender','--','--mode','gallery'];runpy.run_path('Tools/Blender/generate_r7_buildings.py',run_name='__main__')"
+      - name: Verify exact OSM mask with all original road triangles
+        run: python Tools/geo/r7_mask_city_50.py
+      - name: Assemble R7 full-city derived FBX and authentic Blender preview
+        run: >-
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/assemble_r7_city_50.py',run_name='__main__')"
+      - name: Validate real exported FBX after independent Blender re-import (UV and semantic per mesh)
+        run: >-
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r7_exported_fbx_native.py',run_name='__main__')"
+      - name: Generate non-applied 1,418-building expansion manifest
+        run: python Tools/geo/r7_expansion_plan.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R7-50-OSM-UV0-Blender-Real
+          path: |
+            UnityProject/Assets/Architecture/R7_Pilot50/
+            ArtSource/Previews/R7_Copacabana_50_Predios_Blender_Real_QA.png
+            ArtSource/Previews/R7_Procedural_gallery_Sheet_*_Blender.png
+            ArtSource/Previews/R7_FBX_UV_NATIVE_QA.json
+            geo/procedural/R7_EXPANSION_PLAN.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Save generated R7 pilot to its development branch (never main)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/codex/r7-acabamento-urbano-uv-pbr'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f UnityProject/Assets/Architecture/R7_Pilot50/
+          git add -f ArtSource/Previews/R7_Copacabana_50_Predios_Blender_Real_QA.png
+          git add -f ArtSource/Previews/R7_Procedural_gallery_Sheet_*_Blender.png
+          git add -f ArtSource/Previews/R7_FBX_UV_NATIVE_QA.json
+          git add -f geo/procedural/R7_EXPANSION_PLAN.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'art(R7): exportar 50 edificios reais UV0 e relatorios Blender'
+            git push origin HEAD:codex/r7-acabamento-urbano-uv-pbr
+          fi
