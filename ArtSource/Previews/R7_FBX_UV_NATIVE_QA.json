@@ -1,0 +1,26 @@
+{
+  "status": "R7_NATIVE_BLENDER_FBX_REIMPORT_UV0_AND_SEMANTIC_PASS",
+  "tool": "bpy.ops.import_scene.fbx",
+  "derived_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/R7_Copacabana_50_Fachadas_Derivado.fbx",
+  "derived_fbx_sha256": "576b01384531361a5218ee211c2d4f6176615440ac7f1bcd59e9547e96435a67",
+  "original_blender_sha256": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+  "original_fbx_sha256": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+  "distinct_osm_ways": 50,
+  "distinct_styles": 50,
+  "mesh_objects": 370,
+  "vertices": 2310893,
+  "triangles": 1155353,
+  "uv0_loops": 2310893,
+  "semantic_parts": {
+    "glass": 50,
+    "metal": 50,
+    "plants": 10,
+    "roof": 50,
+    "shadow": 50,
+    "stone": 50,
+    "trim": 50,
+    "wall": 50,
+    "wood": 10
+  },
+  "limitations": "Real exported FBX re-imported in Blender, not a Unity URP, scene framing or FPS check. Art still pending human approval."
+}

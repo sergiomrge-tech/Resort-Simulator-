@@ -1,0 +1,652 @@
+{
+  "status": "R7_50_SOURCE_OSM_BUILDINGS_REPLACED_IN_AUTHENTIC_BLENDER",
+  "original_blend_sha256": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+  "original_fbx_sha256": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+  "source_mask_report_sha256": "bd2acc655b34741fde83f376e19534d60192113325ec00c036fea953a108cd66",
+  "original_faces": 26764,
+  "old_building_faces_removed": 763,
+  "original_road_faces": 3731,
+  "retained_road_faces": 3731,
+  "derived_base_city_faces": 26001,
+  "new_architecture_count": 50,
+  "new_architecture_mesh_objects": 370,
+  "new_architecture_polygons": 577770,
+  "unmodified_original_source_used_as_output": false,
+  "source_gis_rotation_matrix_rows": [
+    [
+      0.694658,
+      -0.71934,
+      0.0,
+      0.0
+    ],
+    [
+      0.71934,
+      0.694658,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "derived_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/R7_Copacabana_50_Fachadas_Derivado.fbx",
+  "derived_fbx_bytes": 26965308,
+  "derived_fbx_sha256": "576b01384531361a5218ee211c2d4f6176615440ac7f1bcd59e9547e96435a67",
+  "preview": "ArtSource/Previews/R7_Copacabana_50_Predios_Blender_Real_QA.png",
+  "preview_sha256": "a866059e6dfd9abff66efd7a0da4e9b6e711719549a83ff473920af450a4faae",
+  "preview_bytes": 2156583,
+  "render_engine": "Blender Cycles CPU",
+  "models": [
+    {
+      "building_id": "way/488127741",
+      "style_id": "cop_art_deco_carioca_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 6978,
+      "local_centroid_xy_m": [
+        -994.378,
+        -326.838
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_art_deco_carioca_01__way_488127741.fbx",
+      "source_fbx_sha256": "26387e9194cc652b055dc5e09d4158fab84de05f40bed87bf5541ef1ed1b800b"
+    },
+    {
+      "building_id": "way/586695371",
+      "style_id": "cop_art_deco_carioca_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 13944,
+      "local_centroid_xy_m": [
+        -377.683,
+        125.82
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_art_deco_carioca_02__way_586695371.fbx",
+      "source_fbx_sha256": "e99b6924e3e68210a0059ce79572bf4fc6f9be84407a120a038b83dd37c467be"
+    },
+    {
+      "building_id": "way/176886419",
+      "style_id": "cop_art_deco_carioca_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 6826,
+      "local_centroid_xy_m": [
+        228.064,
+        259.18
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_art_deco_carioca_03__way_176886419.fbx",
+      "source_fbx_sha256": "a922d8c2ecc9b345b59f12455953856098ed54dbb05b7fb9a76d78b88216cea4"
+    },
+    {
+      "building_id": "way/488128345",
+      "style_id": "cop_art_deco_carioca_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 8588,
+      "local_centroid_xy_m": [
+        -893.726,
+        -406.703
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_art_deco_carioca_04__way_488128345.fbx",
+      "source_fbx_sha256": "881b7309fc0c83dd583de6c9a089209cdc4cc6b89f6d2fcb35ba354769673bd3"
+    },
+    {
+      "building_id": "way/134013759",
+      "style_id": "cop_art_deco_carioca_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 13998,
+      "local_centroid_xy_m": [
+        588.313,
+        -292.972
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_art_deco_carioca_05__way_134013759.fbx",
+      "source_fbx_sha256": "9b92ee01d71df02dd46b0eafc81d68a9fb4f5f09161963f49af437d5b252c453"
+    },
+    {
+      "building_id": "way/227727240",
+      "style_id": "cop_equipamento_especial_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 5306,
+      "local_centroid_xy_m": [
+        339.978,
+        235.296
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_equipamento_especial_01__way_227727240.fbx",
+      "source_fbx_sha256": "fe7d896cf0a699b47ce3e5fb076d9586f409e3f48136ce4460c453bd8429bf3b"
+    },
+    {
+      "building_id": "way/1041756195",
+      "style_id": "cop_equipamento_especial_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 13972,
+      "local_centroid_xy_m": [
+        303.92,
+        118.908
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_equipamento_especial_02__way_1041756195.fbx",
+      "source_fbx_sha256": "6f860b78d7e6b757ca2e54ffd7590107754bc7f332cf33639f74bf4d31bf66e4"
+    },
+    {
+      "building_id": "way/488128347",
+      "style_id": "cop_equipamento_especial_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 9284,
+      "local_centroid_xy_m": [
+        -984.026,
+        -421.807
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_equipamento_especial_03__way_488128347.fbx",
+      "source_fbx_sha256": "6772fe3dc0683875f524ca1a83ea265c5fd8eabd1280f742e11532b6b7475eb3"
+    },
+    {
+      "building_id": "way/488128349",
+      "style_id": "cop_equipamento_especial_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 16406,
+      "local_centroid_xy_m": [
+        -884.313,
+        -374.93
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_equipamento_especial_04__way_488128349.fbx",
+      "source_fbx_sha256": "3f1105e3d44ad267b67c71574653c895fca914623161e8734a121eb3f6bf5a8f"
+    },
+    {
+      "building_id": "way/588408934",
+      "style_id": "cop_equipamento_especial_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 5844,
+      "local_centroid_xy_m": [
+        -368.903,
+        202.433
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_equipamento_especial_05__way_588408934.fbx",
+      "source_fbx_sha256": "3fbbf4e699ecdeaf9bb5e79088c95dbfb95f1c432bb628cd564bb171d761510c"
+    },
+    {
+      "building_id": "way/586695365",
+      "style_id": "cop_escritorio_clinica_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 8156,
+      "local_centroid_xy_m": [
+        -394.372,
+        163.141
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_escritorio_clinica_01__way_586695365.fbx",
+      "source_fbx_sha256": "aadc0ee9df7b9583bbcfb5eb06498004dc58677e543623ef7f5ff06a2b12e8f2"
+    },
+    {
+      "building_id": "way/1041756191",
+      "style_id": "cop_escritorio_clinica_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 6432,
+      "local_centroid_xy_m": [
+        424.026,
+        66.33
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_escritorio_clinica_02__way_1041756191.fbx",
+      "source_fbx_sha256": "3a3e76c4be332eb9fe7278a141e13af7800283b3de9d146af22882f9f1882227"
+    },
+    {
+      "building_id": "way/1041990734",
+      "style_id": "cop_escritorio_clinica_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 9534,
+      "local_centroid_xy_m": [
+        802.128,
+        -113.282
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_escritorio_clinica_03__way_1041990734.fbx",
+      "source_fbx_sha256": "362af64a8fc2d669e5b9d770775c013f14f3bf3a4686dd6b8969e91ac1d0e28f"
+    },
+    {
+      "building_id": "way/488128332",
+      "style_id": "cop_escritorio_clinica_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 10618,
+      "local_centroid_xy_m": [
+        -930.274,
+        -392.677
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_escritorio_clinica_04__way_488128332.fbx",
+      "source_fbx_sha256": "71237bcca6c338edc7c9686db739afe3f941d787c3d7578a9def0bbce1724ec9"
+    },
+    {
+      "building_id": "way/488128335",
+      "style_id": "cop_escritorio_clinica_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 5262,
+      "local_centroid_xy_m": [
+        -964.136,
+        -404.065
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_escritorio_clinica_05__way_488128335.fbx",
+      "source_fbx_sha256": "734b5579d70ca81f208a5c6ae3bea119d42754cfe51ac6253e83158e1b5b611f"
+    },
+    {
+      "building_id": "way/359363522",
+      "style_id": "cop_hotel_classico_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 18504,
+      "local_centroid_xy_m": [
+        801.687,
+        -276.416
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_classico_01__way_359363522.fbx",
+      "source_fbx_sha256": "5d530bf7263aa8e1edda38bc8ab5230d09fe632a4b957a11220a91dfd68df9dc"
+    },
+    {
+      "building_id": "way/322770915",
+      "style_id": "cop_hotel_classico_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 7848,
+      "local_centroid_xy_m": [
+        -755.927,
+        -283.643
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_classico_02__way_322770915.fbx",
+      "source_fbx_sha256": "d1738205c84e08fb288f2b8db693eba04b5ba9ebc14ab889a6a6c276cd820577"
+    },
+    {
+      "building_id": "way/206935581",
+      "style_id": "cop_hotel_classico_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 9770,
+      "local_centroid_xy_m": [
+        965.004,
+        -122.966
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_classico_03__way_206935581.fbx",
+      "source_fbx_sha256": "391923005d82381473b68040e8218eb1f011dfcd0a70e1093c7881a736597d47"
+    },
+    {
+      "building_id": "way/1041988848",
+      "style_id": "cop_hotel_classico_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 12390,
+      "local_centroid_xy_m": [
+        957.58,
+        -182.082
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_classico_04__way_1041988848.fbx",
+      "source_fbx_sha256": "a6f1a3feed13ae479fd0d559b295aed4ed35aac544ecb58580d2136385f51d49"
+    },
+    {
+      "building_id": "way/1041988853",
+      "style_id": "cop_hotel_classico_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 11254,
+      "local_centroid_xy_m": [
+        944.5,
+        -222.312
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_classico_05__way_1041988853.fbx",
+      "source_fbx_sha256": "f80a47a1c8dca2681c14b72e5bbc770401968a1aa170314b63ef6ae0b118f64d"
+    },
+    {
+      "building_id": "way/1048277496",
+      "style_id": "cop_hotel_contemporaneo_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 8494,
+      "local_centroid_xy_m": [
+        184.047,
+        -201.033
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_contemporaneo_01__way_1048277496.fbx",
+      "source_fbx_sha256": "4ac6fb234ccf75b3c436e3eeb4dcd9638483acd1dd9071f6f37e99d978e0dc47"
+    },
+    {
+      "building_id": "way/1042041782",
+      "style_id": "cop_hotel_contemporaneo_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 16520,
+      "local_centroid_xy_m": [
+        640.305,
+        -249.608
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_contemporaneo_02__way_1042041782.fbx",
+      "source_fbx_sha256": "91d5d06d034261f5203c75362b5d5d6091eb6cc331bedc3e5be32e6ae1181106"
+    },
+    {
+      "building_id": "way/1048277507",
+      "style_id": "cop_hotel_contemporaneo_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 9072,
+      "local_centroid_xy_m": [
+        33.507,
+        -193.318
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_contemporaneo_03__way_1048277507.fbx",
+      "source_fbx_sha256": "6f00c027eb18eea8cb1c2643e1ebad4127c8d00c8f5bb0d5047e817d71f8c7d6"
+    },
+    {
+      "building_id": "way/357286152",
+      "style_id": "cop_hotel_contemporaneo_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 16962,
+      "local_centroid_xy_m": [
+        -681.946,
+        -366.993
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_contemporaneo_04__way_357286152.fbx",
+      "source_fbx_sha256": "c073848123c17fce5778f6d4efeb64fe977489a3c5e51961efa7c2fd5b180570"
+    },
+    {
+      "building_id": "way/1010809495",
+      "style_id": "cop_hotel_contemporaneo_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 6228,
+      "local_centroid_xy_m": [
+        672.737,
+        -250.388
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_hotel_contemporaneo_05__way_1010809495.fbx",
+      "source_fbx_sha256": "6f46824a2de45341464a76848c94eaf667aeb0dec76363c3183b20a83bc19eb5"
+    },
+    {
+      "building_id": "way/586972700",
+      "style_id": "cop_misto_loja_terrea_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 8860,
+      "local_centroid_xy_m": [
+        -564.112,
+        232.116
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_misto_loja_terrea_01__way_586972700.fbx",
+      "source_fbx_sha256": "b45bcad76ef3ef4b06335208ec43a6f3576f646fda433664877862d3c5773d3c"
+    },
+    {
+      "building_id": "way/488128337",
+      "style_id": "cop_misto_loja_terrea_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 12346,
+      "local_centroid_xy_m": [
+        -914.235,
+        -420.799
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_misto_loja_terrea_02__way_488128337.fbx",
+      "source_fbx_sha256": "aac0bdc5fb5f192fb0c38fffbe0a729cca630b7a3284d8b3763f4f7818177c62"
+    },
+    {
+      "building_id": "way/134013760",
+      "style_id": "cop_misto_loja_terrea_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 33864,
+      "local_centroid_xy_m": [
+        795.024,
+        -317.123
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_misto_loja_terrea_03__way_134013760.fbx",
+      "source_fbx_sha256": "644e73a99f59739d8eb45f9d39ca6163dbc1dbb81ed9afea53d70394735e16ec"
+    },
+    {
+      "building_id": "way/586695361",
+      "style_id": "cop_misto_loja_terrea_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 9144,
+      "local_centroid_xy_m": [
+        -346.578,
+        124.13
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_misto_loja_terrea_04__way_586695361.fbx",
+      "source_fbx_sha256": "3e8d78b9634b3c8a29bd1e98785f85446c47d20b732e7bf54ff9c3972941c16a"
+    },
+    {
+      "building_id": "way/586695362",
+      "style_id": "cop_misto_loja_terrea_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 9612,
+      "local_centroid_xy_m": [
+        -361.453,
+        127.236
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_misto_loja_terrea_05__way_586695362.fbx",
+      "source_fbx_sha256": "aeeb3eca0b7ace758822a831da76a9590caf251ad5ebf4044dd6199214156665"
+    },
+    {
+      "building_id": "way/134013926",
+      "style_id": "cop_predio_historico_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 15566,
+      "local_centroid_xy_m": [
+        502.49,
+        -92.597
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_predio_historico_01__way_134013926.fbx",
+      "source_fbx_sha256": "017d94ab13bf6aff862de931d6a81f9f9b9f150ebf1dfc217e0cdd4fc674d6ed"
+    },
+    {
+      "building_id": "way/588408932",
+      "style_id": "cop_predio_historico_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 8252,
+      "local_centroid_xy_m": [
+        -381.715,
+        201.804
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_predio_historico_02__way_588408932.fbx",
+      "source_fbx_sha256": "ace64cc82c9437ca4feadb71395c6b9bf155bf4bd63ecb7255159b1456d5cd1b"
+    },
+    {
+      "building_id": "way/588693296",
+      "style_id": "cop_predio_historico_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 5958,
+      "local_centroid_xy_m": [
+        -205.301,
+        167.731
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_predio_historico_03__way_588693296.fbx",
+      "source_fbx_sha256": "afa8d3d8df6b7afaa38e314a7126f09354d49c0154843be37f260746bbd466d9"
+    },
+    {
+      "building_id": "way/488128351",
+      "style_id": "cop_predio_historico_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 5348,
+      "local_centroid_xy_m": [
+        -848.07,
+        -405.091
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_predio_historico_04__way_488128351.fbx",
+      "source_fbx_sha256": "4e576ec097cef44960c2a67a8ee5064d80716c6f866b86fe67f4274bd3a1b4db"
+    },
+    {
+      "building_id": "way/42432240",
+      "style_id": "cop_predio_historico_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 13278,
+      "local_centroid_xy_m": [
+        916.887,
+        -18.57
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_predio_historico_05__way_42432240.fbx",
+      "source_fbx_sha256": "7378db18da85c2badb095544aeb074ef2405c1a92232f78992ca10495c66a828"
+    },
+    {
+      "building_id": "way/488128338",
+      "style_id": "cop_residencial_anos70_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 11238,
+      "local_centroid_xy_m": [
+        -931.955,
+        -429.571
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_anos70_01__way_488128338.fbx",
+      "source_fbx_sha256": "fbcdf19e83ea3fa764892f9585f098f8fb2c922d3ae1bcbf881ac9da186fac88"
+    },
+    {
+      "building_id": "way/488128342",
+      "style_id": "cop_residencial_anos70_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 9834,
+      "local_centroid_xy_m": [
+        -932.411,
+        -457.326
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_anos70_02__way_488128342.fbx",
+      "source_fbx_sha256": "8e613f6df793a2ae0acb887695a1de1a5c70f6cbbca88007d4cd83e4190ad792"
+    },
+    {
+      "building_id": "way/586695368",
+      "style_id": "cop_residencial_anos70_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 11138,
+      "local_centroid_xy_m": [
+        -419.301,
+        147.133
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_anos70_03__way_586695368.fbx",
+      "source_fbx_sha256": "9b8bf1b471d7f9c5eac67688fac5c79db7cd34a840cd54a49184d87f388f0289"
+    },
+    {
+      "building_id": "way/488128348",
+      "style_id": "cop_residencial_anos70_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 12358,
+      "local_centroid_xy_m": [
+        -965.118,
+        -451.195
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_anos70_04__way_488128348.fbx",
+      "source_fbx_sha256": "59f3415b4a56a84c3072302bf1ff4b187a30794a9fcf7963f0337758eeebe929"
+    },
+    {
+      "building_id": "way/588408933",
+      "style_id": "cop_residencial_anos70_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 6828,
+      "local_centroid_xy_m": [
+        -382.114,
+        217.759
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_anos70_05__way_588408933.fbx",
+      "source_fbx_sha256": "dfb16aa0100bc877df4d933a78a0d3b2902cdfe24597e01fcfde75e88c4380cb"
+    },
+    {
+      "building_id": "way/227727238",
+      "style_id": "cop_residencial_compacto_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 13590,
+      "local_centroid_xy_m": [
+        224.728,
+        360.649
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_compacto_01__way_227727238.fbx",
+      "source_fbx_sha256": "c7eb051dcd0455785cf9d909d104593e69fc6933c8e6297e4c5f255f016eeab7"
+    },
+    {
+      "building_id": "way/586695360",
+      "style_id": "cop_residencial_compacto_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 13386,
+      "local_centroid_xy_m": [
+        -329.138,
+        124.78
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_compacto_02__way_586695360.fbx",
+      "source_fbx_sha256": "f2b0ae96cce53aeea56f066175d4ac5d26bddd7fbd1f003c52eea42980d74b57"
+    },
+    {
+      "building_id": "way/488128350",
+      "style_id": "cop_residencial_compacto_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 6402,
+      "local_centroid_xy_m": [
+        -854.797,
+        -392.734
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_compacto_03__way_488128350.fbx",
+      "source_fbx_sha256": "7fe0b69cded83972db5f8a4a1310cad3f15f6ee8bf57df36be5675a86ca3bbd0"
+    },
+    {
+      "building_id": "way/587517181",
+      "style_id": "cop_residencial_compacto_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 6410,
+      "local_centroid_xy_m": [
+        -581.353,
+        123.986
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_compacto_04__way_587517181.fbx",
+      "source_fbx_sha256": "7f358215fe38a7c50d425a36975b70ec2f89b15ee263dfb2eb03f58aa4f853d1"
+    },
+    {
+      "building_id": "way/134013929",
+      "style_id": "cop_residencial_compacto_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 14700,
+      "local_centroid_xy_m": [
+        523.285,
+        59.965
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_compacto_05__way_134013929.fbx",
+      "source_fbx_sha256": "d90d0e1a7f35657dc2a01750cecaab1dc4263fb9f8b10ad57079dd6dd7ebaf2c"
+    },
+    {
+      "building_id": "way/586975771",
+      "style_id": "cop_residencial_orla_01",
+      "model_mesh_objects": 7,
+      "model_polygons": 29904,
+      "local_centroid_xy_m": [
+        -567.101,
+        281.515
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_orla_01__way_586975771.fbx",
+      "source_fbx_sha256": "aa0b8ceecf8669247041225c9b11f137efa752cdecba3f8f8eb061ef057aabfa"
+    },
+    {
+      "building_id": "way/488128340",
+      "style_id": "cop_residencial_orla_02",
+      "model_mesh_objects": 7,
+      "model_polygons": 10906,
+      "local_centroid_xy_m": [
+        -903.924,
+        -438.706
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_orla_02__way_488128340.fbx",
+      "source_fbx_sha256": "6d16378b660998c7d8764eecff50f80e08e53a23608a10f4459f9f443401f4b2"
+    },
+    {
+      "building_id": "way/589316365",
+      "style_id": "cop_residencial_orla_03",
+      "model_mesh_objects": 8,
+      "model_polygons": 13444,
+      "local_centroid_xy_m": [
+        -919.173,
+        -62.469
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_orla_03__way_589316365.fbx",
+      "source_fbx_sha256": "b28bab6c50c6e25d8f62147044921a5474c4d1dfe638968450b975efc4fe2912"
+    },
+    {
+      "building_id": "way/586975773",
+      "style_id": "cop_residencial_orla_04",
+      "model_mesh_objects": 7,
+      "model_polygons": 18888,
+      "local_centroid_xy_m": [
+        -478.087,
+        246.997
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_orla_04__way_586975773.fbx",
+      "source_fbx_sha256": "aa2a928ae93dee4ce7d44e1f2f939f2545c2478b3d03c6bb32a29d7f41ff20ce"
+    },
+    {
+      "building_id": "way/586695359",
+      "style_id": "cop_residencial_orla_05",
+      "model_mesh_objects": 8,
+      "model_polygons": 18326,
+      "local_centroid_xy_m": [
+        -335.287,
+        143.092
+      ],
+      "source_fbx": "UnityProject/Assets/Architecture/R7_Pilot50/Procedural/FBX/cop_residencial_orla_05__way_586695359.fbx",
+      "source_fbx_sha256": "1157c3a26ef1325fa65b80bacc5cb28a1448a3beb32c5f5302d142f66e7fbfbd"
+    }
+  ],
+  "limits": "Real Blender rendered derived Copacabana with exactly 50 R7 UV0/semantic models replacing masked OSM ways. NOT final art, playable Windows EXE, native Unity-validated URP materials, benchmark FPS or 1468 fully replaced buildings.",
+  "license": "© OpenStreetMap contributors — ODbL 1.0"
+}
