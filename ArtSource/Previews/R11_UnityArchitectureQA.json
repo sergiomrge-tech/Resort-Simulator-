@@ -1,0 +1,22 @@
+﻿{
+    "status": "R11_UNITY_REAL_VOLUMETRY_URP_TECHNICAL_PASS_VISUAL_PENDING",
+    "unity_version": "6000.6.2f1",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "renderer": "Direct3D11",
+    "input_scene": "Assets/Scenes/R10_Copacabana_Calçada_Mosaico_Mar.unity",
+    "output_scene": "Assets/Scenes/R11_Copacabana_Arquitetura_Volumetrica.unity",
+    "fbx_sha256": "d344c872cc3c05e2965af4973b4515e393e0ba614731d02fb6131025e660b90b",
+    "all_buildings": 1468,
+    "old_road_triangles": 3731,
+    "vegetation_osm_count": 48,
+    "architecture_renderers": 210,
+    "architecture_styles": 50,
+    "shaders_invalid": 0,
+    "uv0_missing": 0,
+    "balconied_buildings": 888,
+    "balconies": 6048,
+    "rooftop_units": 1414,
+    "cornices": 1355,
+    "visual_gate_approved": false,
+    "fps_measured": false
+}

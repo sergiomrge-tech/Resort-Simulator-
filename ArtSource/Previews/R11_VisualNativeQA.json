@@ -1,0 +1,122 @@
+﻿{
+    "status": "R11_REAL_URP_DETAILS_CAPTURED_ART_PENDING",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "unity_version": "6000.6.2f1",
+    "r8_facade_renderers": 350,
+    "r9_osm_trees": 48,
+    "r10_coastal_meshes": 9,
+    "r11_detail_renderers": 210,
+    "source_road_triangles": 3731,
+    "styles": 50,
+    "derived_fbx_sha256": "d344c872cc3c05e2965af4973b4515e393e0ba614731d02fb6131025e660b90b",
+    "captures": [
+        {
+            "filename": "R11_01_Dense_City_RealUnity.png",
+            "sha256": "02a63cc30f48f44b25f1a5007ed37a25b3d636c0cb0f826780e59610c560c37c",
+            "position": {
+                "x": 290.0,
+                "y": 274.9999694824219,
+                "z": -310.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 58.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1419908
+        },
+        {
+            "filename": "R11_02_Orla_Aerial_RealUnity.png",
+            "sha256": "14939bcd6bf2bf72b838530ab8a6e6f9107087173bc40be94e94a7cf3e3dab7f",
+            "position": {
+                "x": -340.0,
+                "y": 304.9999694824219,
+                "z": -380.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 52.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1087282
+        },
+        {
+            "filename": "R11_03_Facades_Rooftops_RealUnity.png",
+            "sha256": "df49db1102f4af16903035f4e6658e5331d43e8cef6bf21f16532cbf62e61412",
+            "position": {
+                "x": 120.0,
+                "y": 159.99998474121094,
+                "z": 190.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 57.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1459517
+        },
+        {
+            "filename": "R11_04_Arvore_Calcada_RealUnity.png",
+            "sha256": "bd6be4818ad8beee184135da279d415f188614951e689566ce9f26e82f7b55b3",
+            "position": {
+                "x": -140.19683837890625,
+                "y": 9.856539726257324,
+                "z": 193.1513214111328
+            },
+            "target": {
+                "x": -152.19683837890625,
+                "y": 4.556539535522461,
+                "z": 209.1513214111328
+            },
+            "bytes": 1456424
+        },
+        {
+            "filename": "R11_05_Mosaico_RealUnity.png",
+            "sha256": "07b5d04de369627ed51792c077bd23c84eb822578f69ee47f7c2ab3eb54acbbe",
+            "position": {
+                "x": -298.20635986328125,
+                "y": 26.937103271484375,
+                "z": 287.9744873046875
+            },
+            "target": {
+                "x": -298.20635986328125,
+                "y": -0.062896728515625,
+                "z": 287.9744873046875
+            },
+            "bytes": 1226995
+        },
+        {
+            "filename": "R11_06_Varandas_RealUnity.png",
+            "sha256": "f7b18998af5a3fe9b8b99b9577caefabedc7175e1bc6f3cb88ff839639e271e1",
+            "position": {
+                "x": -1.3504066467285156,
+                "y": 12.093334197998047,
+                "z": -2.7718348503112793
+            },
+            "target": {
+                "x": -8.494987487792969,
+                "y": 10.293334007263184,
+                "z": -8.244948387145996
+            },
+            "bytes": 1269510
+        },
+        {
+            "filename": "R11_07_Coberturas_RealUnity.png",
+            "sha256": "d3bf24205b43c7b4a2d2358ad567777e45e44739926e7fa3ff29e192fa575d23",
+            "position": {
+                "x": -1.1929206848144531,
+                "y": 24.7933292388916,
+                "z": 0.7497344017028809
+            },
+            "target": {
+                "x": -10.719024658203125,
+                "y": 19.593332290649414,
+                "z": -6.547754764556885
+            },
+            "bytes": 1722832
+        }
+    ],
+    "artistic_gate_passed": false,
+    "fps_measured": false
+}
