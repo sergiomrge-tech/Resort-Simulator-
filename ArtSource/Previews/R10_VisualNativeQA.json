@@ -1,0 +1,91 @@
+﻿{
+    "status": "R10_REAL_URP_ART_CAPTURED_VISUAL_GATE_PENDING",
+    "renderer": "Direct3D11",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "unity_version": "6000.6.2f1",
+    "r8_facade_renderers": 350,
+    "r9_osm_trees": 48,
+    "r10_coastal_meshes": 9,
+    "source_road_triangles": 3731,
+    "styles": 50,
+    "derived_fbx_sha256": "32e06235ae005b137ac5073c24fee1c568cd5a58b7a065d0dc826e1f6e717d08",
+    "captures": [
+        {
+            "filename": "R10_01_Dense_City_RealUnity.png",
+            "sha256": "662df2775c27e50fd5cbde6a40eedc57fb9dd9c4c4e76a6e1bab67380c334294",
+            "position": {
+                "x": 290.0,
+                "y": 274.9999694824219,
+                "z": -310.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 58.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1403439
+        },
+        {
+            "filename": "R10_02_Orla_Aerial_RealUnity.png",
+            "sha256": "3e839e319fd3fa8befcec82ff726b5089c08d9afa1e9aab0bd776b83eb9d85d5",
+            "position": {
+                "x": -340.0,
+                "y": 304.9999694824219,
+                "z": -380.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 52.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1070901
+        },
+        {
+            "filename": "R10_03_Facades_Rooftops_RealUnity.png",
+            "sha256": "b810317ba9ea71dee953458c57d732ba1605706c07e0acec034ebc1474acb6f9",
+            "position": {
+                "x": 120.0,
+                "y": 159.99998474121094,
+                "z": 190.0
+            },
+            "target": {
+                "x": 0.0,
+                "y": 57.99998092651367,
+                "z": 0.0
+            },
+            "bytes": 1440331
+        },
+        {
+            "filename": "R10_04_Arvore_Calcada_RealUnity.png",
+            "sha256": "c72cba409df161be2a096e908041e5a99a5b3999b3f537c8a2b018be68da8da1",
+            "position": {
+                "x": -140.19683837890625,
+                "y": 9.856539726257324,
+                "z": 193.1513214111328
+            },
+            "target": {
+                "x": -152.19683837890625,
+                "y": 4.556539535522461,
+                "z": 209.1513214111328
+            },
+            "bytes": 1453973
+        },
+        {
+            "filename": "R10_05_Mosaico_RealUnity.png",
+            "sha256": "07b5d04de369627ed51792c077bd23c84eb822578f69ee47f7c2ab3eb54acbbe",
+            "position": {
+                "x": -298.20635986328125,
+                "y": 26.937103271484375,
+                "z": 287.9744873046875
+            },
+            "target": {
+                "x": -298.20635986328125,
+                "y": -0.062896728515625,
+                "z": 287.9744873046875
+            },
+            "bytes": 1226995
+        }
+    ],
+    "artistic_gate_passed": false,
+    "fps_measured": false
+}

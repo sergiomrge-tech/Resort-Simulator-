@@ -1,0 +1,18 @@
+﻿{
+    "status": "R10_UNITY_URP_COPACABANA_ART_TECHNICAL_PASS_VISUAL_GATE_PENDING",
+    "unity_version": "6000.6.2f1",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "renderer": "Direct3D11",
+    "output_scene": "Assets/Scenes/R10_Copacabana_Calçada_Mosaico_Mar.unity",
+    "coastal_fbx_sha256": "32e06235ae005b137ac5073c24fee1c568cd5a58b7a065d0dc826e1f6e717d08",
+    "geographic_roads_triangles": 3731,
+    "detailed_background_facades": 350,
+    "trees": 48,
+    "promenade_meshes": 9,
+    "facade_material_variants": 150,
+    "coast_samples": 401,
+    "sea_shader_compiled": true,
+    "aerial_shadows_temporarily_disabled": false,
+    "visual_gate_approved": false,
+    "fps_measured": false
+}
