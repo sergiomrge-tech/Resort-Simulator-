@@ -1,0 +1,18 @@
+{
+    "status": "R13_UNITY_TECHNICAL_PASS_ART_PENDING",
+    "unity_version": "6000.6.2f1",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "renderer": "Direct3D11",
+    "fbx_sha256": "46c10aea437056b646dd7787476a4519d1787eeb4bc800d188fcdbfda2830129",
+    "meshes": 105,
+    "road_triangles": 3731,
+    "trees": 48,
+    "missing_uv0": 0,
+    "shader_errors": 0,
+    "tree_missing_uv0": 0,
+    "texture2d_count": 21,
+    "missing_material_slots": 0,
+    "urp_version": "17.6.0",
+    "artistic_gate_approved": false,
+    "fps_measured": false
+}

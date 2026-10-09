@@ -65,3 +65,7 @@ python -m unittest discover -s Tools/tests -p test_r13_contract.py -v
 Expansão posterior: mesmo gerador com `-- --sectors 0,1,2,3,4,5,6,7,8,9`; reexecutar reimportação e gates. Isso substitui **somente os derivados R13** e não aprova automaticamente os dez setores. O workflow `.github/workflows/r13-orla-premium.yml` usa a cadeia nativa R7→R12, gera o piloto R13 e publica assets/relatórios/renders Blender; não fabrica imagens Unity.
 
 Após resolver Package Manager e materializar a base, executar `ResortR13CoastalFinish.RebuildChain` e `ResortR13VisualCapture.Run` no Editor real. A cena só será criada em `Assets/Scenes/R13_Copacabana_200m_Premium.unity` após passar os gates. Próximo checkpoint: **Unity compilada, shader/UV/materials conferidos, capturas pareadas dia/tarde e teste temporal da água**, depois revisão artística e expansão gradual. Não integrar gameplay nem fazer merge nesta fase.
+
+## Suplemento Passo 2 — 09/10/2026
+
+Nova camada sem sobrescrever o checkpoint acima: `R13_VisualPass2`, superfícies nos dez setores e detalhes S04/S05/S06. Fonte de status atual: [R13_PASS2_QA_REPORT.md](R13_PASS2_QA_REPORT.md) e `ArtSource/Previews/R13_Pass2_Coverage.json`. Aprovação artística, métricas e gameplay continuam separados dos gates técnicos.

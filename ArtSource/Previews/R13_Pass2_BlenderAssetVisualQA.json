@@ -1,0 +1,37 @@
+{
+  "renderer": "Blender Cycles",
+  "blender_version": "5.2.1 LTS",
+  "asset_only": true,
+  "unity_capture": false,
+  "art_approved": false,
+  "captures": [
+    {
+      "path": "ArtSource/Previews/R13_Pass2_Furniture_RealBlender_AssetQA.png",
+      "sha256": "c44641eac7499159b852bc91c273653fb4acabcd534b8b075001aa228b1298c5",
+      "local_position": [
+        1,
+        -411.8302701550441,
+        2.0
+      ],
+      "local_target": [
+        18,
+        -418.7302701550441,
+        0.5
+      ]
+    },
+    {
+      "path": "ArtSource/Previews/R13_Pass2_Mosaic_RealBlender_AssetQA.png",
+      "sha256": "815566df54de4234edacede13204a0029a746a47949ec2ab2e14cd0ce0d4ac36",
+      "local_position": [
+        16,
+        -410.8302701550441,
+        4.8
+      ],
+      "local_target": [
+        14,
+        -415.8302701550441,
+        0
+      ]
+    }
+  ]
+}

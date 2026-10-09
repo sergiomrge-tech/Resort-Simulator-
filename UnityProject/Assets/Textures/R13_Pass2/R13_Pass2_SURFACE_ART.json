@@ -1,0 +1,280 @@
+{
+  "author": "Project Resort procedural original",
+  "seed": 13061,
+  "external_assets": false,
+  "textures": [
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_mosaic_base.png",
+      "sha256": "9a2c72bd4362a41e77fc9c2b4faa3f24c71dea8831deb2acf352674589af15a9",
+      "size": [
+        2048,
+        2048
+      ],
+      "meters_per_repeat": [
+        12,
+        12.5
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_mosaic_normal.png",
+      "sha256": "72960964da4ee4c0e2af14cc4614b9ad305fb465ad964d5ef58006e3bd323e8a",
+      "size": [
+        2048,
+        2048
+      ],
+      "meters_per_repeat": [
+        12,
+        12.5
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_mosaic_mask.png",
+      "sha256": "ef247b03731e7f9835eb409e1dfaf30fe73e90a2dd27cc1fe62cf58fbe92e848",
+      "size": [
+        2048,
+        2048
+      ],
+      "meters_per_repeat": [
+        12,
+        12.5
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_sand_base.png",
+      "sha256": "3395ba5f51a807ed5de7c1cce886cd9f030745f2dcacd00818aa63254ece3c58",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_sand_normal.png",
+      "sha256": "b5c0e931d8cd7676ee64fac77a9883708d2ddd5c539cbc10f51f922e0c508e05",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_sand_mask.png",
+      "sha256": "5f9595867cd5e2802ed2a913b9a105386004ba346d3f5e102bedbe76f81b4946",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_wet_sand_base.png",
+      "sha256": "0b11cdcb7cdc41be72d37cfc33399e384d0cc69a7cb8c27050ee572a9bb35d98",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_wet_sand_normal.png",
+      "sha256": "dc12e2078801160b3f3ab73d6dfde30ebaab279f95ec64e62c9ba4a9c0c02003",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_wet_sand_mask.png",
+      "sha256": "7dfd17061a85e44bf432a1be5b28499bb01f37d6c9c5279460a5ae3ace225449",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_limestone_base.png",
+      "sha256": "c998a2f64d82b83910d3ede2551164c9500bcf54ab07db774034f119380ffd7b",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_limestone_normal.png",
+      "sha256": "7b01d3e5fdf086ad545e7184563ddc778c5b8d01f6c8bf9d46102a9aa4dcc31b",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_limestone_mask.png",
+      "sha256": "f529c636a571aed3d39feceab6b13a735303f25cc4fc1c0ac56b1dd17b66aeff",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_timber_base.png",
+      "sha256": "4d6abfbbb8df29684a0e7e5acde15f0b6437c82209343d2da0c49b6ac4fb36d1",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_timber_normal.png",
+      "sha256": "2a0622492ca8917d346657e1f94c2fb74edbc6b89dd6f0b59ac8c1ee814d9138",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_timber_mask.png",
+      "sha256": "4898dd78a047aab14171cbc6bf4ed273b8853311f01420f9256d2764ecaa63a9",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_asphalt_base.png",
+      "sha256": "a437f8519562d7b022a65a9d2e0b77a8ed2ce3de8f085e56de8e7167d01cec51",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_asphalt_normal.png",
+      "sha256": "3ed48c121628af2714a2a07cee8e424dbcbf3169bb2b937f7455cbc68033b08c",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_asphalt_mask.png",
+      "sha256": "708be279ff0ad785468b8c2f7f2e19723d01f6ca783fb6a741dc67d834fb6249",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_pavement_base.png",
+      "sha256": "e53cfcc73e902b0455322be3e828fe11f8de2c204d0c87c5afc6bf278cd321b6",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_pavement_normal.png",
+      "sha256": "7f88adab66e55168d8a3052732983502dc1f185c0cbf60de8fc4d6046312b0e7",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Pass2/r13_pavement_mask.png",
+      "sha256": "f1b302fcfaef5b8715150c503ebf0ebdcd3a4e87aa40b941a6c3b32332b7897d",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    }
+  ]
+}

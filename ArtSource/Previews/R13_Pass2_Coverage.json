@@ -1,0 +1,468 @@
+{
+  "frame_m": [
+    2000,
+    1000
+  ],
+  "fbx_sha256": "46c10aea437056b646dd7787476a4519d1787eeb4bc800d188fcdbfda2830129",
+  "surface_sectors": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "detailed_sectors": [
+    4,
+    5,
+    6
+  ],
+  "pbr_texture_count": 21,
+  "artistic_gate_approved": false,
+  "sectors": [
+    {
+      "sector": "S00",
+      "status": "BASE",
+      "model_count": 6,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement"
+      ],
+      "vegetation": {
+        "planters": 0,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 0,
+        "families": []
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 0,
+        "osm_ids": [],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S01",
+      "status": "BASE",
+      "model_count": 6,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement"
+      ],
+      "vegetation": {
+        "planters": 0,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 0,
+        "families": []
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 0,
+        "osm_ids": [],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S02",
+      "status": "BASE",
+      "model_count": 6,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement"
+      ],
+      "vegetation": {
+        "planters": 0,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 0,
+        "families": []
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 0,
+        "osm_ids": [],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S03",
+      "status": "BASE",
+      "model_count": 6,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement"
+      ],
+      "vegetation": {
+        "planters": 0,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 0,
+        "families": []
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 0,
+        "osm_ids": [],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S04",
+      "status": "INTERMEDIARIO",
+      "model_count": 21,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement",
+        "limestone",
+        "timber",
+        "metal",
+        "leaves",
+        "soil"
+      ],
+      "vegetation": {
+        "planters": 8,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 8,
+        "families": [
+          "bench",
+          "planter",
+          "bin",
+          "cycle_stand",
+          "lantern"
+        ]
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 6,
+        "osm_ids": [
+          "way/115811392",
+          "way/1343107187",
+          "way/1343107188",
+          "way/1343107189",
+          "way/1343107190",
+          "way/1343107191"
+        ],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S05",
+      "status": "INTERMEDIARIO",
+      "model_count": 21,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement",
+        "limestone",
+        "timber",
+        "metal",
+        "leaves",
+        "soil"
+      ],
+      "vegetation": {
+        "planters": 8,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 8,
+        "families": [
+          "bench",
+          "planter",
+          "bin",
+          "cycle_stand",
+          "lantern"
+        ]
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 14,
+        "osm_ids": [
+          "way/115811373",
+          "way/115811391",
+          "way/427315852",
+          "way/427315854",
+          "way/427315856",
+          "way/427315863",
+          "way/427315865",
+          "way/427315866",
+          "way/427315868",
+          "way/427315870",
+          "way/1042050706",
+          "way/1042050707",
+          "way/1343107184",
+          "way/1343107185"
+        ],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S06",
+      "status": "INTERMEDIARIO",
+      "model_count": 21,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement",
+        "limestone",
+        "timber",
+        "metal",
+        "leaves",
+        "soil"
+      ],
+      "vegetation": {
+        "planters": 8,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 8,
+        "families": [
+          "bench",
+          "planter",
+          "bin",
+          "cycle_stand",
+          "lantern"
+        ]
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 4,
+        "osm_ids": [
+          "way/115811110",
+          "way/1042050704",
+          "way/1042050705",
+          "way/1343107180"
+        ],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S07",
+      "status": "BASE",
+      "model_count": 6,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement"
+      ],
+      "vegetation": {
+        "planters": 0,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 0,
+        "families": []
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 0,
+        "osm_ids": [],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S08",
+      "status": "BASE",
+      "model_count": 6,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement"
+      ],
+      "vegetation": {
+        "planters": 0,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 0,
+        "families": []
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 0,
+        "osm_ids": [],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    },
+    {
+      "sector": "S09",
+      "status": "BASE",
+      "model_count": 6,
+      "materials": [
+        "sand",
+        "wet_sand",
+        "mosaic",
+        "ocean",
+        "asphalt",
+        "pavement"
+      ],
+      "vegetation": {
+        "planters": 0,
+        "original_osm_trees_total": 48,
+        "tree_uv0_gate": "PASS_UNITY_DERIVED"
+      },
+      "furniture": {
+        "groups": 0,
+        "families": []
+      },
+      "sea_sand_mosaic": {
+        "generated": true,
+        "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+        "continuous_boundaries_total": 54
+      },
+      "adjacent_buildings": {
+        "decorative_facade_count": 0,
+        "osm_ids": [],
+        "accessible_interiors": false
+      },
+      "QA_evidence": {
+        "native": "UnityProject/Assets/Architecture/R13_Pass2/R13_Pass2_NATIVE.json",
+        "unity_captures": [],
+        "visual_gate": "PENDING",
+        "art_approved": false
+      }
+    }
+  ]
+}

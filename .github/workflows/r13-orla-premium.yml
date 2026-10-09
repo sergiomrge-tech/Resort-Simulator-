@@ -82,6 +82,17 @@ jobs:
           python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r13_coastal_native.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-native-reimport.log
           python -c "import bpy,runpy;runpy.run_path('Tools/Blender/render_r13_asset_qa.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-blender-asset-render.log
           python -m unittest discover -s Tools/tests -p 'test_r13_contract.py' -v
+      - name: Pass2 native continuous surfaces and S04 S05 S06 detail batches
+        run: |
+          set -euo pipefail
+          python Tools/geo/generate_r13_pass2_surface_art.py
+          python Tools/geo/normalize_r13_pass2_meta.py
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r13_pass2.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-pass2-generation.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r13_pass2_native.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-pass2-reimport.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/render_r13_pass2_asset_qa.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-pass2-render.log
+          python Tools/geo/report_r13_pass2_coverage.py
+          python -m py_compile Tools/Blender/generate_r13_pass2.py Tools/geo/generate_r13_pass2_surface_art.py Tools/geo/report_r13_pass2_coverage.py
+          python -m unittest discover -s Tools/tests -p 'test_r13_pass2_contract.py' -v
       - uses: actions/upload-artifact@v4
         if: success()
         with:
@@ -95,6 +106,10 @@ jobs:
             UnityProject/Assets/Architecture/R12_Storefronts/
             UnityProject/Assets/Architecture/R13_Coastal/
             UnityProject/Assets/Textures/R13_Coastal/
+            UnityProject/Assets/Architecture/R13_Pass2/
+            UnityProject/Assets/Textures/R13_Pass2/
+            ArtSource/Blender/R13_VisualPass2_Coastal_Sectors.blend
+            ArtSource/Previews/R13_Pass2_*
             ArtSource/Blender/R13_OSM_Coastal_Sectors.blend
             ArtSource/Previews/R13_*RealBlender*.png
             ArtSource/Previews/R13_BlenderAssetVisualQA.json
