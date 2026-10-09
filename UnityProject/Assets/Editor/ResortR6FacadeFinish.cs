@@ -152,7 +152,9 @@ public static class ResortR6FacadeFinish
         string path = TextureDir + "/R6_" + family + "_" + group +
                       (normal ? "_normal.png" : "_albedo.png");
         if (ImportedTextures.Contains(path)) return path;
-        if (!File.Exists(path))
+        string absolutePath = Path.Combine(Application.dataPath,
+            "Textures/R6_Facades", Path.GetFileName(path));
+        if (!File.Exists(absolutePath))
         {
             int seed = family.Aggregate(17, (h, ch) => unchecked(h * 31 + (int)ch)) & 0x7fffffff;
             var tex = new Texture2D(Size, Size, TextureFormat.RGBA32, false, true);
@@ -179,7 +181,7 @@ public static class ResortR6FacadeFinish
                 }
             tex.SetPixels32(colors);
             tex.Apply();
-            WriteIfDifferent(path, tex.EncodeToPNG());
+            WriteIfDifferent(absolutePath, tex.EncodeToPNG());
             UnityEngine.Object.DestroyImmediate(tex);
         }
         AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceSynchronousImport);
