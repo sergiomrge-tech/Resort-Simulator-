@@ -1,0 +1,215 @@
+{
+    "status": "R13_REAL_UNITY_CAPTURED_ART_PENDING",
+    "unity_version": "6000.6.2f1",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti",
+    "renderer": "Direct3D11",
+    "captures": [
+        {
+            "filename": "R13_S05_before_day_walk_RealUnity.png",
+            "sha256": "ab3f72703e14a6af7dc4a5ba59cb7cbda8b477f97a4a8a329e5992407a57ce5a",
+            "source_scene": "Assets/Scenes/R12_Copacabana_Lojas_Vitrines_Entradas.unity",
+            "lighting": "day",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_before_day_coast_RealUnity.png",
+            "sha256": "5fbd69d353a4b14ff67193880d2dc5a7147b27f0055178b782908ba11926b79f",
+            "source_scene": "Assets/Scenes/R12_Copacabana_Lojas_Vitrines_Entradas.unity",
+            "lighting": "day",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_before_day_shore_RealUnity.png",
+            "sha256": "a71b3778f273214643893e9f7365a20740a2c196996412810add54bf5802f217",
+            "source_scene": "Assets/Scenes/R12_Copacabana_Lojas_Vitrines_Entradas.unity",
+            "lighting": "day",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_before_late_walk_RealUnity.png",
+            "sha256": "a161a2a0a8b1fd8ea9a0c7e5c186a6d72c7f563ab1f991dcf0847988ed71319e",
+            "source_scene": "Assets/Scenes/R12_Copacabana_Lojas_Vitrines_Entradas.unity",
+            "lighting": "late",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_before_late_coast_RealUnity.png",
+            "sha256": "b948c2aa49b30fcde02d07a6a9b8ba58781b6a3b551294dc7e9f9ff001b3a8ea",
+            "source_scene": "Assets/Scenes/R12_Copacabana_Lojas_Vitrines_Entradas.unity",
+            "lighting": "late",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_before_late_shore_RealUnity.png",
+            "sha256": "b88828f9ccf9b0dbd0adc95c5fea757d604042fc85f3e90feb37c1ef0fc2f1ec",
+            "source_scene": "Assets/Scenes/R12_Copacabana_Lojas_Vitrines_Entradas.unity",
+            "lighting": "late",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_after_day_walk_RealUnity.png",
+            "sha256": "3165c35dbd8f9523a9bc3a70bcbef2d11923617cbdc4411806521d7e027eab9c",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_after_day_coast_RealUnity.png",
+            "sha256": "7f4977b7de9d52d0f8c5408b7b0e94d3735475c9cdf9e40d1e839cf555b5b77f",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_after_day_shore_RealUnity.png",
+            "sha256": "16002432ae24233b350fb3eb9e73a3be0ab6034f9469be79a7f40e9e41a6dd13",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "day",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_after_late_walk_RealUnity.png",
+            "sha256": "4f8a222e535491bbf6e04ea2cef6d6e43f9d04d8e1ec7fe6fe6902ab9ef8a30d",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -397.3504333496094,
+                "y": 1.618101954460144,
+                "z": 246.73812866210938
+            },
+            "target": {
+                "x": -348.724365234375,
+                "y": 1.2681019306182861,
+                "z": 196.3843231201172
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_after_late_coast_RealUnity.png",
+            "sha256": "fa578624d8531ea3db85cda826fb0ba4a4cd58f3ddd4a72b83efa108e5414b7a",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -333.646484375,
+                "y": 35.968101501464844,
+                "z": 249.8694305419922
+            },
+            "target": {
+                "x": -368.1748046875,
+                "y": 0.968101978302002,
+                "z": 216.52584838867188
+            },
+            "warmup_frames": 5
+        },
+        {
+            "filename": "R13_S05_after_late_shore_RealUnity.png",
+            "sha256": "8d5e424c7286e380f81f785c8fa488a2bc6d34c8f6fea86d1894aa36a607d106",
+            "source_scene": "Assets/Scenes/R13_Copacabana_200m_Premium.unity",
+            "lighting": "late",
+            "position": {
+                "x": -350.91064453125,
+                "y": 1.618101954460144,
+                "z": 233.1976318359375
+            },
+            "target": {
+                "x": -303.4342041015625,
+                "y": 0.06810198724269867,
+                "z": 279.0450744628906
+            },
+            "warmup_frames": 5
+        }
+    ],
+    "artistic_gate_approved": false,
+    "fps_measured": false,
+    "playmode_water_animation_tested": false
+}

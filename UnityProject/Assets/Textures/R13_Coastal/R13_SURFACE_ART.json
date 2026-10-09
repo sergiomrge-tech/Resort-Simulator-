@@ -1,0 +1,163 @@
+{
+  "author": "Project Resort procedural original",
+  "seed": 13061,
+  "external_assets": false,
+  "textures": [
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_mosaic_base.png",
+      "sha256": "75134b584dc3c0b31987f87005023bcf55e75d644a5795e3074f2bfa35da9c33",
+      "size": [
+        2048,
+        2048
+      ],
+      "meters_per_repeat": [
+        12,
+        12.5
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_mosaic_normal.png",
+      "sha256": "72960964da4ee4c0e2af14cc4614b9ad305fb465ad964d5ef58006e3bd323e8a",
+      "size": [
+        2048,
+        2048
+      ],
+      "meters_per_repeat": [
+        12,
+        12.5
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_mosaic_mask.png",
+      "sha256": "ef247b03731e7f9835eb409e1dfaf30fe73e90a2dd27cc1fe62cf58fbe92e848",
+      "size": [
+        2048,
+        2048
+      ],
+      "meters_per_repeat": [
+        12,
+        12.5
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_sand_base.png",
+      "sha256": "ea95fced1925a396ce86c807caf7c8ba608ed3846d38cfa80e7d28c3fc6f4190",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_sand_normal.png",
+      "sha256": "95da906b2efc22493ea733e4c90e8257ef757d9706974335720ae531371dbf3f",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_sand_mask.png",
+      "sha256": "3aec72c7751226c8a1d4330e9471b02454fd5650819c885345daea835d27d428",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        4,
+        4
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_limestone_base.png",
+      "sha256": "e7c2b93787d2576c22a17ccaf419c28a4e9f9ea37b5b7bf0b197dbad9b768413",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_limestone_normal.png",
+      "sha256": "364bef9edee911d512de513d8514338cfa1647a895e20487de090453a13ae81d",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_limestone_mask.png",
+      "sha256": "f529c636a571aed3d39feceab6b13a735303f25cc4fc1c0ac56b1dd17b66aeff",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_timber_base.png",
+      "sha256": "382d379c6c265b1bcc243dae2a9bff952c32266aa35e7a87fdfe2778e910097b",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "base"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_timber_normal.png",
+      "sha256": "6149adbaa892ae88aa254a4603206366dc0fb4b13e39ca450ae5f85787cc569d",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "normal"
+    },
+    {
+      "path": "UnityProject/Assets/Textures/R13_Coastal/r13_timber_mask.png",
+      "sha256": "4898dd78a047aab14171cbc6bf4ed273b8853311f01420f9256d2764ecaa63a9",
+      "size": [
+        1024,
+        1024
+      ],
+      "meters_per_repeat": [
+        2,
+        2
+      ],
+      "kind": "mask"
+    }
+  ]
+}

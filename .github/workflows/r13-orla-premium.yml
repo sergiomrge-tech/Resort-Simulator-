@@ -1,0 +1,115 @@
+name: Resort R13 | native OSM coast premium 200m and scalable sectors
+on:
+  push:
+    branches: [codex/r13-sol61-orla-premium]
+    paths: ['Tools/**', 'UnityProject/Assets/Editor/ResortR13*.cs', 'UnityProject/Assets/Shaders/R13*.shader', '.github/workflows/r13-orla-premium.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: resort-r13-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  generate-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Static checks, frozen 2x1 coastline frame and prior R8/R7 contracts
+        run: |
+          set -euo pipefail
+          python Tools/geo/normalize_r13_unity_meta.py
+          python -m py_compile Tools/geo/normalize_r13_unity_meta.py Tools/tests/test_r13_unity_native_import_contract.py
+          python -m py_compile Tools/Blender/generate_r9_urban_environment.py Tools/Blender/select_r9_vegetation.py Tools/Blender/r9_tree_canopy.py Tools/tests/test_r9_environment_native.py Tools/Blender/generate_r10_coastal_details.py Tools/tests/test_r10_coastal_native.py Tools/Blender/generate_r12_storefronts.py Tools/tests/test_r12_storefront_native.py Tools/tests/test_r12_capture_integrity.py Tools/geo/generate_r12_sign_art.py Tools/geo/generate_r12_glass_art.py
+          python -m unittest discover -s Tools/tests -p 'test_r8_winding_geo.py' -v
+          python -m unittest discover -s Tools/tests -p 'test_r7_contract.py' -v
+          python -m unittest discover -s Tools/tests -p 'test_r10_capture_integrity.py' -v
+          python -m unittest discover -s Tools/tests -p 'test_r11_capture_integrity.py' -v
+          python -m unittest discover -s Tools/tests -p 'test_r12_capture_integrity.py' -v
+          python -m unittest discover -s Tools/tests -p 'test_r13_unity_native_import_contract.py' -v
+      - name: Install authentic Blender Python and source GIS geometry dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+          python -m pip install --disable-pip-version-check 'bpy==4.5.3' 'pyproj==3.7.2' 'shapely==2.1.2' 'numpy==2.2.6' 'Pillow==11.3.0'
+      - name: Rebuild underlying real R7 city and preserve the street geometry
+        run: |
+          set -euo pipefail
+          mkdir -p build/R12_CIQA
+          python Tools/tests/test_r7_geometry_native.py 2>&1 | tee build/R12_CIQA/r7-smoke.log
+          python -c "import bpy,sys,runpy;sys.argv=['blender','--','--mode','gallery','--no-render'];runpy.run_path('Tools/Blender/generate_r7_buildings.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r7-models.log
+          python Tools/geo/r7_mask_city_50.py 2>&1 | tee build/R12_CIQA/r7-mask.log
+          python -c "import bpy,sys,runpy;sys.argv=['blender','--no-render'];runpy.run_path('Tools/Blender/assemble_r7_city_50.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r7-city.log
+          python Tools/tests/test_r7_exported_fbx_native.py 2>&1 | tee build/R12_CIQA/r7-reimport.log
+      - name: Rebuild 1418 R8 detailed background buildings and validate the original 2x1 km
+        run: |
+          set -euo pipefail
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r8_full_city_facades.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r8-background.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r8_native_fbx.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r8-reimport.log
+      - name: Select 48 true OSM trees out of 120 candidates excluding real road triangle footprints
+        run: |
+          set -euo pipefail
+          python Tools/geo/generate_r6_vegetation.py --pilot-count 120 --output geo/procedural/R9_VEGETATION_CANDIDATES_120.json 2>&1 | tee build/R12_CIQA/candidates.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/select_r9_vegetation.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/road-clearance.log
+      - name: Build actual coastal, park and dense 48-tree native Blender FBX
+        run: |
+          set -euo pipefail
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r9_urban_environment.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/urban-generate.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r9_environment_native.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/urban-fbx-reimport.log
+      - name: Generate Copacabana-inspired promenade and surf on real OSM coast
+        run: |
+          set -euo pipefail
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r10_coastal_details.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r10-geocoast.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r10_coastal_native.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r10-native-reimport.log
+      - name: Generate true 3D balconies, cornices and rooftop structures for all 1418 background buildings
+        run: |
+          set -euo pipefail
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r11_architectural_detail.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r11-architecture-geometry.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r11_architecture_native.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r11-real-fbx-roundtrip.log
+      - name: Create authentic OSM-coordinate commercial ground-floor FBX and reimport it
+        run: |
+          set -euo pipefail
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r12_storefronts.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r12-real-ground-floor.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r12_storefront_native.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r12-fbx-roundtrip.log
+      - name: Generate original R13 PBR and native 200m sector, test FBX UV and continuity
+        run: |
+          set -euo pipefail
+          python Tools/geo/generate_r13_surface_art.py
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/generate_r13_coastal_slice.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-generation.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/tests/test_r13_coastal_native.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-native-reimport.log
+          python -c "import bpy,runpy;runpy.run_path('Tools/Blender/render_r13_asset_qa.py',run_name='__main__')" 2>&1 | tee build/R12_CIQA/r13-blender-asset-render.log
+          python -m unittest discover -s Tools/tests -p 'test_r13_contract.py' -v
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: Resort-R13-Native-200m-Pilot-Art-Pending
+          path: |
+            UnityProject/Assets/Architecture/R7_Pilot50/
+            UnityProject/Assets/Architecture/R8_FullCity/
+            UnityProject/Assets/Architecture/R9_Environment/
+            UnityProject/Assets/Architecture/R10_Coastal/
+            UnityProject/Assets/Architecture/R11_Architecture/
+            UnityProject/Assets/Architecture/R12_Storefronts/
+            UnityProject/Assets/Architecture/R13_Coastal/
+            UnityProject/Assets/Textures/R13_Coastal/
+            ArtSource/Blender/R13_OSM_Coastal_Sectors.blend
+            ArtSource/Previews/R13_*RealBlender*.png
+            ArtSource/Previews/R13_BlenderAssetVisualQA.json
+            ArtSource/Previews/R13_S05_*_RealUnity.png
+            ArtSource/Previews/R13_UnityTechnicalQA.json
+            ArtSource/Previews/R13_VisualNativeQA*.json
+            UnityProject/Assets/Textures/R12_Storefronts/
+            geo/procedural/R9_VEGETATION_CANDIDATES_120.json
+            geo/procedural/R9_VEGETATION_SELECTED.json
+            build/R12_CIQA/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: Resort-R13-Diagnostic-Logs-No-Release
+          path: build/R12_CIQA/
+          if-no-files-found: warn

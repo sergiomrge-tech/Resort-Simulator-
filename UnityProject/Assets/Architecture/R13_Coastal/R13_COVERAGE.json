@@ -1,0 +1,984 @@
+{
+  "status": "R13_NATIVE_FBX_REIMPORT_CONTINUITY_UV_PASS_ART_PENDING",
+  "frame_m": [
+    2000,
+    1000
+  ],
+  "refined_sectors": [
+    5
+  ],
+  "fbx_sha256": "40b26a580ee94244161019feb0c6d06b57854c8a0440facf80236eaa519973a5",
+  "meshes": 120,
+  "faces": 274745,
+  "mesh_faces": {
+    "R13_S00_baseline_dark_0": 80,
+    "R13_S00_baseline_dark_1": 80,
+    "R13_S00_baseline_dark_2": 80,
+    "R13_S00_baseline_edge_0": 80,
+    "R13_S00_baseline_edge_1": 80,
+    "R13_S00_mosaic": 400,
+    "R13_S00_ocean_far": 400,
+    "R13_S00_ocean_near": 6000,
+    "R13_S00_sand": 3200,
+    "R13_S00_sand_service": 3200,
+    "R13_S00_wet_sand": 3200,
+    "R13_S01_baseline_dark_0": 80,
+    "R13_S01_baseline_dark_1": 80,
+    "R13_S01_baseline_dark_2": 80,
+    "R13_S01_baseline_edge_0": 80,
+    "R13_S01_baseline_edge_1": 80,
+    "R13_S01_mosaic": 400,
+    "R13_S01_ocean_far": 400,
+    "R13_S01_ocean_near": 6000,
+    "R13_S01_sand": 3200,
+    "R13_S01_sand_service": 3200,
+    "R13_S01_wet_sand": 3200,
+    "R13_S02_baseline_dark_0": 80,
+    "R13_S02_baseline_dark_1": 80,
+    "R13_S02_baseline_dark_2": 80,
+    "R13_S02_baseline_edge_0": 80,
+    "R13_S02_baseline_edge_1": 80,
+    "R13_S02_mosaic": 400,
+    "R13_S02_ocean_far": 400,
+    "R13_S02_ocean_near": 6000,
+    "R13_S02_sand": 3200,
+    "R13_S02_sand_service": 3200,
+    "R13_S02_wet_sand": 3200,
+    "R13_S03_baseline_dark_0": 80,
+    "R13_S03_baseline_dark_1": 80,
+    "R13_S03_baseline_dark_2": 80,
+    "R13_S03_baseline_edge_0": 80,
+    "R13_S03_baseline_edge_1": 80,
+    "R13_S03_mosaic": 400,
+    "R13_S03_ocean_far": 400,
+    "R13_S03_ocean_near": 6000,
+    "R13_S03_sand": 3200,
+    "R13_S03_sand_service": 3200,
+    "R13_S03_wet_sand": 3200,
+    "R13_S04_baseline_dark_0": 80,
+    "R13_S04_baseline_dark_1": 80,
+    "R13_S04_baseline_dark_2": 80,
+    "R13_S04_baseline_edge_0": 80,
+    "R13_S04_baseline_edge_1": 80,
+    "R13_S04_mosaic": 400,
+    "R13_S04_ocean_far": 400,
+    "R13_S04_ocean_near": 6000,
+    "R13_S04_sand": 3200,
+    "R13_S04_sand_service": 3200,
+    "R13_S04_wet_sand": 3200,
+    "R13_S05_leaves": 7776,
+    "R13_S05_leaves_LOD1": 3701,
+    "R13_S05_leaves_LOD2": 2796,
+    "R13_S05_limestone": 13626,
+    "R13_S05_limestone_LOD1": 7568,
+    "R13_S05_limestone_LOD2": 2978,
+    "R13_S05_metal": 23688,
+    "R13_S05_metal_LOD1": 13028,
+    "R13_S05_metal_LOD2": 5210,
+    "R13_S05_mosaic": 400,
+    "R13_S05_ocean_far": 400,
+    "R13_S05_ocean_near": 6000,
+    "R13_S05_sand": 3200,
+    "R13_S05_sand_service": 3200,
+    "R13_S05_soil": 96,
+    "R13_S05_soil_LOD1": 46,
+    "R13_S05_soil_LOD2": 12,
+    "R13_S05_timber": 15040,
+    "R13_S05_timber_LOD1": 8272,
+    "R13_S05_timber_LOD2": 3308,
+    "R13_S05_wet_sand": 3200,
+    "R13_S06_baseline_dark_0": 80,
+    "R13_S06_baseline_dark_1": 80,
+    "R13_S06_baseline_dark_2": 80,
+    "R13_S06_baseline_edge_0": 80,
+    "R13_S06_baseline_edge_1": 80,
+    "R13_S06_mosaic": 400,
+    "R13_S06_ocean_far": 400,
+    "R13_S06_ocean_near": 6000,
+    "R13_S06_sand": 3200,
+    "R13_S06_sand_service": 3200,
+    "R13_S06_wet_sand": 3200,
+    "R13_S07_baseline_dark_0": 80,
+    "R13_S07_baseline_dark_1": 80,
+    "R13_S07_baseline_dark_2": 80,
+    "R13_S07_baseline_edge_0": 80,
+    "R13_S07_baseline_edge_1": 80,
+    "R13_S07_mosaic": 400,
+    "R13_S07_ocean_far": 400,
+    "R13_S07_ocean_near": 6000,
+    "R13_S07_sand": 3200,
+    "R13_S07_sand_service": 3200,
+    "R13_S07_wet_sand": 3200,
+    "R13_S08_baseline_dark_0": 80,
+    "R13_S08_baseline_dark_1": 80,
+    "R13_S08_baseline_dark_2": 80,
+    "R13_S08_baseline_edge_0": 80,
+    "R13_S08_baseline_edge_1": 80,
+    "R13_S08_mosaic": 400,
+    "R13_S08_ocean_far": 400,
+    "R13_S08_ocean_near": 6000,
+    "R13_S08_sand": 3200,
+    "R13_S08_sand_service": 3200,
+    "R13_S08_wet_sand": 3200,
+    "R13_S09_baseline_dark_0": 80,
+    "R13_S09_baseline_dark_1": 80,
+    "R13_S09_baseline_dark_2": 80,
+    "R13_S09_baseline_edge_0": 80,
+    "R13_S09_baseline_edge_1": 80,
+    "R13_S09_mosaic": 400,
+    "R13_S09_ocean_far": 400,
+    "R13_S09_ocean_near": 6000,
+    "R13_S09_sand": 3200,
+    "R13_S09_sand_service": 3200,
+    "R13_S09_wet_sand": 3200
+  },
+  "source_sha256": {
+    "ArtSource/Blender/Copacabana_BlenderGIS_UTM23S.blend": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
+    "UnityProject/Assets/ImportedBlender/Copacabana_Real_Blender.fbx": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
+    "geo/data/copacabana.osm.gz": "8fa230fc41b40234d4e37e17aa18b1bb697a20e33750293d440e110e8ee0bd8f",
+    "geo/procedural/R4_SOURCE_FRAME.json": "6d433f4cdb2c92ce951920fc696c1fef4c1fe9d2ccd2eeb4f6a80525fe850797",
+    "geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json": "b4986c589e6abd58dc4de2e87224dec6067e1554de0e42aee11c6b4045699c5c",
+    "geo/procedural/R9_VEGETATION_SELECTED.json": "328bb2cbed68240302cfec1727818c0bbfaf56d702b978b1f9913b23eb82a0d2"
+  },
+  "sectors": [
+    {
+      "sector": 0,
+      "longitudinal_m": [
+        0,
+        200
+      ],
+      "local_x_m": [
+        -1000,
+        -800
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          -1000,
+          -694.1613884193106
+        ],
+        [
+          -800,
+          -564.6857986685429
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            -935.0,
+            -588.9571629505137,
+            1.65
+          ],
+          "target": [
+            -870.0,
+            -588.9571629505137,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            -900.0,
+            -615.9571629505137,
+            1.65
+          ],
+          "target": [
+            -900.0,
+            -690.9571629505137,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            -900.0,
+            -635.9571629505137,
+            35
+          ],
+          "target": [
+            -900.0,
+            -545.9571629505137,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 1,
+      "longitudinal_m": [
+        200,
+        400
+      ],
+      "local_x_m": [
+        -800,
+        -600
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          -800,
+          -564.6857986685429
+        ],
+        [
+          -600,
+          -501.4462803203824
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            -735.0,
+            -490.32437081578007,
+            1.65
+          ],
+          "target": [
+            -670.0,
+            -490.32437081578007,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            -700.0,
+            -517.3243708157801,
+            1.65
+          ],
+          "target": [
+            -700.0,
+            -592.3243708157801,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            -700.0,
+            -537.3243708157801,
+            35
+          ],
+          "target": [
+            -700.0,
+            -447.32437081578007,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 2,
+      "longitudinal_m": [
+        400,
+        600
+      ],
+      "local_x_m": [
+        -600,
+        -400
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          -600,
+          -501.4462803203824
+        ],
+        [
+          -400,
+          -495.2170888234949
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            -535.0,
+            -460.3825238228578,
+            1.65
+          ],
+          "target": [
+            -470.0,
+            -460.3825238228578,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            -500.0,
+            -487.3825238228578,
+            1.65
+          ],
+          "target": [
+            -500.0,
+            -562.3825238228578,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            -500.0,
+            -507.3825238228578,
+            35
+          ],
+          "target": [
+            -500.0,
+            -417.3825238228578,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 3,
+      "longitudinal_m": [
+        600,
+        800
+      ],
+      "local_x_m": [
+        -400,
+        -200
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          -400,
+          -495.2170888234949
+        ],
+        [
+          -200,
+          -461.9320378227729
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            -335.0,
+            -449.7708681577913,
+            1.65
+          ],
+          "target": [
+            -270.0,
+            -449.7708681577913,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            -300.0,
+            -476.7708681577913,
+            1.65
+          ],
+          "target": [
+            -300.0,
+            -551.7708681577913,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            -300.0,
+            -496.7708681577913,
+            35
+          ],
+          "target": [
+            -300.0,
+            -406.7708681577913,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 4,
+      "longitudinal_m": [
+        800,
+        1000
+      ],
+      "local_x_m": [
+        -200,
+        0
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          -200,
+          -461.9320378227729
+        ],
+        [
+          0,
+          -446.3055987543522
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            -135.0,
+            -417.7499411800682,
+            1.65
+          ],
+          "target": [
+            -70.0,
+            -417.7499411800682,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            -100.0,
+            -444.7499411800682,
+            1.65
+          ],
+          "target": [
+            -100.0,
+            -519.7499411800682,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            -100.0,
+            -464.7499411800682,
+            35
+          ],
+          "target": [
+            -100.0,
+            -374.7499411800682,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 5,
+      "longitudinal_m": [
+        1000,
+        1200
+      ],
+      "local_x_m": [
+        0,
+        200
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          0,
+          -446.3055987543522
+        ],
+        [
+          200,
+          -449.1018513267537
+        ]
+      ],
+      "geometry": "GENERATED_REFINED",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            65.0,
+            -413.2309739998698,
+            1.65
+          ],
+          "target": [
+            130.0,
+            -413.2309739998698,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            100.0,
+            -440.2309739998698,
+            1.65
+          ],
+          "target": [
+            100.0,
+            -515.2309739998698,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            100.0,
+            -460.2309739998698,
+            35
+          ],
+          "target": [
+            100.0,
+            -370.2309739998698,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 6,
+      "longitudinal_m": [
+        1200,
+        1400
+      ],
+      "local_x_m": [
+        200,
+        400
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          200,
+          -449.1018513267537
+        ],
+        [
+          400,
+          -472.03227351212286
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            265.0,
+            -426.6955002117393,
+            1.65
+          ],
+          "target": [
+            330.0,
+            -426.6955002117393,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            300.0,
+            -453.6955002117393,
+            1.65
+          ],
+          "target": [
+            300.0,
+            -528.6955002117393,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            300.0,
+            -473.6955002117393,
+            35
+          ],
+          "target": [
+            300.0,
+            -383.6955002117393,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 7,
+      "longitudinal_m": [
+        1400,
+        1600
+      ],
+      "local_x_m": [
+        400,
+        600
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          400,
+          -472.03227351212286
+        ],
+        [
+          600,
+          -507.5018116010359
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            465.0,
+            -457.38525053195394,
+            1.65
+          ],
+          "target": [
+            530.0,
+            -457.38525053195394,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            500.0,
+            -484.38525053195394,
+            1.65
+          ],
+          "target": [
+            500.0,
+            -559.385250531954,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            500.0,
+            -504.38525053195394,
+            35
+          ],
+          "target": [
+            500.0,
+            -414.38525053195394,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 8,
+      "longitudinal_m": [
+        1600,
+        1800
+      ],
+      "local_x_m": [
+        600,
+        800
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          600,
+          -507.5018116010359
+        ],
+        [
+          800,
+          -556.3232623462757
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            665.0,
+            -499.91253697365573,
+            1.65
+          ],
+          "target": [
+            730.0,
+            -499.91253697365573,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            700.0,
+            -526.9125369736557,
+            1.65
+          ],
+          "target": [
+            700.0,
+            -601.9125369736557,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            700.0,
+            -546.9125369736557,
+            35
+          ],
+          "target": [
+            700.0,
+            -456.91253697365573,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "sector": 9,
+      "longitudinal_m": [
+        1800,
+        2000
+      ],
+      "local_x_m": [
+        800,
+        1000
+      ],
+      "coast_endpoints_local_xy": [
+        [
+          800,
+          -556.3232623462757
+        ],
+        [
+          1000,
+          -615.6483659564781
+        ]
+      ],
+      "geometry": "GENERATED_BASELINE",
+      "native_gate": "PASS_REIMPORT_CONTINUITY_UV",
+      "visual_gate": "PENDING",
+      "source_coast": "way/70574890",
+      "promenade_offsets_m": [
+        25.5,
+        38
+      ],
+      "width_is_surveyed": false,
+      "camera_matrix_local_m": [
+        {
+          "focus": "promenade",
+          "position": [
+            865.0,
+            -548.8233006608419,
+            1.65
+          ],
+          "target": [
+            930.0,
+            -548.8233006608419,
+            1.3
+          ]
+        },
+        {
+          "focus": "shore",
+          "position": [
+            900.0,
+            -575.8233006608419,
+            1.65
+          ],
+          "target": [
+            900.0,
+            -650.8233006608419,
+            0.1
+          ]
+        },
+        {
+          "focus": "city",
+          "position": [
+            900.0,
+            -595.8233006608419,
+            35
+          ],
+          "target": [
+            900.0,
+            -505.82330066084194,
+            8
+          ]
+        }
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        12,
+        -418.7302701550441
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    },
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        36,
+        -418.9690082397924
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    },
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        60,
+        -418.1850140990401
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    },
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        84,
+        -418.17270454308056
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    },
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        108,
+        -418.69350422960696
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    },
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        132,
+        -419.8607401032093
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    },
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        156,
+        -420.3125596553778
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    },
+    {
+      "sector": 5,
+      "kind": "bench_planter_bin_cycle_stand",
+      "local_xy": [
+        180,
+        -420.0467482860385
+      ],
+      "fictional_planting": true,
+      "clear_pedestrian_corridor_offset_m": [
+        29,
+        36
+      ]
+    }
+  ],
+  "facade_osm_ids": [
+    "way/1042050706",
+    "way/1042050707",
+    "way/115811373",
+    "way/115811391",
+    "way/1343107184",
+    "way/1343107185",
+    "way/427315852",
+    "way/427315854",
+    "way/427315856",
+    "way/427315863",
+    "way/427315865",
+    "way/427315866",
+    "way/427315868",
+    "way/427315870"
+  ],
+  "artistic_gate_approved": false,
+  "fps_measured": false,
+  "native_blender_version": "5.2.1 LTS",
+  "native_reimport_meshes": 120,
+  "native_missing_uv0": 0,
+  "native_contiguous_boundaries": 54,
+  "furniture_anchor_road_gate": "PASS_3731_ORIGINAL_TRIANGLES"
+}
