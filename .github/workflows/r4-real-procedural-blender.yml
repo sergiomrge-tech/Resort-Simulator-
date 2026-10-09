@@ -1,0 +1,60 @@
+name: Resort R4 | GERADOR 3D REAL de Fachadas no Blender
+on:
+  push:
+    branches: [chatgpt/r4-gerador-3d-real-blender]
+    paths:
+      - 'Tools/Blender/generate_r4_buildings.py'
+      - 'Tools/tests/test_r4_generated_geometry.py'
+      - '.github/workflows/r4-real-procedural-blender.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r4-real-procedural-pilot
+  cancel-in-progress: true
+jobs:
+  generate-procedural-facades:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install software-rendering dependencies for Blender Cycles headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+      - name: Install actual Blender runtime and PNG validator
+        run: python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pillow
+      - name: Create actual walls windows balconies roofs and FBX from ten real OSM footprints
+        run: >
+          python -c "import bpy,sys,runpy;sys.argv=['blender','--','--mode','pilot'];
+          runpy.run_path('Tools/Blender/generate_r4_buildings.py',run_name='__main__')"
+      - name: Independently validate imported source provenance and real 3D output
+        run: python -m unittest discover -s Tools/tests -p test_r4_generated_geometry.py -v
+      - name: Upload true Blender rendering and ten Unity FBX outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R4-10-Modelos-Procedurais-FBX-Render-Blender-REAL
+          path: |
+            UnityProject/Assets/Architecture/R4_Procedural/
+            UnityProject/Assets/Architecture/R4_Procedural.meta
+            ArtSource/Previews/R4_Procedural_pilot_Sheet_01_Blender.png
+          if-no-files-found: error
+          retention-days: 30
+      - name: Version validated procedural models and render in GitHub
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Architecture/R4_Procedural/
+          git add -f UnityProject/Assets/Architecture/R4_Procedural.meta
+          git add -f ArtSource/Previews/R4_Procedural_pilot_Sheet_01_Blender.png
+          if ! git diff --cached --quiet; then
+            git commit -m "art(R4): 10 edificios reais com fachadas procedurais em Blender e FBX"
+            git pull --rebase origin chatgpt/r4-gerador-3d-real-blender
+            git push origin HEAD:chatgpt/r4-gerador-3d-real-blender
+          fi

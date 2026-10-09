@@ -1,0 +1,58 @@
+name: Resort R4 | GALERIA 50 FBX de Edificios Reais
+on:
+  push:
+    branches: [chatgpt/r4-gerador-3d-real-blender]
+    paths:
+      - 'Tools/tests/test_r4_gallery_50_fbx.py'
+      - '.github/workflows/r4-gallery-50-real-fbx.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: resort-r4-fifty-architecture-gallery
+  cancel-in-progress: true
+jobs:
+  materialize-all-fifty-styles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install headless Blender Cycles dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
+          python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pillow
+      - name: Generate 50 genuine unique recipe FBX meshes and five Cycles galleries
+        run: >
+          python -c "import bpy,sys,runpy;sys.argv=['blender','--','--mode','gallery'];
+          runpy.run_path('Tools/Blender/generate_r4_buildings.py',run_name='__main__')"
+      - name: Validate all 50 real source-derived FBX, geometry, provenance and five renders
+        run: python -m unittest discover -s Tools/tests -p test_r4_gallery_50_fbx.py -v
+      - name: Deliver full library and genuine Blender reference renderings
+        uses: actions/upload-artifact@v4
+        with:
+          name: Resort-R4-50-Modelos-FBX-Blender-REAL
+          path: |
+            UnityProject/Assets/Architecture/R4_Procedural/
+            UnityProject/Assets/Architecture/R4_Procedural.meta
+            ArtSource/Previews/R4_Procedural_gallery_Sheet_*_Blender.png
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve verified fifty procedural assets in GitHub
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f UnityProject/Assets/Architecture/R4_Procedural/
+          git add -f UnityProject/Assets/Architecture/R4_Procedural.meta
+          git add -f ArtSource/Previews/R4_Procedural_gallery_Sheet_*.png
+          if ! git diff --cached --quiet; then
+            git commit -m "art(R4): 50 fachadas FBX detalhadas e cinco pranchas Blender reais"
+            git pull --rebase origin chatgpt/r4-gerador-3d-real-blender
+            git push origin HEAD:chatgpt/r4-gerador-3d-real-blender
+          fi
