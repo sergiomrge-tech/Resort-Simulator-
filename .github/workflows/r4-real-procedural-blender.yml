@@ -23,6 +23,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install software-rendering dependencies for Blender Cycles headless
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libegl1 libgl1 libgl1-mesa-dri libopengl0 libx11-6
       - name: Install actual Blender runtime and PNG validator
         run: python -m pip install --disable-pip-version-check 'bpy>=4.3,<5' pillow
       - name: Create actual walls windows balconies roofs and FBX from ten real OSM footprints
