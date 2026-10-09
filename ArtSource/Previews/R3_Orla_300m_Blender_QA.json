@@ -5,9 +5,10 @@
   "source_blend_sha256": "2384c677bbb2ef8ef6275cb567ec52e69ff4b9e55d204d76eb0b10dfde2e4ac4",
   "source_fbx_sha256": "2546ad26546713d40008c395a1a0d00eb2a3f90c1681f0bbbe3ad2c5410d9339",
   "preview": "ArtSource/Previews/R3_Orla_300m_OSM_Real_Blender_QA.png",
-  "preview_sha256": "3f57409fa9678ffd02a9f4fbe467f0ca07106f7c686154a31fee8ed85b70cfbb",
-  "preview_bytes": 3359641,
+  "preview_sha256": "d71913470abaacf613e18e818a59d8092f46bc3c29841743ccdc91db3a182170",
+  "preview_bytes": 3358897,
   "city_faces": 26764,
+  "georeferencing_alignment": "All overlay XY coordinates transformed from local OSM metres via the original BlenderGIS object matrix_world",
   "sites": [
     {
       "id": "way/1048277518",
@@ -38,7 +39,7 @@
         ]
       ],
       "display_z": 19.3,
-      "face_hits": 13,
+      "face_hits": 15,
       "source_has_building": true
     },
     {
@@ -66,7 +67,7 @@
         ]
       ],
       "display_z": 19.3,
-      "face_hits": 20,
+      "face_hits": 12,
       "source_has_building": true
     },
     {
@@ -105,9 +106,9 @@
           -243.56619
         ]
       ],
-      "display_z": 2.3,
-      "face_hits": 0,
-      "source_has_building": false
+      "display_z": 19.3,
+      "face_hits": 25,
+      "source_has_building": true
     }
   ],
   "render_engine": "Blender Cycles CPU",
