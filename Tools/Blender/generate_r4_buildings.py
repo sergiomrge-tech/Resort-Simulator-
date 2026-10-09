@@ -32,7 +32,7 @@ from mathutils.geometry import tessellate_polygon
 ROOT=Path(__file__).resolve().parents[2]
 CATALOG=ROOT/"ArtSource/ProceduralBuildings/Resort50Styles.json"
 ASSIGNMENTS=ROOT/"geo/procedural/R4_OSM_50_STYLE_ASSIGNMENTS.json"
-OUT=ROOT/"ArtSource/ProceduralBuildings/Generated"
+OUT=ROOT/"UnityProject/Assets/Architecture/R4_Procedural"
 IMAGES=ROOT/"ArtSource/Previews"
 HELD_BACK={"way/1048277518","way/1048277521"}  # R3 hero placements
 VERSION="R4_PROCEDURAL_GEOMETRY_V1"
@@ -567,6 +567,14 @@ def run():
         raise RuntimeError("No OSM source buildings in requested slice")
     reset()
     OUT.mkdir(parents=True,exist_ok=True)
+    (OUT/"FBX").mkdir(parents=True,exist_ok=True)
+    # Keep Unity importer GUIDs stable when moving generated models between PCs.
+    for folder in (OUT, OUT/"FBX"):
+        meta=Path(str(folder)+".meta")
+        if not meta.is_file():
+            meta.write_text("fileFormatVersion: 2\nguid: "+
+                named_guid("folder:"+folder.relative_to(ROOT).as_posix())+
+                "\nfolderAsset: yes\nDefaultImporter:\n  externalObjects: {}\n")
     output=[]
     previews=[]
     for batch_i in range(0,len(items),10):
